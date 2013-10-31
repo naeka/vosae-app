@@ -1,0 +1,53 @@
+{% load i18n %}
+{% spaceless %}
+<div style="font-size: 1em; border: 1px solid #ccc; padding: 10px; border-bottom-width: 2px; border-right-width: 2px; font-family: 'Helvetica Neue', Helvetica, Arial, inherit; background: white; color: #333; max-width: 600px">
+    <div>
+        <table cellspacing="0" cellpadding="4px" border="0" style="width: 100%; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 12px">
+            <tr>
+                <td style="font-size: 1.2em; font-weight: bold; color: #666">{{ vosae_event.summary }}</td>
+                <td style="text-align: right"><a href="{{ event_url }}">{% trans "Further info" %}</a></td>
+            </tr>
+        </table>
+        <table cellspacing="0" cellpadding="4px" border="0" style="width: 100%; table-layout: auto">
+            <tr>
+                <td style="text-align: right; padding-right: 10px; color: #aaa; width: 10px">{% trans "Date" %}</td>
+                <td>
+                    {% if vosae_event.start.date %}
+                        <span>{{ start|date:"EVENT_DATE_FORMAT" }}</span>
+                    {% else %}
+                        <span>{{ start|date:"EVENT_DATETIME_FORMAT" }}</span><span style="color: #aaa"> {{ timezone }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% if vosae_event.description %}
+                <tr>
+                    <td style="text-align: right; padding-right: 10px; color: #aaa; vertical-align: top; width: 10px">{% trans "Description" %}</td>
+                    <td>{{ vosae_event.description|linebreaksbr }}</td>
+                </tr>
+            {% endif %}
+            {% if vosae_event.location %}
+            <tr>
+                <td style="text-align: right; padding-right: 10px; color: #aaa; vertical-align: top; width: 10px">{% trans "Location" %}</td>
+                <td>{{ vosae_event.location }}</td>
+            </tr>
+            {% endif %}
+            {% if vosae_event.attendees %}
+            <tr>
+                <td style="text-align: right; padding-right: 10px; color: #aaa; vertical-align: top; width: 10px">{% trans "Attendees" %}</td>
+                <td>
+                    <ul style="list-style-position: inside; list-style-type: square; padding: 0; margin: 0">
+                        {% for attendee in vosae_event.attendees %}
+                            <li style="margin: 0">
+                                {% if attendee.display_name %}{{ attendee.display_name }}{% endif %}
+                                <a href="mailto:{{ attendee.email }}">{{ attendee.email }}</a>
+                                {% if attendee.organizer %}<span style="color: #aaa"> - {% trans "organizer" context "person" %}</span>{% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+</div>
+{% endspaceless %}

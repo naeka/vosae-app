@@ -1,0 +1,50 @@
+{% extends "account/base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Login page" context "Html title" %} | {{ block.super }}{% endblock %}
+{% block meta_property_og_title %}{% trans "Login page" context "Html title" %} | {{ block.super }}{% endblock %}
+{% block meta_property_twitter_title %}{% trans "Login page" context "Html title" %} | {{ block.super }}{% endblock %}
+
+{% block content %}{{ block.super }}{% endblock %}
+{% block page_account_title %}{% trans "Log in to Vosae" %}{% endblock %}  
+{% block page_account_content %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message-info">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    {% if form.non_field_errors %}
+        <p class="message-info">{{form.non_field_errors|first}}</p>
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}
+                <div class="input">
+                    {{ field }}              
+                    {% if field.errors %}
+                        <span class="help-inline error">
+                            {% with field.errors|first as first_error %}
+                                - {{ first_error }}
+                            {% endwith %}
+                        </span>
+                    {% elif field.help_text %}
+                        <span class="help-inline">
+                            {{ field.help_text }}
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <p class="submit">
+            <a class="reset" href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a>
+            <button type="submit" class="btn green">
+                {% trans "Log in" %} <span class="light"> | {% trans "Beta" %}</span>
+            </button>
+        </p>
+    </form>
+{% endblock %}
+{% block page_account_bottom %}
+    <a class="grey" href="{% url 'signup' %}">{% trans "Don't have an account? Sign up" %}</a>
+{% endblock %}

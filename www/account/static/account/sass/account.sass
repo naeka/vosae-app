@@ -1,0 +1,111 @@
+@import "compass"
+@import "partials/conf"
+
+html, body, #wrappper
+  height: 100%
+
+#wrapper
+  height: auto
+  min-height: 100%
+  overflow-x: hidden 
+
+
+// ===================================
+// = Page signin / signup / password =
+// ===================================
+
+.page-account #wrapper
+  > .inner
+    width: 420px
+    padding: 40px 60px
+    background: #FFF
+    margin: 40px auto 20px
+    overflow: hidden
+    .head
+      border-bottom: 1px solid #DDD
+      text-align: center
+      img
+        width: 52px
+      h1
+        font-size: 29px
+        font-weight: normal
+    .content
+      padding-top: 30px
+      label
+        display: inline-block
+      span.required
+        font-weight: bold
+        color: $orange
+      p.message-info
+        background: #F2DD93
+        margin-left: -60px
+        padding: 8px 60px
+        width: 420px
+        color: #555
+        font-style: italic
+        margin-bottom: 30px
+      p.required
+        display: inline-block
+        span
+          font-weight: bold
+          color: $orange
+      p.submit
+        padding-top: 10px
+        margin: 0
+      .help-inline
+        color: #888
+        margin-top: -7px
+        margin-bottom: 17px
+        font-weight: normal
+        font-size: 15px
+        font-style: italic
+        &.error
+          font-style: normal
+          color: $orange
+          font-weight: bold
+
+  input[type='text'],
+  input[type='password']
+    width: 100%
+    border: 2px solid #EEE
+    padding: 1em
+    font-size: 14px
+    box-sizing: border-box
+    margin-bottom: 10px
+    transition: all .1s ease
+    outline: none
+    line-height: 18px
+    color: $green
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    +border-radius(2px)
+    &:focus
+      border-color: #CCC
+
+  .btn.green
+    float: right
+    background: $green
+    border: 0
+    text-shadow: none
+    color: #FFF
+    padding: 8px 24px
+    +border-radius(2px)
+    .light
+      color : #afe6e4
+    &:hover
+      background: darken($green,7)
+
+  a.reset
+    float: left
+    color: #666
+    font-weight: bold
+    font-size: 15px
+    padding-top: 7px
+  a.grey
+    color: #444
+    font-weight: bold
+    font-size: 15px
+    padding-bottom: 20px
+    display: block
+    text-align: center

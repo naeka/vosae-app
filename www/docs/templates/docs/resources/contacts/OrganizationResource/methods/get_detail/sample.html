@@ -1,0 +1,195 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /organization/5231cbf04ab63c53dc9004ba/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Grenoble&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;extended_address&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;FRANCE&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;postoffice_box&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="nt">&quot;geo_point&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;38000&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;WORK&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;street_address&quot;</span><span class="p">:</span> <span class="s2">&quot;1 Rue de Grenoble&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/organization/5231cbf04ab63c53dc9004ba/addresses/0/&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="nt">&quot;creator&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbd64ab63c53dc900474/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;photo_source&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;phones&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;04 05 06 07 08&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/organization/5231cbf04ab63c53dc9004ba/phones/0/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;WORK&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;subtype&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="nt">&quot;contacts&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;private&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="nt">&quot;corporate_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Company A&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;gravatar_mail&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;photo&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cbf04ab63c53dc9004ba&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;photo_uri&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;emails&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/organization/5231cbf04ab63c53dc9004ba/emails/0/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;WORK&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;contact@naeka.fr&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/organization/5231cbf04ab63c53dc9004ba/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /organization/5231cbf04ab63c53dc9004bb/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ACTIVE<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;addresses</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+      <span class="nt">&lt;city&gt;</span>Grenoble<span class="nt">&lt;/city&gt;</span>
+      <span class="nt">&lt;extended_address</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;country&gt;</span>FRANCE<span class="nt">&lt;/country&gt;</span>
+      <span class="nt">&lt;postoffice_box</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;geo_point</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;state</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;postal_code&gt;</span>38000<span class="nt">&lt;/postal_code&gt;</span>
+      <span class="nt">&lt;type&gt;</span>WORK<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;street_address&gt;</span>1 Rue de Grenoble<span class="nt">&lt;/street_address&gt;</span>
+      <span class="nt">&lt;resource_uri&gt;</span>/api/v1/organization/5231cbf04ab63c53dc9004bb/addresses/0/<span class="nt">&lt;/resource_uri&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/addresses&gt;</span>
+  <span class="nt">&lt;contacts</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;photo_source</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;phones</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+      <span class="nt">&lt;phone&gt;</span>04 05 06 07 08<span class="nt">&lt;/phone&gt;</span>
+      <span class="nt">&lt;resource_uri&gt;</span>/api/v1/organization/5231cbf04ab63c53dc9004bb/phones/0/<span class="nt">&lt;/resource_uri&gt;</span>
+      <span class="nt">&lt;type&gt;</span>WORK<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;subtype</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/phones&gt;</span>
+  <span class="nt">&lt;creator&gt;</span>/api/v1/user/5231cbd64ab63c53dc900474/<span class="nt">&lt;/creator&gt;</span>
+  <span class="nt">&lt;private</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/private&gt;</span>
+  <span class="nt">&lt;corporate_name&gt;</span>Company A<span class="nt">&lt;/corporate_name&gt;</span>
+  <span class="nt">&lt;note</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;gravatar_mail</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;photo</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231cbf04ab63c53dc9004bb<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;photo_uri</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;emails</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;type&gt;</span>WORK<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;email&gt;</span>contact@naeka.fr<span class="nt">&lt;/email&gt;</span>
+      <span class="nt">&lt;resource_uri&gt;</span>/api/v1/organization/5231cbf04ab63c53dc9004bb/emails/0/<span class="nt">&lt;/resource_uri&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/emails&gt;</span>
+  <span class="nt">&lt;tags</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/organization/5231cbf04ab63c53dc9004bb/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /organization/5231cbf04ab63c53dc9004bc/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">addresses</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">city</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Grenoble&#39;</span><span class="p-Indicator">,</span> <span class="nv">country</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;FRANCE&#39;</span><span class="p-Indicator">,</span> <span class="nv">extended_address</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span>
+<span class="nv">geo_point</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">postal_code</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;38000&#39;</span><span class="p-Indicator">,</span> <span class="nv">postoffice_box</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span>
+<span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/organization/5231cbf04ab63c53dc9004bc/addresses/0/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">state</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">street_address</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1</span><span class="nv"> </span><span class="s">Rue</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Grenoble&#39;</span><span class="p-Indicator">,</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;WORK&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">contacts</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">corporate_name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Company</span><span class="nv"> </span><span class="s">A&#39;</span>
+<span class="l-Scalar-Plain">creator</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbd64ab63c53dc900474/&#39;</span>
+<span class="l-Scalar-Plain">emails</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">email</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;contact@naeka.fr&#39;</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/organization/5231cbf04ab63c53dc9004bc/emails/0/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;WORK&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">gravatar_mail</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cbf04ab63c53dc9004bc&#39;</span>
+<span class="l-Scalar-Plain">note</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">phones</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">phone</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;04</span><span class="nv"> </span><span class="s">05</span><span class="nv"> </span><span class="s">06</span><span class="nv"> </span><span class="s">07</span><span class="nv"> </span><span class="s">08&#39;</span><span class="p-Indicator">,</span> <span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/organization/5231cbf04ab63c53dc9004bc/phones/0/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">subtype</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;WORK&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">photo</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">photo_source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">photo_uri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">private</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l-Scalar-Plain">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/organization/5231cbf04ab63c53dc9004bc/&#39;</span>
+<span class="l-Scalar-Plain">status</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;ACTIVE&#39;</span>
+<span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

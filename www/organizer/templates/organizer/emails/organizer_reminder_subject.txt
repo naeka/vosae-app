@@ -1,0 +1,6 @@
+{% load i18n %}
+{% if vosae_event.start.date %}
+    {% blocktrans with summary=vosae_event.summary start=start|date:"EVENT_SHORT_DATE_FORMAT" %}Reminder - {{ summary }} - {{ start }}{% endblocktrans %}
+{% else %}
+    {% blocktrans with summary=vosae_event.summary start=start|date:"EVENT_SHORT_DATETIME_FORMAT" %}Reminder - {{ summary }} - {{ start }}{% endblocktrans %}
+{% endif %}

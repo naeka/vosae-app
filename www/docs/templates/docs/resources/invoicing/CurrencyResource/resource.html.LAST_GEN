@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Currency | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Currency</h1>
+
+
+{% include "docs/resources/invoicing/CurrencyResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/CurrencyResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/invoicing/CurrencyResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

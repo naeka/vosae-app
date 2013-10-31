@@ -1,0 +1,119 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#make_down_payment_invoice_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#make_down_payment_invoice_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#make_down_payment_invoice_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="make_down_payment_invoice_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /quotation/5231cc894ab63c53dc90053d/make_down_payment_invoice/
+Content-Type: application/json</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;due_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-10-12&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;percentage&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;tax_applied&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tax/5231cc884ab63c53dc900537/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;down_payment_invoice_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/down_payment_invoice/5231ccad4ab63c53dc900553/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="make_down_payment_invoice_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /quotation/5231cc8e4ab63c53dc900541/make_down_payment_invoice/
+Content-Type: application/xml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;due_date&gt;</span>2013-10-12<span class="nt">&lt;/due_date&gt;</span>
+  <span class="nt">&lt;percentage&gt;</span>0.2<span class="nt">&lt;/percentage&gt;</span>
+  <span class="nt">&lt;tax_applied&gt;</span>/api/v1/tax/5231cc884ab63c53dc900537/<span class="nt">&lt;/tax_applied&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;response&gt;</span>
+  <span class="nt">&lt;down_payment_invoice_uri&gt;</span>/api/v1/down_payment_invoice/5231ccb34ab63c53dc900558/<span class="nt">&lt;/down_payment_invoice_uri&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="make_down_payment_invoice_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /quotation/5231cc924ab63c53dc900545/make_down_payment_invoice/
+Content-Type: text/yaml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">due_date</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;2013-10-12&#39;</span><span class="p-Indicator">,</span> <span class="nv">percentage</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0.2&#39;</span><span class="p-Indicator">,</span> <span class="nv">tax_applied</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tax/5231cc884ab63c53dc900537/&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">down_payment_invoice_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/down_payment_invoice/5231ccba4ab63c53dc90055d/&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

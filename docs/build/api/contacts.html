@@ -1,0 +1,369 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contacts &mdash; Vosae 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Vosae 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Data liberation" href="data_liberation.html" />
+    <link rel="prev" title="Core" href="core.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="data_liberation.html" title="Data liberation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="Core"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="contacts">
+<h1>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="embedded-resources">
+<h2>Embedded resources<a class="headerlink" href="#embedded-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="address">
+<h3>Address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.embedded.Address">
+<em class="property">class </em><tt class="descclassname">contacts.models.embedded.</tt><tt class="descname">Address</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.models.embedded.Address" title="Permalink to this definition">¶</a></dt>
+<dd><p>An address wrapper which can be embedded in any object.</p>
+<dl class="staticmethod">
+<dt id="contacts.models.embedded.Address.concat_fields">
+<em class="property">static </em><tt class="descname">concat_fields</tt><big>(</big><em>field1</em>, <em>field2</em><big>)</big><a class="headerlink" href="#contacts.models.embedded.Address.concat_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method used in the <tt class="xref py py-func docutils literal"><span class="pre">get_formatted()</span></tt> method
+to concatenate fields like state and country.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.models.embedded.Address.get_formatted">
+<tt class="descname">get_formatted</tt><big>(</big><big>)</big><a class="headerlink" href="#contacts.models.embedded.Address.get_formatted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a concatenated list of <tt class="xref py py-class docutils literal"><span class="pre">Address</span></tt> attributes:</p>
+<ul class="simple">
+<li>Street address</li>
+<li>Extended address, post office box</li>
+<li>Postal code, City</li>
+<li>State, Country</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="contacts.api.resources.embedded.AddressResource">
+<em class="property">class </em><tt class="descclassname">contacts.api.resources.embedded.</tt><tt class="descname">AddressResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#contacts.api.resources.embedded.AddressResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="email">
+<h3>Email<a class="headerlink" href="#email" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.embedded.Email">
+<em class="property">class </em><tt class="descclassname">contacts.models.embedded.</tt><tt class="descname">Email</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.models.embedded.Email" title="Permalink to this definition">¶</a></dt>
+<dd><p>An e-mail wrapper which can be embedded in any object.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="contacts.api.resources.embedded.EmailResource">
+<em class="property">class </em><tt class="descclassname">contacts.api.resources.embedded.</tt><tt class="descname">EmailResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#contacts.api.resources.embedded.EmailResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="phone">
+<h3>Phone<a class="headerlink" href="#phone" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.embedded.Phone">
+<em class="property">class </em><tt class="descclassname">contacts.models.embedded.</tt><tt class="descname">Phone</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.models.embedded.Phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>A phone wrapper which can be embedded in any object.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="contacts.api.resources.embedded.PhoneResource">
+<em class="property">class </em><tt class="descclassname">contacts.api.resources.embedded.</tt><tt class="descname">PhoneResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#contacts.api.resources.embedded.PhoneResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="main-resources">
+<h2>Main resources<a class="headerlink" href="#main-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="entity">
+<h3>Entity<a class="headerlink" href="#entity" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.Entity">
+<em class="property">class </em><tt class="descclassname">contacts.models.</tt><tt class="descname">Entity</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#contacts.models.Entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base class for <a class="reference internal" href="#contacts.models.Contact" title="contacts.models.Contact"><tt class="xref py py-class docutils literal"><span class="pre">Contact</span></tt></a> and <a class="reference internal" href="#contacts.models.Organization" title="contacts.models.Organization"><tt class="xref py py-class docutils literal"><span class="pre">Organization</span></tt></a>.</p>
+<dl class="classmethod">
+<dt id="contacts.models.Entity.get_indexable_documents">
+<em class="property">classmethod </em><tt class="descname">get_indexable_documents</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.models.Entity.get_indexable_documents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides <cite>get_indexable_documents</cite> method by filtering on only active entities</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="contacts.models.Entity.photo_uri">
+<tt class="descname">photo_uri</tt><a class="headerlink" href="#contacts.models.Entity.photo_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the photo URI or the default <em>empty</em> picture.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="contacts.models.Entity.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.models.Entity.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<ul class="simple">
+<li>Deletes related photo, if exists</li>
+<li>De-index entity from elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="contacts.models.Entity.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.models.Entity.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Removes related TTL</li>
+<li>Index entity in elasticsearch</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="contacts.api.resources.EntityResource">
+<em class="property">class </em><tt class="descclassname">contacts.api.resources.</tt><tt class="descname">EntityResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#contacts.api.resources.EntityResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="contacts.api.resources.EntityResource.get_object_list">
+<tt class="descname">get_object_list</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#contacts.api.resources.EntityResource.get_object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters the queryset from private results.  
+Done here since we can extract caller user from the request</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.EntityResource.hydrate">
+<tt class="descname">hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#contacts.api.resources.EntityResource.hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>On POST requests, sets the entity creator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.EntityResource.hydrate_private">
+<tt class="descname">hydrate_private</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#contacts.api.resources.EntityResource.hydrate_private" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensures that the private flag can only be updated by the creator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.EntityResource.obj_create">
+<tt class="descname">obj_create</tt><big>(</big><em>bundle</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.api.resources.EntityResource.obj_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the saved task here since we can extract issuer from the request</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.EntityResource.obj_update">
+<tt class="descname">obj_update</tt><big>(</big><em>bundle</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#contacts.api.resources.EntityResource.obj_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the saved task here since we can extract issuer from the request</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="contact">
+<h3>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.Contact">
+<em class="property">class </em><tt class="descclassname">contacts.models.</tt><tt class="descname">Contact</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#contacts.models.Contact" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper to a <em>contact</em> entity.</p>
+<dl class="method">
+<dt id="contacts.models.Contact.get_full_name">
+<tt class="descname">get_full_name</tt><big>(</big><em>name_first=False</em>, <em>upper_name=False</em><big>)</big><a class="headerlink" href="#contacts.models.Contact.get_full_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="#contacts.models.Contact" title="contacts.models.Contact"><tt class="xref py py-class docutils literal"><span class="pre">Contact</span></tt></a> full name according to this format:</p>
+<ul class="simple">
+<li>Firstname Name, <em>if either the name and firstname are set</em></li>
+<li>Name, <em>if only the name is set</em></li>
+<li>Firstname, <em>if only the firstname is set</em></li>
+<li>None, <em>if neither the name nor the firstname are set</em></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_first</strong> &#8211; invert name and firstname in the first case.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="contacts.api.resources.ContactResource">
+<em class="property">class </em><tt class="descclassname">contacts.api.resources.</tt><tt class="descname">ContactResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#contacts.api.resources.ContactResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="contacts.api.resources.ContactResource.do_export">
+<tt class="descname">do_export</tt><big>(</big><em>request</em>, <em>serializer</em>, <em>export_objects</em><big>)</big><a class="headerlink" href="#contacts.api.resources.ContactResource.do_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contacts export</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.ContactResource.do_import">
+<tt class="descname">do_import</tt><big>(</big><em>request</em>, <em>serializer</em>, <em>import_buffer</em><big>)</big><a class="headerlink" href="#contacts.api.resources.ContactResource.do_import" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contacts import</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.ContactResource.prepend_urls">
+<tt class="descname">prepend_urls</tt><big>(</big><big>)</big><a class="headerlink" href="#contacts.api.resources.ContactResource.prepend_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add urls for resources import/export.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="organization">
+<h3>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.Organization">
+<em class="property">class </em><tt class="descclassname">contacts.models.</tt><tt class="descname">Organization</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#contacts.models.Organization" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper to an <em>organization</em> entity.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="contacts.api.resources.OrganizationResource">
+<em class="property">class </em><tt class="descclassname">contacts.api.resources.</tt><tt class="descname">OrganizationResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#contacts.api.resources.OrganizationResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="contacts.api.resources.OrganizationResource.do_export">
+<tt class="descname">do_export</tt><big>(</big><em>request</em>, <em>serializer</em>, <em>export_objects</em><big>)</big><a class="headerlink" href="#contacts.api.resources.OrganizationResource.do_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Organizations export</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.OrganizationResource.do_import">
+<tt class="descname">do_import</tt><big>(</big><em>request</em>, <em>serializer</em>, <em>import_buffer</em><big>)</big><a class="headerlink" href="#contacts.api.resources.OrganizationResource.do_import" title="Permalink to this definition">¶</a></dt>
+<dd><p>Organizations import</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="contacts.api.resources.OrganizationResource.prepend_urls">
+<tt class="descname">prepend_urls</tt><big>(</big><big>)</big><a class="headerlink" href="#contacts.api.resources.OrganizationResource.prepend_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add urls for resources import/export.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="contactgroup">
+<h3>ContactGroup<a class="headerlink" href="#contactgroup" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="contacts.models.ContactGroup">
+<em class="property">class </em><tt class="descclassname">contacts.models.</tt><tt class="descname">ContactGroup</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#contacts.models.ContactGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for grouping contacts.</p>
+<p><strong>Not currently used</strong></p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Contacts</a><ul>
+<li><a class="reference internal" href="#embedded-resources">Embedded resources</a><ul>
+<li><a class="reference internal" href="#address">Address</a></li>
+<li><a class="reference internal" href="#email">Email</a></li>
+<li><a class="reference internal" href="#phone">Phone</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#main-resources">Main resources</a><ul>
+<li><a class="reference internal" href="#entity">Entity</a></li>
+<li><a class="reference internal" href="#contact">Contact</a></li>
+<li><a class="reference internal" href="#organization">Organization</a></li>
+<li><a class="reference internal" href="#contactgroup">ContactGroup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.html"
+                        title="previous chapter">Core</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="data_liberation.html"
+                        title="next chapter">Data liberation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/contacts.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="data_liberation.html" title="Data liberation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="Core"
+             >previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Léo Stevenin, Naeka.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

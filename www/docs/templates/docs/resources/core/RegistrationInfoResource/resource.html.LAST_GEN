@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Registrationinfo | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Registration info</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/core/RegistrationInfoResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

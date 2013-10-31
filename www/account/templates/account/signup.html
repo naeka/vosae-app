@@ -1,0 +1,43 @@
+{% extends "account/base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Signup page" context "Html title" %} | {{ block.super }}{% endblock %}
+{% block meta_property_og_title %}{% trans "Signup page" context "Html title" %} | {{ block.super }}{% endblock %}
+{% block meta_property_twitter_title %}{% trans "Signup page" context "Html title" %} | {{ block.super }}{% endblock %}
+
+{% block content %}{{ block.super }}{% endblock %}
+{% block page_account_title %}{% trans "Sign up to Vosae" %}{% endblock %}
+{% block page_account_content %}
+    <p class="message-info">{% trans "Vosae is currently in beta. Feel free to contact us at support@vosae.com." %}</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }} <span class="required">*</span>
+                <div class="input">
+                    {{ field }}              
+                    {% if field.errors %}
+                        <span class="help-inline error">
+                            {% with field.errors|first as first_error %}
+                                - {{ first_error }}
+                            {% endwith %}
+                        </span>
+                    {% elif field.help_text %}
+                        <span class="help-inline">
+                            {{ field.help_text }}
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <p class="submit">
+            <p class="required"><span>*</span> {% trans "Required" %}</p>
+            <button type="submit" class="btn green">
+                {% trans "Register" %} <span class="light"> | {% trans "Beta" %}</span>
+            </button>
+        </p>
+    </form>
+{% endblock %}
+{% block page_account_bottom %}
+    <a class="grey" href="{% url 'signin' %}">{% trans "Already have an account? Log in" %}</a>
+{% endblock %}

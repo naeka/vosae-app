@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Phone | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Phone</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/contacts/PhoneResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

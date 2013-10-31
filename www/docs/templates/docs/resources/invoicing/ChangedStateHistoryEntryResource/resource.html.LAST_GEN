@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Changedstatehistoryentry | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Changed state history entry</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/ChangedStateHistoryEntryResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

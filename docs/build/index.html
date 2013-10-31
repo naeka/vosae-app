@@ -1,0 +1,251 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Vosae Developer Documentation &mdash; Vosae 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Vosae 0.1 documentation" href="#" />
+    <link rel="next" title="Account" href="api/account.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api/account.html" title="Account"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="vosae-developer-documentation">
+<h1>Vosae Developer Documentation<a class="headerlink" href="#vosae-developer-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vosae-apps-api-reference">
+<h2>Vosae apps API reference<a class="headerlink" href="#vosae-apps-api-reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/account.html">Account</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/account.html#main-resources">Main resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/account.html#apikey">ApiKey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/account.html#apiaccess">ApiAccess</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/account.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/account.html#vosaebackend">VosaeBackend</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/core.html">Core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#embedded-resources">Embedded resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#vosaeusersettings">VosaeUserSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#vosaepermissions">VosaePermissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#reportsettings">ReportSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#registrationinfo">RegistrationInfo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/core.html#localized-registrationinfo">Localized RegistrationInfo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#main-resources">Main resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#vosaecustomer">VosaeCustomer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#vosaegroup">VosaeGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#vosaeuser">VosaeUser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#vosaefile">VosaeFile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#api-utilities">API utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#authorization">Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#mixins">Mixins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#resources">Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/core.html#throttling">Throttling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/contacts.html">Contacts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/contacts.html#embedded-resources">Embedded resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#address">Address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#email">Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#phone">Phone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/contacts.html#main-resources">Main resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#entity">Entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#contact">Contact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#organization">Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/contacts.html#contactgroup">ContactGroup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/data_liberation.html">Data liberation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/data_liberation.html#main-resources">Main resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/data_liberation.html#export">Export</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/invoicing.html">Invoicing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/invoicing.html#embedded-resources">Embedded resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#invoicerevision">InvoiceRevision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#invoiceitem">InvoiceItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#invoicenote">InvoiceNote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#snapshotcurrency">SnapshotCurrency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#exchangerate">ExchangeRate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/invoicing.html#main-resources">Main resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#invoicebase">InvoiceBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#quotation">Quotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#invoice">Invoice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#downpaymentinvoice">DownPaymentInvoice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#creditnote">CreditNote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#tax">Tax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#item">Item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#payment">Payment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/invoicing.html#currency">Currency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/organizer.html">Organizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/organizer.html#embedded-resources">Embedded resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#attendee">Attendee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#calendaracl">CalendarAcl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#calendaraclrule">CalendarAclRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#eventdatetime">EventDateTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#eventoccurrence">EventOccurrence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#remindersettings">ReminderSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#reminderentry">ReminderEntry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/organizer.html#main-resources">Main resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#calendar">Calendar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#vosaecalendar">VosaeCalendar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#googlecalendar">GoogleCalendar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#calendarlist">CalendarList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/organizer.html#vosaeevent">VosaeEvent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/vosae_settings.html">Vosae settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/vosae_settings.html#global">Global</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/vosae_settings.html#vosaesettings">VosaeSettings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/vosae_settings.html#core-settings">Core settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/vosae_settings.html#vosaecoresettings">VosaeCoreSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/vosae_settings.html#coresettings">CoreSettings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/vosae_settings.html#invoicing-settings">Invoicing settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/vosae_settings.html#vosaeinvoicingsettings">VosaeInvoicingSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/vosae_settings.html#invoicingsettings">InvoicingSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/vosae_settings.html#invoicingnumberingsettings">InvoicingNumberingSettings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Vosae Developer Documentation</a><ul>
+<li><a class="reference internal" href="#vosae-apps-api-reference">Vosae apps API reference</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api/account.html"
+                        title="next chapter">Account</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api/account.html" title="Account"
+             >next</a> |</li>
+        <li><a href="#">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Léo Stevenin, Naeka.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

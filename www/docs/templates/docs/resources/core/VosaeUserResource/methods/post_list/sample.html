@@ -1,0 +1,250 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#post_list_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#post_list_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#post_list_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="post_list_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /user/
+Content-Type: application/json</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;specific_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;invoicing_access&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;nobody1@vosae.com&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;/api/v1/group/5231cbd54ab63c53dc900473/&quot;</span>
+    <span class="p">],</span> 
+    <span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: application/json
+Location: /user/5231cbe84ab63c53dc9004a4/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;email_signature&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;language_code&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;gravatar_email&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cbe84ab63c53dc9004a4&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;/api/v1/group/5231cbd54ab63c53dc900473/&quot;</span>
+    <span class="p">],</span> 
+    <span class="nt">&quot;photo_uri&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbe84ab63c53dc9004a4/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;specific_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;invoicing_access&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;nobody1@vosae.com&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;change_vosaeuser&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;see_vosaegroup&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;delete_item&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;core_access&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;see_item&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;add_invoicebase&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;organizer_access&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;add_vosaegroup&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;delete_vosaefile&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;delete_contact&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;contacts_access&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;change_vosaegroup&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;see_invoicebase&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;delete_invoicebase&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;change_contact&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;post_invoicebase&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;add_vosaeuser&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;add_contact&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;delete_vosaegroup&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;delete_vosaeuser&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;change_appconf&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;add_vosaefile&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;see_vosaefile&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;change_invoicingsettings&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;see_vosaeuser&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;see_contact&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;add_item&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;change_invoicebase&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;change_item&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;transmit_invoicebase&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="post_list_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /user/
+Content-Type: application/xml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;groups</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>/api/v1/group/5231cbd54ab63c53dc900473/<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/groups&gt;</span>
+  <span class="nt">&lt;email&gt;</span>nobody2@vosae.com<span class="nt">&lt;/email&gt;</span>
+  <span class="nt">&lt;specific_permissions</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;invoicing_access</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/invoicing_access&gt;</span>
+  <span class="nt">&lt;/specific_permissions&gt;</span>
+  <span class="nt">&lt;settings</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: application/xml; charset=utf-8
+Location: /user/5231cbea4ab63c53dc9004a8/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ACTIVE<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;specific_permissions</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;invoicing_access</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/invoicing_access&gt;</span>
+  <span class="nt">&lt;/specific_permissions&gt;</span>
+  <span class="nt">&lt;settings&gt;</span>
+    <span class="nt">&lt;email_signature</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;language_code</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;gravatar_email</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/settings&gt;</span>
+  <span class="nt">&lt;full_name/&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231cbea4ab63c53dc9004a8<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;groups</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>/api/v1/group/5231cbd54ab63c53dc900473/<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/groups&gt;</span>
+  <span class="nt">&lt;photo_uri</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;permissions</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_vosaeuser<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>see_vosaegroup<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>delete_item<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>core_access<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>see_item<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>add_invoicebase<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>organizer_access<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>add_vosaegroup<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>delete_vosaefile<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>delete_contact<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>contacts_access<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_vosaegroup<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>see_invoicebase<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>delete_invoicebase<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_contact<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>post_invoicebase<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>add_vosaeuser<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>add_contact<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>delete_vosaegroup<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>delete_vosaeuser<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_appconf<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>add_vosaefile<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>see_vosaefile<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_invoicingsettings<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>see_vosaeuser<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>see_contact<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>add_item<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_invoicebase<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>change_item<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>transmit_invoicebase<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/permissions&gt;</span>
+  <span class="nt">&lt;email&gt;</span>nobody2@vosae.com<span class="nt">&lt;/email&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/user/5231cbea4ab63c53dc9004a8/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="post_list_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /user/
+Content-Type: text/yaml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;nobody3@vosae.com&#39;</span>
+<span class="l-Scalar-Plain">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/group/5231cbd54ab63c53dc900473/&#39;</span><span class="p-Indicator">]</span>
+<span class="l-Scalar-Plain">settings</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+<span class="l-Scalar-Plain">specific_permissions</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">invoicing_access</span><span class="p-Indicator">:</span> <span class="nv">false</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: text/yaml; charset=utf-8
+Location: /user/5231cbeb4ab63c53dc9004ac/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;nobody3@vosae.com&#39;</span>
+<span class="l-Scalar-Plain">full_name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;&#39;</span>
+<span class="l-Scalar-Plain">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/group/5231cbd54ab63c53dc900473/&#39;</span><span class="p-Indicator">]</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cbeb4ab63c53dc9004ac&#39;</span>
+<span class="l-Scalar-Plain">permissions</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="kt">!!python/unicode</span> <span class="s">&#39;change_vosaeuser&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;see_vosaegroup&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;delete_item&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;core_access&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;see_item&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;add_invoicebase&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;organizer_access&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;add_vosaegroup&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;delete_vosaefile&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;delete_contact&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;contacts_access&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;change_vosaegroup&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;see_invoicebase&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;delete_invoicebase&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;change_contact&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;post_invoicebase&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;add_vosaeuser&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;add_contact&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;delete_vosaegroup&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;delete_vosaeuser&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;change_appconf&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;add_vosaefile&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;see_vosaefile&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;change_invoicingsettings&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;see_vosaeuser&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;see_contact&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;add_item&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;change_invoicebase&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;change_item&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;transmit_invoicebase&#39;</span><span class="p-Indicator">]</span>
+<span class="l-Scalar-Plain">photo_uri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbeb4ab63c53dc9004ac/&#39;</span>
+<span class="l-Scalar-Plain">settings</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">email_signature</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">gravatar_email</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">language_code</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">specific_permissions</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">invoicing_access</span><span class="p-Indicator">:</span> <span class="nv">false</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">status</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;ACTIVE&#39;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

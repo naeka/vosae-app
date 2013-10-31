@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Calendaracl | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Calendar acl</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/organizer/CalendarAclResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

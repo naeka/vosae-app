@@ -1,0 +1,127 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>email</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>User's email address</td>
+    </tr>
+    
+    <tr>
+      <td>full_name</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>User's full name</td>
+    </tr>
+    
+    <tr>
+      <td>groups</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>List of the user's groups</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>permissions</td>
+      <td>List</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>A dictionnary of user's full list of permissions</td>
+    </tr>
+    
+    <tr>
+      <td>photo_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>User's photo URI</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>settings</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>User's personal settings</td>
+    </tr>
+    
+    <tr>
+      <td>specific_permissions</td>
+      <td>Dict</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>A dictionnary of user's specific permissions: groups permissions are applied and these ones allow fine-grained perms per user</td>
+    </tr>
+    
+    <tr>
+      <td>status</td>
+      <td>String</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>User's status. One of ["ACTIVE", "DISABLED"]</td>
+    </tr>
+    
+  </tbody>
+</table>
+

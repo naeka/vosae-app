@@ -1,0 +1,59 @@
+$borderColor: #eee
+$iconMuted: #eee
+
+@font-face
+  font-family: $fontAwesome
+  src: font-url('fontawesome-webfont.eot')
+  src: font-url('fontawesome-webfont.eot?#iefix') format("embedded-opentype"), font-url('fontawesome-webfont.woff') format("woff"), font-url('fontawesome-webfont.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+
+
+[class^="icon-"],
+[class*=" icon-"]
+  font-family: $fontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: inherit
+  -webkit-font-smoothing: antialiased
+  display: inline
+  width: auto
+  height: auto
+  line-height: normal
+  vertical-align: baseline
+  background-image: none
+  background-position: 0% 0%
+  background-repeat: repeat
+  margin-top: 0
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before
+  text-decoration: inherit
+  display: inline-block
+  speak: none
+
+a
+  [class^="icon-"],
+  [class*=" icon-"]
+    display: inline-block
+
+li, .nav li
+  [class^="icon-"],
+  [class*=" icon-"]
+    display: inline-block
+    width: 1.25em
+    text-align: center
+    &.icon-large
+      width: 1.5625em
+
+[class^="icon-"],
+[class*=" icon-"]
+  &.pull-left
+    margin-right: .3em
+  &.pull-right
+    margin-left: .3em
+
+.icon-double-angle-right:before
+  content: "\f101"
+.icon-angle-right:before
+  content: "\f105"

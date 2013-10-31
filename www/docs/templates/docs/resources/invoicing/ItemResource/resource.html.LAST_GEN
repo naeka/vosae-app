@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Item | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Item</h1>
+
+
+{% include "docs/resources/invoicing/ItemResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/ItemResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/invoicing/ItemResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

@@ -1,0 +1,41 @@
+{% extends "account/base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Signup page" context "Html title" %} | {{ block.super }}{% endblock %}
+{% block meta_property_og_title %}{% trans "Signup page" context "Html title" %} | {{ block.super }}{% endblock %}
+{% block meta_property_twitter_title %}{% trans "Signup page" context "Html title" %} | {{ block.super }}{% endblock %}
+
+{% block content %}{{ block.super }}{% endblock %}
+{% block page_account_title %}{% trans "Sign up to Vosae" %}{% endblock %}
+{% block page_account_content %}
+    <p class="message-info">
+        {% trans "To complete your sign up, please set your identity below." %}
+    </p>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}
+                <div class="input">
+                    {{ field }}              
+                    {% if field.errors %}
+                        <span class="help-inline error">
+                            {% with field.errors|first as first_error %}
+                                - {{ first_error }}
+                            {% endwith %}
+                        </span>
+                    {% elif field.help_text %}
+                        <span class="help-inline">
+                            {{ field.help_text }}
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <p class="submit">
+            <button type="submit" class="btn green">
+                {% trans "Continue" %}
+            </button>
+        </p>
+    </form>
+{% endblock %}

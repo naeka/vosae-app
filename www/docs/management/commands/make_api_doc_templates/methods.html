@@ -1,0 +1,5 @@
+<div class="methods-list">
+  {% for method_name, method in resource_methods.items %}
+    {% templatetag openblock %} include "{{ method_dir }}/{{ method_name }}/method.html" {% templatetag closeblock %}
+  {% endfor %}
+</div>

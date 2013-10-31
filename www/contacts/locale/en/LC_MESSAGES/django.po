@@ -1,0 +1,117 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Vosae\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"PO-Revision-Date: 2013-10-21 11:53+0100\n"
+"Last-Translator: Léo S <leo@naeka.fr>\n"
+"Language-Team: Léo S. <leo@naeka.fr>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: imex.py:41 imex.py:49 api/resources/contact.py:82
+msgid "Contacts"
+msgstr ""
+
+#: imex.py:49 api/resources/organization.py:60
+msgid "Organizations"
+msgstr ""
+
+#: imex.py:157
+msgid "No name"
+msgstr ""
+
+#: models/contact.py:23
+msgid "Mr."
+msgstr ""
+
+#: models/contact.py:24
+msgid "Mrs."
+msgstr ""
+
+#: models/contact.py:25
+msgid "Miss"
+msgstr ""
+
+#: models/embedded/address.py:16
+msgctxt "address type"
+msgid "Home"
+msgstr ""
+
+#: models/embedded/address.py:17
+msgctxt "address type"
+msgid "Work"
+msgstr ""
+
+#: models/embedded/address.py:18
+msgctxt "address type"
+msgid "Delivery"
+msgstr ""
+
+#: models/embedded/address.py:19
+msgctxt "address type"
+msgid "Billing"
+msgstr ""
+
+#: models/embedded/address.py:20
+msgctxt "address type"
+msgid "Other"
+msgstr ""
+
+#: models/embedded/email.py:16
+msgctxt "email type"
+msgid "Personal"
+msgstr ""
+
+#: models/embedded/email.py:17
+msgctxt "email type"
+msgid "Work"
+msgstr ""
+
+#: models/embedded/phone.py:16 models/embedded/phone.py:24
+msgctxt "phone type"
+msgid "Home"
+msgstr ""
+
+#: models/embedded/phone.py:17 models/embedded/phone.py:25
+msgctxt "phone type"
+msgid "Work"
+msgstr ""
+
+#: models/embedded/phone.py:20
+msgctxt "phone subtype"
+msgid "Cell"
+msgstr ""
+
+#: models/embedded/phone.py:21
+msgctxt "phone subtype"
+msgid "Fax"
+msgstr ""
+
+#: models/embedded/phone.py:26
+msgctxt "phone type"
+msgid "Personal cell"
+msgstr ""
+
+#: models/embedded/phone.py:27
+msgctxt "phone type"
+msgid "Work cell"
+msgstr ""
+
+#: models/embedded/phone.py:28
+msgctxt "phone type"
+msgid "Home fax"
+msgstr ""
+
+#: models/embedded/phone.py:29
+msgctxt "phone type"
+msgid "Work fax"
+msgstr ""

@@ -1,0 +1,27 @@
+{% load resources_display %}
+{% templatetag openblock %} extends "docs/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} block title {% templatetag closeblock %}{{ resource_name|capfirst }} | Vosae API Documentation{% templatetag openblock %}  endblock title {% templatetag closeblock %}
+
+{% templatetag openblock %} block resource {% templatetag closeblock %}
+
+<h1>{{ resource|classname|underscore|humanize|capfirst }}</h1>
+{% if is_endpoint %}
+{% with 'docs/resources/'|add:app_name|add:'/'|add:resource_class|add:'/endpoint_informations.html' as endpoint_informations_tpl %}
+{% templatetag openblock %} include "{{ endpoint_informations_tpl }}" {% templatetag closeblock %}
+{% endwith %}
+{% endif %}
+{% with 'docs/resources/'|add:app_name|add:'/'|add:resource_class|add:'/spec.html' as spec_tpl  %}
+<div class="specifications">
+  {% templatetag openblock %} include "{{ spec_tpl }}" {% templatetag closeblock %}
+</div>
+{% endwith %}
+{% if has_methods %}
+{% with 'docs/resources/'|add:app_name|add:'/'|add:resource_class|add:'/methods/methods.html' as method_tpl %}
+<div class="methods">
+  {% templatetag openblock %} include "{{ method_tpl }}" {% templatetag closeblock %}
+</div>
+{% endwith %}
+{% endif %}
+
+{% templatetag openblock %}  endblock resource {% templatetag closeblock %}

@@ -1,0 +1,327 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Organizer &mdash; Vosae 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Vosae 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Vosae settings" href="vosae_settings.html" />
+    <link rel="prev" title="Invoicing" href="invoicing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="vosae_settings.html" title="Vosae settings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="invoicing.html" title="Invoicing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="organizer">
+<h1>Organizer<a class="headerlink" href="#organizer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="embedded-resources">
+<h2>Embedded resources<a class="headerlink" href="#embedded-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="attendee">
+<h3>Attendee<a class="headerlink" href="#attendee" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.Attendee">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">Attendee</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.Attendee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent event&#8217;s attendees</p>
+</dd></dl>
+
+</div>
+<div class="section" id="calendaracl">
+<h3>CalendarAcl<a class="headerlink" href="#calendaracl" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.CalendarAcl">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">CalendarAcl</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.CalendarAcl" title="Permalink to this definition">¶</a></dt>
+<dd><p>A calendar ACL</p>
+<dl class="method">
+<dt id="www.organizer.models.embedded.CalendarAcl.genere_rw_list">
+<tt class="descname">genere_rw_list</tt><big>(</big><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.CalendarAcl.genere_rw_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a R/W list based on the rules.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="calendaraclrule">
+<h3>CalendarAclRule<a class="headerlink" href="#calendaraclrule" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.CalendarAclRule">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">CalendarAclRule</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.CalendarAclRule" title="Permalink to this definition">¶</a></dt>
+<dd><p>A calendar ACL rule, linked to a principal (VosaeUser or VosaeGroup)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="eventdatetime">
+<h3>EventDateTime<a class="headerlink" href="#eventdatetime" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.EventDateTime">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">EventDateTime</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.EventDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>An event start (or end) date stored as UTC.</p>
+<p>If timezone is None, the calendar timezone is used.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="eventoccurrence">
+<h3>EventOccurrence<a class="headerlink" href="#eventoccurrence" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.EventOccurrence">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">EventOccurrence</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.EventOccurrence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent event&#8217;s occurences</p>
+</dd></dl>
+
+</div>
+<div class="section" id="remindersettings">
+<h3>ReminderSettings<a class="headerlink" href="#remindersettings" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.ReminderSettings">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">ReminderSettings</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.ReminderSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Per-event reminders settings</p>
+</dd></dl>
+
+</div>
+<div class="section" id="reminderentry">
+<h3>ReminderEntry<a class="headerlink" href="#reminderentry" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.embedded.ReminderEntry">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.embedded.</tt><tt class="descname">ReminderEntry</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.embedded.ReminderEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Per-event reminders settings</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="main-resources">
+<h2>Main resources<a class="headerlink" href="#main-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="calendar">
+<h3>Calendar<a class="headerlink" href="#calendar" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.Calendar">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.</tt><tt class="descname">Calendar</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#www.organizer.models.Calendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a calendar on Vosae.</p>
+<p>Calendars are linked to Django users, not to <a class="reference internal" href="core.html#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a>s.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="vosaecalendar">
+<h3>VosaeCalendar<a class="headerlink" href="#vosaecalendar" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.VosaeCalendar">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.</tt><tt class="descname">VosaeCalendar</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeCalendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper to a Vosae calendar.</p>
+<dl class="classmethod">
+<dt id="www.organizer.models.VosaeCalendar.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeCalendar.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<ul class="simple">
+<li>Computes ACL read/write list</li>
+<li>Generates iCal data</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="www.organizer.models.VosaeCalendar.to_ical">
+<tt class="descname">to_ical</tt><big>(</big><em>method=None</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeCalendar.to_ical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an iCal formatted list of calendar&#8217;s events</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="googlecalendar">
+<h3>GoogleCalendar<a class="headerlink" href="#googlecalendar" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.GoogleCalendar">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.</tt><tt class="descname">GoogleCalendar</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#www.organizer.models.GoogleCalendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper to a Google calendar.</p>
+<p>Calendar informations, events are grabbed using the <strong>Google API</strong>.</p>
+<p><strong>Not yet implemented</strong>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="calendarlist">
+<h3>CalendarList<a class="headerlink" href="#calendarlist" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.CalendarList">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.</tt><tt class="descname">CalendarList</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#www.organizer.models.CalendarList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a calendar entry, linked to a <a class="reference internal" href="core.html#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="vosaeevent">
+<h3>VosaeEvent<a class="headerlink" href="#vosaeevent" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="www.organizer.models.VosaeEvent">
+<em class="property">class </em><tt class="descclassname">www.organizer.models.</tt><tt class="descname">VosaeEvent</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="www.organizer.models.VosaeEvent.check_immediate_reminders_emit">
+<tt class="descname">check_immediate_reminders_emit</tt><big>(</big><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent.check_immediate_reminders_emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the next reminder is in the timeframe and schedule its task if needed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="www.organizer.models.VosaeEvent.get_start_timezone">
+<tt class="descname">get_start_timezone</tt><big>(</big><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent.get_start_timezone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start timezone.  
+Uses the calendar timezone if event&#8217;s start timezone is not set</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="www.organizer.models.VosaeEvent.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<ul class="simple">
+<li>De-index event from elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="www.organizer.models.VosaeEvent.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>If next reminder in the timeframe, emits the task directly</li>
+<li>Index event in elasticsearch</li>
+<li>Update calendar iCal data</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="www.organizer.models.VosaeEvent.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<ul class="simple">
+<li>Preset ical uid (based on id)</li>
+<li>Regularize timezones</li>
+<li>Generates a list of the next occurrences</li>
+<li>Schedule the next reminder occurrence</li>
+<li>Set computed values/cache (original start, iCal data)</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="www.organizer.models.VosaeEvent.to_ical">
+<tt class="descname">to_ical</tt><big>(</big><big>)</big><a class="headerlink" href="#www.organizer.models.VosaeEvent.to_ical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an iCal formatted buffer of event&#8217;s details</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Organizer</a><ul>
+<li><a class="reference internal" href="#embedded-resources">Embedded resources</a><ul>
+<li><a class="reference internal" href="#attendee">Attendee</a></li>
+<li><a class="reference internal" href="#calendaracl">CalendarAcl</a></li>
+<li><a class="reference internal" href="#calendaraclrule">CalendarAclRule</a></li>
+<li><a class="reference internal" href="#eventdatetime">EventDateTime</a></li>
+<li><a class="reference internal" href="#eventoccurrence">EventOccurrence</a></li>
+<li><a class="reference internal" href="#remindersettings">ReminderSettings</a></li>
+<li><a class="reference internal" href="#reminderentry">ReminderEntry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#main-resources">Main resources</a><ul>
+<li><a class="reference internal" href="#calendar">Calendar</a></li>
+<li><a class="reference internal" href="#vosaecalendar">VosaeCalendar</a></li>
+<li><a class="reference internal" href="#googlecalendar">GoogleCalendar</a></li>
+<li><a class="reference internal" href="#calendarlist">CalendarList</a></li>
+<li><a class="reference internal" href="#vosaeevent">VosaeEvent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="invoicing.html"
+                        title="previous chapter">Invoicing</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="vosae_settings.html"
+                        title="next chapter">Vosae settings</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/organizer.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="vosae_settings.html" title="Vosae settings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="invoicing.html" title="Invoicing"
+             >previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Léo Stevenin, Naeka.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

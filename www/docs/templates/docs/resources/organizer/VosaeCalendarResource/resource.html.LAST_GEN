@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Vosae_calendar | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Vosae calendar</h1>
+
+
+{% include "docs/resources/organizer/VosaeCalendarResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/organizer/VosaeCalendarResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/organizer/VosaeCalendarResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

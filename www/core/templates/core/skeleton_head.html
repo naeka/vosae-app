@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+<title>{% block title %}{% trans "Vosae: Company Management Application" context "Html title" %}{% endblock %}</title>
+
+{# Meta #}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="{% block meta_description %}{% trans 'Don’t ignore the changement. Vosae is a powerful application for your daily company management. Enjoy an enterly new experience to manage your invoicing, your calendars and your contacts.' %}{% endblock %}">
+
+{# Facebook #}
+<meta property="fb:app_id" content="231196200268096"> 
+<meta property="og:title" content="{% block meta_property_og_title %}{% trans 'Vosae: Company Management Application' context 'Html title' %}{% endblock %}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{{ request.path }}">
+<meta property="og:image" content="{% block meta_property_og_image %}{% static 'core/img/apple-touch-icon-114x114-precomposed.png' %}{% endblock %}">
+<meta property="og:description" content="{% block meta_property_og_description %}{% trans 'Vosae is a powerful application for your daily company management. You can now enjoy an enterly new experience to manage your invoicing, your calendars and your contacts.' %}{% endblock %}">
+
+{# Twitter #}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="{{ site.url }}{{ request.path }}">
+<meta name="twitter:title" content="{% block meta_property_twitter_title %}{% trans 'Vosae: Company Management Application' context 'Html title' %}{% endblock %}">
+<meta name="twitter:description" content="{% block meta_property_twitter_description %}{% trans 'Vosae is a powerful application for your daily company management. You can now enjoy an enterly new experience to manage your invoicing, your calendars and your contacts.' %}{% endblock %}">
+<meta name="twitter:image" content="{% block meta_property_twitter_image %}{% static 'core/img/apple-touch-icon-114x114-precomposed.png' %}{% endblock %}">
+<meta name="twitter:site" content="@vosae">
+<meta name="twitter:site:id" content="181959316">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'core/img/apple-touch-icon-57x57-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'core/img/apple-touch-icon-114x114-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'core/img/apple-touch-icon-72x72-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'core/img/apple-touch-icon-144x144-precomposed.png' %}">
+<link rel="shortcut icon" href="{% static 'core/img/favicon.ico' %}">
+<link rel="icon" type="image/ico" href="{% static 'core/img/favicon.ico' %}">
+
+{% if DEBUG %}
+<script type="text/javascript" src="{% static 'core/build/core.js' %}" charset="utf-8"></script>
+<link href="{% static 'core/build/core.css' %}" rel="stylesheet" type="text/css">
+{% else %}
+<script type="text/javascript" src="{% static 'core/build/core.min.js' %}" charset="utf-8"></script>
+<link href="{% static 'core/build/core.min.css' %}" rel="stylesheet" type="text/css">
+{% endif %}

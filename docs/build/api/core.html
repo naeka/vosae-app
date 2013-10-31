@@ -1,0 +1,904 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Core &mdash; Vosae 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Vosae 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Contacts" href="contacts.html" />
+    <link rel="prev" title="Account" href="account.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="account.html" title="Account"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="core">
+<h1>Core<a class="headerlink" href="#core" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="embedded-resources">
+<h2>Embedded resources<a class="headerlink" href="#embedded-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vosaeusersettings">
+<h3>VosaeUserSettings<a class="headerlink" href="#vosaeusersettings" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.embedded.VosaeUserSettings">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">VosaeUserSettings</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaeUserSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Settings related to a <a class="reference internal" href="#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.VosaeUserSettingsResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">VosaeUserSettingsResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.VosaeUserSettingsResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="vosaepermissions">
+<h3>VosaePermissions<a class="headerlink" href="#vosaepermissions" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.embedded.VosaePermissions">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">VosaePermissions</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permissions on Vosae.</p>
+<dl class="method">
+<dt id="core.models.embedded.VosaePermissions.by_module">
+<tt class="descname">by_module</tt><big>(</big><em>module</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions.by_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>List <tt class="xref py py-class docutils literal"><span class="pre">VosaePermissions</span></tt> module per module.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.embedded.VosaePermissions.merge_group">
+<tt class="descname">merge_group</tt><big>(</big><em>permissions</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions.merge_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a <strong>group</strong> <tt class="xref py py-class docutils literal"><span class="pre">VosaePermissions</span></tt> object into the current one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.embedded.VosaePermissions.merge_groups">
+<tt class="descname">merge_groups</tt><big>(</big><em>groups</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions.merge_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursively process merging of groups permissions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.embedded.VosaePermissions.merge_groups_and_user">
+<tt class="descname">merge_groups_and_user</tt><big>(</big><em>groups</em>, <em>user</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions.merge_groups_and_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge group and user perms into the current one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.embedded.VosaePermissions.merge_user">
+<tt class="descname">merge_user</tt><big>(</big><em>specific_permissions</em><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions.merge_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a <strong>user</strong> <tt class="xref py py-class docutils literal"><span class="pre">VosaePermissions</span></tt> object into the current one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.embedded.VosaePermissions.refresh_acquired">
+<tt class="descname">refresh_acquired</tt><big>(</big><big>)</big><a class="headerlink" href="#core.models.embedded.VosaePermissions.refresh_acquired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh the acquired list, based on current permissions</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="reportsettings">
+<h3>ReportSettings<a class="headerlink" href="#reportsettings" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.embedded.ReportSettings">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">ReportSettings</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.ReportSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>ReportSettings stores various informations used to customize reports</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.ReportSettingsResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">ReportSettingsResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.ReportSettingsResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="registrationinfo">
+<h3>RegistrationInfo<a class="headerlink" href="#registrationinfo" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.embedded.RegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">RegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.RegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registration info base class composed by informations common to every country such as:</p>
+<ul class="simple">
+<li>Business entity (Inc., Ltd., GmBh, SA, etc.)</li>
+<li>Share capital</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.RegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">RegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.RegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="localized-registrationinfo">
+<h4>Localized RegistrationInfo<a class="headerlink" href="#localized-registrationinfo" title="Permalink to this headline">¶</a></h4>
+<dl class="class">
+<dt id="core.models.embedded.BERegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">BERegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.BERegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Belgium registration infos</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.BERegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">BERegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.BERegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="core.models.embedded.CHRegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">CHRegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.CHRegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Switzerland registration infos  
+Currently adds:</p>
+<ul class="simple">
+<li>VAT number (since Switzerland is not compound by <tt class="xref py py-class docutils literal"><span class="pre">EURegistrationInfoMixin</span></tt>)</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.CHRegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">CHRegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.CHRegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="core.models.embedded.FRRegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">FRRegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.FRRegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>France registration infos</p>
+<p>Currently adds:</p>
+<ul class="simple">
+<li>SIRET number</li>
+<li>RCS number</li>
+</ul>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.FRRegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">FRRegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.FRRegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="core.models.embedded.GBRegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">GBRegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.GBRegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Great Britain registration infos</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.GBRegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">GBRegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.GBRegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="core.models.embedded.LURegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">LURegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.LURegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Luxembourg registration infos</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.LURegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">LURegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.LURegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="core.models.embedded.USRegistrationInfo">
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">USRegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.embedded.USRegistrationInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>United States registration infos</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.embedded.USRegistrationInfoResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">USRegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.embedded.USRegistrationInfoResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">core.models.embedded.</tt><tt class="descname">BERegistrationInfo</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big></dt>
+<dd><p>Belgium registration infos</p>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><tt class="descclassname">core.api.resources.embedded.</tt><tt class="descname">BERegistrationInfoResource</tt><big>(</big><em>api_name=None</em><big>)</big></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="main-resources">
+<h2>Main resources<a class="headerlink" href="#main-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vosaecustomer">
+<h3>VosaeCustomer<a class="headerlink" href="#vosaecustomer" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.VosaeCustomer">
+<em class="property">class </em><tt class="descclassname">core.models.</tt><tt class="descname">VosaeCustomer</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> represent the customer organization
+in the Vosae&#8217;s SaaS environnement.</p>
+<dl class="class">
+<dt id="core.models.VosaeCustomer.Address">
+<em class="property">class </em><tt class="descname">Address</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.Address" title="Permalink to this definition">¶</a></dt>
+<dd><p>An address wrapper which can be embedded in any object.</p>
+<dl class="staticmethod">
+<dt id="core.models.VosaeCustomer.Address.concat_fields">
+<em class="property">static </em><tt class="descname">concat_fields</tt><big>(</big><em>field1</em>, <em>field2</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.Address.concat_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method used in the <tt class="xref py py-func docutils literal"><span class="pre">get_formatted()</span></tt> method
+to concatenate fields like state and country.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.VosaeCustomer.Address.get_formatted">
+<tt class="descname">get_formatted</tt><big>(</big><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.Address.get_formatted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a concatenated list of <tt class="xref py py-class docutils literal"><span class="pre">Address</span></tt> attributes:</p>
+<ul class="simple">
+<li>Street address</li>
+<li>Extended address, post office box</li>
+<li>Postal code, City</li>
+<li>State, Country</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.VosaeCustomer.delete">
+<tt class="descclassname">VosaeCustomer.</tt><tt class="descname">delete</tt><big>(</big><em>force=False</em>, <em>cascade=True</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Secure hook to delete customers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>force</strong> &#8211; security, must explicitely set force to True to confirm deletion</li>
+<li><strong>cascade</strong> &#8211; also deletes all linked documents, default to True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeCustomer.post_save">
+<em class="property">classmethod </em><tt class="descclassname">VosaeCustomer.</tt><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>If created, the <a class="reference internal" href="#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> should be initialized.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeCustomer.pre_save">
+<em class="property">classmethod </em><tt class="descclassname">VosaeCustomer.</tt><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the slug does not exists (eg. on creation), it is generated.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeCustomer.pre_save_post_validation">
+<em class="property">classmethod </em><tt class="descclassname">VosaeCustomer.</tt><tt class="descname">pre_save_post_validation</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeCustomer.pre_save_post_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> is associated to a Django group.
+If the group doesn&#8217;t exist, it is created.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.VosaeCustomerResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.</tt><tt class="descname">VosaeCustomerResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeCustomerResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="core.api.resources.VosaeCustomerResource.full_hydrate">
+<tt class="descname">full_hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeCustomerResource.full_hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle specific fields (supported_currencies/default_currency) on creation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeCustomerResource.get_object_list">
+<tt class="descname">get_object_list</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeCustomerResource.get_object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters associated customers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeCustomerResource.obj_create">
+<tt class="descname">obj_create</tt><big>(</big><em>bundle</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeCustomerResource.obj_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some mandatory actions shoud be synchrounous after VosaeCustomer creation but
+before returning the response and should not be in <cite>post_save</cite> hooks since
+issuer is required (got from request).</p>
+<p>These actions are:</p>
+<ul class="simple">
+<li>Adding the creator to the Django group (represents the VosaeCustomer)</li>
+<li>Creation of the VosaeUser linked to the customer</li>
+<li>Initial data filling</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vosaegroup">
+<h3>VosaeGroup<a class="headerlink" href="#vosaegroup" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.VosaeGroup">
+<em class="property">class </em><tt class="descclassname">core.models.</tt><tt class="descname">VosaeGroup</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#core.models.VosaeGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group to organize <a class="reference internal" href="#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a>&#8216;s permissions.</p>
+<dl class="method">
+<dt id="core.models.VosaeGroup.delete">
+<tt class="descname">delete</tt><big>(</big><em>force=False</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeGroup.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prevent deletion of the &#8220;admin&#8221; group. It is immutable by default.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeGroup.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeGroup.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<ul class="simple">
+<li>De-index group from elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeGroup.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeGroup.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Refresh all related <a class="reference internal" href="#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a> permissions.  
+Occurs in a delayed task.</li>
+<li>Index group in elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeGroup.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeGroup.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<ul class="simple">
+<li>Refresh group&#8217;s permissions cache</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.VosaeGroup.save">
+<tt class="descname">save</tt><big>(</big><em>force=False</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeGroup.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prevent save of the &#8220;admin&#8221; group. It is immutable by default.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.VosaeGroupResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.</tt><tt class="descname">VosaeGroupResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeGroupResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="core.api.resources.VosaeGroupResource.dehydrate_permissions">
+<tt class="descname">dehydrate_permissions</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeGroupResource.dehydrate_permissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of acquired permissions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeGroupResource.full_hydrate">
+<tt class="descname">full_hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeGroupResource.full_hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the creator on POST</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeGroupResource.hydrate_permissions">
+<tt class="descname">hydrate_permissions</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeGroupResource.hydrate_permissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hydrate the permissions dict from a simple list of granted permissions</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vosaeuser">
+<h3>VosaeUser<a class="headerlink" href="#vosaeuser" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.VosaeUser">
+<em class="property">class </em><tt class="descclassname">core.models.</tt><tt class="descname">VosaeUser</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#core.models.VosaeUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>A user class linking <a class="reference internal" href="#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> to Django&#8217;s user
+in our SaaS environnement.</p>
+<dl class="method">
+<dt id="core.models.VosaeUser.get_full_name">
+<tt class="descname">get_full_name</tt><big>(</big><big>)</big><a class="headerlink" href="#core.models.VosaeUser.get_full_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <a class="reference internal" href="#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a> full name, based on the Django user.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.models.VosaeUser.has_perm">
+<tt class="descname">has_perm</tt><big>(</big><em>perm</em><big>)</big><a class="headerlink" href="#core.models.VosaeUser.has_perm" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a> has the specified permission and
+if the <a class="reference internal" href="#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> has the corresponding subscription active.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.models.VosaeUser.photo_uri">
+<tt class="descname">photo_uri</tt><a class="headerlink" href="#core.models.VosaeUser.photo_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the photo URI (if available).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeUser.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeUser.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<ul class="simple">
+<li>Removes the django user from the django group</li>
+<li>De-index user from elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeUser.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeUser.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Initialize user on creation</li>
+<li>Index user in elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeUser.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeUser.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge groups and own permissions and refresh cache</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeUser.pre_save_post_validation">
+<em class="property">classmethod </em><tt class="descname">pre_save_post_validation</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeUser.pre_save_post_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>When creating a <a class="reference internal" href="#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a> we check for the django user corresponding mail.</p>
+<p>If user does not exist, it will be created.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.VosaeUserResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.</tt><tt class="descname">VosaeUserResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeUserResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="core.api.resources.VosaeUserResource.dehydrate_permissions">
+<tt class="descname">dehydrate_permissions</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeUserResource.dehydrate_permissions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of acquired permissions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeUserResource.hydrate_email">
+<tt class="descname">hydrate_email</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeUserResource.hydrate_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Email can only be used on POST (creation) in order to link the
+<a class="reference internal" href="#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a> to the Django user.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeUserResource.obj_create">
+<tt class="descname">obj_create</tt><big>(</big><em>bundle</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeUserResource.obj_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills initial data (based on request&#8217;s language) after VosaeUser creation</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vosaefile">
+<h3>VosaeFile<a class="headerlink" href="#vosaefile" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.models.VosaeFile">
+<em class="property">class </em><tt class="descclassname">core.models.</tt><tt class="descname">VosaeFile</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#core.models.VosaeFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a file stored through django-storages.</p>
+<dl class="attribute">
+<dt id="core.models.VosaeFile.download_link">
+<tt class="descname">download_link</tt><a class="headerlink" href="#core.models.VosaeFile.download_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the download link.</p>
+<p>Has the &#8216;attachment&#8217; header, which forces download.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeFile.pre_delete">
+<em class="property">classmethod </em><tt class="descname">pre_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeFile.pre_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre delete hook handler</p>
+<ul class="simple">
+<li>Process deletion of the GridFS file before the wrapper.</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="core.models.VosaeFile.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.models.VosaeFile.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler.</p>
+<ul class="simple">
+<li>Retrieve uploaded_file.  
+If set on instanciation, present in _data, else present as attribute</li>
+<li>Compute SHA1 checksum, extract content-type, size, name</li>
+<li>Saves on storage backend</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.models.VosaeFile.stream_link">
+<tt class="descname">stream_link</tt><a class="headerlink" href="#core.models.VosaeFile.stream_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stream link.</p>
+<p>Mainly used to display images, like <a class="reference internal" href="contacts.html#contacts.models.Contact" title="contacts.models.Contact"><tt class="xref py py-class docutils literal"><span class="pre">Contact</span></tt></a>s photos.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.resources.VosaeFileResource">
+<em class="property">class </em><tt class="descclassname">core.api.resources.</tt><tt class="descname">VosaeFileResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeFileResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="core.api.resources.VosaeFileResource.dehydrate">
+<tt class="descname">dehydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeFileResource.dehydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes extra fields from the response, if exists</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.resources.VosaeFileResource.hydrate">
+<tt class="descname">hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.resources.VosaeFileResource.hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle pipeline operations</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="api-utilities">
+<h2>API utilities<a class="headerlink" href="#api-utilities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.api.utils.VosaeSessionAuthentication">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeSessionAuthentication</tt><big>(</big><em>require_active=True</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeSessionAuthentication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Session-based authentication handler.  
+Used for webapp auth.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.VosaeApiKeyAuthentication">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeApiKeyAuthentication</tt><big>(</big><em>require_active=True</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeApiKeyAuthentication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles API key auth, in which a user provides a email &amp; API key.</p>
+<p>Uses the <tt class="docutils literal"><span class="pre">ApiKey</span></tt> model that ships with tastypie. If you wish to use
+a different model, override the <tt class="docutils literal"><span class="pre">get_key</span></tt> method to perform the key check
+as suits your needs.</p>
+<dl class="method">
+<dt id="core.api.utils.VosaeApiKeyAuthentication.get_identifier">
+<tt class="descname">get_identifier</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeApiKeyAuthentication.get_identifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a unique string identifier for the requestor.</p>
+<p>This implementation returns the user&#8217;s email.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeApiKeyAuthentication.get_key">
+<tt class="descname">get_key</tt><big>(</big><em>user</em>, <em>api_key</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeApiKeyAuthentication.get_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to find the API key for the user. Uses <tt class="docutils literal"><span class="pre">ApiKey</span></tt> by default
+but can be overridden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeApiKeyAuthentication.is_authenticated">
+<tt class="descname">is_authenticated</tt><big>(</big><em>request</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeApiKeyAuthentication.is_authenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the user and checks their API key.</p>
+<p>Should return either <tt class="docutils literal"><span class="pre">True</span></tt> if allowed, <tt class="docutils literal"><span class="pre">False</span></tt> if not or an
+<tt class="docutils literal"><span class="pre">HttpResponse</span></tt> if you need something custom.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="authorization">
+<h3>Authorization<a class="headerlink" href="#authorization" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.api.utils.VosaeGenericAuthorization">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeGenericAuthorization</tt><a class="headerlink" href="#core.api.utils.VosaeGenericAuthorization" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="core.api.utils.VosaeGenericAuthorization.base_checks">
+<tt class="descname">base_checks</tt><big>(</big><em>request</em>, <em>model_klass</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeGenericAuthorization.base_checks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic authorization checks, such as:</p>
+<ul class="simple">
+<li>Logged-in verification</li>
+<li>Application access</li>
+<li>Mandatory permissions granted</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.VosaeUserAuthorization">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeUserAuthorization</tt><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.create_detail">
+<tt class="descname">create_detail</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.create_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if creation is possible</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.create_list">
+<tt class="descname">create_list</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.create_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list if creation is possible</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.delete_detail">
+<tt class="descname">delete_detail</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.delete_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if deletable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.delete_list">
+<tt class="descname">delete_list</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.delete_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list if deletable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.read_detail">
+<tt class="descname">read_detail</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.read_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True id readable or raises Unauthorized exception</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.read_list">
+<tt class="descname">read_list</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.read_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns readable objects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.update_detail">
+<tt class="descname">update_detail</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.update_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if updatable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeUserAuthorization.update_list">
+<tt class="descname">update_list</tt><big>(</big><em>object_list</em>, <em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeUserAuthorization.update_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list if updatable</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="mixins">
+<h3>Mixins<a class="headerlink" href="#mixins" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.api.utils.MultipartMixinResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">MultipartMixinResource</tt><a class="headerlink" href="#core.api.utils.MultipartMixinResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin used to handle binary uploads through tastypie</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.VosaeIMEXMixinResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeIMEXMixinResource</tt><a class="headerlink" href="#core.api.utils.VosaeIMEXMixinResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin for import/export operations</p>
+<dl class="method">
+<dt id="core.api.utils.VosaeIMEXMixinResource.prepend_urls">
+<tt class="descname">prepend_urls</tt><big>(</big><big>)</big><a class="headerlink" href="#core.api.utils.VosaeIMEXMixinResource.prepend_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add urls for resources import/export.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.ZombieMixinResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">ZombieMixinResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.utils.ZombieMixinResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zombie resources can not be deleted. A special status flag is set.
+Zombie can still be accessed, but only on a detail request.</p>
+<dl class="method">
+<dt id="core.api.utils.ZombieMixinResource.get_object_list">
+<tt class="descname">get_object_list</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#core.api.utils.ZombieMixinResource.get_object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only display non-INACTIVE elements when getting list</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.WakeUpMixinResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">WakeUpMixinResource</tt><a class="headerlink" href="#core.api.utils.WakeUpMixinResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin used to &#8220;wake up&#8221; (usually re-activate) a resource</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.RemoveFilesOnReplaceMixinResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">RemoveFilesOnReplaceMixinResource</tt><a class="headerlink" href="#core.api.utils.RemoveFilesOnReplaceMixinResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin used to ensure that a replaced file is well deleted from its backend</p>
+</dd></dl>
+
+</div>
+<div class="section" id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.api.utils.VosaeResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resource for defining embedded documents or not per-tenant documents
+(eg. Calendar, Currency, etc.)</p>
+<dl class="method">
+<dt id="core.api.utils.VosaeResource.create_response">
+<tt class="descname">create_response</tt><big>(</big><em>request</em>, <em>data</em>, <em>response_class=&lt;class 'django.http.response.HttpResponse'&gt;</em>, <em>**response_kwargs</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource.create_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the <cite>X-RateLimit-*</cite> headers to the response</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeResource.save">
+<tt class="descname">save</tt><big>(</big><em>bundle</em>, <em>skip_errors=False</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mix of tastypie and tastypie_mongoengine
+M2M are processed before main save</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeResource.save_m2m">
+<tt class="descname">save_m2m</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource.save_m2m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same of tastypie_mongoengine but without the part saving the related resources.
+In our case, done by the main save()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeResource.save_related">
+<tt class="descname">save_related</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource.save_related" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same of tastypie but without the part saving the related resource.
+In our case, done by the main save()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeResource.throttle_check">
+<tt class="descname">throttle_check</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource.throttle_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles checking if the user should be throttled.</p>
+<p>Mostly a hook, this uses class assigned to <tt class="docutils literal"><span class="pre">throttle</span></tt> from
+<tt class="docutils literal"><span class="pre">Resource._meta</span></tt>.</p>
+<p>Backported from tastypie</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeResource.wrap_view">
+<tt class="descname">wrap_view</tt><big>(</big><em>view</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeResource.wrap_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps methods so they can be called in a more functional way as well
+as handling exceptions better.</p>
+<p>Note that if <tt class="docutils literal"><span class="pre">BadRequest</span></tt> or an exception with a <tt class="docutils literal"><span class="pre">response</span></tt> attr
+are seen, there is special handling to either present a message back
+to the user or return the response traveling with the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.api.utils.VosaeTenantResource">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeTenantResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeTenantResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resource for defining per-tenant documents</p>
+<dl class="method">
+<dt id="core.api.utils.VosaeTenantResource.get_object_list">
+<tt class="descname">get_object_list</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeTenantResource.get_object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters queryset based on the customer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.api.utils.VosaeTenantResource.hydrate">
+<tt class="descname">hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeTenantResource.hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically set customer to resource object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="throttling">
+<h3>Throttling<a class="headerlink" href="#throttling" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="core.api.utils.VosaeCacheThrottle">
+<em class="property">class </em><tt class="descclassname">core.api.utils.</tt><tt class="descname">VosaeCacheThrottle</tt><big>(</big><em>throttle_at=150</em>, <em>timeframe=3600</em>, <em>expiration=None</em><big>)</big><a class="headerlink" href="#core.api.utils.VosaeCacheThrottle" title="Permalink to this definition">¶</a></dt>
+<dd><p>A throttling mechanism that uses our dedicated API cache.</p>
+<p>Backported from tastypie</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Core</a><ul>
+<li><a class="reference internal" href="#embedded-resources">Embedded resources</a><ul>
+<li><a class="reference internal" href="#vosaeusersettings">VosaeUserSettings</a></li>
+<li><a class="reference internal" href="#vosaepermissions">VosaePermissions</a></li>
+<li><a class="reference internal" href="#reportsettings">ReportSettings</a></li>
+<li><a class="reference internal" href="#registrationinfo">RegistrationInfo</a><ul>
+<li><a class="reference internal" href="#localized-registrationinfo">Localized RegistrationInfo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#main-resources">Main resources</a><ul>
+<li><a class="reference internal" href="#vosaecustomer">VosaeCustomer</a></li>
+<li><a class="reference internal" href="#vosaegroup">VosaeGroup</a></li>
+<li><a class="reference internal" href="#vosaeuser">VosaeUser</a></li>
+<li><a class="reference internal" href="#vosaefile">VosaeFile</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-utilities">API utilities</a><ul>
+<li><a class="reference internal" href="#authentication">Authentication</a></li>
+<li><a class="reference internal" href="#authorization">Authorization</a></li>
+<li><a class="reference internal" href="#mixins">Mixins</a></li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
+<li><a class="reference internal" href="#throttling">Throttling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="account.html"
+                        title="previous chapter">Account</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="contacts.html"
+                        title="next chapter">Contacts</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/core.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="account.html" title="Account"
+             >previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Léo Stevenin, Naeka.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

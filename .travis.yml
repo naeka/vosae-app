@@ -1,0 +1,49 @@
+language: python
+python:
+    - 2.7
+
+services:
+    - redis
+    - mongodb
+    - elasticsearch
+
+virtualenv:
+    system_site_packages: true
+
+env:
+    global:
+        - secure: "TZTAkCN4Plemb1GP26P48CNhC2RVgn+U+lEqcXE/+hYiwu2xl+R/hmZw5Mv74MQ5hqGjGNU5sGZMvYL+3dr+kIz3yzbAquWI4O6ZBvPvM6c0HzISgrVobBUk8rYJ6oTmUMTr2SzwuO0F6s6xug0YZTAPoA3OGhrMh/gmZUv8pQg="
+        - secure: "Vxx9CiJTfjaBQGkCOTpxAwSW3H8a0ITolADLb8JjRxL7fRLutcJnA7VtEyKebjhbSPUBLUyOUq2yaSwCQzh7k0TtPtjo2GuNoP7CHrxrtWG8J4vGGcLizrVEEDRyBRpa8Lswy1Yfo8KzK2fJwm/Qw8bpClw+xolkjyR/fxr/Hqw="
+        - secure: "zW868h3Zv/9BVj8qHsJQcDSxxUgsha4jMMKJ3Hg7NpX5FC/W4ifhuQ0je6rVFFZeZpQLwuP1gn5T7eaL6ZpGhmOGwTV/reqGdazah10wPaCzmLTohNonMDDEVK/dteL093UIQu0gFfvO8Dp/O41uABRNV+kQdj+WC5ZuGQfuLck="
+        - secure: "E56CKBoyjRLZ000TmOpkc3AUcmSYEPNbk3CeQXKKiWiClrG4vJNZ7B1fsjRQ/LdTW0z9S/kSTdrYpcO37v78/1oQUfu9wY1S3m77VUwG6IKkcS+buBy/gcpe+6lEgp+aV7ZVpegvh619oWyKleSrfikuUwaU9xJS7YPT471jSIA="
+
+before_install:
+    - sudo apt-get install -qq libevent-dev
+    - gem install compass
+    - gem install sass
+    - gem install sass-rails
+    - gem install bootstrap-sass
+    - npm install -g grunt-cli
+    - npm install
+
+install:
+    - pip install -r requirements.txt
+
+before_script:
+    - source travis_before.sh
+    - env
+
+script:
+    - cd www
+    - python manage.py test
+
+branches:
+  only:
+    - master
+    - develop
+
+notifications:
+  email:
+    - maxime@naeka.fr
+    - thomas@naeka.fr
+    - leo@naeka.fr

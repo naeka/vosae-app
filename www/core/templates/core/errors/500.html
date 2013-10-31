@@ -1,0 +1,49 @@
+{% load i18n cache %}
+{% load static from staticfiles %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% cache 1800 skeleton_front_head %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>{% block title %}Vosae{% endblock %}</title>
+    
+    <link rel="shortcut icon" href="{% static "core/img/favicon.ico" %}" />
+    <link rel="icon" type="image/ico" href="{% static "core/img/favicon.ico" %}" />
+    
+    {% if DEBUG %}
+    <link href="{% static 'core/build/core.css' %}" rel="stylesheet" type="text/css" />
+    {% else %}
+    <link href="{% static 'core/build/core.min.css' %}" rel="stylesheet" type="text/css" />
+    {% endif %}
+
+  </head>
+{% endcache %}
+  <body class="internal-error">
+    <div id="wrapper">
+      <h1><a href="{% url 'root' %}"><img src="{% static "core/img/logo-vosae.png" %}"/><span>Vosae</span></a></h1>
+      <h2>{% trans "Something went wrong on the server!" %}</h2>
+      <p>
+        {% trans "Click on our logo to go back on the home page. If the problem persists, contact us." %}<br>
+        {% if request.sentry.id %}{% trans "Error" context "Error page" %} <strong>{{ request.sentry.id }}</strong><br>{% endif %}
+        <a href="mailto:support@vosae.com" class="btn big grey">{% trans "Contact support" %}</a>
+      </p>
+    </div>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8785414-10']);
+      _gaq.push(['_setDomainName', 'vosae.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>   
+</html>
+

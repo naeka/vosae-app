@@ -1,0 +1,105 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>comment</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>A comment made by the attendee (max_length = 1024)</td>
+    </tr>
+    
+    <tr>
+      <td>display_name</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Name of the attendee, usually first and last name (max_length = 128)</td>
+    </tr>
+    
+    <tr>
+      <td>email</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>E-mail of the attendee</td>
+    </tr>
+    
+    <tr>
+      <td>optional</td>
+      <td>Boolean</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Indicates if the attendee venue is optional</td>
+    </tr>
+    
+    <tr>
+      <td>organizer</td>
+      <td>Boolean</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Indicates if this attendee is the event's organizer</td>
+    </tr>
+    
+    <tr>
+      <td>photo_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>User photo URI</td>
+    </tr>
+    
+    <tr>
+      <td>response_status</td>
+      <td>String</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Attendee's response status.<br />One of: <ul><li class="text-info">NEEDS-ACTION (default)</li> <li class="text-info">DECLINED</li> <li class="text-info">TENTATIVE</li> <li class="text-info">ACCEPTED</li></ul></td>
+    </tr>
+    
+    <tr>
+      <td>vosae_user</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Related Vosae user, if exists</td>
+    </tr>
+    
+  </tbody>
+</table>
+

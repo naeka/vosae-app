@@ -1,0 +1,109 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /file/5231cbe24ab63c53dc90049d/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> 
+    <span class="nt">&quot;stream_link&quot;</span><span class="p">:</span> <span class="s2">&quot;/file/test-company/5231cbe24ab63c53dc90049d/s/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test file.txt&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:48.684000+00:00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;modified_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:50.404000+00:00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;sha1_checksum&quot;</span><span class="p">:</span> <span class="s2">&quot;4070d5187d243e397f1d1d9d7ee3801318784a47&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;download_link&quot;</span><span class="p">:</span> <span class="s2">&quot;/file/test-company/5231cbe24ab63c53dc90049d/d/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;ttl&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/file/5231cbe24ab63c53dc90049d/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cbe24ab63c53dc90049d&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbd64ab63c53dc900474/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /file/5231cbe34ab63c53dc90049e/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;stream_link&gt;</span>/file/test-company/5231cbe34ab63c53dc90049e/s/<span class="nt">&lt;/stream_link&gt;</span>
+  <span class="nt">&lt;name&gt;</span>test file.txt<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;issuer&gt;</span>/api/v1/user/5231cbd64ab63c53dc900474/<span class="nt">&lt;/issuer&gt;</span>
+  <span class="nt">&lt;created_at&gt;</span>2013-09-12T14:12:50.523000+00:00<span class="nt">&lt;/created_at&gt;</span>
+  <span class="nt">&lt;download_link&gt;</span>/file/test-company/5231cbe34ab63c53dc90049e/d/<span class="nt">&lt;/download_link&gt;</span>
+  <span class="nt">&lt;modified_at&gt;</span>2013-09-12T14:12:51.052000+00:00<span class="nt">&lt;/modified_at&gt;</span>
+  <span class="nt">&lt;sha1_checksum&gt;</span>590d401712a70f6965e86ca84f0ba207c5c0108c<span class="nt">&lt;/sha1_checksum&gt;</span>
+  <span class="nt">&lt;ttl</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;size</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>11<span class="nt">&lt;/size&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231cbe34ab63c53dc90049e<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/file/5231cbe34ab63c53dc90049e/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /file/5231cbe34ab63c53dc90049f/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">created_at</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:51.080000+00:00&#39;</span><span class="p-Indicator">,</span> <span class="nv">download_link</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/file/test-company/5231cbe34ab63c53dc90049f/d/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cbe34ab63c53dc90049f&#39;</span><span class="p-Indicator">,</span> <span class="nv">issuer</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbd64ab63c53dc900474/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">modified_at</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:51.651000+00:00&#39;</span><span class="p-Indicator">,</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;test</span><span class="nv"> </span><span class="s">file.txt&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/file/5231cbe34ab63c53dc90049f/&#39;</span><span class="p-Indicator">,</span> <span class="nv">sha1_checksum</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;d1202ef5d0202ea3befe24796e8e080700b3bb97&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">size</span><span class="p-Indicator">:</span> <span class="nv">11</span><span class="p-Indicator">,</span> <span class="nv">stream_link</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/file/test-company/5231cbe34ab63c53dc90049f/s/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">ttl</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

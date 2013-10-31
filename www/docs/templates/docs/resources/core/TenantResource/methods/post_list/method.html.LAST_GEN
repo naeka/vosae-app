@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>POST /tenant/</h3>
+
+  {% include "docs/resources/core/TenantResource/methods/post_list/sample.html" %}
+</div>

@@ -1,0 +1,91 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /api_key/1/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:39.720112&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/api_key/1/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+    <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Api key for application A&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /api_key/2/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;created_at&gt;</span>2013-09-12T14:12:39.789207<span class="nt">&lt;/created_at&gt;</span>
+  <span class="nt">&lt;label&gt;</span>Api key for application B<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;id</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/api_key/2/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /api_key/3/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">created_at</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:39.808002&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;id&#39;</span><span class="p-Indicator">:</span> <span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Api</span>
+<span class="s">key</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">application</span><span class="nv"> </span><span class="s">C&#39;</span><span class="p-Indicator">,</span> <span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/api_key/3/&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

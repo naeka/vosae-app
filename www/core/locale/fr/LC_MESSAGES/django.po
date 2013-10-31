@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Vosae\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"PO-Revision-Date: 2013-10-21 11:53+0100\n"
+"Last-Translator: Léo S <leo@naeka.fr>\n"
+"Language-Team: Léo S. <leo@naeka.fr>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: tasks.py:66
+msgid "We'd like to make it right"
+msgstr "Nous aimons faire les choses bien"
+
+#: tasks.py:74
+msgid "Support"
+msgstr "Support"
+
+#: tasks.py:76
+msgid "The best support"
+msgstr "Le meilleur support"
+
+#: tasks.py:87
+msgid "TEST-ITEM"
+msgstr "ARTICLE-DE-TEST"
+
+#: tasks.py:88
+msgid "Test item"
+msgstr "Article de test"
+
+#: tasks.py:106
+msgid "My calendar"
+msgstr "Mon agenda"
+
+#: tasks.py:120
+#, python-format
+msgid "I joined %(tenant)s on Vosae"
+msgstr "J'ai rejoint %(tenant)s sur Vosae"
+
+#: tasks.py:121
+#, python-format
+msgid "This is the most amazing day of my life, I joined %(tenant)s on Vosae"
+msgstr ""
+"C'est le jour le plus incroyable de toute ma vie, j'ai rejoint %(tenant)s "
+"sur Vosae"
+
+#: models/tenant.py:116
+msgctxt "group_name"
+msgid "Administrators"
+msgstr "Administrateurs"
+
+#: models/embedded/registration_info.py:40
+#, python-format
+msgid "%(business_entity)s with a capital of %(share_capital)s"
+msgstr "%(business_entity)s au capital de %(share_capital)s"
+
+#: models/embedded/registration_info.py:47
+#, python-format
+msgid "With a capital of %(share_capital)s"
+msgstr "Au capital de %(share_capital)s"
+
+#: models/embedded/registration_info.py:54
+#, python-format
+msgid "%(field_name)s: %(field_value)s"
+msgstr "%(field_name)s : %(field_value)s"
+
+#: models/embedded/registration_info.py:73
+#: models/embedded/registration_info.py:114
+msgid "VAT number"
+msgstr "Numéro de TVA intracommunautaire"
+
+#: models/embedded/registration_info.py:141
+msgid "SIRET"
+msgstr "SIRET"
+
+#: models/embedded/registration_info.py:142
+msgid "RCS number"
+msgstr "Numéro RCS"
+
+#: models/embedded/vosae_permissions.py:19
+msgid "Access to the application"
+msgstr "Accès à l'application"
+
+#: models/embedded/vosae_permissions.py:20
+msgid "Can configure application"
+msgstr "Peut configurer l'application"
+
+#: models/embedded/vosae_permissions.py:21
+msgid "Can see users"
+msgstr "Peut visualiser les utilisateurs"
+
+#: models/embedded/vosae_permissions.py:22
+msgid "Can add users"
+msgstr "Peut ajouter des utilisateurs"
+
+#: models/embedded/vosae_permissions.py:23
+msgid "Can edit users"
+msgstr "Peut éditer des utilisateurs"
+
+#: models/embedded/vosae_permissions.py:24
+msgid "Can delete users"
+msgstr "Peut supprimer des utilisateurs"
+
+#: models/embedded/vosae_permissions.py:25
+msgid "Can see groups"
+msgstr "Peut visualiser les groupes"
+
+#: models/embedded/vosae_permissions.py:26
+msgid "Can add groups"
+msgstr "Peut ajouter des groupes"
+
+#: models/embedded/vosae_permissions.py:27
+msgid "Can edit groups"
+msgstr "Peut éditer des groupes"
+
+#: models/embedded/vosae_permissions.py:28
+msgid "Can delete groups"
+msgstr "Peut supprimer des groupes"
+
+#: models/embedded/vosae_permissions.py:29
+msgid "Can download files"
+msgstr "Peut télécharger des fichiers"
+
+#: models/embedded/vosae_permissions.py:30
+msgid "Can upload files"
+msgstr "Peut charger des fichiers"
+
+#: models/embedded/vosae_permissions.py:31
+msgid "Can delete files"
+msgstr "Peut supprimer des fichiers"
+
+#: models/embedded/vosae_permissions.py:33
+msgid "Access to the calendar module"
+msgstr "Accès au module Agenda"
+
+#: models/embedded/vosae_permissions.py:35
+msgid "Access to the contacts module"
+msgstr "Accès au module contacts"
+
+#: models/embedded/vosae_permissions.py:36
+msgid "Can see contacts"
+msgstr "Peut visualiser les contacts"
+
+#: models/embedded/vosae_permissions.py:37
+msgid "Can add contacts"
+msgstr "Peut ajouter des contacts"
+
+#: models/embedded/vosae_permissions.py:38
+msgid "Can edit contacts"
+msgstr "Peut éditer des contacts"
+
+#: models/embedded/vosae_permissions.py:39
+msgid "Can delete contacts"
+msgstr "Peut supprimer des contacts"
+
+#: models/embedded/vosae_permissions.py:41
+msgid "Access to the invoicing module"
+msgstr "Accès au module de facturation"
+
+#: models/embedded/vosae_permissions.py:42
+msgid "Can edit invoicing settings"
+msgstr "Peut configurer les paramètres de facturation"
+
+#: models/embedded/vosae_permissions.py:43
+msgid "Can see invoices"
+msgstr "Peut visualiser les factures"
+
+#: models/embedded/vosae_permissions.py:44
+msgid "Can add invoices"
+msgstr "Peut ajouter des factures"
+
+#: models/embedded/vosae_permissions.py:45
+msgid "Can edit invoices"
+msgstr "Peut éditer des factures"
+
+#: models/embedded/vosae_permissions.py:46
+msgid "Can delete/cancel invoices"
+msgstr "Peut supprimer/annuler des factures"
+
+#: models/embedded/vosae_permissions.py:47
+msgid "Can transmit invoices"
+msgstr "Peut transmettre des factures"
+
+#: models/embedded/vosae_permissions.py:48
+msgid "Can post invoices"
+msgstr "Peut poster des factures"
+
+#: models/embedded/vosae_permissions.py:49
+msgid "Can see items"
+msgstr "Peut visualiser les articles"
+
+#: models/embedded/vosae_permissions.py:50
+msgid "Can add items"
+msgstr "Peut ajouter des articles"
+
+#: models/embedded/vosae_permissions.py:51
+msgid "Can edit items"
+msgstr "Peut éditer des articles"
+
+#: models/embedded/vosae_permissions.py:52
+msgid "Can delete items"
+msgstr "Peut supprimer des articles"
+
+#: pdf/report.py:204
+#, python-format
+msgid "Page %(current)d on %(total)d"
+msgstr "Page %(current)d sur %(total)d"
+
+#: templates/core/skeleton_head.html:4 templates/core/skeleton_head.html:13
+#: templates/core/skeleton_head.html:22
+msgctxt "Html title"
+msgid "Vosae: Company Management Application"
+msgstr "Vosae : Application de Gestion d'Entreprise"
+
+#: templates/core/skeleton_head.html:9
+msgid ""
+"Don’t ignore the changement. Vosae is a powerful application for your daily "
+"company management. Enjoy an enterly new experience to manage your "
+"invoicing, your calendars and your contacts."
+msgstr ""
+"N'ignorez pas le changement. Vosae est une application performante d'aide à "
+"la gestion quotidienne de votre entreprise. Vous pouvez désormais "
+"expérimenter une nouvelle façon de gérer vos factures, vos agendas et vos "
+"contacts."
+
+#: templates/core/skeleton_head.html:17 templates/core/skeleton_head.html:23
+msgid ""
+"Vosae is a powerful application for your daily company management. You can "
+"now enjoy an enterly new experience to manage your invoicing, your calendars "
+"and your contacts."
+msgstr ""
+"Vosae est une application performante d'aide à la gestion quotidienne de "
+"votre entreprise. Vous pouvez désormais expérimenter une nouvelle façon de "
+"gérer vos factures, vos agendas et vos contacts."
+
+#: templates/core/errors/403.html:28
+msgid "You're not allowed to access this page!"
+msgstr "Vous n'êtes pas autorisé à accéder à cette page !"
+
+#: templates/core/errors/403.html:30 templates/core/errors/404.html:30
+#: templates/core/errors/500.html:30
+msgid ""
+"Click on our logo to go back on the home page. If the problem persists, "
+"contact us."
+msgstr ""
+"Cliquez sur notre logo pour retourner sur la page d'accueil. Si le problème "
+"persiste, contactez-nous."
+
+#: templates/core/errors/403.html:31 templates/core/errors/404.html:31
+#: templates/core/errors/500.html:31
+msgctxt "Error page"
+msgid "Error"
+msgstr "Erreur"
+
+#: templates/core/errors/403.html:32 templates/core/errors/404.html:32
+#: templates/core/errors/500.html:32
+msgid "Contact support"
+msgstr "Contacter le support"
+
+#: templates/core/errors/404.html:28
+msgid "The page you're looking for doesn't exist!"
+msgstr "La page que vous cherchez n'existe pas !"
+
+#: templates/core/errors/500.html:28
+msgid "Something went wrong on the server!"
+msgstr "Une erreur s'est produite sur le serveur !"

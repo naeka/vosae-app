@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>GET /calendar_list/</h3>
+
+  {% include "docs/resources/organizer/CalendarListResource/methods/get_list/sample.html" %}
+</div>

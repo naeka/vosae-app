@@ -1,0 +1,22 @@
+{% load i18n %}{% autoescape off %}
+{% trans "Dear user," %}
+
+{% blocktrans with site.name as site %}Thank you for signing up at {{ site }}. Getting started is easy.
+
+First, activate your account, please click on the link below within the next {{ activation_days }} days:{% endblocktrans %}
+{{ site.url }}{% url 'account_activate' quoted_email user.activation_key %}
+
+{% blocktrans%}Once your account is activated, we'll ask you to fill some information about you and your organization.
+Finally, you'll have access to Vosae!{% endblocktrans %}
+
+{% blocktrans with site.name as site %}{{ site }} is in beta. That means there's probably some bugs and unfinished features. If you have a question, a bug, something strange happens, or just want to talk, do not hesitate, send us an email to support@vosae.com, we're here to help you!{% endblocktrans %}
+
+
+{% trans "Thank you for participating in the Vosae beta!" %}
+
+{% trans "Email: support@vosae.com" %}
+Twitter: @vosae
+Facebook: fb.com/vosaehq
+{% trans "Developer documentation: https://www.vosae.com/docs/api/" %}
+
+{% endautoescape %}

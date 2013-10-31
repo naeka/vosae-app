@@ -1,0 +1,101 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /notification/5231ccd84ab63c53dc90057f/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;new_state&quot;</span><span class="p">:</span> <span class="s2">&quot;REGISTERED&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;read&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+    <span class="nt">&quot;previous_state&quot;</span><span class="p">:</span> <span class="s2">&quot;DRAFT&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;sent_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:16:56.519000+00:00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;invoice&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/invoice/5231ccd64ab63c53dc90057d/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231ccd84ab63c53dc90057f&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;invoice_changed_state_ne&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/notification/5231ccd84ab63c53dc90057f/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /notification/5231ccd84ab63c53dc90057f/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;new_state&gt;</span>REGISTERED<span class="nt">&lt;/new_state&gt;</span>
+  <span class="nt">&lt;read</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/read&gt;</span>
+  <span class="nt">&lt;previous_state&gt;</span>DRAFT<span class="nt">&lt;/previous_state&gt;</span>
+  <span class="nt">&lt;sent_at&gt;</span>2013-09-12T14:16:56.519000+00:00<span class="nt">&lt;/sent_at&gt;</span>
+  <span class="nt">&lt;invoice&gt;</span>/api/v1/invoice/5231ccd64ab63c53dc90057d/<span class="nt">&lt;/invoice&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231ccd84ab63c53dc90057f<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;resource_type&gt;</span>invoice_changed_state_ne<span class="nt">&lt;/resource_type&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/notification/5231ccd84ab63c53dc90057f/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /notification/5231ccd84ab63c53dc90057f/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231ccd84ab63c53dc90057f&#39;</span><span class="p-Indicator">,</span> <span class="nv">invoice</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/invoice/5231ccd64ab63c53dc90057d/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">new_state</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;REGISTERED&#39;</span><span class="p-Indicator">,</span> <span class="nv">previous_state</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;DRAFT&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">read</span><span class="p-Indicator">:</span> <span class="nv">false</span><span class="p-Indicator">,</span> <span class="nv">resource_type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;invoice_changed_state_ne&#39;</span><span class="p-Indicator">,</span> <span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/notification/5231ccd84ab63c53dc90057f/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">sent_at</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:16:56.519000+00:00&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

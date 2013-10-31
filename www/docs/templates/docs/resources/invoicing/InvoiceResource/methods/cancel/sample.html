@@ -1,0 +1,87 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#cancel_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#cancel_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#cancel_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="cancel_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /invoice/5231cc3e4ab63c53dc900502/cancel/
+Content-Type: application/json</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;credit_note_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/credit_note/5231cc794ab63c53dc900528/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="cancel_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /invoice/5231cc424ab63c53dc900506/cancel/
+Content-Type: application/xml</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;response&gt;</span>
+  <span class="nt">&lt;credit_note_uri&gt;</span>/api/v1/credit_note/5231cc7e4ab63c53dc90052b/<span class="nt">&lt;/credit_note_uri&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="cancel_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /invoice/5231cc464ab63c53dc90050a/cancel/
+Content-Type: text/yaml</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">credit_note_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/credit_note/5231cc824ab63c53dc90052e/&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

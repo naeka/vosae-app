@@ -1,0 +1,117 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /calendar_list/5231ccd04ab63c53dc900571/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;is_own&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#44b2ae&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;selected&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+    <span class="nt">&quot;reminders&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;My Calendar&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;Europe/Paris&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;calendar&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/vosae_calendar/5231ccd04ab63c53dc900570/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;summary_override&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231ccd04ab63c53dc900571&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/calendar_list/5231ccd04ab63c53dc900571/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /calendar_list/5231ccd04ab63c53dc900572/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;is_own</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/is_own&gt;</span>
+  <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;color&gt;</span>#44b2ae<span class="nt">&lt;/color&gt;</span>
+  <span class="nt">&lt;selected</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/selected&gt;</span>
+  <span class="nt">&lt;reminders</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;summary&gt;</span>My Calendar<span class="nt">&lt;/summary&gt;</span>
+  <span class="nt">&lt;location</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;timezone&gt;</span>Europe/Paris<span class="nt">&lt;/timezone&gt;</span>
+  <span class="nt">&lt;calendar&gt;</span>/api/v1/vosae_calendar/5231ccd04ab63c53dc900570/<span class="nt">&lt;/calendar&gt;</span>
+  <span class="nt">&lt;summary_override</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231ccd04ab63c53dc900572<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/calendar_list/5231ccd04ab63c53dc900572/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /calendar_list/5231ccd04ab63c53dc900573/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">calendar</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/vosae_calendar/5231ccd04ab63c53dc900570/&#39;</span>
+<span class="l-Scalar-Plain">color</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;#44b2ae&#39;</span>
+<span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231ccd04ab63c53dc900573&#39;</span>
+<span class="l-Scalar-Plain">is_own</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">reminders</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/calendar_list/5231ccd04ab63c53dc900573/&#39;</span>
+<span class="l-Scalar-Plain">selected</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<span class="l-Scalar-Plain">summary</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">Calendar&#39;</span>
+<span class="l-Scalar-Plain">summary_override</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">timezone</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Europe/Paris&#39;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

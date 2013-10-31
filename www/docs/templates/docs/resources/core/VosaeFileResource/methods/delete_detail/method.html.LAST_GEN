@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>DELETE /file/:id/</h3>
+
+  {% include "docs/resources/core/VosaeFileResource/methods/delete_detail/sample.html" %}
+</div>
