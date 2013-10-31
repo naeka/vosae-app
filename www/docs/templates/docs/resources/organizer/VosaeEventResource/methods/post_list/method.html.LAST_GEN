@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>POST /vosae_event/</h3>
+
+  {% include "docs/resources/organizer/VosaeEventResource/methods/post_list/sample.html" %}
+</div>

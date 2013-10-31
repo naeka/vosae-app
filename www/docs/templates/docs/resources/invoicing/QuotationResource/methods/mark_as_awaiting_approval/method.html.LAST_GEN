@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>Mark as awaiting approval /quotation/:id/</h3>
+
+  {% include "docs/resources/invoicing/QuotationResource/methods/mark_as_awaiting_approval/sample.html" %}
+</div>

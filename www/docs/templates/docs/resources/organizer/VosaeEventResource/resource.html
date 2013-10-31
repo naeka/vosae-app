@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Vosae_event | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Vosae event</h1>
+
+
+{% include "docs/resources/organizer/VosaeEventResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/organizer/VosaeEventResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/organizer/VosaeEventResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

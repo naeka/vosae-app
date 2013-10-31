@@ -1,0 +1,168 @@
+{% extends "docs/base.html" %}
+{% load pygmentize %}
+{% load static from staticfiles %}
+
+{% block title %}Vosae API Documentation{% endblock %}
+{% block meta_property_og_title %}Vosae API Documentation{% endblock %}
+{% block meta_property_twitter_title %}Vosae API Documentation{% endblock %}
+
+{% block resource %}
+    <h1>Vosae API</h1>
+
+    <h2>Summary</h2>
+
+    <p>
+        Welcome to the Vosae API documentation. This documentation describes the resources of <strong>Vosae's RESTful API</strong>. You must have a basic understanding of the principles of <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer"> REST</a>.
+    </p> 
+
+    <p>
+        This is the same API used by the Vosae web application, so what we can do is also accomplishable by anyone.
+    </p>
+                        
+    <p>
+        The <strong>REST API</strong> is designed to give developers a convenient way to access all the data from Vosae.
+    </p>
+
+    <p>
+        If you experience any problems, have feature requests, a wrapper/implementation of the API, or anything else, please <a href="mailto:support@vosae.com">contact us</a> (support@vosae.com), feedback and improvements are always welcome.
+    </p>
+
+    <br>
+    <h2>
+        Quick start
+    </h2>
+
+    <p>
+        <span class="label label-important">Important</span> <strong>The API is completely private.</strong> You have to be authenticated to make requests.
+    </p>
+
+    <br>
+
+    <p>
+        All requests MUST:
+        <ol>
+            <li><strong>Be in HTTPS</strong></li>
+            <li><strong>Be authenticated</strong></li>
+            <li><strong>Have the X-Tenant header set</strong></li>
+            <li><strong>Contain the API version</strong></li>
+        </ol>
+    </p>
+
+    <br><br>
+
+
+    <h3>
+        Authentication
+    </h3>
+
+    <p>
+        To be authenticated on the Vosae API backend you have to <strong>generate an API Key</strong>. It's very easy, and you can do it on the Vosae web app (<span class="text-info">Settings > Api Keys</span>). Create a new application with a name and click <span class="text-info">Generate API Key</span>. We'll give you the key <strong>just once and we can't recover it</strong>. If you lose the key your only choice is to <span class="text-info">Revoke</span> the key an generate a new one.
+    </p>
+
+    <p>
+        Example:<br>
+        <img src="{% static "docs/img/create-api-key.png" %}" alt="Create api key" class="img-rounded">
+    </p>
+    <br><br>
+
+
+    <h3>
+        X-Tenant
+    </h3>
+    <p>
+        In addition to the authentication, you need to provide the <strong>vosae tenant</strong> (eg. the organization) you want to use. You need to pass the header <code>X-Tenant</code> to each request to the Vosae API.
+        <br>
+        The only exception is for the <a href="core/tenant">Tenant endpoint</a>. Through this endpoint you can list all tenants that the user has access to. The X-Tenant header value is the <strong>Tenant slug</strong>.
+    </p>
+    <br><br>
+
+
+    <h3>
+        Rate Limiting
+    </h3>
+    <p>
+        We limit requests to <strong>4,000 per hour</strong> per user. You can check the returned HTTP headers of any API response to see your current status:
+    </p>
+
+    <pre>HTTP/1.1 200 OK
+    Status: 200 OK
+    X-RateLimit-Limit: 4000
+    X-RateLimit-Remaining: 3983</pre>
+
+    <br><br>
+
+    <h3>
+        Errors
+    </h3>
+
+    <p>
+        The Vosae API uses conventional HTTP response codes to indicate success or failure of an API request. 
+
+        Which means, codes in the 2xx range indicate a success, codes in the 4xx range indicate an error, and codes in the 5xx range indicate an error on Vosae's servers.
+    </p>
+
+
+    <ul>
+        <li><strong>200 OK</strong> - Everything worked as expected</li>
+        <li><strong>400 Bad Request</strong> - Often missing a required parameter</li>
+        <li><strong>401 Unauthorized</strong> - Not authenticated or the API key is not valid</li>
+        <li><strong>402 Request Failed</strong> - Parameters were valid but request failed</li>
+        <li><strong>403 Forbidden</strong> - Authenticated but the item isn't authorized</li>
+        <li><strong>404 Not Found</strong> - The requested item doesn't exist</li>
+        <li><strong>50x Server errors</strong> - Something went wrong on our side</li>
+    </ul>
+
+
+    <br><br>
+
+    <h2>
+        First request
+    </h2>
+
+    <p>
+        The whole API access is over HTTPS, and available through <code>https://app.vosae.com/api/v1/</code>.
+    </p>
+
+    <br>
+    The API supports:
+    <ul>
+        <li><strong>JSON</strong> <span class="text-info">(default)</span></li>
+        <li><strong>XML</strong> <span class="text-info">(append <code>?format=xml</code> to your request uri)</span></li>
+        <li><strong>YAML</strong> <span class="text-info">(append <code>?format=yaml</code> to your request uri)</span></li>
+        <li><strong>PLIST</strong> (binary plist) <span class="text-info">(append <code>?format=plist</code> to your request uri)</span></li>
+    </ul>
+    <br>
+    <h4>
+        Content-Type
+    </h4>
+
+    Instead of providing the <span class="text-info">format</span> in the uri we recommand to use the Content-Type header.
+    <ul>
+        <li><code>Content-Type: application/json</code></li>
+        <li><code>Content-Type: application/xml</code></li>
+        <li><code>Content-Type: text/yaml</code></li>
+        <li><code>Content-Type: application/x-plist</code></li>
+    </ul>
+
+    <br><br>
+
+    <p>
+        <span class="label label-important">Important</span> <strong>All requests must follow this layout:</strong><br><br>
+        <p class="tab-content">
+            <code>curl --header "Authorization: ApiKey {user_email}:{user_apikey}" --header "X-Tenant: {tenant}" https://app.vosae.com/api/v1/{endpoint}</code>
+        </p>
+    </p>
+
+
+    <br><br>
+    <h3>
+        Example:
+    </h3>
+    <p>
+        <p class="tab-content">
+            <code>curl --header "Authorization: ApiKey maxime@naeka.fr:1234567890abcdefghijklmop" --header "X-Tenant: naeka" https://app.vosae.com/api/v1/tenant/</code>
+        </p>
+
+        {{ sample_json|pygmentize:'json'|safe }}
+    </p>
+{% endblock %}

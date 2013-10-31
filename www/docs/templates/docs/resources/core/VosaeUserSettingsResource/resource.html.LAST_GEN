@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Vosaeusersettings | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Vosae user settings</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/core/VosaeUserSettingsResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

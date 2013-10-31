@@ -1,0 +1,53 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				".sass-cache"
+			],
+			"name": "Django",
+			"path": "www"
+		},
+		{
+			"name": "Documentation",
+			"path": "docs/source"
+		},
+		{
+			"name": "Ember.JS",
+			"path": "www/core/static/core/js/app"
+		},
+		{
+			"name": "Handlebars",
+			"path": "www/core/templates/core/handlebars"
+		},
+		{
+			"name": "Vendors",
+			"path": "www/core/static/core/js/vendor"
+		},
+		{
+			"name": "Sass",
+			"path": "www/core/static/core/sass"
+		},
+		{
+			"name": "Spec",
+			"path": "www/core/static/core/spec"
+		}
+	],
+	"settings":
+	{
+		"auto_indent": true,
+		"detect_indentation": true,
+		"indent_to_bracket": false,
+		"pep8": true,
+		"pep8_ignore":
+		[
+			"E501"
+		],
+		"smart_indent": true,
+		"tab_size": 4,
+		"translate_tabs_to_spaces": true,
+		"trim_automatic_white_space": true,
+		"use_tab_stops": true
+	}
+}

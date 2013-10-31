@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Calendar_list | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Calendar list</h1>
+
+
+{% include "docs/resources/organizer/CalendarListResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/organizer/CalendarListResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/organizer/CalendarListResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

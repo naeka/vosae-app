@@ -1,0 +1,453 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /credit_note/5231cbfa4ab63c53dc9004ca/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;REGISTERED&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="s2">&quot;0.00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;account_type&quot;</span><span class="p">:</span> <span class="s2">&quot;RECEIVABLE&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;attachments&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;201309-00001&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/credit_note/5231cbfa4ab63c53dc9004ca/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;notes&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;current_revision&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;delivery_address&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;issue_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:13:14.628000+00:00&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;billing_address&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;revision&quot;</span><span class="p">:</span> <span class="s2">&quot;7b0ba93c-fcb2-4686-8298-7bc9481fd78e&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;due_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;quotation_date&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;taxes_application&quot;</span><span class="p">:</span> <span class="s2">&quot;EXCLUSIVE&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;custom_payment_conditions&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;invoicing_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;sender_address&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;currency&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;symbol&quot;</span><span class="p">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;rates&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;MXN&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;AUD&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;CHF&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;NOK&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;RUB&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;EGP&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;INR&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;CNY&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;JPY&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;TRY&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;BRL&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;MAD&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;NZD&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;SEK&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;DKK&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;HKD&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;currency_to&quot;</span><span class="p">:</span> <span class="s2">&quot;CAD&quot;</span><span class="p">,</span> 
+                    <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:12:37.162000+00:00&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span> 
+        <span class="nt">&quot;credit_note_emission_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;contact&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;sender&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;quotation_validity&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;line_items&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;30% down-payment on quotation 201309-00001&quot;</span><span class="p">,</span> 
+                <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;DOWN-PAYMENT&quot;</span><span class="p">,</span> 
+                <span class="nt">&quot;tax&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tax/5231cbda4ab63c53dc90047d/&quot;</span><span class="p">,</span> 
+                <span class="nt">&quot;unit_price&quot;</span><span class="p">:</span> <span class="s2">&quot;0.00&quot;</span><span class="p">,</span> 
+                <span class="nt">&quot;item_id&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="nt">&quot;quantity&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span> 
+        <span class="nt">&quot;sender_organization&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Company&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;organization&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/organization/5231cbf24ab63c53dc9004c2/&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;pdf&quot;</span><span class="p">:</span> <span class="p">{},</span> 
+        <span class="nt">&quot;customer_reference&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbd64ab63c53dc900474/&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;related_invoice&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/invoice/5231cbf44ab63c53dc9004c5/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;amount&quot;</span><span class="p">:</span> <span class="s2">&quot;0.00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;contact&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;organization&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbd64ab63c53dc900474/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;revisions&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cbfa4ab63c53dc9004ca&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;history&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /credit_note/5231cc054ab63c53dc9004d2/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;account_type&gt;</span>RECEIVABLE<span class="nt">&lt;/account_type&gt;</span>
+  <span class="nt">&lt;attachments</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;reference&gt;</span>201309-00002<span class="nt">&lt;/reference&gt;</span>
+  <span class="nt">&lt;state&gt;</span>REGISTERED<span class="nt">&lt;/state&gt;</span>
+  <span class="nt">&lt;notes</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;history</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;current_revision&gt;</span>
+    <span class="nt">&lt;due_date&gt;</span>2013-09-12<span class="nt">&lt;/due_date&gt;</span>
+    <span class="nt">&lt;issue_date&gt;</span>2013-09-12T14:13:25.642000+00:00<span class="nt">&lt;/issue_date&gt;</span>
+    <span class="nt">&lt;billing_address</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;sender</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;invoicing_date&gt;</span>2013-09-12<span class="nt">&lt;/invoicing_date&gt;</span>
+    <span class="nt">&lt;revision&gt;</span>45c034ff-e87f-4c19-821f-749c6730d5d9<span class="nt">&lt;/revision&gt;</span>
+    <span class="nt">&lt;taxes_application&gt;</span>EXCLUSIVE<span class="nt">&lt;/taxes_application&gt;</span>
+    <span class="nt">&lt;line_items</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;description&gt;</span>30% down-payment on quotation 201309-00001<span class="nt">&lt;/description&gt;</span>
+        <span class="nt">&lt;reference&gt;</span>DOWN-PAYMENT<span class="nt">&lt;/reference&gt;</span>
+        <span class="nt">&lt;tax&gt;</span>/api/v1/tax/5231cbda4ab63c53dc90047d/<span class="nt">&lt;/tax&gt;</span>
+        <span class="nt">&lt;unit_price&gt;</span>0.00<span class="nt">&lt;/unit_price&gt;</span>
+        <span class="nt">&lt;item_id</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;quantity&gt;</span>1.00<span class="nt">&lt;/quantity&gt;</span>
+      <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;/line_items&gt;</span>
+    <span class="nt">&lt;delivery_address</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;sender_address</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;currency&gt;</span>
+      <span class="nt">&lt;symbol&gt;</span>EUR<span class="nt">&lt;/symbol&gt;</span>
+      <span class="nt">&lt;rates</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>MXN<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>USD<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>AUD<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>CHF<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>NOK<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>RUB<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>EGP<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>INR<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>CNY<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>JPY<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>TRY<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>BRL<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>MAD<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>GBP<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>NZD<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>SEK<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>DKK<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>HKD<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+        <span class="nt">&lt;object&gt;</span>
+          <span class="nt">&lt;rate&gt;</span>1.00<span class="nt">&lt;/rate&gt;</span>
+          <span class="nt">&lt;currency_to&gt;</span>CAD<span class="nt">&lt;/currency_to&gt;</span>
+          <span class="nt">&lt;datetime&gt;</span>2013-09-12T14:12:37.162000+00:00<span class="nt">&lt;/datetime&gt;</span>
+        <span class="nt">&lt;/object&gt;</span>
+      <span class="nt">&lt;/rates&gt;</span>
+    <span class="nt">&lt;/currency&gt;</span>
+    <span class="nt">&lt;credit_note_emission_date&gt;</span>2013-09-12<span class="nt">&lt;/credit_note_emission_date&gt;</span>
+    <span class="nt">&lt;contact</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;sender_organization&gt;</span>Test Company<span class="nt">&lt;/sender_organization&gt;</span>
+    <span class="nt">&lt;quotation_validity</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;organization&gt;</span>/api/v1/organization/5231cbf24ab63c53dc9004c2/<span class="nt">&lt;/organization&gt;</span>
+    <span class="nt">&lt;pdf</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;issuer&gt;</span>/api/v1/user/5231cbd64ab63c53dc900474/<span class="nt">&lt;/issuer&gt;</span>
+    <span class="nt">&lt;customer_reference</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;custom_payment_conditions</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;quotation_date</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/current_revision&gt;</span>
+  <span class="nt">&lt;related_invoice&gt;</span>/api/v1/invoice/5231cbfe4ab63c53dc9004cd/<span class="nt">&lt;/related_invoice&gt;</span>
+  <span class="nt">&lt;amount&gt;</span>0.00<span class="nt">&lt;/amount&gt;</span>
+  <span class="nt">&lt;contact</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/credit_note/5231cc054ab63c53dc9004d2/<span class="nt">&lt;/resource_uri&gt;</span>
+  <span class="nt">&lt;organization</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;total&gt;</span>0.00<span class="nt">&lt;/total&gt;</span>
+  <span class="nt">&lt;revisions</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231cc054ab63c53dc9004d2<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;issuer&gt;</span>/api/v1/user/5231cbd64ab63c53dc900474/<span class="nt">&lt;/issuer&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /credit_note/5231cc0f4ab63c53dc9004da/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">account_type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;RECEIVABLE&#39;</span>
+<span class="l-Scalar-Plain">amount</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0.00&#39;</span>
+<span class="l-Scalar-Plain">attachments</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">contact</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">current_revision</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">billing_address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">contact</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">credit_note_emission_date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12&#39;</span>
+<span class="l-Scalar-Plain">currency</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">rates</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;MXN&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;USD&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;AUD&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;CHF&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;NOK&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;RUB&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;EGP&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;INR&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;CNY&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;JPY&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;TRY&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;BRL&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;MAD&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;GBP&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;NZD&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;SEK&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;DKK&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;HKD&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency_to</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;CAD&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:12:37.162000+00:00&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">symbol</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;EUR&#39;</span>
+<span class="l-Scalar-Plain">custom_payment_conditions</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">customer_reference</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">delivery_address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">due_date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12&#39;</span>
+<span class="l-Scalar-Plain">invoicing_date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12&#39;</span>
+<span class="l-Scalar-Plain">issue_date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:13:35.606000+00:00&#39;</span>
+<span class="l-Scalar-Plain">issuer</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbd64ab63c53dc900474/&#39;</span>
+<span class="l-Scalar-Plain">line_items</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">description</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;30%</span><span class="nv"> </span><span class="s">down-payment</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">quotation</span><span class="nv"> </span><span class="s">201309-00001&#39;</span><span class="p-Indicator">,</span> <span class="nv">item_id</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span>
+<span class="nv">quantity</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;1.00&#39;</span><span class="p-Indicator">,</span> <span class="nv">reference</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;DOWN-PAYMENT&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">tax</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tax/5231cbda4ab63c53dc90047d/&#39;</span><span class="p-Indicator">,</span> <span class="nv">unit_price</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0.00&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">organization</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/organization/5231cbf24ab63c53dc9004c2/&#39;</span>
+<span class="l-Scalar-Plain">pdf</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+<span class="l-Scalar-Plain">quotation_date</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">quotation_validity</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">revision</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;82ab5a33-8453-4a86-b30f-f984c4114b89&#39;</span>
+<span class="l-Scalar-Plain">sender</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">sender_address</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">sender_organization</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Test</span><span class="nv"> </span><span class="s">Company&#39;</span>
+<span class="l-Scalar-Plain">taxes_application</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;EXCLUSIVE&#39;</span>
+<span class="l-Scalar-Plain">history</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cc0f4ab63c53dc9004da&#39;</span>
+<span class="l-Scalar-Plain">issuer</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbd64ab63c53dc900474/&#39;</span>
+<span class="l-Scalar-Plain">notes</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">organization</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">reference</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;201309-00003&#39;</span>
+<span class="l-Scalar-Plain">related_invoice</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/invoice/5231cc094ab63c53dc9004d5/&#39;</span>
+<span class="l-Scalar-Plain">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/credit_note/5231cc0f4ab63c53dc9004da/&#39;</span>
+<span class="l-Scalar-Plain">revisions</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">state</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;REGISTERED&#39;</span>
+<span class="l-Scalar-Plain">total</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0.00&#39;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

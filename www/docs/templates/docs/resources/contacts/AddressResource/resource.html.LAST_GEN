@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Address | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Address</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/contacts/AddressResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

@@ -1,0 +1,237 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>attendees</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's attendees.<br />Can be internal Vosae users or external attendees identified by their name/email</td>
+    </tr>
+    
+    <tr>
+      <td>calendar</td>
+      <td>Reference</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Event's related calendar</td>
+    </tr>
+    
+    <tr>
+      <td>color</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's custom color (6-hexadecimal, prefixed by "#")</td>
+    </tr>
+    
+    <tr>
+      <td>created_at</td>
+      <td>Datetime</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Event's creation datetime</td>
+    </tr>
+    
+    <tr>
+      <td>creator</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>User which have created the event</td>
+    </tr>
+    
+    <tr>
+      <td>description</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's description (max_length = 1024)</td>
+    </tr>
+    
+    <tr>
+      <td>end</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Event's end date(time)</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>instance_id</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>If the event is recurring, the occurrence instance id</td>
+    </tr>
+    
+    <tr>
+      <td>location</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's location (max_length = 512)</td>
+    </tr>
+    
+    <tr>
+      <td>organizer</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Event's organizer.<br />Can be different of the creator</td>
+    </tr>
+    
+    <tr>
+      <td>original_start</td>
+      <td>Embedded</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>If the event is recurring, this belongs to the original event start date(time)</td>
+    </tr>
+    
+    <tr>
+      <td>recurrence</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's recurrence rules.<br />Please note that infinite RRULESET are shrinked to the first 730 occurrences</td>
+    </tr>
+    
+    <tr>
+      <td>reminders</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's custom reminders</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>start</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Event's start date(time)</td>
+    </tr>
+    
+    <tr>
+      <td>status</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Status of the event.<br />One of: <ul><li class="text-info">CONFIRMED</li> <li class="text-info">TENTATIVE</li> <li class="text-info">CANCELLED</li></ul></td>
+    </tr>
+    
+    <tr>
+      <td>summary</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Event's summary (max_length = 64)</td>
+    </tr>
+    
+    <tr>
+      <td>transparency</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Event's transparency.<br />One of: <ul><li class="text-info">TRANSPARENT</li> <li class="text-info">OPAQUE</li></ul></td>
+    </tr>
+    
+    <tr>
+      <td>updated_at</td>
+      <td>Datetime</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Event's modification datetime</td>
+    </tr>
+    
+  </tbody>
+</table>
+

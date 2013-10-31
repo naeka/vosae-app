@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Tax | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Tax</h1>
+
+
+{% include "docs/resources/invoicing/TaxResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/TaxResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/invoicing/TaxResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

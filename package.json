@@ -1,0 +1,25 @@
+{
+  "name": "Vosae",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "repository": "",
+  "author": {
+    "name": "Vosae team",
+    "url": "http://vosae.com"
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-contrib-watch": "0.5.1",
+    "grunt-contrib-uglify": "0.2.2",
+    "grunt-contrib-concat": "0.3.0",
+    "grunt-contrib-coffee": "0.7.0",
+    "grunt-contrib-compass": "0.3.0",
+    "grunt-contrib-cssmin": "0.6.1",
+    "grunt-ember-templates": "0.4.8",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-imagemin": "0.2.0",
+    "grunt-plato": "0.2.1",
+    "grunt-minispade": "https://github.com/Naeka/grunt-minispade/tarball/master"
+  }
+}

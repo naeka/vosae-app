@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Group | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Vosae group</h1>
+
+
+{% include "docs/resources/core/VosaeGroupResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/core/VosaeGroupResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/core/VosaeGroupResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

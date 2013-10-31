@@ -1,0 +1,173 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_list_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_list_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_list_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_list_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /item/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;total_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> 
+        <span class="nt">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;objects&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Item 1&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;ITEM1&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;tax&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tax/5231cc864ab63c53dc900531/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;unit_price&quot;</span><span class="p">:</span> <span class="s2">&quot;19.90&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/currency/5231cbd54ab63c53dc90046c/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PRODUCT&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cc864ab63c53dc900532&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/item/5231cc864ab63c53dc900532/&quot;</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Item 2&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;ITEM2&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;tax&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tax/5231cc864ab63c53dc900531/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;unit_price&quot;</span><span class="p">:</span> <span class="s2">&quot;19.90&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/currency/5231cbd54ab63c53dc90046c/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PRODUCT&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cc864ab63c53dc900533&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/item/5231cc864ab63c53dc900533/&quot;</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Item 3&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;ITEM3&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;tax&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tax/5231cc864ab63c53dc900531/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;unit_price&quot;</span><span class="p">:</span> <span class="s2">&quot;19.90&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;currency&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/currency/5231cbd54ab63c53dc90046c/&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;PRODUCT&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cc864ab63c53dc900534&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/item/5231cc864ab63c53dc900534/&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_list_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /item/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;response&gt;</span>
+  <span class="nt">&lt;objects</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+      <span class="nt">&lt;description&gt;</span>Item 1<span class="nt">&lt;/description&gt;</span>
+      <span class="nt">&lt;reference&gt;</span>ITEM1<span class="nt">&lt;/reference&gt;</span>
+      <span class="nt">&lt;tax&gt;</span>/api/v1/tax/5231cc864ab63c53dc900531/<span class="nt">&lt;/tax&gt;</span>
+      <span class="nt">&lt;unit_price&gt;</span>19.90<span class="nt">&lt;/unit_price&gt;</span>
+      <span class="nt">&lt;currency&gt;</span>/api/v1/currency/5231cbd54ab63c53dc90046c/<span class="nt">&lt;/currency&gt;</span>
+      <span class="nt">&lt;type&gt;</span>PRODUCT<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;id&gt;</span>5231cc864ab63c53dc900532<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;resource_uri&gt;</span>/api/v1/item/5231cc864ab63c53dc900532/<span class="nt">&lt;/resource_uri&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+      <span class="nt">&lt;description&gt;</span>Item 2<span class="nt">&lt;/description&gt;</span>
+      <span class="nt">&lt;reference&gt;</span>ITEM2<span class="nt">&lt;/reference&gt;</span>
+      <span class="nt">&lt;tax&gt;</span>/api/v1/tax/5231cc864ab63c53dc900531/<span class="nt">&lt;/tax&gt;</span>
+      <span class="nt">&lt;unit_price&gt;</span>19.90<span class="nt">&lt;/unit_price&gt;</span>
+      <span class="nt">&lt;currency&gt;</span>/api/v1/currency/5231cbd54ab63c53dc90046c/<span class="nt">&lt;/currency&gt;</span>
+      <span class="nt">&lt;type&gt;</span>PRODUCT<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;id&gt;</span>5231cc864ab63c53dc900533<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;resource_uri&gt;</span>/api/v1/item/5231cc864ab63c53dc900533/<span class="nt">&lt;/resource_uri&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+      <span class="nt">&lt;description&gt;</span>Item 3<span class="nt">&lt;/description&gt;</span>
+      <span class="nt">&lt;reference&gt;</span>ITEM3<span class="nt">&lt;/reference&gt;</span>
+      <span class="nt">&lt;tax&gt;</span>/api/v1/tax/5231cc864ab63c53dc900531/<span class="nt">&lt;/tax&gt;</span>
+      <span class="nt">&lt;unit_price&gt;</span>19.90<span class="nt">&lt;/unit_price&gt;</span>
+      <span class="nt">&lt;currency&gt;</span>/api/v1/currency/5231cbd54ab63c53dc90046c/<span class="nt">&lt;/currency&gt;</span>
+      <span class="nt">&lt;type&gt;</span>PRODUCT<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;id&gt;</span>5231cc864ab63c53dc900534<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;resource_uri&gt;</span>/api/v1/item/5231cc864ab63c53dc900534/<span class="nt">&lt;/resource_uri&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;next</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;total_count</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/total_count&gt;</span>
+    <span class="nt">&lt;previous</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;limit</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/limit&gt;</span>
+    <span class="nt">&lt;offset</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/offset&gt;</span>
+  <span class="nt">&lt;/meta&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_list_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /item/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">meta</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">20</span><span class="p-Indicator">,</span> <span class="nv">next</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">offset</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">previous</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">total_count</span><span class="p-Indicator">:</span> <span class="nv">3</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">objects</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/currency/5231cbd54ab63c53dc90046c/&#39;</span><span class="p-Indicator">,</span> <span class="nv">description</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Item</span>
+<span class="s">1&#39;</span><span class="p-Indicator">,</span> <span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cc864ab63c53dc900532&#39;</span><span class="p-Indicator">,</span> <span class="nv">reference</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;ITEM1&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/item/5231cc864ab63c53dc900532/&#39;</span><span class="p-Indicator">,</span> <span class="nv">tax</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tax/5231cc864ab63c53dc900531/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;PRODUCT&#39;</span><span class="p-Indicator">,</span> <span class="nv">unit_price</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;19.90&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/currency/5231cbd54ab63c53dc90046c/&#39;</span><span class="p-Indicator">,</span> <span class="nv">description</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Item</span>
+<span class="s">2&#39;</span><span class="p-Indicator">,</span> <span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cc864ab63c53dc900533&#39;</span><span class="p-Indicator">,</span> <span class="nv">reference</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;ITEM2&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/item/5231cc864ab63c53dc900533/&#39;</span><span class="p-Indicator">,</span> <span class="nv">tax</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tax/5231cc864ab63c53dc900531/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;PRODUCT&#39;</span><span class="p-Indicator">,</span> <span class="nv">unit_price</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;19.90&#39;</span><span class="p-Indicator">}</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="nv">currency</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/currency/5231cbd54ab63c53dc90046c/&#39;</span><span class="p-Indicator">,</span> <span class="nv">description</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Item</span>
+<span class="s">3&#39;</span><span class="p-Indicator">,</span> <span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cc864ab63c53dc900534&#39;</span><span class="p-Indicator">,</span> <span class="nv">reference</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;ITEM3&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/item/5231cc864ab63c53dc900534/&#39;</span><span class="p-Indicator">,</span> <span class="nv">tax</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tax/5231cc864ab63c53dc900531/&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;PRODUCT&#39;</span><span class="p-Indicator">,</span> <span class="nv">unit_price</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;19.90&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

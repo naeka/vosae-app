@@ -1,0 +1,24 @@
+{% extends "core/skeleton.html" %}
+{% load i18n static %}
+
+{% block css %}
+    {% if DEBUG %}
+    <link href="{% static 'account/build/account.css' %}" rel="stylesheet" type="text/css">
+    {% else %}
+    <link href="{% static 'account/build/account.min.css' %}" rel="stylesheet" type="text/css">
+    {% endif %}
+{% endblock %}
+{% block body_class %}page-account{% endblock %}
+
+{% block content %}
+    <div class="inner">
+        <div class="head">
+            <img src="{% static 'core/img/logo-vosae.png' %}" alt="{% trans 'Vosae logo' %}" height="60" />
+            <h1>{% block page_account_title %}{% endblock page_account_title %}</h1>
+        </div>
+        <div class="content">
+            {% block page_account_content %}{% endblock page_account_content %}
+        </div>
+    </div>
+    {% block page_account_bottom %}{% endblock page_account_bottom %}
+{% endblock %}

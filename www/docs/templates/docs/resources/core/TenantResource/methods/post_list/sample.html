@@ -1,0 +1,294 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#post_list_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#post_list_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#post_list_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="post_list_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /tenant/
+Content-Type: application/json</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;supported_currencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;/api/v1/currency/5231cbd54ab63c53dc90046c/&quot;</span>
+    <span class="p">],</span> 
+    <span class="nt">&quot;fax&quot;</span><span class="p">:</span> <span class="s2">&quot;0102030400&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;billing_address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;75001&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;street_address&quot;</span><span class="p">:</span> <span class="s2">&quot;This address is a fake&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;France&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Company&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;postal_address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Grenoble&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;75001&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;street_address&quot;</span><span class="p">:</span> <span class="s2">&quot;This address is a fake&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;France&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;registration_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;share_capital&quot;</span><span class="p">:</span> <span class="s2">&quot;200,000 USD&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;us_registration_info&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;business_entity&quot;</span><span class="p">:</span> <span class="s2">&quot;Inc.&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;0102030405&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;report_settings&quot;</span><span class="p">:</span> <span class="p">{},</span> 
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;contact@naeka.fr&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;default_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/currency/5231cbd54ab63c53dc90046c/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: application/json
+Location: /tenant/5231cbd94ab63c53dc900479/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;fax&quot;</span><span class="p">:</span> <span class="s2">&quot;0102030400&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;billing_address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;extended_address&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;postoffice_box&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;geo_point&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;75001&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;street_address&quot;</span><span class="p">:</span> <span class="s2">&quot;This address is a fake&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;svg_logo&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;img_logo&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;postal_address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Grenoble&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;extended_address&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;postoffice_box&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;geo_point&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s2">&quot;75001&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;street_address&quot;</span><span class="p">:</span> <span class="s2">&quot;This address is a fake&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;registration_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;share_capital&quot;</span><span class="p">:</span> <span class="s2">&quot;200,000 USD&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;us_registration_info&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;business_entity&quot;</span><span class="p">:</span> <span class="s2">&quot;Inc.&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;my-company&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cbd94ab63c53dc900479&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;0102030405&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;report_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;base_color&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;font_size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
+        <span class="nt">&quot;force_bw&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+        <span class="nt">&quot;font_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bariol&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tenant/5231cbd94ab63c53dc900479/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;contact@naeka.fr&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;terms&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Company&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="post_list_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /tenant/
+Content-Type: application/xml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;supported_currencies</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>/api/v1/currency/5231cbd54ab63c53dc90046c/<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/supported_currencies&gt;</span>
+  <span class="nt">&lt;phone&gt;</span>0102030405<span class="nt">&lt;/phone&gt;</span>
+  <span class="nt">&lt;fax&gt;</span>0102030400<span class="nt">&lt;/fax&gt;</span>
+  <span class="nt">&lt;billing_address</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;city&gt;</span>Paris<span class="nt">&lt;/city&gt;</span>
+    <span class="nt">&lt;postal_code&gt;</span>75001<span class="nt">&lt;/postal_code&gt;</span>
+    <span class="nt">&lt;street_address&gt;</span>This address is a fake<span class="nt">&lt;/street_address&gt;</span>
+    <span class="nt">&lt;country&gt;</span>France<span class="nt">&lt;/country&gt;</span>
+  <span class="nt">&lt;/billing_address&gt;</span>
+  <span class="nt">&lt;name&gt;</span>My Company<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;postal_address</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;city&gt;</span>Grenoble<span class="nt">&lt;/city&gt;</span>
+    <span class="nt">&lt;postal_code&gt;</span>75001<span class="nt">&lt;/postal_code&gt;</span>
+    <span class="nt">&lt;street_address&gt;</span>This address is a fake<span class="nt">&lt;/street_address&gt;</span>
+    <span class="nt">&lt;country&gt;</span>France<span class="nt">&lt;/country&gt;</span>
+  <span class="nt">&lt;/postal_address&gt;</span>
+  <span class="nt">&lt;registration_info</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;share_capital&gt;</span>200,000 USD<span class="nt">&lt;/share_capital&gt;</span>
+    <span class="nt">&lt;resource_type&gt;</span>us_registration_info<span class="nt">&lt;/resource_type&gt;</span>
+    <span class="nt">&lt;business_entity&gt;</span>Inc.<span class="nt">&lt;/business_entity&gt;</span>
+  <span class="nt">&lt;/registration_info&gt;</span>
+  <span class="nt">&lt;report_settings</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;email&gt;</span>contact@naeka.fr<span class="nt">&lt;/email&gt;</span>
+  <span class="nt">&lt;default_currency&gt;</span>/api/v1/currency/5231cbd54ab63c53dc90046c/<span class="nt">&lt;/default_currency&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: application/xml; charset=utf-8
+Location: /tenant/5231cbda4ab63c53dc900485/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;fax&gt;</span>0102030400<span class="nt">&lt;/fax&gt;</span>
+  <span class="nt">&lt;billing_address&gt;</span>
+    <span class="nt">&lt;city&gt;</span>Paris<span class="nt">&lt;/city&gt;</span>
+    <span class="nt">&lt;extended_address</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;country&gt;</span>France<span class="nt">&lt;/country&gt;</span>
+    <span class="nt">&lt;postoffice_box</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;geo_point</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;state</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;postal_code&gt;</span>75001<span class="nt">&lt;/postal_code&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;street_address&gt;</span>This address is a fake<span class="nt">&lt;/street_address&gt;</span>
+  <span class="nt">&lt;/billing_address&gt;</span>
+  <span class="nt">&lt;svg_logo</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;name&gt;</span>My Company<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;postal_address&gt;</span>
+    <span class="nt">&lt;city&gt;</span>Grenoble<span class="nt">&lt;/city&gt;</span>
+    <span class="nt">&lt;extended_address</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;country&gt;</span>France<span class="nt">&lt;/country&gt;</span>
+    <span class="nt">&lt;postoffice_box</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;geo_point</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;state</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;postal_code&gt;</span>75001<span class="nt">&lt;/postal_code&gt;</span>
+    <span class="nt">&lt;type</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;street_address&gt;</span>This address is a fake<span class="nt">&lt;/street_address&gt;</span>
+  <span class="nt">&lt;/postal_address&gt;</span>
+  <span class="nt">&lt;registration_info&gt;</span>
+    <span class="nt">&lt;share_capital&gt;</span>200,000 USD<span class="nt">&lt;/share_capital&gt;</span>
+    <span class="nt">&lt;resource_type&gt;</span>us_registration_info<span class="nt">&lt;/resource_type&gt;</span>
+    <span class="nt">&lt;business_entity&gt;</span>Inc.<span class="nt">&lt;/business_entity&gt;</span>
+  <span class="nt">&lt;/registration_info&gt;</span>
+  <span class="nt">&lt;slug&gt;</span>my-company-4256788d<span class="nt">&lt;/slug&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231cbda4ab63c53dc900485<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;phone&gt;</span>0102030405<span class="nt">&lt;/phone&gt;</span>
+  <span class="nt">&lt;img_logo</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;report_settings&gt;</span>
+    <span class="nt">&lt;base_color</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;font_size</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/font_size&gt;</span>
+    <span class="nt">&lt;force_bw</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/force_bw&gt;</span>
+    <span class="nt">&lt;language&gt;</span>en<span class="nt">&lt;/language&gt;</span>
+    <span class="nt">&lt;font_name&gt;</span>Bariol<span class="nt">&lt;/font_name&gt;</span>
+  <span class="nt">&lt;/report_settings&gt;</span>
+  <span class="nt">&lt;email&gt;</span>contact@naeka.fr<span class="nt">&lt;/email&gt;</span>
+  <span class="nt">&lt;terms</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/tenant/5231cbda4ab63c53dc900485/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="post_list_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /tenant/
+Content-Type: text/yaml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="kt">!!python/unicode</span> <span class="s">&#39;billing_address&#39;</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="kt">!!python/unicode</span> <span class="s">&#39;city&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Paris&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;country&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;France&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;postal_code&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;75001&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;street_address&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;This</span><span class="nv"> </span><span class="s">address</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">fake&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">default_currency</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/currency/5231cbd54ab63c53dc90046c/&#39;</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;email&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;contact@naeka.fr&#39;</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;fax&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0102030400&#39;</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;name&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">Company&#39;</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;phone&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0102030405&#39;</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;postal_address&#39;</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="kt">!!python/unicode</span> <span class="s">&#39;city&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Grenoble&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;country&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;France&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;postal_code&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;75001&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;street_address&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;This</span><span class="nv"> </span><span class="s">address</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">fake&#39;</span><span class="p-Indicator">}</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;registration_info&#39;</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="kt">!!python/unicode</span> <span class="s">&#39;business_entity&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Inc.&#39;</span><span class="p-Indicator">,</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;resource_type&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;us_registration_info&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;share_capital&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;200,000</span>
+<span class="s">USD&#39;</span><span class="p-Indicator">}</span>
+<span class="kt">!!python/unicode</span> <span class="s">&#39;report_settings&#39;</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+<span class="l-Scalar-Plain">supported_currencies</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/currency/5231cbd54ab63c53dc90046c/&#39;</span><span class="p-Indicator">]</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: text/yaml; charset=utf-8
+Location: /tenant/5231cbdd4ab63c53dc900491/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">billing_address</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">city</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Paris&#39;</span><span class="p-Indicator">,</span> <span class="nv">country</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;France&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">extended_address</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">geo_point</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">postal_code</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;75001&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">postoffice_box</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">state</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">street_address</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;This</span><span class="nv"> </span><span class="s">address</span>
+<span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">fake&#39;</span><span class="p-Indicator">,</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">email</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;contact@naeka.fr&#39;</span>
+<span class="l-Scalar-Plain">fax</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0102030400&#39;</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cbdd4ab63c53dc900491&#39;</span>
+<span class="l-Scalar-Plain">img_logo</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">Company&#39;</span>
+<span class="l-Scalar-Plain">phone</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0102030405&#39;</span>
+<span class="l-Scalar-Plain">postal_address</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">city</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Grenoble&#39;</span><span class="p-Indicator">,</span> <span class="nv">country</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;France&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">extended_address</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">geo_point</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">label</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">postal_code</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;75001&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">postoffice_box</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">state</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">street_address</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;This</span><span class="nv"> </span><span class="s">address</span>
+<span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">fake&#39;</span><span class="p-Indicator">,</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">registration_info</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">business_entity</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Inc.&#39;</span><span class="p-Indicator">,</span> <span class="nv">resource_type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;us_registration_info&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">share_capital</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;200,000</span><span class="nv"> </span><span class="s">USD&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">report_settings</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">base_color</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">font_name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;Bariol&#39;</span><span class="p-Indicator">,</span> <span class="nv">font_size</span><span class="p-Indicator">:</span> <span class="nv">10</span><span class="p-Indicator">,</span>
+<span class="nv">force_bw</span><span class="p-Indicator">:</span> <span class="nv">false</span><span class="p-Indicator">,</span> <span class="nv">language</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;en&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tenant/5231cbdd4ab63c53dc900491/&#39;</span>
+<span class="l-Scalar-Plain">slug</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;my-company-ee14f91f&#39;</span>
+<span class="l-Scalar-Plain">svg_logo</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">terms</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

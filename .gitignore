@@ -1,0 +1,58 @@
+# Cache files #
+###############
+*.pyc
+*.pyo
+*.idea/
+www/media/CACHE/
+# Virtualenv files #
+####################
+bin/*
+lib/*
+include/*
+doc/*
+src/*
+build/*
+man/*
+local
+# OS generated files #
+######################
+.DS_Store?
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+.Python
+*.*~
+# Project specific files #
+##########################
+www/vosae.sqlite3
+www/celery.db
+www/databases/vosae/*
+www/databases/
+www/settings/local.py
+
+# Static
+error/build/
+error/css/frontend-479px.css
+error/css/frontend-980px.css
+error/css/frontend.css
+www/static/
+www/core/static/core/tmp/
+www/core/static/core/build/
+www/core/static/core/handlebars/
+www/core/static/core/css/core.css
+www/core/static/core/css/errors.css
+www/docs/static/docs/css/docs.css
+www/docs/static/docs/build/
+
+# Sass cache
+.sass-cache/
+error/.sass-cache/
+www/.sass-cache/
+www/core/.sass-cache/
+www/docs/.sass-cache/
+
+# Various
+www/dump.rdb
+node_modules/
+vosae-app.sublime-workspace

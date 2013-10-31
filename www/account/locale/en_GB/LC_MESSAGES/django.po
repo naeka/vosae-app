@@ -1,0 +1,478 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Vosae\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"PO-Revision-Date: 2013-10-21 11:53+0100\n"
+"Last-Translator: Léo S <leo@naeka.fr>\n"
+"Language-Team: Léo S. <leo@naeka.fr>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: admin.py:28
+msgid "Personal info"
+msgstr ""
+
+#: admin.py:29
+msgid "Permissions"
+msgstr ""
+
+#: admin.py:31
+msgid "Important dates"
+msgstr ""
+
+#: admin.py:112
+msgid "Password changed successfully."
+msgstr ""
+
+#: admin.py:122
+#, python-format
+msgid "Change password: %s"
+msgstr ""
+
+#: forms.py:14
+msgid "A user with that email already exists."
+msgstr ""
+
+#: forms.py:15
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: forms.py:18 forms.py:94
+msgid "E-mail"
+msgstr ""
+
+#: forms.py:20
+msgid "Valid e-mail only."
+msgstr ""
+
+#: forms.py:21
+msgid "This value must be a valid e-mail address."
+msgstr ""
+
+#: forms.py:24 forms.py:99
+msgid "Password"
+msgstr ""
+
+#: forms.py:26
+msgid "At least 8 characters."
+msgstr ""
+
+#: forms.py:30
+msgid "Password confirmation"
+msgstr ""
+
+#: forms.py:33
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: forms.py:69 forms.py:124
+msgid "Firstname"
+msgstr ""
+
+#: forms.py:70 forms.py:125
+msgid "Name"
+msgstr ""
+
+#: forms.py:96
+msgid "Required. 254 characters or fewer. Valid e-mail only."
+msgstr ""
+
+#: forms.py:97
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: forms.py:100
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"password/\">this "
+"form</a>."
+msgstr ""
+
+#: urls.py:9
+msgid "^account/signin/$"
+msgstr ""
+
+#: urls.py:10
+msgid "^account/signout/$"
+msgstr ""
+
+#: urls.py:11
+msgid "^account/signup/$"
+msgstr ""
+
+#: urls.py:12
+msgid "^account/activate/(?P<email>.+)/(?P<activation_key>\\w+)/$"
+msgstr ""
+
+#: urls.py:13
+msgid "^account/identity/set/$"
+msgstr ""
+
+#: urls.py:14
+msgid "^account/password/set/$"
+msgstr ""
+
+#: urls.py:15
+msgid "^account/password/reset/$"
+msgstr ""
+
+#: urls.py:16
+msgid "^account/password/reset/done/$"
+msgstr ""
+
+#: urls.py:17
+msgid "^account/password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$"
+msgstr ""
+
+#: urls.py:18
+msgid "^account/password/reset/complete/$"
+msgstr ""
+
+#: views.py:61
+msgid ""
+"Thank you for your sign up on Vosae.\n"
+"Please follow the instructions that we've just sent to you by e-mail."
+msgstr ""
+
+#: models/user.py:25
+msgid "activation key"
+msgstr ""
+
+#: models/user.py:26
+msgid "notification send"
+msgstr ""
+
+#: models/user.py:26
+msgid ""
+"Designates whether this user has already got a notification about activating "
+"their account."
+msgstr ""
+
+#: models/user.py:27
+msgid "unconfirmed email address"
+msgstr ""
+
+#: models/user.py:27
+msgid "Temporary email address when the user requests an email change."
+msgstr ""
+
+#: models/user.py:28
+msgid "unconfirmed email verification key"
+msgstr ""
+
+#: models/user.py:130
+msgid "email address"
+msgstr ""
+
+#: models/user.py:131
+msgid "first name"
+msgstr ""
+
+#: models/user.py:132
+msgid "last name"
+msgstr ""
+
+#: models/user.py:133
+msgid "staff status"
+msgstr ""
+
+#: models/user.py:133
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: models/user.py:134
+msgid "active"
+msgstr ""
+
+#: models/user.py:134
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: models/user.py:135
+msgid "date joined"
+msgstr ""
+
+#: models/user.py:136
+msgid "browser language"
+msgstr ""
+
+#: models/user.py:144
+msgid "user"
+msgstr ""
+
+#: models/user.py:145
+msgid "users"
+msgstr ""
+
+#: templates/account/base.html:16
+msgid "Vosae logo"
+msgstr ""
+
+#: templates/account/initial_password_setup.html:4
+#: templates/account/initial_password_setup.html:5
+#: templates/account/initial_password_setup.html:6
+#: templates/account/set_identity.html:4 templates/account/set_identity.html:5
+#: templates/account/set_identity.html:6 templates/account/signup.html:4
+#: templates/account/signup.html.py:5 templates/account/signup.html:6
+msgctxt "Html title"
+msgid "Signup page"
+msgstr ""
+
+#: templates/account/initial_password_setup.html:9
+#: templates/account/set_identity.html:9 templates/account/signup.html:9
+msgid "Sign up to Vosae"
+msgstr ""
+
+#: templates/account/initial_password_setup.html:11
+msgid "Welcome to Vosae, please set your password."
+msgstr ""
+
+#: templates/account/initial_password_setup.html:35
+#: templates/account/set_identity.html:37
+msgid "Continue"
+msgstr ""
+
+#: templates/account/password_reset_complete.html:4
+#: templates/account/password_reset_complete.html:5
+#: templates/account/password_reset_complete.html:6
+#: templates/account/password_reset_confirm.html:4
+#: templates/account/password_reset_confirm.html:5
+#: templates/account/password_reset_confirm.html:6
+#: templates/account/password_reset_done.html:4
+#: templates/account/password_reset_done.html:5
+#: templates/account/password_reset_done.html:6
+#: templates/account/password_reset_form.html:4
+#: templates/account/password_reset_form.html:5
+#: templates/account/password_reset_form.html:6
+msgctxt "Html title"
+msgid "Reset password page"
+msgstr ""
+
+#: templates/account/password_reset_complete.html:9
+#: templates/account/password_reset_done.html:9
+msgid "Thanks for using Vosae"
+msgstr ""
+
+#: templates/account/password_reset_complete.html:12
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+
+#: templates/account/password_reset_complete.html:15
+#: templates/account/password_reset_done.html:17
+#: templates/account/signin.html:43
+msgid "Log in"
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:9
+msgid "Set your password"
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:13
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:18
+msgid "New password:"
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:31
+msgid "Confirm password:"
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:45
+msgid "Change my password"
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:51
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+
+#: templates/account/password_reset_confirm.html:54
+msgid "Request new password"
+msgstr ""
+
+#: templates/account/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. You should be "
+"receiving them shortly."
+msgstr ""
+
+#: templates/account/password_reset_done.html:14
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: templates/account/password_reset_form.html:9
+msgid "Reset your password"
+msgstr ""
+
+#: templates/account/password_reset_form.html:34
+msgid "Reset my password"
+msgstr ""
+
+#: templates/account/password_reset_form.html:40
+#: templates/account/signin.html:49
+msgid "Don't have an account? Sign up"
+msgstr ""
+
+#: templates/account/set_identity.html:12
+msgid "To complete your sign up, please set your identity below."
+msgstr ""
+
+#: templates/account/signin.html:4 templates/account/signin.html.py:5
+#: templates/account/signin.html:6
+msgctxt "Html title"
+msgid "Login page"
+msgstr ""
+
+#: templates/account/signin.html:9
+msgid "Log in to Vosae"
+msgstr ""
+
+#: templates/account/signin.html:41
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/account/signin.html:43 templates/account/signup.html:36
+msgid "Beta"
+msgstr ""
+
+#: templates/account/signup.html:11
+msgid ""
+"Vosae is currently in beta. Feel free to contact us at support@vosae.com."
+msgstr ""
+
+#: templates/account/signup.html:34
+msgid "Required"
+msgstr ""
+
+#: templates/account/signup.html:36
+msgid "Register"
+msgstr ""
+
+#: templates/account/signup.html:42
+msgid "Already have an account? Log in"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:2
+#: templates/account/emails/confirmation_email_message_new.txt:2
+#: templates/account/emails/confirmation_email_message_old.txt:2
+msgid "Dear user,"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:4
+#, python-format
+msgid ""
+"Thank you for signing up at %(site)s. Getting started is easy.\n"
+"\n"
+"First, activate your account, please click on the link below within the next "
+"%(activation_days)s days:"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:9
+msgid ""
+"Once your account is activated, we'll ask you to fill some information about "
+"you and your organization.\n"
+"Finally, you'll have access to Vosae!"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:12
+#, python-format
+msgid ""
+"%(site)s is in beta. That means there's probably some bugs and unfinished "
+"features. If you have a question, a bug, something strange happens, or just "
+"want to talk, do not hesitate, send us an email to support@vosae.com, we're "
+"here to help you!"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:15
+#: templates/account/emails/confirmation_email_message_new.txt:11
+msgid "Thank you for participating in the Vosae beta!"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:17
+#: templates/account/emails/confirmation_email_message_new.txt:13
+msgid "Email: support@vosae.com"
+msgstr ""
+
+#: templates/account/emails/activation_email_message.txt:20
+#: templates/account/emails/confirmation_email_message_new.txt:16
+msgid "Developer documentation: https://www.vosae.com/docs/api/"
+msgstr ""
+
+#: templates/account/emails/activation_email_subject.txt:2
+#, python-format
+msgid "Your signup at %(site)s."
+msgstr ""
+
+#: templates/account/emails/confirmation_email_message_new.txt:4
+#, python-format
+msgid "You have requested a change of your email address at %(site)s."
+msgstr ""
+
+#: templates/account/emails/confirmation_email_message_new.txt:7
+msgid "Please confirm this email address by clicking on the link below:"
+msgstr ""
+
+#: templates/account/emails/confirmation_email_message_old.txt:4
+#, python-format
+msgid "There was a request to change your email address at %(site)s."
+msgstr ""
+
+#: templates/account/emails/confirmation_email_message_old.txt:6
+#, python-format
+msgid ""
+"An email has been send to %(user.email_unconfirmed)s which contains a "
+"verification link. Click on the link in this email to activate it."
+msgstr ""
+
+#: templates/account/emails/confirmation_email_message_old.txt:8
+#: templates/account/emails/password_reset_email.txt:10
+msgid "Thanks for using Vosae!"
+msgstr ""
+
+#: templates/account/emails/confirmation_email_message_old.txt:10
+#: templates/account/emails/password_reset_email.txt:12
+msgid "Sincerely"
+msgstr ""
+
+#: templates/account/emails/confirmation_email_subject_new.txt:2
+#, python-format
+msgid "Email verification for %(site)s."
+msgstr ""
+
+#: templates/account/emails/confirmation_email_subject_old.txt:2
+#, python-format
+msgid "A request to change your email address has been made at %(site)s."
+msgstr ""
+
+#: templates/account/emails/password_reset_email.txt:2
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account on Vosae."
+msgstr ""
+
+#: templates/account/emails/password_reset_email.txt:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/account/emails/password_reset_email.txt:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""

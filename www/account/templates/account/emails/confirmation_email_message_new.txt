@@ -1,0 +1,18 @@
+{% load i18n %}{% autoescape off %}
+{% trans "Dear user," %}
+
+{% blocktrans with site.name as site %}You have requested a change of your email address at {{ site }}.{% endblocktrans %}
+
+
+{% trans "Please confirm this email address by clicking on the link below:" %}
+
+{{ site.url }}{% url 'account_confirm_email' user.email user.email_confirmation_key %}
+
+{% trans "Thank you for participating in the Vosae beta!" %}
+
+{% trans "Email: support@vosae.com" %}
+Twitter: @vosae
+Facebook: fb.com/vosaehq
+{% trans "Developer documentation: https://www.vosae.com/docs/api/" %}
+
+{% endautoescape %}

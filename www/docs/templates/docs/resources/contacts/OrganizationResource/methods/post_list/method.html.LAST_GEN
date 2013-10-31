@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>POST /organization/</h3>
+
+  {% include "docs/resources/contacts/OrganizationResource/methods/post_list/sample.html" %}
+</div>

@@ -1,0 +1,94 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>acl</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Calendar's access control lists</td>
+    </tr>
+    
+    <tr>
+      <td>description</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>The description of the calendar (max_length = 1024)</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>location</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>The location fo the calendar (max_length = 256)</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>summary</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>The summary (title) of the calendar (max_length = 64)</td>
+    </tr>
+    
+    <tr>
+      <td>timezone</td>
+      <td>String</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>The timezone of the calendar (default = "UTC")</td>
+    </tr>
+    
+  </tbody>
+</table>
+

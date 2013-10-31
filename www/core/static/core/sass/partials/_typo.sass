@@ -1,0 +1,140 @@
+// Font
+@font-face
+  font-family: $fontPictos
+  src: font-url('pictos-web.eot')
+  src: font-url('pictos-web.woff') format("woff"), font-url('pictos-web.svg#webfontIyfZbseF') format("svg"), font-url('pictos-web.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: $fontBariol
+  src: font-url('bariol_regular-webfont.eot')
+  src: font-url('bariol_regular-webfont.woff') format("woff"), font-url('bariol_regular-webfont.svg#webfontIyfZbseF') format("svg"), font-url('bariol_regular-webfont.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: $fontBariol
+  src: font-url('bariol_bold-webfont.eot')
+  src: font-url('bariol_bold-webfont.woff') format("woff"), font-url('bariol_bold-webfont.svg#webfontIyfZbseF') format("svg"), font-url('bariol_bold-webfont.ttf') format("truetype")
+  font-weight: bold
+  font-style: normal
+
+// Color
+.yellow
+  color: $yellow
+  &:hover
+    color: $yellow
+.green
+  color: $green 
+  &:hover
+    color: $green
+.orange
+  color: $orange
+  &:hover
+    color: $orange
+.white
+  color: $white
+  &:hover
+    color: $white
+
+// Pictos
+[class^="picto-"], 
+[class*=" picto-"]
+  font-style: normal
+  font-family: $fontPictos
+  font-weight: normal !important
+  display: inline-block
+  vertical-align: middle
+  text-align: center
+
+[class^="picto-"]::before, 
+[class*=" picto-"]::before
+  font-weight: normal !important
+  width: inherit
+  height: inherit
+  line-height: inherit
+
+.picto-users::before
+  content: 'g'
+  line-height: 100%
+  font-size: 120%
+.picto-user::before
+  content: 'U'
+.picto-home::before
+  content: 'H'
+.picto-agenda::before
+  content: '\\'
+.picto-moneybox::before
+  content: '%'
+.picto-search::before
+  content: 's'
+.picto-add::before
+  content: '&'
+.picto-rounded-add::before
+  content: '+'
+.picto-arrow-left::before
+  content: '['
+.picto-arrow-right::before
+  content: ']'
+.picto-arrow-top::before
+  content: '{'
+.picto-arrow-bottom::before
+  content: '}'
+.picto-trash::before
+  content: '#'
+.picto-star::before
+  content: 'S' 
+.picto-export::before
+  content: 'R'
+  font-size: 112%
+.picto-settings::before
+  content: 'y' 
+.picto-delete::before
+  content: '*' 
+.picto-stat::before
+  content: 'Z'
+.picto-tags::before
+  content: 'z' 
+.picto-lock::before
+  content: '(' 
+.picto-settings::before
+  content: 'y'
+.picto-documents::before
+  content: 'O' 
+.picto-check::before
+  content: '3'
+.picto-help::before
+  content: '?'
+.picto-love::before
+  content: 'k'
+.picto-mail::before
+  content: 'M'
+.picto-flag::before
+  content: '^'
+.picto-rounded-check::before
+  content: '2'
+.picto-note::before
+  content: 'W'
+.picto-alarm::before
+  content: ':'
+.picto-clock::before
+  content: 't'
+.picto-cloud::before
+  content: 'C'
+.picto-upload::before
+  content: 'c'
+.picto-loading::before
+  content: '1'
+.picto-syncing::before
+  content: '0'
+.picto-shuffle::before
+  content: ';'
+.picto-list::before
+  content: 'l'
+.picto-info::before
+  content: 'i'
+.picto-download::before
+  content: '~'
+.picto-rounded-delete::before
+  content: 'D'

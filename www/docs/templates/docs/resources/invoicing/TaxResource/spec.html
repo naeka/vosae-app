@@ -1,0 +1,72 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>name</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Tax name (max_length = 64)</td>
+    </tr>
+    
+    <tr>
+      <td>rate</td>
+      <td>Decimal</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Tax rate</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>status</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>The current status of the resource.<br />Depending on the resource type, it can be "ACTIVE", "DELETED", "DISABLED", [...].<br />Only included on detail requests</td>
+    </tr>
+    
+  </tbody>
+</table>
+

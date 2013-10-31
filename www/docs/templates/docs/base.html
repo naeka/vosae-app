@@ -1,0 +1,26 @@
+{% extends "core/skeleton.html" %}
+{% load static from staticfiles %}
+
+{% block css %}
+    {% if DEBUG %}
+        <link href="{% static 'docs/build/docs.css' %}" rel="stylesheet" type="text/css">
+    {% else %}
+        <link href="{% static 'docs/build/docs.min.css' %}" rel="stylesheet" type="text/css">
+    {% endif %}
+{% endblock %}
+{% block body_class %}page-doc{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3 resource-list">
+                {% include "docs/resource_list.html" %}
+            </div>
+            <div class="span9 resource-content">
+                <div class="inner">
+                    {% block resource %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>POST /file/</h3>
+
+  {% include "docs/resources/core/VosaeFileResource/methods/post_list/sample.html" %}
+</div>

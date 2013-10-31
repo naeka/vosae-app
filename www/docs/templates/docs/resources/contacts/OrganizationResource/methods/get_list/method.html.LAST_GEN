@@ -1,0 +1,5 @@
+<div class="method-description">
+  <h3>GET /organization/</h3>
+
+  {% include "docs/resources/contacts/OrganizationResource/methods/get_list/sample.html" %}
+</div>

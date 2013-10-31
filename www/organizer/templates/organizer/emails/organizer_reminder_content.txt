@@ -1,0 +1,9 @@
+{% load i18n %}
+{% if vosae_event.start.date %}
+{% blocktrans with summary=vosae_event.summary start=start|date:"EVENT_DATE_FORMAT" %}Your event {{ summary }} occurs on {{ start }}.
+{% endblocktrans %}
+{% else %}
+{% blocktrans with summary=vosae_event.summary start=start|date:"EVENT_DATETIME_FORMAT" %}Your event {{ summary }} occurs on {{ start }} ({{ timezone }}).
+{% endblocktrans %}
+{% endif %}
+{% trans "Further info" %}: {{ event_url }}

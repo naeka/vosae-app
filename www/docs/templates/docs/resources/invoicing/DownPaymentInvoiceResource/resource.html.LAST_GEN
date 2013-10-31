@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Down_payment_invoice | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Down payment invoice</h1>
+
+
+{% include "docs/resources/invoicing/DownPaymentInvoiceResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/DownPaymentInvoiceResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/invoicing/DownPaymentInvoiceResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

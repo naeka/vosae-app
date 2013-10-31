@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Organization | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Organization</h1>
+
+
+{% include "docs/resources/contacts/OrganizationResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/contacts/OrganizationResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/contacts/OrganizationResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

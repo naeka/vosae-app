@@ -1,0 +1,41 @@
+{% load status_code pygmentize %}
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      {% for serializer, method_data in resource_method.items %}
+        <li {% if forloop.first %}class="active"{% endif %}>
+          <a href="#{{ method }}_{{ serializer }}" data-toggle="pill">{{ serializer|upper }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="tab-content">
+      {% for serializer, method_data in resource_method.items %}
+        <div class="tab-pane{% if forloop.first %} active{% endif %}" id="{{ method }}_{{ serializer }}">
+          <h4>Request</h4>
+          <pre class="method-request-headers">{{ method_data.request_headers }}</pre>
+          {% if 'request_content' in method_data %}{% if method_data.request_content|length %}
+          <div class="method-request-content">
+            {% if method_data.request_content_type == 'multipart/form-data; boundary=BoUnDaRyStRiNg' %}
+              {{ method_data.request_content|pygmentize:'text'|safe }}
+            {% else %}
+              {{ method_data.request_content|pygmentize:serializer|safe }}
+            {% endif %}
+          </div>
+          {% endif %}{% endif %}
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">{{ method_data.response_headers }}</pre>
+          {% if 'response_content' in method_data %}{% if method_data.response_content|length %}
+          <div class="method-response-content">
+            {% if method_data.response_content_type == 'multipart/form-data; boundary=BoUnDaRyStRiNg' %}
+              {{ method_data.response_content|pygmentize:'text'|safe }}
+            {% else %}
+              {{ method_data.response_content|pygmentize:serializer|safe }}
+            {% endif %}
+          </div>
+          {% endif %}{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

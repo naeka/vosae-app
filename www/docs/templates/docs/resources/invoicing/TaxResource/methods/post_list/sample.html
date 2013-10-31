@@ -1,0 +1,129 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#post_list_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#post_list_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#post_list_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="post_list_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /tax/
+Content-Type: application/json</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;0.196&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TVA&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: application/json
+Location: /tax/5231cccf4ab63c53dc90056c/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;rate&quot;</span><span class="p">:</span> <span class="s2">&quot;0.196&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/tax/5231cccf4ab63c53dc90056c/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cccf4ab63c53dc90056c&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TVA&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="post_list_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /tax/
+Content-Type: application/xml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;rate&gt;</span>0.196<span class="nt">&lt;/rate&gt;</span>
+  <span class="nt">&lt;name&gt;</span>TVA<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: application/xml; charset=utf-8
+Location: /tax/5231cccf4ab63c53dc90056d/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ACTIVE<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;rate&gt;</span>0.196<span class="nt">&lt;/rate&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231cccf4ab63c53dc90056d<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;name&gt;</span>TVA<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/tax/5231cccf4ab63c53dc90056d/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="post_list_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">POST /tax/
+Content-Type: text/yaml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;TVA&#39;</span><span class="p-Indicator">,</span> <span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0.196&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">201 Created
+Content-Type: text/yaml; charset=utf-8
+Location: /tax/5231cccf4ab63c53dc90056e/</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p-Indicator">{</span><span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cccf4ab63c53dc90056e&#39;</span><span class="p-Indicator">,</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;TVA&#39;</span><span class="p-Indicator">,</span> <span class="nv">rate</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;0.196&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/tax/5231cccf4ab63c53dc90056e/&#39;</span><span class="p-Indicator">,</span> <span class="nv">status</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;ACTIVE&#39;</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

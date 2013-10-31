@@ -1,0 +1,391 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Vosae\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"PO-Revision-Date: 2013-10-21 11:54+0100\n"
+"Last-Translator: Léo S <leo@naeka.fr>\n"
+"Language-Team: Léo S. <leo@naeka.fr>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: __init__.py:20
+msgctxt "quotation state"
+msgid "Draft"
+msgstr "Brouillon"
+
+#: __init__.py:21
+msgctxt "quotation state"
+msgid "Awaiting approval"
+msgstr "En attente d'approbation"
+
+#: __init__.py:22
+msgctxt "quotation state"
+msgid "Approved"
+msgstr "Approuvé"
+
+#: __init__.py:23
+msgctxt "quotation state"
+msgid "Refused"
+msgstr "Refusé"
+
+#: __init__.py:24
+msgctxt "quotation state"
+msgid "Expired"
+msgstr "Expiré"
+
+#: __init__.py:25
+msgctxt "quotation state"
+msgid "Invoiced"
+msgstr "Facturé"
+
+#: __init__.py:29
+msgctxt "purchase order state"
+msgid "Draft"
+msgstr "Brouillon"
+
+#: __init__.py:30
+msgctxt "purchase order state"
+msgid "Awaiting approval"
+msgstr "En attente d'approbation"
+
+#: __init__.py:31
+msgctxt "purchase order state"
+msgid "Approved"
+msgstr "Approuvé"
+
+#: __init__.py:32
+msgctxt "purchase order state"
+msgid "Refused"
+msgstr "Refusé"
+
+#: __init__.py:33
+msgctxt "purchase order state"
+msgid "Invoiced"
+msgstr "Facturé"
+
+#: __init__.py:37
+msgctxt "delivery order state"
+msgid "Draft"
+msgstr "Brouillon"
+
+#: __init__.py:38
+msgctxt "delivery order state"
+msgid "Registered"
+msgstr "Enregistré"
+
+#: __init__.py:39
+msgctxt "delivery order state"
+msgid "Delivered"
+msgstr "Délivré"
+
+#: __init__.py:40
+msgctxt "delivery order state"
+msgid "Refused"
+msgstr "Refusé"
+
+#: __init__.py:41
+msgctxt "delivery order state"
+msgid "Invoiced"
+msgstr "Facturé"
+
+#: __init__.py:45
+msgctxt "invoice state"
+msgid "Draft"
+msgstr "Brouillon"
+
+#: __init__.py:46
+msgctxt "invoice state"
+msgid "Registered"
+msgstr "Enregistrée"
+
+#: __init__.py:47
+msgctxt "invoice state"
+msgid "Overdue"
+msgstr "En retard"
+
+#: __init__.py:48
+msgctxt "invoice state"
+msgid "Part paid"
+msgstr "Partiellement réglée"
+
+#: __init__.py:49
+msgctxt "invoice state"
+msgid "Paid"
+msgstr "Réglée"
+
+#: __init__.py:50
+msgctxt "invoice state"
+msgid "Cancelled"
+msgstr "Annulée"
+
+#: __init__.py:54
+msgctxt "credit note state"
+msgid "Registered"
+msgstr "Enregistré"
+
+#: __init__.py:55
+msgctxt "credit note state"
+msgid "Sent"
+msgstr "Envoyé"
+
+#: __init__.py:56
+msgctxt "credit note state"
+msgid "Paid"
+msgstr "Payé"
+
+#: __init__.py:98
+msgctxt "invoice taxes application"
+msgid "Exclusive"
+msgstr "Exclues"
+
+#: __init__.py:99
+msgctxt "invoice taxes application"
+msgid "Not applicable"
+msgstr "Non applicables"
+
+#: __init__.py:103
+msgctxt "invoice type"
+msgid "Payable invoice"
+msgstr "Facture à payer"
+
+#: __init__.py:104
+msgctxt "invoice type"
+msgid "Receivable invoice"
+msgstr "Facture à recevoir"
+
+#: __init__.py:108
+msgctxt "payment type"
+msgid "Cash"
+msgstr "Espèces"
+
+#: __init__.py:109
+msgctxt "payment type"
+msgid "Check"
+msgstr "Chèque"
+
+#: __init__.py:110
+msgctxt "payment type"
+msgid "Credit card"
+msgstr "Carte de crédit"
+
+#: __init__.py:111
+msgctxt "payment type"
+msgid "Bank transfer"
+msgstr "Virement bancaire"
+
+#: __init__.py:112
+msgctxt "payment type"
+msgid "Other"
+msgstr "Autre"
+
+#: __init__.py:116
+msgctxt "payment conditions"
+msgid "Cash"
+msgstr "Comptant"
+
+#: __init__.py:117
+msgctxt "payment conditions"
+msgid "30 days"
+msgstr "30 jours"
+
+#: __init__.py:118
+msgctxt "payment conditions"
+msgid "30 days end of month"
+msgstr "30 jours fin de mois"
+
+#: __init__.py:119
+msgctxt "payment conditions"
+msgid "30 days end of month, the 10th"
+msgstr "30 jours fin de mois, le 10"
+
+#: __init__.py:120
+msgctxt "payment conditions"
+msgid "45 days"
+msgstr "45 jours"
+
+#: __init__.py:121
+msgctxt "payment conditions"
+msgid "45 days end of month"
+msgstr "45 jours fin de mois"
+
+#: __init__.py:122
+msgctxt "payment conditions"
+msgid "45 days end of month, the 10th"
+msgstr "45 jours fin de mois, le 10"
+
+#: __init__.py:123
+msgctxt "payment conditions"
+msgid "60 days"
+msgstr "60 jours"
+
+#: __init__.py:124
+msgctxt "payment conditions"
+msgid "60 days end of month"
+msgstr "60 jours fin de mois"
+
+#: __init__.py:125
+msgctxt "payment conditions"
+msgid "60 days end of month, the 10th"
+msgstr "60 jours fin de mois, le 10"
+
+#: __init__.py:126
+msgctxt "payment conditions"
+msgid "Custom"
+msgstr "Personnalisées"
+
+#: __init__.py:130
+msgctxt "item type"
+msgid "Product"
+msgstr "Produit"
+
+#: __init__.py:131
+msgctxt "item type"
+msgid "Service"
+msgstr "Service"
+
+#: imex.py:46 models/quotation.py:293
+msgid "Quotations"
+msgstr "Devis"
+
+#: imex.py:56 models/invoice.py:318
+msgid "Invoices"
+msgstr "Factures"
+
+#: imex.py:66 models/credit_note.py:150
+msgid "Credit notes"
+msgstr "Avoirs"
+
+#: models/credit_note.py:24
+msgid "Credit note"
+msgstr "Avoir"
+
+#: models/credit_note.py:57 models/down_payment_invoice.py:54
+#, python-format
+msgid "%(percentage)s%% down-payment on quotation %(reference)s"
+msgstr "Acompte de %(percentage)s%% sur le devis %(reference)s"
+
+#: models/down_payment_invoice.py:22
+msgid "DOWN-PAYMENT"
+msgstr "ACOMPTE"
+
+#: models/invoice.py:27
+msgid "Invoice"
+msgstr "Facture"
+
+#: models/invoice.py:127
+msgctxt "invoice reference"
+msgid "not registered"
+msgstr "non enregistré"
+
+#: models/invoice_base.py:47
+msgctxt "invoicing sending vars"
+msgid "{Reference}"
+msgstr "{Reference}"
+
+#: models/invoice_base.py:48
+msgctxt "invoicing sending vars"
+msgid "{Signature}"
+msgstr "{Signature}"
+
+#: models/invoice_base.py:49
+msgctxt "invoicing sending vars"
+msgid "{Invoicing_Date}"
+msgstr "{Date_Facturation}"
+
+#: models/quotation.py:26
+msgid "Quotation"
+msgstr "Devis"
+
+#: models/embedded/invoice_history_entries.py:47
+msgid "Email"
+msgstr "E-mail"
+
+#: pdf/default.py:125
+msgid "Billing address"
+msgstr "Adresse de facturation"
+
+#: pdf/default.py:126
+msgid "Delivery address"
+msgstr "Adresse de livraison"
+
+#: pdf/default.py:177
+msgctxt "date"
+msgid "Undefined"
+msgstr "Non définie"
+
+#: pdf/default.py:185
+msgctxt "table-headers"
+msgid "Description"
+msgstr "Description"
+
+#: pdf/default.py:186
+msgctxt "table-headers"
+msgid "Qty"
+msgstr "Qté"
+
+#: pdf/default.py:187
+msgctxt "table-headers"
+msgid "Unit price (excl. tax)"
+msgstr "PU HT"
+
+#: pdf/default.py:188
+msgctxt "table-headers"
+msgid "Tax"
+msgstr "Taxe"
+
+#: pdf/default.py:189
+msgctxt "table-headers"
+msgid "Total (excl. tax)"
+msgstr "Total HT"
+
+#: pdf/default.py:204
+msgid "TOTAL (excl. tax)"
+msgstr "TOTAL HT"
+
+#: pdf/default.py:216
+msgid "TOTAL (incl. tax)"
+msgstr "TOTAL TTC"
+
+#: pdf/default.py:228
+#, python-format
+msgid "Valid until %(quotation_validity)s"
+msgstr "Devis valide jusqu'au %(quotation_validity)s"
+
+#: pdf/default.py:233
+#, python-format
+msgid "Payment conditions: %(custom_payment_conditions)s"
+msgstr "Conditions de règlement : %(custom_payment_conditions)s"
+
+#: pdf/default.py:237
+#, python-format
+msgid "Payment due date on %(due_date)s"
+msgstr "Échéance de paiement au %(due_date)s"
+
+#: pdf/default.py:242
+#, python-format
+msgid "Accepted payment methods: %(accepted_payment_methods)s"
+msgstr "Moyens de règlement acceptés : %(accepted_payment_methods)s"
+
+#: pdf/default.py:246
+#, python-format
+msgid "Late fee rate: %(late_fee_rate)s"
+msgstr "Taux des pénalités de retard : %(late_fee_rate)s"
+
+#: pdf/default.py:250
+msgid "Late fee at the legal rate"
+msgstr "Pénalités de retard au taux légal en vigueur"
+
+#: pdf/default.py:252
+#, python-format
+msgid "Refers to invoice %(invoice_reference)s"
+msgstr "Se réfère à la facture %(invoice_reference)s"

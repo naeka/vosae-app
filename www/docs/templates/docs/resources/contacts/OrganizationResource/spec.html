@@ -1,0 +1,193 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>addresses</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Contact's addresses list</td>
+    </tr>
+    
+    <tr>
+      <td>contacts</td>
+      <td>Related</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>List of the organization's contacts</td>
+    </tr>
+    
+    <tr>
+      <td>corporate_name</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Organization's name</td>
+    </tr>
+    
+    <tr>
+      <td>creator</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Contacts's creator</td>
+    </tr>
+    
+    <tr>
+      <td>emails</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Contact's email address (max length = 128)</td>
+    </tr>
+    
+    <tr>
+      <td>gravatar_mail</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Contact's email used for displaying gravatar pictures</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>note</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>A note for a contact (max length = 2048)</td>
+    </tr>
+    
+    <tr>
+      <td>phones</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Contact's phone (max length = 16)</td>
+    </tr>
+    
+    <tr>
+      <td>photo</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>If photo_source is LOCAL, use this file as photo.<br />Photo URI should always be used for display</td>
+    </tr>
+    
+    <tr>
+      <td>photo_source</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Source of the photo. If not provided, a default photo will be used</td>
+    </tr>
+    
+    <tr>
+      <td>photo_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Contact's photo URI</td>
+    </tr>
+    
+    <tr>
+      <td>private</td>
+      <td>Boolean</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>If the contact/organization is private, it is only viewable by its creator.<br />Private contacts/organizations can't be used with shared documents (such as quotations or invoices).<br />The default is "true"</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>status</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>The current status of the resource.<br />Depending on the resource type, it can be "ACTIVE", "DELETED", "DISABLED", [...].<br />Only included on detail requests</td>
+    </tr>
+    
+    <tr>
+      <td>tags</td>
+      <td>List</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>List of the organization's tags</td>
+    </tr>
+    
+  </tbody>
+</table>
+

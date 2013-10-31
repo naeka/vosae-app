@@ -1,0 +1,118 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#get_list_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#get_list_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#get_list_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="get_list_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /search/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;total_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+        <span class="nt">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> 
+        <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;objects&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">0.31819803</span><span class="p">,</span> 
+            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;nobody@vosae.com&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231cbd64ab63c53dc900474&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_list_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /search/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;response&gt;</span>
+  <span class="nt">&lt;objects</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;object</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;resource_type&gt;</span>user<span class="nt">&lt;/resource_type&gt;</span>
+      <span class="nt">&lt;score</span> <span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="nt">&gt;</span>0.31819803<span class="nt">&lt;/score&gt;</span>
+      <span class="nt">&lt;email&gt;</span>nobody@vosae.com<span class="nt">&lt;/email&gt;</span>
+      <span class="nt">&lt;full_name/&gt;</span>
+      <span class="nt">&lt;id&gt;</span>5231cbd64ab63c53dc900474<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+  <span class="nt">&lt;/objects&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;next</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;total_count</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/total_count&gt;</span>
+    <span class="nt">&lt;previous</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;limit</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/limit&gt;</span>
+    <span class="nt">&lt;offset</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/offset&gt;</span>
+  <span class="nt">&lt;/meta&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="get_list_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">GET /search/</pre>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">200 OK
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">meta</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">20</span><span class="p-Indicator">,</span> <span class="nv">next</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">offset</span><span class="p-Indicator">:</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">previous</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">total_count</span><span class="p-Indicator">:</span> <span class="nv">1</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">objects</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="p-Indicator">{</span><span class="kt">!!python/unicode</span> <span class="s">&#39;email&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;nobody@vosae.com&#39;</span><span class="p-Indicator">,</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;full_name&#39;</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231cbd64ab63c53dc900474&#39;</span><span class="p-Indicator">,</span> <span class="nv">resource_type</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;user&#39;</span><span class="p-Indicator">,</span>
+<span class="nv">score</span><span class="p-Indicator">:</span> <span class="nv">0.31819803</span><span class="p-Indicator">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

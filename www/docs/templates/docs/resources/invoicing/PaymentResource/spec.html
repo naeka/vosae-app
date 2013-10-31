@@ -1,0 +1,127 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>amount</td>
+      <td>Decimal</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Payment's amount</td>
+    </tr>
+    
+    <tr>
+      <td>currency</td>
+      <td>Reference</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Payment's currency</td>
+    </tr>
+    
+    <tr>
+      <td>date</td>
+      <td>Date</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Payment's reception date</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>issued_at</td>
+      <td>Datetime</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Payment's creation datetime on Vosae</td>
+    </tr>
+    
+    <tr>
+      <td>issuer</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>The used which have registered the payment on Vosae</td>
+    </tr>
+    
+    <tr>
+      <td>note</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Payment's note</td>
+    </tr>
+    
+    <tr>
+      <td>resource_type</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Type of the resource. Used with polymorphic resources. Refers to the "resource_types" list to provide an expected type</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>type</td>
+      <td>String</td>
+      <td>
+        
+        
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Payment's type.<br />One of: <ul><li class="text-info">CASH</li> <li class="text-info">CHECK</li> <li class="text-info">CREDIT_CARD</li> <li class="text-info">TRANSFER</li> <li class="text-info">OTHER</li></ul></td>
+    </tr>
+    
+  </tbody>
+</table>
+

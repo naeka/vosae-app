@@ -1,0 +1,82 @@
+// ===================
+// = Errors css file =
+// ===================
+
+@import "bootstrap"
+
+
+// ==========
+// = Global =
+// ==========
+
+html, body, #wrappper
+  height: 100%
+
+body 
+  // Font smoothing
+  font-family: 'bariol'
+  -webkit-text-rendering: optimizeLegibility
+  -moz-text-rendering: optimizeLegibility
+  -ms-text-rendering: optimizeLegibility
+  -o-text-rendering: optimizeLegibility
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-font-smoothing: antialiased
+  -ms-font-smoothing: antialiased
+  -o-font-smoothing: antialiased
+  font-smoothing: antialiased
+  background: #EEE
+
+#wrapper
+  height: auto
+  min-height: 100%
+  overflow-x: hidden 
+
+
+// ===============
+// = Page errors =
+// ===============
+
+body.forbiden, body.not-found, body.internal-error
+  background:
+    image: image-url("background-openspace.jpg")
+    repeat: no-repeat
+    position: top center
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+  
+  #wrapper
+    height: auto
+    min-height: auto
+    width: 100%
+    text-align: center
+  h1
+    font-weight: bold
+    font-size: 5.3em
+    padding-top: 1.8em
+    line-height: 1.1
+    text-rendering: optimizelegibility
+    vertical-align: middle
+
+    // dirty
+    img
+      display: inline-block
+      vertical-align: middle
+      margin-top: -12px
+      margin-right: 10px
+
+    a
+      text-decoration: none
+      color: inherit
+
+  h2
+    font-weight: bold
+    font-size: 2.3em
+  p
+    margin-top: 0.5em
+    font-size: 1.3em
+    color: #000
+  a
+    margin-top: 3em

@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Search | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Vosae search</h1>
+
+
+{% include "docs/resources/core/VosaeSearchResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/core/VosaeSearchResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/core/VosaeSearchResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

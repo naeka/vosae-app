@@ -1,0 +1,227 @@
+
+<div class="method-sample">
+  <div class="tabbable">
+    <ul class="nav nav-pills">
+      
+        <li class="active">
+          <a href="#put_detail_json" data-toggle="pill">JSON</a>
+        </li>
+      
+        <li >
+          <a href="#put_detail_xml" data-toggle="pill">XML</a>
+        </li>
+      
+        <li >
+          <a href="#put_detail_yaml" data-toggle="pill">YAML</a>
+        </li>
+      
+    </ul>
+    <div class="tab-content">
+      
+        <div class="tab-pane active" id="put_detail_json">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /vosae_event/5231ccd44ab63c53dc900579/
+Content-Type: application/json</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-01-01&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;My event&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;recurrence&quot;</span><span class="p">:</span> <span class="s2">&quot;RRULE:FREQ=YEARLY;COUNT=3&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-01-01&quot;</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;calendar&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/vosae_calendar/5231ccd44ab63c53dc900577/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">202 Accepted
+Content-Type: application/json</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;attendees&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;original_start&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-01-01&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;creator&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbd64ab63c53dc900474/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:16:52.317000+00:00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;reminders&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;use_default&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+        <span class="nt">&quot;overrides&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;updated_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-09-12T14:16:53.432324+00:00&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;My event&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;recurrence&quot;</span><span class="p">:</span> <span class="s2">&quot;RRULE:FREQ=YEARLY;COUNT=3&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-01-01&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;transparency&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2013-01-01&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="nt">&quot;datetime&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span> 
+    <span class="nt">&quot;calendar&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/vosae_calendar/5231ccd44ab63c53dc900577/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;calendar_list&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/calendar_list/5231ccd44ab63c53dc900578/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;5231ccd44ab63c53dc900579&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;organizer&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/user/5231cbd64ab63c53dc900474/&quot;</span><span class="p">,</span> 
+    <span class="nt">&quot;resource_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/vosae_event/5231ccd44ab63c53dc900579/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="put_detail_xml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /vosae_event/5231ccd44ab63c53dc90057a/
+Content-Type: application/xml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;recurrence&gt;</span>RRULE:FREQ=YEARLY;COUNT=3<span class="nt">&lt;/recurrence&gt;</span>
+  <span class="nt">&lt;start</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date&gt;</span>2013-01-01<span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;/start&gt;</span>
+  <span class="nt">&lt;end</span> <span class="na">type=</span><span class="s">&quot;hash&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;date&gt;</span>2013-01-01<span class="nt">&lt;/date&gt;</span>
+  <span class="nt">&lt;/end&gt;</span>
+  <span class="nt">&lt;color&gt;</span>#ff0000<span class="nt">&lt;/color&gt;</span>
+  <span class="nt">&lt;calendar&gt;</span>/api/v1/vosae_calendar/5231ccd44ab63c53dc900577/<span class="nt">&lt;/calendar&gt;</span>
+  <span class="nt">&lt;summary&gt;</span>My event<span class="nt">&lt;/summary&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">202 Accepted
+Content-Type: application/xml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="nt">&lt;object&gt;</span>
+  <span class="nt">&lt;status</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;end&gt;</span>
+    <span class="nt">&lt;date&gt;</span>2013-01-01<span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;timezone</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;datetime</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/end&gt;</span>
+  <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;creator&gt;</span>/api/v1/user/5231cbd64ab63c53dc900474/<span class="nt">&lt;/creator&gt;</span>
+  <span class="nt">&lt;color&gt;</span>#ff0000<span class="nt">&lt;/color&gt;</span>
+  <span class="nt">&lt;created_at&gt;</span>2013-09-12T14:16:52.401000+00:00<span class="nt">&lt;/created_at&gt;</span>
+  <span class="nt">&lt;reminders&gt;</span>
+    <span class="nt">&lt;use_default</span> <span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/use_default&gt;</span>
+    <span class="nt">&lt;overrides</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/reminders&gt;</span>
+  <span class="nt">&lt;updated_at&gt;</span>2013-09-12T14:16:53.563079+00:00<span class="nt">&lt;/updated_at&gt;</span>
+  <span class="nt">&lt;summary&gt;</span>My event<span class="nt">&lt;/summary&gt;</span>
+  <span class="nt">&lt;recurrence&gt;</span>RRULE:FREQ=YEARLY;COUNT=3<span class="nt">&lt;/recurrence&gt;</span>
+  <span class="nt">&lt;start&gt;</span>
+    <span class="nt">&lt;date&gt;</span>2013-01-01<span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;timezone</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;datetime</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/start&gt;</span>
+  <span class="nt">&lt;location</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;transparency</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;id&gt;</span>5231ccd44ab63c53dc90057a<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;attendees</span> <span class="na">type=</span><span class="s">&quot;list&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;calendar&gt;</span>/api/v1/vosae_calendar/5231ccd44ab63c53dc900577/<span class="nt">&lt;/calendar&gt;</span>
+  <span class="nt">&lt;calendar_list&gt;</span>/api/v1/calendar_list/5231ccd44ab63c53dc900578/<span class="nt">&lt;/calendar_list&gt;</span>
+  <span class="nt">&lt;original_start&gt;</span>
+    <span class="nt">&lt;date&gt;</span>2013-01-01<span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;timezone</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;datetime</span> <span class="na">type=</span><span class="s">&quot;null&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/original_start&gt;</span>
+  <span class="nt">&lt;organizer&gt;</span>/api/v1/user/5231cbd64ab63c53dc900474/<span class="nt">&lt;/organizer&gt;</span>
+  <span class="nt">&lt;resource_uri&gt;</span>/api/v1/vosae_event/5231ccd44ab63c53dc90057a/<span class="nt">&lt;/resource_uri&gt;</span>
+<span class="nt">&lt;/object&gt;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+        <div class="tab-pane" id="put_detail_yaml">
+          <h4>Request</h4>
+          <pre class="method-request-headers">PUT /vosae_event/5231ccd44ab63c53dc90057b/
+Content-Type: text/yaml</pre>
+          
+          <div class="method-request-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">calendar</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/vosae_calendar/5231ccd44ab63c53dc900577/&#39;</span>
+<span class="l-Scalar-Plain">color</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;#ff0000&#39;</span>
+<span class="l-Scalar-Plain">end</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">date</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;2013-01-01&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">recurrence</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;RRULE:FREQ=YEARLY;COUNT=3&#39;</span>
+<span class="l-Scalar-Plain">start</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">date</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;2013-01-01&#39;</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">summary</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">event&#39;</span>
+</pre></div>
+
+            
+          </div>
+          
+          
+          <h4>Response</h4>
+          <pre class="method-response-headers">202 Accepted
+Content-Type: text/yaml; charset=utf-8</pre>
+          
+          <div class="method-response-content">
+            
+              <div class="source"><pre><span class="l-Scalar-Plain">attendees</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">calendar</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/vosae_calendar/5231ccd44ab63c53dc900577/&#39;</span>
+<span class="l-Scalar-Plain">calendar_list</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/calendar_list/5231ccd44ab63c53dc900578/&#39;</span>
+<span class="l-Scalar-Plain">color</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;#ff0000&#39;</span>
+<span class="l-Scalar-Plain">created_at</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:16:52.502000+00:00&#39;</span>
+<span class="l-Scalar-Plain">creator</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbd64ab63c53dc900474/&#39;</span>
+<span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">end</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-01-01&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">timezone</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;5231ccd44ab63c53dc90057b&#39;</span>
+<span class="l-Scalar-Plain">location</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">organizer</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/user/5231cbd64ab63c53dc900474/&#39;</span>
+<span class="l-Scalar-Plain">original_start</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-01-01&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">timezone</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">recurrence</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;RRULE:FREQ=YEARLY;COUNT=3&#39;</span>
+<span class="l-Scalar-Plain">reminders</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">overrides</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="l-Scalar-Plain">use_default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l-Scalar-Plain">resource_uri</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/api/v1/vosae_event/5231ccd44ab63c53dc90057b/&#39;</span>
+<span class="l-Scalar-Plain">start</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">date</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-01-01&#39;</span><span class="p-Indicator">,</span> <span class="nv">datetime</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">,</span> <span class="nv">timezone</span><span class="p-Indicator">:</span> <span class="nv">null</span><span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">status</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">summary</span><span class="p-Indicator">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;My</span><span class="nv"> </span><span class="s">event&#39;</span>
+<span class="l-Scalar-Plain">transparency</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">updated_at</span><span class="p-Indicator">:</span> <span class="s">&#39;2013-09-12T14:16:53.671316+00:00&#39;</span>
+</pre></div>
+
+            
+          </div>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>

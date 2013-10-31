@@ -1,0 +1,113 @@
+@import "compass"
+@import "partials/conf"
+@import "partials/typo"
+
+.page-doc
+  background: #FFF
+
+  .container-fluid
+    padding: 30px
+
+    #vosae-api-home
+      color: #333
+      font-size: 18px
+      display: block
+      margin-bottom: 24px
+
+      img
+        height: 36px
+        margin-right: 4px
+
+    .well
+      padding: 0
+
+    .nav-list
+      .accordion-group
+        border: none
+        border-radius: 0
+        margin: 0 -15px
+
+        & + .accordion-group
+          border-top: 1px solid $darkgrey
+
+        &:first-child
+          .accordion-heading
+            a
+              @include border-radius(3px 3px 0 0)
+
+        &:last-child
+          .accordion-heading
+            a:not(.collapsed)
+              @include border-radius(0 0 3px 3px)
+
+        .accordion-heading
+          a
+            color: $green
+            font-weight: bold
+            background: $white
+
+        .accordion-body
+          .resources
+            margin: 0 -15px
+            padding: 0
+
+            li
+              &.active
+                a
+                  color: $white
+                  background: $orange
+
+              &.endpoint, &.embedded
+                font-weight: bold
+                padding: 0 15px 4px 15px
+              a
+                display: list-item
+                margin-left: 0
+                margin-right: 0
+                max-width: 100%
+                overflow: hidden
+                text-overflow: ellipsis
+                color: $orange
+              i
+                padding-right: 6px
+                font-size: 13px
+
+    h1
+      border-bottom: 1px solid $darkgrey
+      margin: 0 0 20px
+      padding: 0 0 20px
+
+    h3
+      margin: 0 0 5px
+
+    pre
+      font-size: 12px
+
+    .resource
+      margin-bottom: 40px
+
+    .methods
+      .method-description
+        margin-top: 60px
+
+    table.endpoint
+      width: 100%
+
+      tr
+        td
+          line-height: 24px
+
+        td:first-child
+          white-space: nowrap
+          padding-right: 20px
+
+        td:last-child
+          width: 100%
+
+    .spec
+      width: 100%
+    
+    .source
+      pre
+        overflow: auto
+        max-height: 300px

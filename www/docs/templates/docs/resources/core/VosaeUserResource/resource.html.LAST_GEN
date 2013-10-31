@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}User | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Vosae user</h1>
+
+
+{% include "docs/resources/core/VosaeUserResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/core/VosaeUserResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/core/VosaeUserResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

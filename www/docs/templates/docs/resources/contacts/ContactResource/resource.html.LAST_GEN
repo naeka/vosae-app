@@ -1,0 +1,27 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Contact | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Contact</h1>
+
+
+{% include "docs/resources/contacts/ContactResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/contacts/ContactResource/spec.html" %}
+</div>
+
+
+
+<div class="methods">
+  {% include "docs/resources/contacts/ContactResource/methods/methods.html" %}
+</div>
+
+
+
+{%  endblock resource %}

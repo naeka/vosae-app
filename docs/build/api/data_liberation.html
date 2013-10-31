@@ -1,0 +1,158 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data liberation &mdash; Vosae 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Vosae 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Invoicing" href="invoicing.html" />
+    <link rel="prev" title="Contacts" href="contacts.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="invoicing.html" title="Invoicing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="data-liberation">
+<h1>Data liberation<a class="headerlink" href="#data-liberation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="main-resources">
+<h2>Main resources<a class="headerlink" href="#main-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="export">
+<h3>Export<a class="headerlink" href="#export" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="data_liberation.models.Export">
+<em class="property">class </em><tt class="descclassname">data_liberation.models.</tt><tt class="descname">Export</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#data_liberation.models.Export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports allows to asynchronously generate a zipped file of selected documents types in a daterange.  
+After creation, the zipfile becomes available and an e-mail is sent to the issuer.</p>
+<dl class="classmethod">
+<dt id="data_liberation.models.Export.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#data_liberation.models.Export.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Launch the async zipfile generation task if created</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="data_liberation.models.Export.pre_delete">
+<em class="property">classmethod </em><tt class="descname">pre_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#data_liberation.models.Export.pre_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre delete hook handler</p>
+<ul class="simple">
+<li>Delete of the associated zipfile.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="data_liberation.api.resources.ExportResource">
+<em class="property">class </em><tt class="descclassname">data_liberation.api.resources.</tt><tt class="descname">ExportResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#data_liberation.api.resources.ExportResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Data liberation</a><ul>
+<li><a class="reference internal" href="#main-resources">Main resources</a><ul>
+<li><a class="reference internal" href="#export">Export</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contacts.html"
+                        title="previous chapter">Contacts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="invoicing.html"
+                        title="next chapter">Invoicing</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/data_liberation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="invoicing.html" title="Invoicing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="contacts.html" title="Contacts"
+             >previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Léo Stevenin, Naeka.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

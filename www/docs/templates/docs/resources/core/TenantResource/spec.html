@@ -1,0 +1,171 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>billing_address</td>
+      <td>Embedded</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Billing address of the organization</td>
+    </tr>
+    
+    <tr>
+      <td>email</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Email of the organization (max_length = 256)</td>
+    </tr>
+    
+    <tr>
+      <td>fax</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Fax of the organization (max length = 16)</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>img_logo</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Organization's logo as a regular bitmap format.<br />If an SVG logo is provided, a quality raster equivalent is automatically processed</td>
+    </tr>
+    
+    <tr>
+      <td>name</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Name of the organization (max length = 128)</td>
+    </tr>
+    
+    <tr>
+      <td>phone</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Phone of the organization (max length = 16)</td>
+    </tr>
+    
+    <tr>
+      <td>postal_address</td>
+      <td>Embedded</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Postal/delivery address of the organization</td>
+    </tr>
+    
+    <tr>
+      <td>registration_info</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Registration infos of the organization.<br />Registration infos are polymorphic and based upon the registration country of the organization</td>
+    </tr>
+    
+    <tr>
+      <td>report_settings</td>
+      <td>Embedded</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Vosae allows some customization for your reports. Different settings can be set here</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>slug</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Slug of the organization (max length = 64)</td>
+    </tr>
+    
+    <tr>
+      <td>svg_logo</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Organization's logo based on the open SVG vector format.<br />SVG format is preferable since it is better suited to various screen definitions and fits better in vector documents such as PDF</td>
+    </tr>
+    
+    <tr>
+      <td>terms</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Your terms and conditions. We recommand the use of the common used PDF format</td>
+    </tr>
+    
+  </tbody>
+</table>
+

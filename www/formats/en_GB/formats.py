@@ -1,0 +1,18 @@
+# Numeric / currencies
+MON_DECIMAL_POINT = '.'
+MON_THOUSANDS_SEP = ','
+N_CS_PRECEDES = 1
+P_CS_PRECEDES = 1
+N_SEP_BY_SPACE = 0
+P_SEP_BY_SPACE = 0
+N_SIGN_POSN = 1
+P_SIGN_POSN = 1
+NEGATIVE_SIGN = '-'
+POSITIVE_SIGN = ''
+
+# Dates
+DATEPICKER_FORMAT = 'Y-m-d'
+EVENT_DATE_FORMAT = 'l, j F Y'              # Monday, 25 October 2006
+EVENT_DATETIME_FORMAT = 'l, j F Y, P'       # Monday, 25 October 2006, 2:30pm
+EVENT_SHORT_DATE_FORMAT = 'j N Y'           # 25 Oct. 2006
+EVENT_SHORT_DATETIME_FORMAT = 'j N Y, P'    # 25 Oct. 2006, 2:30pm

@@ -1,0 +1,28 @@
+{% if ordered_fields %}
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for field, field_meta in ordered_fields.items %}
+    <tr>
+      <td>{{ field }}</td>
+      <td>{{ field_meta.type|capfirst }}</td>
+      <td>
+        {% if field_meta.readonly %}<span class="label label-important">Readonly</span>{% endif%}
+        {% if field_meta.nullable %}<span class="label label-warning">Nullable</span>{% endif%}
+        {% if field_meta.blank %}<span class="label label-info">Blankable</span>{% endif%}
+      </td>
+      <td>{{ field_meta.help_text|safe|linebreaksbr }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}

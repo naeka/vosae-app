@@ -1,0 +1,63 @@
+<div class="resource">
+  <h3>General informations</h3>
+
+  <table class="endpoint table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <td>Base URI</td>
+        <td><code>/{{ resource_name }}/</code></td>
+      </tr>
+      <tr>
+        <td>Allowed list methods</td>
+        <td>
+          {% for m in resource_meta.allowed_list_http_methods %}
+            {% if m == 'get' %}
+              <div class="label label-success">
+            {% elif m == 'post' %}
+              <div class="label label-warning">
+            {% elif m = 'put' %}
+              <div class="label label-info">
+            {% elif m == 'delete' %}
+              <div class="label label-important">
+            {% endif %}
+                {{ m|upper }}
+              </div>
+          {% endfor %}
+        </td>
+      </tr>
+      <tr>
+        <td>Allowed detail methods</td>
+        <td>
+          {% for m in resource_meta.allowed_detail_http_methods %}
+            {% if m == 'get' %}
+              <div class="label label-success">
+            {% elif m == 'post' %}
+              <div class="label label-warning">
+            {% elif m = 'put' %}
+              <div class="label label-info">
+            {% elif m == 'delete' %}
+              <div class="label label-important">
+            {% endif %}
+                {{ m|upper }}
+              </div>
+          {% endfor %}
+        </td>
+      </tr>
+      {% if resource_meta.filtering %}
+      <tr>
+        <td>Filtering</td>
+        <td>
+          <table class="table table-bordered table-striped">
+            {% for field_name, filters in resource_meta.filtering.items %}
+            <tr>
+              <td>{{ field_name }}</td>
+              <td>{{ filters|join:", " }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>

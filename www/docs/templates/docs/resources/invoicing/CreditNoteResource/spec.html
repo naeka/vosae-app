@@ -1,0 +1,193 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>account_type</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Account type.<br />One of: <ul><li class="text-info">PAYABLE</li> <li class="text-info">RECEIVABLE</li></ul></td>
+    </tr>
+    
+    <tr>
+      <td>amount</td>
+      <td>Decimal</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Total amount minus down-payment invoices amounts (ie. expected amount to pay)</td>
+    </tr>
+    
+    <tr>
+      <td>attachments</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Attachments related to the quotation/invoice/credit note</td>
+    </tr>
+    
+    <tr>
+      <td>contact</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Billed contact</td>
+    </tr>
+    
+    <tr>
+      <td>current_revision</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>The current quotation/invoice/credit note revision</td>
+    </tr>
+    
+    <tr>
+      <td>history</td>
+      <td>Related</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>All history actions</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>issuer</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>User in charge of the quotation/invoice/credit note</td>
+    </tr>
+    
+    <tr>
+      <td>notes</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Notes related to the quotation/invoice/credit note</td>
+    </tr>
+    
+    <tr>
+      <td>organization</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Billed organization</td>
+    </tr>
+    
+    <tr>
+      <td>reference</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Reference of the quotation/invoice/credit note</td>
+    </tr>
+    
+    <tr>
+      <td>related_invoice</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Credit note's related invoice</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+    <tr>
+      <td>revisions</td>
+      <td>Related</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>All past quotation/invoice/credit note revisions</td>
+    </tr>
+    
+    <tr>
+      <td>state</td>
+      <td>String</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Credit note state.<br />One of: <ul><li class="text-info">REGISTERED</li> <li class="text-info">SENT</li> <li class="text-info">PAID</li></ul></td>
+    </tr>
+    
+    <tr>
+      <td>total</td>
+      <td>Decimal</td>
+      <td>
+        <span class="label label-important">Readonly</span>
+        
+        
+      </td>
+      <td>Total amount</td>
+    </tr>
+    
+  </tbody>
+</table>
+

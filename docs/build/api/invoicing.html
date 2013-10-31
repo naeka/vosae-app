@@ -1,0 +1,1206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Invoicing &mdash; Vosae 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Vosae 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Organizer" href="organizer.html" />
+    <link rel="prev" title="Data liberation" href="data_liberation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="organizer.html" title="Organizer"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="data_liberation.html" title="Data liberation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="invoicing">
+<h1>Invoicing<a class="headerlink" href="#invoicing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="embedded-resources">
+<h2>Embedded resources<a class="headerlink" href="#embedded-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="invoicerevision">
+<h3>InvoiceRevision<a class="headerlink" href="#invoicerevision" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.embedded.InvoiceRevision">
+<em class="property">class </em><tt class="descclassname">invoicing.models.embedded.</tt><tt class="descname">InvoiceRevision</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.InvoiceRevision" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <tt class="xref py py-class docutils literal"><span class="pre">InvoiceRevision</span></tt> object is the state of the invoice
+at a specified time.</p>
+<p>When an invoice is updated, a revision is automatically created.</p>
+<dl class="method">
+<dt id="invoicing.models.embedded.InvoiceRevision.duplicate">
+<tt class="descname">duplicate</tt><big>(</big><em>issuer=None</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.InvoiceRevision.duplicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the duplicate of the current revision with generated revision
+unique parameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.embedded.InvoiceRevision.get_customer_display">
+<tt class="descname">get_customer_display</tt><big>(</big><em>only_company=False</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.InvoiceRevision.get_customer_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the customer&#8217;s name according to this scheme:</p>
+<ul class="simple">
+<li>Organization (Contact), <em>if either organization and contact are supplied</em></li>
+<li>Organization, <em>if only organization is supplied</em></li>
+<li>Contact, <em>if only contact is supplied</em></li>
+<li>None, <em>if neither organization nor contact are supplied</em></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>only_company</strong> &#8211; forces to only display the company in the first case</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.embedded.InvoiceRevisionResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.embedded.</tt><tt class="descname">InvoiceRevisionResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.InvoiceRevisionResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.embedded.InvoiceRevisionResource.hydrate">
+<tt class="descname">hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.InvoiceRevisionResource.hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set issue data and issuer on POST, extracted from request</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="invoiceitem">
+<h3>InvoiceItem<a class="headerlink" href="#invoiceitem" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.embedded.InvoiceItem">
+<em class="property">class </em><tt class="descclassname">invoicing.models.embedded.</tt><tt class="descname">InvoiceItem</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.InvoiceItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt> is an <a class="reference internal" href="#invoicing.models.Item" title="invoicing.models.Item"><tt class="xref py py-class docutils literal"><span class="pre">Item</span></tt></a> embedded
+in the <tt class="xref py py-class docutils literal"><span class="pre">InvoiceRevision</span></tt> items list.</p>
+<p>It corresponds to the line of an invoice.</p>
+<dl class="attribute">
+<dt id="invoicing.models.embedded.InvoiceItem.total_price">
+<tt class="descname">total_price</tt><a class="headerlink" href="#invoicing.models.embedded.InvoiceItem.total_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total price for this item, considering the quantity.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.embedded.InvoiceItemResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.embedded.</tt><tt class="descname">InvoiceItemResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.InvoiceItemResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="invoicenote">
+<h3>InvoiceNote<a class="headerlink" href="#invoicenote" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.embedded.InvoiceNote">
+<em class="property">class </em><tt class="descclassname">invoicing.models.embedded.</tt><tt class="descname">InvoiceNote</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.InvoiceNote" title="Permalink to this definition">¶</a></dt>
+<dd><p>A note associated to an <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.embedded.InvoiceNoteResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.embedded.</tt><tt class="descname">InvoiceNoteResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.InvoiceNoteResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.embedded.InvoiceNoteResource.full_hydrate">
+<tt class="descname">full_hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.InvoiceNoteResource.full_hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set issuer on POST, extracted from request</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="snapshotcurrency">
+<h3>SnapshotCurrency<a class="headerlink" href="#snapshotcurrency" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.embedded.SnapshotCurrency">
+<em class="property">class </em><tt class="descclassname">invoicing.models.embedded.</tt><tt class="descname">SnapshotCurrency</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.SnapshotCurrency" title="Permalink to this definition">¶</a></dt>
+<dd><p>A time-freezed <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a></p>
+<dl class="attribute">
+<dt id="invoicing.models.embedded.SnapshotCurrency.display_symbol">
+<tt class="descname">display_symbol</tt><a class="headerlink" href="#invoicing.models.embedded.SnapshotCurrency.display_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <em>display symbol</em> associated to the currency (e.g. &#8216;€&#8217;, &#8216;$&#8217;, &#8216;£&#8217;).</p>
+<p>The <em>symbol</em> attribute is in the iso4217 format (e.g. &#8216;EUR&#8217;, &#8216;USD&#8217;, &#8216;GBP&#8217;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.embedded.SnapshotCurrency.from_currency">
+<tt class="descname">from_currency</tt><big>(</big><em>currency_from</em>, <em>amount</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.SnapshotCurrency.from_currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a given amount from a source currency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>currency_from</strong> &#8211; iso4217 representation of the source currency</li>
+<li><strong>amount</strong> &#8211; int/float/decimal value to be converted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.embedded.SnapshotCurrency.rate">
+<tt class="descname">rate</tt><big>(</big><em>symbol</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.SnapshotCurrency.rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the rate applied to a specific currency</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> &#8211; iso4217 representation of the target currency</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.embedded.SnapshotCurrency.refresh_rates">
+<tt class="descname">refresh_rates</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.embedded.SnapshotCurrency.refresh_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh rates of the <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a> object.</p>
+<p><em>Must only be used on embedded :class:`~invoicing.models.Currency` objects</em></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.embedded.SnapshotCurrency.to_currency">
+<tt class="descname">to_currency</tt><big>(</big><em>currency_to</em>, <em>amount</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.SnapshotCurrency.to_currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a given amount to a targetted currency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>currency_to</strong> &#8211; iso4217 representation of the target currency</li>
+<li><strong>amount</strong> &#8211; int/float/decimal value to be converted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.embedded.SnapshotCurrencyResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.embedded.</tt><tt class="descname">SnapshotCurrencyResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.SnapshotCurrencyResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.embedded.SnapshotCurrencyResource.hydrate">
+<tt class="descname">hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.SnapshotCurrencyResource.hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>If an <cite>id</cite> is present in serialized data (data comes from a Currency and not a SnapshotCurrency),
+the currency is fetch and exchange rates are updated based on their current rates.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="exchangerate">
+<h3>ExchangeRate<a class="headerlink" href="#exchangerate" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.embedded.ExchangeRate">
+<em class="property">class </em><tt class="descclassname">invoicing.models.embedded.</tt><tt class="descname">ExchangeRate</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.embedded.ExchangeRate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exchange rates are included in every <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a> objects.</p>
+<p>They represent the rate between two currencies at a specific time.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.embedded.ExchangeRateResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.embedded.</tt><tt class="descname">ExchangeRateResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.embedded.ExchangeRateResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="main-resources">
+<h2>Main resources<a class="headerlink" href="#main-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="invoicebase">
+<h3>InvoiceBase<a class="headerlink" href="#invoicebase" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.InvoiceBase">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">InvoiceBase</tt><big>(</big><em>full_init=True</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all quotations and invoices (either payable or receivable).</p>
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.add_revision">
+<tt class="descname">add_revision</tt><big>(</big><em>revision=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.add_revision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">InvoiceRevision</span></tt>.</p>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">InvoiceRevision</span></tt> can be created with defaults
+by passing arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.delete">
+<tt class="descname">delete</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> can only be deleted according to some rules.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.duplicate_revision">
+<tt class="descname">duplicate_revision</tt><big>(</big><em>issuer=None</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.duplicate_revision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate a <tt class="xref py py-class docutils literal"><span class="pre">InvoiceRevision</span></tt>.</p>
+<p>The default behavior to keep an history of all modifications on the
+<a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.InvoiceBase.filename">
+<tt class="descname">filename</tt><a class="headerlink" href="#invoicing.models.InvoiceBase.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a filename based on invoice base type and reference</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.gen_pdf">
+<tt class="descname">gen_pdf</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.gen_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process PDF generation based on InvoiceBaseReport</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.get_pdf">
+<tt class="descname">get_pdf</tt><big>(</big><em>issuer=None</em>, <em>language=None</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.get_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the cached PDF or generate and cache it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_cancelable">
+<tt class="descname">is_cancelable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_cancelable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> could be canceled.  
+Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_created">
+<tt class="descname">is_created</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_created" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is already saved
+(e.g. exists in the database).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_credit_note">
+<tt class="descname">is_credit_note</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_credit_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_deletable">
+<tt class="descname">is_deletable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_deletable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> could be deleted.  
+Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_down_payment_invoice">
+<tt class="descname">is_down_payment_invoice</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_down_payment_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_invoice">
+<tt class="descname">is_invoice</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_invoice_instance">
+<tt class="descname">is_invoice_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_invoice_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_issuable">
+<tt class="descname">is_issuable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_issuable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> could be sent.  
+Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_modifiable">
+<tt class="descname">is_modifiable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_modifiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> could be modified.  
+Always True in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_quotation">
+<tt class="descname">is_quotation</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_quotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always False in the base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.is_quotation_instance">
+<tt class="descname">is_quotation_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.is_quotation_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always False in the base class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.InvoiceBase.keywords">
+<tt class="descname">keywords</tt><a class="headerlink" href="#invoicing.models.InvoiceBase.keywords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genere a keywords list for the PDF headers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.manage_amounts">
+<tt class="descname">manage_amounts</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.manage_amounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set total and amount of the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a>/<a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a>.</p>
+<p>Includes <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt>&#8216;s unit prices and taxes.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.InvoiceBase.post_client_changed_invoice_state">
+<em class="property">classmethod </em><tt class="descname">post_client_changed_invoice_state</tt><big>(</big><em>sender</em>, <em>document</em>, <em>previous_state</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.post_client_changed_invoice_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post client changed invoice state hook handler</p>
+<ul class="simple">
+<li>Fire invoice registration signal</li>
+<li>Add timeline and notification entries</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.InvoiceBase.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<ul class="simple">
+<li>Deletes related attachments, if exists</li>
+<li>De-index invoice based document from elasticsearch</li>
+<li>Removes timeline and notification entries</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.InvoiceBase.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Removes related TTL</li>
+<li>Index invoice based document in elasticsearch</li>
+<li>Add timeline and notification entries</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.InvoiceBase.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler  
+On creation:</p>
+<ul class="simple">
+<li>Add issuer to subscribers list</li>
+<li>Add organization name to revision</li>
+<li>Manage total / amount</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.reload">
+<tt class="descname">reload</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> from the database.</p>
+<p>Delete the existing cached attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.revision">
+<tt class="descname">revision</tt><big>(</big><em>revision_id=None</em>, <em>get_pos=False</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.revision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the appropriate <tt class="xref py py-class docutils literal"><span class="pre">InvoiceRevision</span></tt>.</p>
+<p>If there is no revision_id supplied, returns the lastest revision.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.send_by_mail">
+<tt class="descname">send_by_mail</tt><big>(</big><em>subject</em>, <em>message</em>, <em>to=</em><span class="optional">[</span><span class="optional">]</span>, <em>cc=</em><span class="optional">[</span><span class="optional">]</span>, <em>bcc=</em><span class="optional">[</span><span class="optional">]</span>, <em>issuer=None</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.send_by_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> by e-mail.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.InvoiceBase.set_state">
+<tt class="descname">set_state</tt><big>(</big><em>new_state</em>, <em>force=False</em>, <em>issuer=None</em><big>)</big><a class="headerlink" href="#invoicing.models.InvoiceBase.set_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a new state to the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a>/<a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>new_state</strong> &#8211; a state among the (<tt class="xref py py-class docutils literal"><span class="pre">CreditNote</span></tt>).STATES</li>
+<li><strong>force</strong> &#8211; do not check for possible states (for automatic state assignation)</li>
+<li><strong>issuer</strong> &#8211; a <a class="reference internal" href="core.html#core.models.VosaeUser" title="core.models.VosaeUser"><tt class="xref py py-class docutils literal"><span class="pre">VosaeUser</span></tt></a> object to be associated to the state modification</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.InvoiceBase.sub_total">
+<tt class="descname">sub_total</tt><a class="headerlink" href="#invoicing.models.InvoiceBase.sub_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a sum of the <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt> prices and cache it.</p>
+<p>This does not contains taxes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.InvoiceBase.taxes_amounts">
+<tt class="descname">taxes_amounts</tt><a class="headerlink" href="#invoicing.models.InvoiceBase.taxes_amounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a sum of the <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt> taxes and cache it.</p>
+<p>This does not contains <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt> unit prices.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.InvoiceBaseResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">InvoiceBaseResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.do_export">
+<tt class="descname">do_export</tt><big>(</big><em>request</em>, <em>serializer</em>, <em>export_objects</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.do_export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.full_hydrate">
+<tt class="descname">full_hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.full_hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> hydratation:</p>
+<ul class="simple">
+<li>Handle current revision immutable state if <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> is not modifiable</li>
+<li>Process some automatic affectation</li>
+<li>Add history entry</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.generate_pdf">
+<tt class="descname">generate_pdf</tt><big>(</big><em>request</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.generate_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a PDF</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.hydrate">
+<tt class="descname">hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the InvoiceBase is modifiable, a new revision is added, otherwise the current_revision
+is cloned from the saved obj preventing data alteration but still allowing related updates
+such as attachments or notes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.mark_as_state">
+<tt class="descname">mark_as_state</tt><big>(</big><em>request</em>, <em>invoicebase_state</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.mark_as_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set state for an InvoiceBase.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.obj_delete">
+<tt class="descname">obj_delete</tt><big>(</big><em>bundle</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.obj_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises a BadRequest if the <a class="reference internal" href="#invoicing.models.InvoiceBase" title="invoicing.models.InvoiceBase"><tt class="xref py py-class docutils literal"><span class="pre">InvoiceBase</span></tt></a> is not in a deletable state</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.prepend_urls">
+<tt class="descname">prepend_urls</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.prepend_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add urls for resources actions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceBaseResource.send_by_mail">
+<tt class="descname">send_by_mail</tt><big>(</big><em>request</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceBaseResource.send_by_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an InvoiceBase by mail.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="quotation">
+<h3>Quotation<a class="headerlink" href="#quotation" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.Quotation">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">Quotation</tt><big>(</big><em>full_init=True</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quotations specific class.</p>
+<dl class="method">
+<dt id="invoicing.models.Quotation.genere_reference">
+<tt class="descname">genere_reference</tt><big>(</big><em>customer_settings</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.genere_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genere a unique reference for an <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> object.</p>
+<p>Use the <a class="reference internal" href="core.html#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> quotations numbering counter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.get_possible_states">
+<tt class="descname">get_possible_states</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.get_possible_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available states for the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a>,
+depending of its current state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.is_deletable">
+<tt class="descname">is_deletable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.is_deletable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> is deletable if not linked to any
+<a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> or <a class="reference internal" href="#invoicing.models.DownPaymentInvoice" title="invoicing.models.DownPaymentInvoice"><tt class="xref py py-class docutils literal"><span class="pre">DownPaymentInvoice</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.is_issuable">
+<tt class="descname">is_issuable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.is_issuable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> could be sent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.is_modifiable">
+<tt class="descname">is_modifiable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.is_modifiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> is modifiable unless it has been invoiced.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.is_quotation">
+<tt class="descname">is_quotation</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.is_quotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> is a quotation object (and not an inherited).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.is_quotation_instance">
+<tt class="descname">is_quotation_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.is_quotation_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> is an instance of <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.make_down_payment">
+<tt class="descname">make_down_payment</tt><big>(</big><em>issuer</em>, <em>percentage</em>, <em>tax</em>, <em>date</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.make_down_payment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a down payment invoice based on the current quotation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Quotation.make_invoice">
+<tt class="descname">make_invoice</tt><big>(</big><em>issuer</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.make_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an invoice based on the current quotation</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="invoicing.models.Quotation.manage_states">
+<em class="property">static </em><tt class="descname">manage_states</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.manage_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> state can be modified by the time.</p>
+<p>This method allows tasks scripts to update Invoices state on a regular basis.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Quotation.post_make_down_payment_invoice">
+<em class="property">classmethod </em><tt class="descname">post_make_down_payment_invoice</tt><big>(</big><em>sender</em>, <em>document</em>, <em>new_document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.post_make_down_payment_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post make down payment invoice hook handler</p>
+<ul class="simple">
+<li>Add timeline and notification entries</li>
+<li>Add a statistic entry</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Quotation.post_make_invoice">
+<em class="property">classmethod </em><tt class="descname">post_make_invoice</tt><big>(</big><em>sender</em>, <em>document</em>, <em>new_document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.post_make_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post make invoice hook handler</p>
+<ul class="simple">
+<li>Add timeline and notification entries</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Quotation.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<p>If created, increments the appropriate <a class="reference internal" href="core.html#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a>
+quotations numbering counter.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Quotation.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Quotation.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<ul class="simple">
+<li>Set the type and reference</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.QuotationResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">QuotationResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.QuotationResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.QuotationResource.make_down_payment_invoice">
+<tt class="descname">make_down_payment_invoice</tt><big>(</big><em>request</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.QuotationResource.make_down_payment_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a down payment invoice from a quotation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.QuotationResource.make_invoice">
+<tt class="descname">make_invoice</tt><big>(</big><em>request</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.QuotationResource.make_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an invoice from a quotation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.QuotationResource.prepend_urls">
+<tt class="descname">prepend_urls</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.api.resources.QuotationResource.prepend_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add urls for resources actions.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="invoice">
+<h3>Invoice<a class="headerlink" href="#invoice" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.Invoice">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">Invoice</tt><big>(</big><em>full_init=True</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoices specific class.</p>
+<dl class="method">
+<dt id="invoicing.models.Invoice.cancel">
+<tt class="descname">cancel</tt><big>(</big><em>issuer</em><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.cancel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> with the creation of an
+associated <a class="reference internal" href="#invoicing.models.CreditNote" title="invoicing.models.CreditNote"><tt class="xref py py-class docutils literal"><span class="pre">CreditNote</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.Invoice.down_payments">
+<tt class="descname">down_payments</tt><a class="headerlink" href="#invoicing.models.Invoice.down_payments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property returning a list of down payment invoices (retrieved from related quotation)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.Invoice.filename">
+<tt class="descname">filename</tt><a class="headerlink" href="#invoicing.models.Invoice.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a filename based on invoice base type and reference</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.genere_reference">
+<tt class="descname">genere_reference</tt><big>(</big><em>customer_settings</em><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.genere_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genere a unique reference for an <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> object.</p>
+<p>Use the <a class="reference internal" href="core.html#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> invoices numbering counter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.get_possible_states">
+<tt class="descname">get_possible_states</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.get_possible_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the available states for the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a>,
+depending of its current state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_cancelable">
+<tt class="descname">is_cancelable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_cancelable" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is in a cancelable state.
+When cancelable, a credit note could be created.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_deletable">
+<tt class="descname">is_deletable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_deletable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> could be deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_invoice">
+<tt class="descname">is_invoice</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is an invoice (and not inherited).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_invoice_instance">
+<tt class="descname">is_invoice_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_invoice_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is an instance of <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_issuable">
+<tt class="descname">is_issuable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_issuable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.Quotation" title="invoicing.models.Quotation"><tt class="xref py py-class docutils literal"><span class="pre">Quotation</span></tt></a> could be sent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_modifiable">
+<tt class="descname">is_modifiable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_modifiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is still in a modifiable state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_paid">
+<tt class="descname">is_paid</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_paid" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is paid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.is_payable">
+<tt class="descname">is_payable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.is_payable" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> is in a payable state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Invoice.manage_amounts">
+<tt class="descname">manage_amounts</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.manage_amounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set total and amount of the <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a>.</p>
+<p>Includes <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt>&#8216;s unit prices and taxes.</p>
+<p>Invoice checks for related down-payments and substracts their individual amounts to its amount.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="invoicing.models.Invoice.manage_states">
+<em class="property">static </em><tt class="descname">manage_states</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.manage_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> state can be modified by the time.</p>
+<p>This method allows tasks scripts to update Invoices state on a regular basis.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Invoice.post_cancel_invoice">
+<em class="property">classmethod </em><tt class="descname">post_cancel_invoice</tt><big>(</big><em>sender</em>, <em>document</em>, <em>credit_note</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.post_cancel_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post cancel invoice hook handler</p>
+<ul class="simple">
+<li>Update related quotation state, if invoice</li>
+<li>Add timeline and notification entries</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Invoice.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<ul class="simple">
+<li>Update related quotation to remove linked invoices references</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Invoice.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Invoice.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<ul class="simple">
+<li>Manage payments and balance</li>
+<li>Manage reference counters</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.InvoiceResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">InvoiceResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.InvoiceResource.invoice_cancel">
+<tt class="descname">invoice_cancel</tt><big>(</big><em>request</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceResource.invoice_cancel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel the invoice and returns the associated credit note.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.api.resources.InvoiceResource.prepend_urls">
+<tt class="descname">prepend_urls</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.api.resources.InvoiceResource.prepend_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add urls for resources actions.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="downpaymentinvoice">
+<h3>DownPaymentInvoice<a class="headerlink" href="#downpaymentinvoice" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.DownPaymentInvoice">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">DownPaymentInvoice</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.DownPaymentInvoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all down payments invoices (either payable or receivable).</p>
+<dl class="method">
+<dt id="invoicing.models.DownPaymentInvoice.is_down_payment_invoice">
+<tt class="descname">is_down_payment_invoice</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.DownPaymentInvoice.is_down_payment_invoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the <a class="reference internal" href="#invoicing.models.DownPaymentInvoice" title="invoicing.models.DownPaymentInvoice"><tt class="xref py py-class docutils literal"><span class="pre">DownPaymentInvoice</span></tt></a> is a down-payment invoice.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.DownPaymentInvoice.is_modifiable">
+<tt class="descname">is_modifiable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.DownPaymentInvoice.is_modifiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#invoicing.models.DownPaymentInvoice" title="invoicing.models.DownPaymentInvoice"><tt class="xref py py-class docutils literal"><span class="pre">DownPaymentInvoice</span></tt></a> is automatically generated
+and can&#8217;t be modified at any time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.DownPaymentInvoice.manage_amounts">
+<tt class="descname">manage_amounts</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.DownPaymentInvoice.manage_amounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set total and amount of the <a class="reference internal" href="#invoicing.models.DownPaymentInvoice" title="invoicing.models.DownPaymentInvoice"><tt class="xref py py-class docutils literal"><span class="pre">DownPaymentInvoice</span></tt></a>.</p>
+<p>Includes <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt>&#8216;s unit prices and taxes.</p>
+<p>DownPaymentInvoices don&#8217;t care about since it is fixed on creation. Only balance is calculated.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.DownPaymentInvoice.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.DownPaymentInvoice.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<p>A <a class="reference internal" href="#invoicing.models.DownPaymentInvoice" title="invoicing.models.DownPaymentInvoice"><tt class="xref py py-class docutils literal"><span class="pre">DownPaymentInvoice</span></tt></a> must not save its item because
+of the translations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.DownPaymentInvoiceResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">DownPaymentInvoiceResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.DownPaymentInvoiceResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="creditnote">
+<h3>CreditNote<a class="headerlink" href="#creditnote" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.CreditNote">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">CreditNote</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for all credit notes (either payable or receivable).</p>
+<dl class="method">
+<dt id="invoicing.models.CreditNote.genere_reference">
+<tt class="descname">genere_reference</tt><big>(</big><em>customer_settings</em><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote.genere_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genere a unique reference for an <a class="reference internal" href="#invoicing.models.CreditNote" title="invoicing.models.CreditNote"><tt class="xref py py-class docutils literal"><span class="pre">CreditNote</span></tt></a> object.</p>
+<p>Use the <a class="reference internal" href="core.html#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a> credit notes numbering counter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.CreditNote.is_issuable">
+<tt class="descname">is_issuable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote.is_issuable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the <a class="reference internal" href="#invoicing.models.CreditNote" title="invoicing.models.CreditNote"><tt class="xref py py-class docutils literal"><span class="pre">CreditNote</span></tt></a> could be sent. It is automatically
+generated and so could be sent at any time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.CreditNote.is_modifiable">
+<tt class="descname">is_modifiable</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote.is_modifiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#invoicing.models.CreditNote" title="invoicing.models.CreditNote"><tt class="xref py py-class docutils literal"><span class="pre">CreditNote</span></tt></a> is automatically generated and can&#8217;t
+be modified at any time.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.CreditNote.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<p>If created, increments the appropriate <a class="reference internal" href="core.html#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a>
+quotations numbering counter.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.CreditNote.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<p>If credit note is in its creation process, affects the base type and the reference</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.CreditNote.set_total">
+<tt class="descname">set_total</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.CreditNote.set_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the total amount and adjusts it if the credit note is associated to an
+<a class="reference internal" href="#invoicing.models.Invoice" title="invoicing.models.Invoice"><tt class="xref py py-class docutils literal"><span class="pre">Invoice</span></tt></a> and if there is any down payment.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.CreditNoteResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">CreditNoteResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.CreditNoteResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="tax">
+<h3>Tax<a class="headerlink" href="#tax" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.Tax">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">Tax</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#invoicing.models.Tax" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tax is associated to <a class="reference internal" href="#invoicing.models.Item" title="invoicing.models.Item"><tt class="xref py py-class docutils literal"><span class="pre">Item</span></tt></a>s and <tt class="xref py py-class docutils literal"><span class="pre">InvoiceItem</span></tt>s.</p>
+<dl class="method">
+<dt id="invoicing.models.Tax.save">
+<tt class="descname">save</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Tax.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#invoicing.models.Tax" title="invoicing.models.Tax"><tt class="xref py py-class docutils literal"><span class="pre">Tax</span></tt></a> rate should not be updated.</p>
+<p>If needed, the tax must be removed and then re-added with the updated rate value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.TaxResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">TaxResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.TaxResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.TaxResource.hydrate_rate">
+<tt class="descname">hydrate_rate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.TaxResource.hydrate_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rate is immutable, on PUT, ensures that rate is equal to the initial value</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="item">
+<h3>Item<a class="headerlink" href="#item" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.Item">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">Item</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#invoicing.models.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>An item represents an invoicable product or service.</p>
+<dl class="classmethod">
+<dt id="invoicing.models.Item.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Item.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>De-index item from elasticsearch</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Item.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Item.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Index item in elasticsearch</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.ItemResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">ItemResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.ItemResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="payment">
+<h3>Payment<a class="headerlink" href="#payment" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.Payment">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">Payment</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#invoicing.models.Payment" title="Permalink to this definition">¶</a></dt>
+<dd><p>A payment, representing money flows within the company.</p>
+<p>Amount can be negative (debit) or positive (credit).</p>
+<dl class="classmethod">
+<dt id="invoicing.models.Payment.post_delete">
+<em class="property">classmethod </em><tt class="descname">post_delete</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Payment.post_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post delete hook handler</p>
+<p>Removes payment from related document</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Payment.post_save">
+<em class="property">classmethod </em><tt class="descname">post_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>created</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Payment.post_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post save hook handler</p>
+<ul class="simple">
+<li>Associates payment to related document</li>
+<li>Creates a payment statistic entry</li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="invoicing.models.Payment.pre_save">
+<em class="property">classmethod </em><tt class="descname">pre_save</tt><big>(</big><em>sender</em>, <em>document</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#invoicing.models.Payment.pre_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre save hook handler</p>
+<p>Validates payment amount</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.PaymentResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">PaymentResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.PaymentResource" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="invoicing.api.resources.PaymentResource.full_hydrate">
+<tt class="descname">full_hydrate</tt><big>(</big><em>bundle</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.PaymentResource.full_hydrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set issuer on POST, extracted from request</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="currency">
+<h3>Currency<a class="headerlink" href="#currency" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="invoicing.models.Currency">
+<em class="property">class </em><tt class="descclassname">invoicing.models.</tt><tt class="descname">Currency</tt><big>(</big><em>*args</em>, <em>**values</em><big>)</big><a class="headerlink" href="#invoicing.models.Currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Currencies are globals: they do not belongs to <a class="reference internal" href="core.html#core.models.VosaeCustomer" title="core.models.VosaeCustomer"><tt class="xref py py-class docutils literal"><span class="pre">VosaeCustomer</span></tt></a>s.</p>
+<dl class="staticmethod">
+<dt id="invoicing.models.Currency.convert">
+<em class="property">static </em><tt class="descname">convert</tt><big>(</big><em>currency_from</em>, <em>currency_to</em>, <em>amount</em><big>)</big><a class="headerlink" href="#invoicing.models.Currency.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a> to another.
+Based on the current rates.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="invoicing.models.Currency.display_symbol">
+<tt class="descname">display_symbol</tt><a class="headerlink" href="#invoicing.models.Currency.display_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The display symbol associated to the currency (e.g. &#8216;€&#8217;, &#8216;$&#8217;, &#8216;£&#8217;).</p>
+<p>The <em>symbol</em> attribute is in the iso4217 format (e.g. &#8216;EUR&#8217;, &#8216;USD&#8217;, &#8216;GBP&#8217;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Currency.from_currency">
+<tt class="descname">from_currency</tt><big>(</big><em>currency_from</em>, <em>amount</em><big>)</big><a class="headerlink" href="#invoicing.models.Currency.from_currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a> to another.
+Based on the current rates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>currency_from</strong> &#8211; iso4217 representation of the source currency</li>
+<li><strong>amount</strong> &#8211; int/float/decimal value to be converted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Currency.get_snapshot">
+<tt class="descname">get_snapshot</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Currency.get_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the snapshot associated to the currency.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Currency.rate">
+<tt class="descname">rate</tt><big>(</big><em>symbol</em><big>)</big><a class="headerlink" href="#invoicing.models.Currency.rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rate associated to the specified symbol.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> &#8211; iso4217 representation of the target currency</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="invoicing.models.Currency.refresh_currencies">
+<em class="property">static </em><tt class="descname">refresh_currencies</tt><big>(</big><big>)</big><a class="headerlink" href="#invoicing.models.Currency.refresh_currencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a> contains rates which should be updated.</p>
+<p>This method allows tasks scripts to update currencies rates on a regular basis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="invoicing.models.Currency.to_currency">
+<tt class="descname">to_currency</tt><big>(</big><em>currency_to</em>, <em>amount</em><big>)</big><a class="headerlink" href="#invoicing.models.Currency.to_currency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <a class="reference internal" href="#invoicing.models.Currency" title="invoicing.models.Currency"><tt class="xref py py-class docutils literal"><span class="pre">Currency</span></tt></a> to another.
+Based on the current rates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>currency_to</strong> &#8211; iso4217 representation of the target currency</li>
+<li><strong>amount</strong> &#8211; int/float/decimal value to be converted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="invoicing.api.resources.CurrencyResource">
+<em class="property">class </em><tt class="descclassname">invoicing.api.resources.</tt><tt class="descname">CurrencyResource</tt><big>(</big><em>api_name=None</em><big>)</big><a class="headerlink" href="#invoicing.api.resources.CurrencyResource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Invoicing</a><ul>
+<li><a class="reference internal" href="#embedded-resources">Embedded resources</a><ul>
+<li><a class="reference internal" href="#invoicerevision">InvoiceRevision</a></li>
+<li><a class="reference internal" href="#invoiceitem">InvoiceItem</a></li>
+<li><a class="reference internal" href="#invoicenote">InvoiceNote</a></li>
+<li><a class="reference internal" href="#snapshotcurrency">SnapshotCurrency</a></li>
+<li><a class="reference internal" href="#exchangerate">ExchangeRate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#main-resources">Main resources</a><ul>
+<li><a class="reference internal" href="#invoicebase">InvoiceBase</a></li>
+<li><a class="reference internal" href="#quotation">Quotation</a></li>
+<li><a class="reference internal" href="#invoice">Invoice</a></li>
+<li><a class="reference internal" href="#downpaymentinvoice">DownPaymentInvoice</a></li>
+<li><a class="reference internal" href="#creditnote">CreditNote</a></li>
+<li><a class="reference internal" href="#tax">Tax</a></li>
+<li><a class="reference internal" href="#item">Item</a></li>
+<li><a class="reference internal" href="#payment">Payment</a></li>
+<li><a class="reference internal" href="#currency">Currency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="data_liberation.html"
+                        title="previous chapter">Data liberation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="organizer.html"
+                        title="next chapter">Organizer</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/invoicing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="organizer.html" title="Organizer"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="data_liberation.html" title="Data liberation"
+             >previous</a> |</li>
+        <li><a href="../index.html">Vosae 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Léo Stevenin, Naeka.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
