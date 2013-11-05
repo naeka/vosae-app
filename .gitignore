@@ -44,15 +44,14 @@ www/core/static/core/css/core.css
 www/core/static/core/css/errors.css
 www/docs/static/docs/css/docs.css
 www/docs/static/docs/build/
+www/account/static/account/build/
 
 # Sass cache
-.sass-cache/
-error/.sass-cache/
-www/.sass-cache/
-www/core/.sass-cache/
-www/docs/.sass-cache/
+/**/.sass-cache/
 
 # Various
 www/dump.rdb
 node_modules/
 vosae-app.sublime-workspace
+
+/www/account/static/account/css/account.css
