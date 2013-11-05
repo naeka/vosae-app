@@ -12,10 +12,10 @@ virtualenv:
 
 env:
     global:
-        - secure: "TZTAkCN4Plemb1GP26P48CNhC2RVgn+U+lEqcXE/+hYiwu2xl+R/hmZw5Mv74MQ5hqGjGNU5sGZMvYL+3dr+kIz3yzbAquWI4O6ZBvPvM6c0HzISgrVobBUk8rYJ6oTmUMTr2SzwuO0F6s6xug0YZTAPoA3OGhrMh/gmZUv8pQg="
-        - secure: "Vxx9CiJTfjaBQGkCOTpxAwSW3H8a0ITolADLb8JjRxL7fRLutcJnA7VtEyKebjhbSPUBLUyOUq2yaSwCQzh7k0TtPtjo2GuNoP7CHrxrtWG8J4vGGcLizrVEEDRyBRpa8Lswy1Yfo8KzK2fJwm/Qw8bpClw+xolkjyR/fxr/Hqw="
-        - secure: "zW868h3Zv/9BVj8qHsJQcDSxxUgsha4jMMKJ3Hg7NpX5FC/W4ifhuQ0je6rVFFZeZpQLwuP1gn5T7eaL6ZpGhmOGwTV/reqGdazah10wPaCzmLTohNonMDDEVK/dteL093UIQu0gFfvO8Dp/O41uABRNV+kQdj+WC5ZuGQfuLck="
-        - secure: "E56CKBoyjRLZ000TmOpkc3AUcmSYEPNbk3CeQXKKiWiClrG4vJNZ7B1fsjRQ/LdTW0z9S/kSTdrYpcO37v78/1oQUfu9wY1S3m77VUwG6IKkcS+buBy/gcpe+6lEgp+aV7ZVpegvh619oWyKleSrfikuUwaU9xJS7YPT471jSIA="
+        - secure: "VbsOfpODqRoTugL4S3hzgAnWvIbAAA5bjupM2elcPQKEmAF9/77i6daFxr9MtoFcfG+segs7hBkWgk1Dn9gr84prYRHiJE202nOCWf9oetoRcqCUopK5Thx0ZlTcsdI3k248BOdirrb9TtYBOXOEYoKresBpzALxiMjuQj860LM="
+        - secure: "O+c7JBkYSxW4wbOXj8PXPBBGvkCaKH6ITHEVMNS0Tb5lzcMsGOB33bw4u/9aFyRnRQrHX1zI+blP2XMd2Nh35WU+zOMb7okaaUyOwvVVUufeWTXPnirIv+bCYKFkL1RGZC2yFOAjvvZ2fF78qbFS/S/3APm7H5UKlwkvaJZn6GM="
+        - secure: "OW8Qu5muZaEDXxD4LGs5Xk1RDDAzsZo8+vjVAyBupO2CAYAfyiUzpsH7c1rk/GTKKDaj4JDQG4SL0Q1bwur/V3WpPBVgt7gXyppuun+1eFATQ2gfs4ZV7JSGxd3J2KpwoQi+h4N5CCle61CJmUEzC7QTZrAzDsVdIUd0ogv2shQ="
+        - secure: "b+8hebfE0KhbSdYVB8MUtm+JQs6l7kqWnN6zj5W5nJuTB8IXWALYv8mWuRpELrZTduANFCR1JlqF8GnKrhajsrXhAwLlTOJltarJmKN9xEJAQ7o1ZnFmY550kkbfS3uwOihiJ8fXGWkFZGz3uvO2dVOtf1h6dnqXbJftoYvzM/c="
 
 before_install:
     - sudo apt-get install -qq libevent-dev
@@ -31,7 +31,6 @@ install:
 
 before_script:
     - source travis_before.sh
-    - env
 
 script:
     - cd www
