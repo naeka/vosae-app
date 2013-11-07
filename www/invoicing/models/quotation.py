@@ -108,13 +108,6 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
         return unicode(tenant_settings.invoicing.numbering.separator).join(elements)
 
     def is_quotation(self):
-        """True if the :class:`~invoicing.models.Quotation` is a quotation object (and not an inherited)."""
-        if isinstance(self, Quotation):
-            return True
-        return False
-
-    def is_quotation_instance(self):
-        """True if the :class:`~invoicing.models.Quotation` is an instance of :class:`~invoicing.models.Quotation`."""
         return True
 
     def is_modifiable(self):
