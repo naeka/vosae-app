@@ -147,13 +147,6 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         return unicode(tenant_settings.invoicing.numbering.separator).join(elements)
 
     def is_invoice(self):
-        """True if the :class:`~invoicing.models.Invoice` is an invoice (and not inherited)."""
-        if isinstance(self, Invoice):
-            return True
-        return False
-
-    def is_invoice_instance(self):
-        """True if the :class:`~invoicing.models.Invoice` is an instance of :class:`~invoicing.models.Invoice`."""
         return True
 
     def is_modifiable(self):

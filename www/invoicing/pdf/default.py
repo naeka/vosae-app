@@ -224,11 +224,11 @@ class InvoiceBaseReport(Report):
         # Legal notices
         self.spacer()
         self.start_keeptogether()
-        if self.invoice_base.is_quotation_instance():
+        if self.invoice_base.is_quotation():
             self.p(_("Valid until %(quotation_validity)s") % {
                 'quotation_validity': format_date(self.invoice_base.current_revision.quotation_validity, 'DATE_FORMAT')
             })
-        elif self.invoice_base.is_invoice_instance():
+        elif self.invoice_base.is_invoice() or self.invoice_base.is_down_payment_invoice():
             if self.invoice_base.current_revision.custom_payment_conditions:
                 self.p(_("Payment conditions: %(custom_payment_conditions)s") % {
                     'custom_payment_conditions': self.invoice_base.current_revision.custom_payment_conditions

@@ -35,7 +35,7 @@ class SlugField(StringField):
 class DateField(DateTimeField):
 
     def validate(self, value, **kwargs):
-        if not isinstance(value, datetime.date):
+        if type(value) is not datetime.date:
             self.error(u'cannot parse date "%s"' % value)
 
     def to_python(self, value, **kwargs):

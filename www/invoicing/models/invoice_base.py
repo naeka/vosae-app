@@ -247,15 +247,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         """Always False in the base class."""
         return False
 
-    def is_quotation_instance(self):
-        """Always False in the base class."""
-        return False
-
     def is_invoice(self):
-        """Always False in the base class."""
-        return False
-
-    def is_invoice_instance(self):
         """Always False in the base class."""
         return False
 

@@ -84,8 +84,11 @@ class DownPaymentInvoice(Invoice, SearchDocumentMixin):
         """
         return False
 
+    def is_invoice(self):
+        """A DownPaymentInvoice inherits from Invoice but types should be explicitely checked for both"""
+        return False
+
     def is_down_payment_invoice(self):
-        """True if the :class:`~invoicing.models.DownPaymentInvoice` is a down-payment invoice."""
         return True
 
     def manage_amounts(self):
