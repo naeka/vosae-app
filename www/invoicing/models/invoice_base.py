@@ -416,7 +416,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             self.add_changed_state_history_entry()
             if self.state in STATES_RESET_CACHED_DATA:
                 self.current_revision.pdf = None
-            self.save()                    
+            self.save()
             return previous_state, new_state
         else:
             try:
