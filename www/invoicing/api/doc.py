@@ -13,21 +13,28 @@ HELP_TEXT = {
         'revisions': 'All past quotation/invoice/credit note revisions',
         'history': 'All history actions',
         'notes': 'Notes related to the quotation/invoice/credit note',
+        'group': 'References to all grouped documents of an invoicing process',
         'attachments': 'Attachments related to the quotation/invoice/credit note',
+    },
+    'invoice_base_group': {
+        'quotation': 'Quotation of the group',
+        'purchase_order': 'Purchase order of the group',
+        'down_payment_invoices': 'List of all down-payment invoices of the group',
+        'invoice': 'Invoice of the group',
+        'invoices_cancelled': 'List of all cancelled invoices of the group',
+        'credit_notes': 'List of all credit notes of the group',
     },
     'quotation': {
         'state': 'Quotation state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">AWAITING_APPROVAL</li> <li class="text-info">APPROVED</li> <li class="text-info">REFUSED</li> <li class="text-info">EXPIRED</li> <li class="text-info">INVOICED</li></ul>',
-        'related_invoice': 'The invoice related to the quotation',
-        'related_invoices_cancelled': 'All related invoices that have been cancelled',
-        'down_payments': 'All down-payment invoices related to the quotation',
+    },
+    'purchase_order': {
+        'state': 'Purchase order state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">AWAITING_APPROVAL</li> <li class="text-info">APPROVED</li> <li class="text-info">REFUSED</li> <li class="text-info">INVOICED</li></ul>',
     },
     'invoice': {
         'state': 'Invoice state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">REGISTERED</li> <li class="text-info">OVERDUE</li> <li class="text-info">PART_PAID</li> <li class="text-info">PAID</li> <li class="text-info">CANCELLED</li></ul>',
         'paid': 'Invoice\'s paid amount',
         'balance': 'Invoice\'s balance amount',
         'has_temporary_reference': 'Invoices and down-payment invoices references must follow a continuous numbering scheme. So, only charged invoices have a well-defined reference. This indicates if the invoice has a temporary reference',
-        'related_quotation': 'Invoice\'s related quotation',
-        'related_credit_note': 'Invoice\'s related credit note',
         'payments': 'Invoice\'s related payments',
     },
     'downpayment': {
@@ -37,7 +44,6 @@ HELP_TEXT = {
     },
     'creditnote': {
         'state': 'Credit note state.\nOne of: <ul><li class="text-info">REGISTERED</li> <li class="text-info">SENT</li> <li class="text-info">PAID</li></ul>',
-        'related_invoice': 'Credit note\'s related invoice',
     },
     'item': {
         'reference': 'Reference of the item.\nThis is internal and won\'t be displayed on a generated document.\nLimited to this set of chars: [a-zA-Z0-9_-] (max_length = 32)',
@@ -73,6 +79,7 @@ HELP_TEXT = {
         'sender_organization': 'Sender\'s organization',
         'quotation_date': 'Quotation issue date',
         'quotation_validity': 'Quotation validity date.\nFree value, must be greater than or equal to <code>quotation_date</code>',
+        'purchase_order_date': 'Purchase order issue date',
         'invoicing_date': 'Invoice issue date',
         'due_date': 'Invoice due date.\nFree value, must be greater than or equal to <code>invoicing_date</code>.\n<span class="label label-warning">Warning</span> A maximum duration may exist depending on your registration country',
         'credit_note_emission_date': 'Emission date of the credit note',

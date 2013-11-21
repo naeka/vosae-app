@@ -42,20 +42,6 @@ class InvoiceResource(InvoiceBaseResource):
         help_text=HELP_TEXT['invoice']['has_temporary_reference']
     )
 
-    related_quotation = fields.ReferenceField(
-        to='invoicing.api.resources.QuotationResource',
-        attribute='related_quotation',
-        readonly=True,
-        null=True,
-        help_text=HELP_TEXT['invoice']['related_quotation']
-    )
-    related_credit_note = fields.ReferenceField(
-        to='invoicing.api.resources.CreditNoteResource',
-        attribute='related_credit_note',
-        readonly=True,
-        null=True,
-        help_text=HELP_TEXT['invoice']['related_credit_note']
-    )
     payments = fields.ReferencedListField(
         of='invoicing.api.resources.PaymentResource',
         attribute='payments',

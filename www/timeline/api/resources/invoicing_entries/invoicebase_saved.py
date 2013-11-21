@@ -10,6 +10,7 @@ from timeline.models import invoicing_entries
 
 __all__ = (
     'QuotationSavedResource',
+    'PurchaseOrderSavedResource',
     'InvoiceSavedResource',
     'DownPaymentInvoiceSavedResource',
     'CreditNoteSavedResource',
@@ -36,6 +37,28 @@ class QuotationSavedResource(TimelineEntryBaseResource):
     class Meta(TimelineEntryBaseResource.Meta):
         resource_name = 'quotation_saved'
         object_class = invoicing_entries.QuotationSaved
+
+
+class PurchaseOrderSavedResource(TimelineEntryBaseResource):
+    purchase_order_reference = base_fields.CharField(
+        attribute='purchase_order__reference',
+        help_text=HELP_TEXT['invoicebase_saved']['purchase_order_reference'],
+    )
+    customer_display = base_fields.CharField(
+        attribute='purchase_order__current_revision__get_customer_display',
+        help_text=HELP_TEXT['invoicebase_saved']['customer_display'],
+        null=True
+    )
+
+    purchase_order = fields.ReferenceField(
+        to='invoicing.api.resources.PurchaseOrderResource',
+        attribute='purchase_order',
+        help_text=HELP_TEXT['invoicebase_saved']['purchase_order']
+    )
+
+    class Meta(TimelineEntryBaseResource.Meta):
+        resource_name = 'purchase_order_saved'
+        object_class = invoicing_entries.PurchaseOrderSaved
 
 
 class InvoiceSavedResource(TimelineEntryBaseResource):

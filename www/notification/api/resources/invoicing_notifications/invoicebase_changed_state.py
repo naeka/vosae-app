@@ -9,6 +9,7 @@ from notification.models import invoicing_notifications
 
 __all__ = (
     'QuotationChangedStateResource',
+    'PurchaseOrderChangedStateResource',
     'InvoiceChangedStateResource',
     'DownPaymentInvoiceChangedStateResource',
     'CreditNoteChangedStateResource',
@@ -25,6 +26,18 @@ class QuotationChangedStateResource(NotificationBaseResource):
     class Meta(NotificationBaseResource.Meta):
         resource_name = 'quotation_changed_state'
         object_class = invoicing_notifications.QuotationChangedState
+
+
+class PurchaseOrderChangedStateResource(NotificationBaseResource):
+    purchase_order = fields.ReferenceField(
+        to='invoicing.api.resources.PurchaseOrderResource',
+        attribute='purchase_order',
+        help_text=HELP_TEXT['invoicebase_changed_state']['purchase_order']
+    )
+
+    class Meta(NotificationBaseResource.Meta):
+        resource_name = 'purchase_order_changed_state'
+        object_class = invoicing_notifications.PurchaseOrderChangedState
 
 
 class InvoiceChangedStateResource(NotificationBaseResource):

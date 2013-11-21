@@ -48,12 +48,16 @@ class DownPaymentInvoice(Invoice, SearchDocumentMixin):
         """
         super(DownPaymentInvoice, self).__init__(*args, **kwargs)
         if self.current_revision and self.id:
+            if self.related_to.is_quotation():
+                description = _("%(percentage)s%% down-payment on quotation %(reference)s")
+            elif self.related_to.is_purchase_order():
+                description = _("%(percentage)s%% down-payment on purchase order %(reference)s")  
             self.current_revision.line_items.append(
                 InvoiceItem(
                     reference=self.ITEM_REFERENCE,
-                    description=_("%(percentage)s%% down-payment on quotation %(reference)s") % {
+                    description=description % {
                         "percentage": floatformat(float(self.percentage * 100), -2),
-                        "reference": self.related_quotation.reference
+                        "reference": self.related_to.reference
                     },
                     quantity=1,
                     unit_price=(self.amount / (Decimal('1.00') + self.tax_applied.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP),
@@ -76,6 +80,20 @@ class DownPaymentInvoice(Invoice, SearchDocumentMixin):
 
         if document.current_revision:
             document.current_revision.line_items = []
+
+    @classmethod
+    def post_save(self, sender, document, created, **kwargs):
+        """
+        Post save hook handler
+
+        If created, append the down-payment invoice to the group.
+        """
+        if created:
+            document.group.down_payment_invoices.append(document)
+            document.group.save()
+
+        # Calling *Invoice* parent
+        super(Invoice, document).post_save(sender, document, created, **kwargs)
 
     def is_modifiable(self):
         """

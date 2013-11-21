@@ -10,6 +10,8 @@ from notification.models import invoicing_notifications
 __all__ = (
     'QuotationMakeInvoiceResource',
     'QuotationMakeDownPaymentInvoiceResource',
+    'PurchaseOrderMakeInvoiceResource',
+    'PurchaseOrderMakeDownPaymentInvoiceResource',
 )
 
 
@@ -45,3 +47,37 @@ class QuotationMakeDownPaymentInvoiceResource(NotificationBaseResource):
     class Meta(NotificationBaseResource.Meta):
         resource_name = 'quotation_make_down_payment_invoice'
         object_class = invoicing_notifications.QuotationMakeDownPaymentInvoice
+
+
+class PurchaseOrderMakeInvoiceResource(NotificationBaseResource):
+    purchase_order = fields.ReferenceField(
+        to='invoicing.api.resources.DownPaymentInvoiceResource',
+        attribute='purchase_order',
+        help_text=HELP_TEXT['purchase_order_make_invoice']['purchase_order']
+    )
+    invoice = fields.ReferenceField(
+        to='invoicing.api.resources.InvoiceResource',
+        attribute='invoice',
+        help_text=HELP_TEXT['purchase_order_make_invoice']['invoice']
+    )
+
+    class Meta(NotificationBaseResource.Meta):
+        resource_name = 'purchase_order_make_invoice'
+        object_class = invoicing_notifications.PurchaseOrderMakeInvoice
+
+
+class PurchaseOrderMakeDownPaymentInvoiceResource(NotificationBaseResource):
+    purchase_order = fields.ReferenceField(
+        to='invoicing.api.resources.DownPaymentInvoiceResource',
+        attribute='purchase_order',
+        help_text=HELP_TEXT['purchase_order_make_invoice']['purchase_order']
+    )
+    down_payment_invoice = fields.ReferenceField(
+        to='invoicing.api.resources.DownPaymentInvoiceResource',
+        attribute='down_payment_invoice',
+        help_text=HELP_TEXT['purchase_order_make_invoice']['down_payment_invoice']
+    )
+
+    class Meta(NotificationBaseResource.Meta):
+        resource_name = 'quotation_make_down_payment_invoice'
+        object_class = invoicing_notifications.PurchaseOrderMakeDownPaymentInvoice

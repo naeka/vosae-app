@@ -34,6 +34,7 @@ v1_api.register(data_liberation_resources.ExportResource())
 
 # Invoicing
 v1_api.register(invoicing_resources.QuotationResource())
+v1_api.register(invoicing_resources.PurchaseOrderResource())
 v1_api.register(invoicing_resources.InvoiceResource())
 v1_api.register(invoicing_resources.DownPaymentInvoiceResource())
 v1_api.register(invoicing_resources.CreditNoteResource())
