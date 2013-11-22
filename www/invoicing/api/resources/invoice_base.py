@@ -75,7 +75,10 @@ class InvoiceBaseGroupResource(TenantResource):
     )
 
     class Meta(TenantResource.Meta):
+        resource_name = 'invoice_base_group'
         object_class = InvoiceBaseGroup
+        list_allowed_methods = ('get',)
+        detail_allowed_methods = ('get',)
         excludes = ('tenant',)
 
 
@@ -153,7 +156,6 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
     group = fields.ReferenceField(
         to='invoicing.api.resources.InvoiceBaseGroupResource',
         attribute='group',
-        full=True,
         readonly=True,
         help_text=HELP_TEXT['invoicebase']['group']
     )

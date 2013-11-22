@@ -564,6 +564,128 @@ class ItemResourceTest(VosaeApiTest):
         self.assertValidJSON(response.content)
 
 
+class InvoiceBaseGroupResourceTest(VosaeApiTest):
+    @classmethod
+    def setUpClass(cls):
+        from invoicing.models import InvoiceBaseGroup
+        super(InvoiceBaseGroupResourceTest, cls).setUpClass()
+        
+        # Create invoice_base group which will be referenced
+        invoice_base_group = InvoiceBaseGroup(tenant=settings.TENANT).save()
+        
+        cls.resource_uri = cls.resourceDetailURI('invoice_base_group', invoice_base_group.id)
+        cls.created_documents = [invoice_base_group]
+
+    @classmethod
+    def tearDownClass(cls):
+        for document in cls.created_documents:
+            document.delete()
+        super(InvoiceBaseGroupResourceTest, cls).tearDownClass()
+
+    def test_01_post_list(self):
+        # JSON
+        response = self.api_client.post(self.resourceListURI('invoice_base_group'), format='json', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+        # XML
+        response = self.api_client.post(self.resourceListURI('invoice_base_group'), format='xml', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+        # YAML
+        response = self.api_client.post(self.resourceListURI('invoice_base_group'), format='yaml', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+    def test_02_get_list(self):
+        # JSON
+        infos = {"app": "invoicing", "resource": "InvoiceBaseGroupResource", "method": "get_list", "serializer": "json"}
+        response = self.api_client.get(self.resourceListURI('invoice_base_group'), format='json')
+        self.assertValidJSONResponse(response)
+        self.save_test_result(infos, response)
+
+        # XML
+        infos.update(serializer='xml')
+        response = self.api_client.get(self.resourceListURI('invoice_base_group'), format='xml')
+        self.assertValidXMLResponse(response)
+        self.save_test_result(infos, response)
+
+        # YAML
+        infos.update(serializer='yaml')
+        response = self.api_client.get(self.resourceListURI('invoice_base_group'), format='yaml')
+        self.assertValidYAMLResponse(response)
+        self.save_test_result(infos, response)
+
+    def test_03_get_detail(self):
+        # JSON
+        infos = {"app": "invoicing", "resource": "InvoiceBaseGroupResource", "method": "get_detail", "serializer": "json"}
+        response = self.api_client.get(self.resource_uri, format='json')
+        self.assertValidJSONResponse(response)
+        self.save_test_result(infos, response)
+
+        # XML
+        infos.update(serializer='xml')
+        response = self.api_client.get(self.resource_uri, format='xml')
+        self.assertValidXMLResponse(response)
+        self.save_test_result(infos, response)
+
+        # YAML
+        infos.update(serializer='yaml')
+        response = self.api_client.get(self.resource_uri, format='yaml')
+        self.assertValidYAMLResponse(response)
+        self.save_test_result(infos, response)
+
+    def test_04_put_list(self):
+        # JSON
+        response = self.api_client.put(self.resourceListURI('invoice_base_group'), format='json', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+        # XML
+        response = self.api_client.put(self.resourceListURI('invoice_base_group'), format='xml', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+        # YAML
+        response = self.api_client.put(self.resourceListURI('invoice_base_group'), format='yaml', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+    def test_05_put_detail(self):
+        # JSON
+        response = self.api_client.put(self.resource_uri, format='json', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+        # XML
+        response = self.api_client.put(self.resource_uri, format='xml', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+        # YAML
+        response = self.api_client.put(self.resource_uri, format='yaml', data={})
+        self.assertHttpMethodNotAllowed(response)
+
+    def test_06_delete_detail(self):
+        # JSON
+        response = self.api_client.delete(self.resource_uri, format='json')
+        self.assertHttpMethodNotAllowed(response)
+
+        # XML
+        response = self.api_client.delete(self.resource_uri, format='xml')
+        self.assertHttpMethodNotAllowed(response)
+
+        # YAML
+        response = self.api_client.delete(self.resource_uri, format='yaml')
+        self.assertHttpMethodNotAllowed(response)
+
+    def test_07_delete_list(self):
+        # JSON
+        response = self.api_client.delete(self.resourceListURI('invoice_base_group'), format='json')
+        self.assertHttpMethodNotAllowed(response)
+
+        # XML
+        response = self.api_client.delete(self.resourceListURI('invoice_base_group'), format='xml')
+        self.assertHttpMethodNotAllowed(response)
+
+        # YAML
+        response = self.api_client.delete(self.resourceListURI('invoice_base_group'), format='yaml')
+        self.assertHttpMethodNotAllowed(response)
+
+
 class InvoiceBaseResourceTest(VosaeApiTest):
     @classmethod
     def setUpClass(cls):
@@ -931,11 +1053,14 @@ class QuotationResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['amount'], u'90.42')
 
         # Check that references are present
-        response = self.api_client.get(deserialized['group']['quotation'], format='json')
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        response = self.api_client.get(deserialized_group.get('quotation'), format='json')
         self.assertValidJSONResponse(response)
         deserialized_quotation = self.deserialize(response)
         self.assertEqual(deserialized_quotation['state'], u'AWAITING_APPROVAL')
-        self.assertEqual(deserialized_quotation['group']['purchase_order'], deserialized.get('resource_uri'))
+        self.assertEqual(deserialized_quotation['group'], deserialized_group.get('resource_uri'))
 
         # XML
         infos.update(serializer='xml')
@@ -983,7 +1108,10 @@ class QuotationResourceTest(InvoiceBaseResourceTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertEqual(len(deserialized['group']['down_payment_invoices']), 1)
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized = self.deserialize(response)
+        self.assertEqual(len(deserialized['down_payment_invoices']), 1)
 
         # XML
         infos.update(serializer='xml')
@@ -1028,22 +1156,34 @@ class QuotationResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['amount'], u'72.34')
 
         # Check that references are present
-        response = self.api_client.get(deserialized['group']['quotation'], format='json')
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        response = self.api_client.get(deserialized_group.get('quotation'), format='json')
         self.assertValidJSONResponse(response)
         deserialized_quotation = self.deserialize(response)
         self.assertEqual(deserialized_quotation['state'], u'INVOICED')
-        self.assertEqual(deserialized_quotation['group']['invoice'], deserialized.get('resource_uri'))
-        self.assertEqual(len(deserialized_quotation['group']['down_payment_invoices']), 1)
+        response = self.api_client.get(deserialized_quotation.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        self.assertEqual(deserialized_group['invoice'], deserialized.get('resource_uri'))
+        self.assertEqual(len(deserialized_group['down_payment_invoices']), 1)
 
         # Check that state is updated if invoice is deleted
         response = self.api_client.delete(deserialized.get('resource_uri'), format='json')
         self.assertHttpAccepted(response)
-        response = self.api_client.get(deserialized['group']['quotation'], format='json')
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        response = self.api_client.get(deserialized_group.get('quotation'), format='json')
         self.assertValidJSONResponse(response)
         deserialized_quotation = self.deserialize(response)
         self.assertEqual(deserialized_quotation['state'], u'APPROVED')
-        self.assertEqual(deserialized_quotation['group']['invoice'], None)
-        self.assertEqual(len(deserialized_quotation['group']['down_payment_invoices']), 1)
+        response = self.api_client.get(deserialized_quotation.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        self.assertEqual(deserialized_group['invoice'], None)
+        self.assertEqual(len(deserialized_group['down_payment_invoices']), 1)
 
         # XML
         infos.update(serializer='xml')
@@ -1386,7 +1526,10 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertEqual(len(deserialized['group']['down_payment_invoices']), 1)
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized = self.deserialize(response)
+        self.assertEqual(len(deserialized['down_payment_invoices']), 1)
 
         # XML
         infos.update(serializer='xml')
@@ -1431,22 +1574,34 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['amount'], u'72.34')
 
         # Check that references are present
-        response = self.api_client.get(deserialized['group']['purchase_order'], format='json')
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        response = self.api_client.get(deserialized_group.get('purchase_order'), format='json')
         self.assertValidJSONResponse(response)
         deserialized_purchase_order = self.deserialize(response)
         self.assertEqual(deserialized_purchase_order['state'], u'INVOICED')
-        self.assertEqual(deserialized_purchase_order['group']['invoice'], deserialized.get('resource_uri'))
-        self.assertEqual(len(deserialized_purchase_order['group']['down_payment_invoices']), 1)
+        response = self.api_client.get(deserialized_purchase_order.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        self.assertEqual(deserialized_group['invoice'], deserialized.get('resource_uri'))
+        self.assertEqual(len(deserialized_group['down_payment_invoices']), 1)
 
         # Check that state is updated if invoice is deleted
         response = self.api_client.delete(deserialized.get('resource_uri'), format='json')
         self.assertHttpAccepted(response)
-        response = self.api_client.get(deserialized['group']['purchase_order'], format='json')
+        response = self.api_client.get(deserialized.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        response = self.api_client.get(deserialized_group.get('purchase_order'), format='json')
         self.assertValidJSONResponse(response)
         deserialized_purchase_order = self.deserialize(response)
         self.assertEqual(deserialized_purchase_order['state'], u'APPROVED')
-        self.assertEqual(deserialized_purchase_order['group']['invoice'], None)
-        self.assertEqual(len(deserialized_purchase_order['group']['down_payment_invoices']), 1)
+        response = self.api_client.get(deserialized_purchase_order.get('group'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_group = self.deserialize(response)
+        self.assertEqual(deserialized_group['invoice'], None)
+        self.assertEqual(len(deserialized_group['down_payment_invoices']), 1)
 
         # XML
         infos.update(serializer='xml')

@@ -36,6 +36,7 @@ HELP_TEXT = {
         'balance': 'Invoice\'s balance amount',
         'has_temporary_reference': 'Invoices and down-payment invoices references must follow a continuous numbering scheme. So, only charged invoices have a well-defined reference. This indicates if the invoice has a temporary reference',
         'payments': 'Invoice\'s related payments',
+        'related_to': 'Related quotation or purchase order',
     },
     'downpayment': {
         'state': 'Down-payment invoice state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">REGISTERED</li> <li class="text-info">OVERDUE</li> <li class="text-info">PART_PAID</li> <li class="text-info">PAID</li> <li class="text-info">CANCELLED</li></ul>',
@@ -44,6 +45,7 @@ HELP_TEXT = {
     },
     'creditnote': {
         'state': 'Credit note state.\nOne of: <ul><li class="text-info">REGISTERED</li> <li class="text-info">SENT</li> <li class="text-info">PAID</li></ul>',
+        'related_to': 'Related (down-payment) invoice',
     },
     'item': {
         'reference': 'Reference of the item.\nThis is internal and won\'t be displayed on a generated document.\nLimited to this set of chars: [a-zA-Z0-9_-] (max_length = 32)',
