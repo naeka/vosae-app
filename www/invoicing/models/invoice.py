@@ -30,6 +30,8 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
 
     has_temporary_reference = fields.BooleanField(required=True, default=True)
     state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
+    current_revision = fields.EmbeddedDocumentField("InvoiceRevision", required=True)
+    revisions = fields.ListField(fields.EmbeddedDocumentField("InvoiceRevision"))
     paid = fields.DecimalField(required=True, default=lambda: Decimal('0.00'))
     balance = fields.DecimalField(required=True)
     related_to = MultipleReferencesField(document_types=['Quotation', 'PurchaseOrder'])
@@ -251,7 +253,7 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         Cancel the :class:`~invoicing.models.Invoice` with the creation of an
         associated :class:`~invoicing.models.CreditNote`
         """
-        from invoicing.models.credit_note import CreditNote
+        from invoicing.models import CreditNote, CreditNoteRevision
         if not self.is_cancelable():
             raise NotCancelableInvoice("Invoice is not cancelable.")
         credit_note = CreditNote(
@@ -264,7 +266,7 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
             related_to=self,
             group=self.group
         )
-        cn_data = credit_note.add_revision(revision=self.current_revision)
+        cn_data = credit_note.add_revision(revision=CreditNoteRevision(based_on=self.current_revision))
         cn_data.issuer = issuer
         cn_data.issue_date = datetime_now()
         cn_data.credit_note_emission_date = datetime.date.today()
