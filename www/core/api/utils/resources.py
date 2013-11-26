@@ -19,6 +19,7 @@ from core.api.utils.http import VosaeHttpTooManyRequests
 from core.api.utils.throttling import VosaeCacheDBThrottle
 from core.api.utils.mixins import TenantRequiredMixinResource
 from core.api.utils.metaclass import VosaeModelDeclarativeMetaclass
+from core.api import signals
 
 
 __all__ = (
@@ -153,6 +154,8 @@ class VosaeResource(resources.MongoEngineResource):
         Mix of tastypie and tastypie_mongoengine
         M2M are processed before main save
         """
+        signals.pre_save.send(self.__class__, resource=self, bundle=bundle)
+
         self.is_valid(bundle)
 
         if bundle.errors and not skip_errors:
@@ -160,9 +163,13 @@ class VosaeResource(resources.MongoEngineResource):
 
         # Check if they're authorized.
         if bundle.obj.pk:
+            created = False
             self.authorized_update_detail(self.get_object_list(bundle.request), bundle)
         else:
+            created = True
             self.authorized_create_detail(self.get_object_list(bundle.request), bundle)
+
+        signals.pre_save_post_validation.send(self.__class__, resource=self, bundle=bundle)
 
         try:
             # Save FKs just in case.
@@ -177,6 +184,8 @@ class VosaeResource(resources.MongoEngineResource):
             bundle.objects_saved.add(self.create_identifier(bundle.obj))
         except mongoengine.ValidationError as e:
             raise ValidationError(e.message)
+
+        signals.post_save.send(self.__class__, resource=self, bundle=bundle, created=created)
         return bundle
 
     def save_related(self, bundle):
@@ -245,6 +254,24 @@ class VosaeResource(resources.MongoEngineResource):
                 related_objs.append(related_bundle.obj)
 
             setattr(bundle.obj, field_object.attribute, related_objs)
+
+    def obj_create(self, bundle, **kwargs):
+        signals.pre_create.send(self.__class__, resource=self, bundle=bundle)
+        bundle = super(VosaeResource, self).obj_create(bundle, **kwargs)
+        signals.post_create.send(self.__class__, resource=self, bundle=bundle)
+        return bundle
+
+    def obj_update(self, bundle, skip_errors=False, **kwargs):
+        signals.pre_update.send(self.__class__, resource=self, bundle=bundle)
+        bundle = super(VosaeResource, self).obj_update(bundle, skip_errors, **kwargs)
+        signals.post_update.send(self.__class__, resource=self, bundle=bundle)
+        return bundle
+
+    def obj_delete(self, bundle, **kwargs):
+        signals.pre_delete.send(self.__class__, resource=self, bundle=bundle)
+        bundle = super(VosaeResource, self).obj_delete(bundle, **kwargs)
+        signals.post_delete.send(self.__class__, resource=self, bundle=bundle)
+        return bundle
 
 
 class TenantResource(TenantRequiredMixinResource, VosaeResource):
