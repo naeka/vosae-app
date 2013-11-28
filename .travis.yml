@@ -47,4 +47,8 @@ notifications:
     - thomas@naeka.fr
     - leo@naeka.fr
   hipchat:
-    - secure: "QiuF2g/U6KXckMMwTqWHQvRKrzKdVWGu3M+MeNGK3ZI9DvYjx0vVPhPyFSg3o6X2dWkFD9wEv8S9/ozpmweTTN0JBA8ozjyn8tLfFb5LDg/9EZiJ5QojQapTvtPvrka0ad9tg+gVpNoxyFgFw3uZlSaQQ1/fIDi1KOE+eAzmOyI="
+    rooms:
+      - secure: "QiuF2g/U6KXckMMwTqWHQvRKrzKdVWGu3M+MeNGK3ZI9DvYjx0vVPhPyFSg3o6X2dWkFD9wEv8S9/ozpmweTTN0JBA8ozjyn8tLfFb5LDg/9EZiJ5QojQapTvtPvrka0ad9tg+gVpNoxyFgFw3uZlSaQQ1/fIDi1KOE+eAzmOyI="
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message} (<a href="%{build_url}">Details</a>)'
+    format: html
