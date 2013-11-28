@@ -269,9 +269,8 @@ class VosaeResource(resources.MongoEngineResource):
 
     def obj_delete(self, bundle, **kwargs):
         signals.pre_delete.send(self.__class__, resource=self, bundle=bundle)
-        bundle = super(VosaeResource, self).obj_delete(bundle, **kwargs)
+        super(VosaeResource, self).obj_delete(bundle, **kwargs)
         signals.post_delete.send(self.__class__, resource=self, bundle=bundle)
-        return bundle
 
 
 class TenantResource(TenantRequiredMixinResource, VosaeResource):
