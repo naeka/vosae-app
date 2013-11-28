@@ -5,7 +5,8 @@ eu() {
 }
 
 if [[ $TRAVIS_PULL_REQUEST != 'false' ]]; then
-  echo "This is a pull request. No before script will be done."
+  echo "Going to run the pull request..."
+  eu
 elif [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop' ]]; then
   echo "Going to run the dev script..."
   eu
