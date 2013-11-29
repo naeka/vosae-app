@@ -11,12 +11,13 @@ from tastypie_mongoengine import fields
 
 from core.api.utils import TenantResource, VosaeIMEXMixinResource
 from invoicing.exceptions import NotDeletableInvoice, InvalidInvoiceBaseState
-from invoicing import MARK_AS_STATES, INVOICE_STATES
+from invoicing import MARK_AS_STATES
 
 from invoicing import imex as invoicing_imex
 from invoicing import signals as invoicing_signals
 from invoicing.models.embedded import invoice_history_entries
-from invoicing.tasks import invoicebase_saved_task, invoicebase_changed_state_task
+from invoicing.tasks import invoicebase_saved_task
+from invoicing.models import InvoiceBaseGroup
 from invoicing.api.doc import HELP_TEXT
 from core.api.resources import VosaeFileResource
 
@@ -24,8 +25,61 @@ from notification.mixins import NotificationAwareResourceMixin
 
 
 __all__ = (
+    'InvoiceBaseGroupResource',
     'InvoiceBaseResource',
 )
+
+
+class InvoiceBaseGroupResource(TenantResource):
+    quotation = fields.ReferenceField(
+        to='invoicing.api.resources.QuotationResource',
+        attribute='quotation',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['quotation']
+    )
+    purchase_order = fields.ReferenceField(
+        to='invoicing.api.resources.PurchaseOrderResource',
+        attribute='purchase_order',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['purchase_order']
+    )
+    down_payment_invoices = fields.ReferencedListField(
+        of='invoicing.api.resources.DownPaymentInvoiceResource',
+        attribute='down_payment_invoices',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['down_payment_invoices']
+    )
+    invoice = fields.ReferenceField(
+        to='invoicing.api.resources.InvoiceResource',
+        attribute='invoice',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['invoice']
+    )
+    invoices_cancelled = fields.ReferencedListField(
+        of='invoicing.api.resources.InvoiceResource',
+        attribute='invoices_cancelled',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['invoices_cancelled']
+    )
+    credit_notes = fields.ReferencedListField(
+        of='invoicing.api.resources.CreditNoteResource',
+        attribute='credit_notes',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['credit_notes']
+    )
+
+    class Meta(TenantResource.Meta):
+        resource_name = 'invoice_base_group'
+        object_class = InvoiceBaseGroup
+        list_allowed_methods = ('get',)
+        detail_allowed_methods = ('get',)
+        excludes = ('tenant',)
 
 
 class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeIMEXMixinResource):
@@ -98,6 +152,12 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
         null=True,
         blank=True,
         help_text=HELP_TEXT['invoicebase']['notes']
+    )
+    group = fields.ReferenceField(
+        to='invoicing.api.resources.InvoiceBaseGroupResource',
+        attribute='group',
+        readonly=True,
+        help_text=HELP_TEXT['invoicebase']['group']
     )
     attachments = fields.ReferencedListField(
         of='core.api.resources.VosaeFileResource',

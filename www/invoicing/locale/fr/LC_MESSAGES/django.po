@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 09:52+0000\n"
-"PO-Revision-Date: 2013-10-21 11:54+0100\n"
+"POT-Creation-Date: 2013-11-21 09:16+0000\n"
+"PO-Revision-Date: 2013-11-21 10:18+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
 "Language: fr\n"
@@ -18,291 +18,309 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: __init__.py:20
+#: __init__.py:21
 msgctxt "quotation state"
 msgid "Draft"
 msgstr "Brouillon"
 
-#: __init__.py:21
+#: __init__.py:22
 msgctxt "quotation state"
 msgid "Awaiting approval"
 msgstr "En attente d'approbation"
 
-#: __init__.py:22
+#: __init__.py:23
 msgctxt "quotation state"
 msgid "Approved"
 msgstr "Approuvé"
 
-#: __init__.py:23
+#: __init__.py:24
 msgctxt "quotation state"
 msgid "Refused"
 msgstr "Refusé"
 
-#: __init__.py:24
+#: __init__.py:25
 msgctxt "quotation state"
 msgid "Expired"
 msgstr "Expiré"
 
-#: __init__.py:25
+#: __init__.py:26
 msgctxt "quotation state"
 msgid "Invoiced"
 msgstr "Facturé"
 
-#: __init__.py:29
+#: __init__.py:30
 msgctxt "purchase order state"
 msgid "Draft"
 msgstr "Brouillon"
 
-#: __init__.py:30
+#: __init__.py:31
 msgctxt "purchase order state"
 msgid "Awaiting approval"
 msgstr "En attente d'approbation"
 
-#: __init__.py:31
+#: __init__.py:32
 msgctxt "purchase order state"
 msgid "Approved"
 msgstr "Approuvé"
 
-#: __init__.py:32
+#: __init__.py:33
 msgctxt "purchase order state"
 msgid "Refused"
 msgstr "Refusé"
 
-#: __init__.py:33
+#: __init__.py:34
 msgctxt "purchase order state"
 msgid "Invoiced"
 msgstr "Facturé"
 
-#: __init__.py:37
+#: __init__.py:38
 msgctxt "delivery order state"
 msgid "Draft"
 msgstr "Brouillon"
 
-#: __init__.py:38
+#: __init__.py:39
 msgctxt "delivery order state"
 msgid "Registered"
 msgstr "Enregistré"
 
-#: __init__.py:39
+#: __init__.py:40
 msgctxt "delivery order state"
 msgid "Delivered"
 msgstr "Délivré"
 
-#: __init__.py:40
+#: __init__.py:41
 msgctxt "delivery order state"
 msgid "Refused"
 msgstr "Refusé"
 
-#: __init__.py:41
+#: __init__.py:42
 msgctxt "delivery order state"
 msgid "Invoiced"
 msgstr "Facturé"
 
-#: __init__.py:45
+#: __init__.py:46
 msgctxt "invoice state"
 msgid "Draft"
 msgstr "Brouillon"
 
-#: __init__.py:46
+#: __init__.py:47
 msgctxt "invoice state"
 msgid "Registered"
 msgstr "Enregistrée"
 
-#: __init__.py:47
+#: __init__.py:48
 msgctxt "invoice state"
 msgid "Overdue"
 msgstr "En retard"
 
-#: __init__.py:48
+#: __init__.py:49
 msgctxt "invoice state"
 msgid "Part paid"
 msgstr "Partiellement réglée"
 
-#: __init__.py:49
+#: __init__.py:50
 msgctxt "invoice state"
 msgid "Paid"
 msgstr "Réglée"
 
-#: __init__.py:50
+#: __init__.py:51
 msgctxt "invoice state"
 msgid "Cancelled"
 msgstr "Annulée"
 
-#: __init__.py:54
+#: __init__.py:55
 msgctxt "credit note state"
 msgid "Registered"
 msgstr "Enregistré"
 
-#: __init__.py:55
+#: __init__.py:56
 msgctxt "credit note state"
 msgid "Sent"
 msgstr "Envoyé"
 
-#: __init__.py:56
+#: __init__.py:57
 msgctxt "credit note state"
 msgid "Paid"
 msgstr "Payé"
 
-#: __init__.py:98
+#: __init__.py:99
 msgctxt "invoice taxes application"
 msgid "Exclusive"
 msgstr "Exclues"
 
-#: __init__.py:99
+#: __init__.py:100
 msgctxt "invoice taxes application"
 msgid "Not applicable"
 msgstr "Non applicables"
 
-#: __init__.py:103
+#: __init__.py:104
 msgctxt "invoice type"
 msgid "Payable invoice"
 msgstr "Facture à payer"
 
-#: __init__.py:104
+#: __init__.py:105
 msgctxt "invoice type"
 msgid "Receivable invoice"
 msgstr "Facture à recevoir"
 
-#: __init__.py:108
+#: __init__.py:109
 msgctxt "payment type"
 msgid "Cash"
 msgstr "Espèces"
 
-#: __init__.py:109
+#: __init__.py:110
 msgctxt "payment type"
 msgid "Check"
 msgstr "Chèque"
 
-#: __init__.py:110
+#: __init__.py:111
 msgctxt "payment type"
 msgid "Credit card"
 msgstr "Carte de crédit"
 
-#: __init__.py:111
+#: __init__.py:112
 msgctxt "payment type"
 msgid "Bank transfer"
 msgstr "Virement bancaire"
 
-#: __init__.py:112
+#: __init__.py:113
 msgctxt "payment type"
 msgid "Other"
 msgstr "Autre"
 
-#: __init__.py:116
+#: __init__.py:117
 msgctxt "payment conditions"
 msgid "Cash"
 msgstr "Comptant"
 
-#: __init__.py:117
+#: __init__.py:118
 msgctxt "payment conditions"
 msgid "30 days"
 msgstr "30 jours"
 
-#: __init__.py:118
+#: __init__.py:119
 msgctxt "payment conditions"
 msgid "30 days end of month"
 msgstr "30 jours fin de mois"
 
-#: __init__.py:119
+#: __init__.py:120
 msgctxt "payment conditions"
 msgid "30 days end of month, the 10th"
 msgstr "30 jours fin de mois, le 10"
 
-#: __init__.py:120
+#: __init__.py:121
 msgctxt "payment conditions"
 msgid "45 days"
 msgstr "45 jours"
 
-#: __init__.py:121
+#: __init__.py:122
 msgctxt "payment conditions"
 msgid "45 days end of month"
 msgstr "45 jours fin de mois"
 
-#: __init__.py:122
+#: __init__.py:123
 msgctxt "payment conditions"
 msgid "45 days end of month, the 10th"
 msgstr "45 jours fin de mois, le 10"
 
-#: __init__.py:123
+#: __init__.py:124
 msgctxt "payment conditions"
 msgid "60 days"
 msgstr "60 jours"
 
-#: __init__.py:124
+#: __init__.py:125
 msgctxt "payment conditions"
 msgid "60 days end of month"
 msgstr "60 jours fin de mois"
 
-#: __init__.py:125
+#: __init__.py:126
 msgctxt "payment conditions"
 msgid "60 days end of month, the 10th"
 msgstr "60 jours fin de mois, le 10"
 
-#: __init__.py:126
+#: __init__.py:127
 msgctxt "payment conditions"
 msgid "Custom"
 msgstr "Personnalisées"
 
-#: __init__.py:130
+#: __init__.py:131
 msgctxt "item type"
 msgid "Product"
 msgstr "Produit"
 
-#: __init__.py:131
+#: __init__.py:132
 msgctxt "item type"
 msgid "Service"
 msgstr "Service"
 
-#: imex.py:46 models/quotation.py:293
+#: imex.py:46 models/quotation.py:202
 msgid "Quotations"
 msgstr "Devis"
 
-#: imex.py:56 models/invoice.py:318
+#: imex.py:56 models/invoice.py:331
 msgid "Invoices"
 msgstr "Factures"
 
-#: imex.py:66 models/credit_note.py:150
+#: imex.py:66 models/credit_note.py:161
 msgid "Credit notes"
 msgstr "Avoirs"
 
-#: models/credit_note.py:24
+#: models/credit_note.py:26
 msgid "Credit note"
 msgstr "Avoir"
 
-#: models/credit_note.py:57 models/down_payment_invoice.py:54
+#: models/credit_note.py:56
+#, python-format
+msgid "%(percentage)s%% down-payment"
+msgstr "Acompte de %(percentage)s%%"
+
+#: models/credit_note.py:59 models/down_payment_invoice.py:54
 #, python-format
 msgid "%(percentage)s%% down-payment on quotation %(reference)s"
 msgstr "Acompte de %(percentage)s%% sur le devis %(reference)s"
+
+#: models/credit_note.py:61
+#, python-format
+msgid "%(percentage)s%% down-payment on purchase order %(reference)s"
+msgstr "Acompte de %(percentage)s%% sur le bon de commande %(reference)s"
 
 #: models/down_payment_invoice.py:22
 msgid "DOWN-PAYMENT"
 msgstr "ACOMPTE"
 
-#: models/invoice.py:27
+#: models/invoice.py:29
 msgid "Invoice"
 msgstr "Facture"
 
-#: models/invoice.py:127
+#: models/invoice.py:141
 msgctxt "invoice reference"
 msgid "not registered"
 msgstr "non enregistré"
 
-#: models/invoice_base.py:47
+#: models/invoice_base.py:61
 msgctxt "invoicing sending vars"
 msgid "{Reference}"
 msgstr "{Reference}"
 
-#: models/invoice_base.py:48
+#: models/invoice_base.py:62
 msgctxt "invoicing sending vars"
 msgid "{Signature}"
 msgstr "{Signature}"
 
-#: models/invoice_base.py:49
+#: models/invoice_base.py:63
 msgctxt "invoicing sending vars"
 msgid "{Invoicing_Date}"
 msgstr "{Date_Facturation}"
 
-#: models/quotation.py:26
+#: models/purchase_order.py:23
+msgid "Purchase order"
+msgstr "Bon de commande"
+
+#: models/purchase_order.py:159
+msgid "Purchase orders"
+msgstr "Bons de commande"
+
+#: models/quotation.py:25
 msgid "Quotation"
 msgstr "Devis"
 
@@ -363,29 +381,34 @@ msgstr "Devis valide jusqu'au %(quotation_validity)s"
 
 #: pdf/default.py:233
 #, python-format
+msgid "Refers to quotation %(quotation_reference)s"
+msgstr "Se réfère au devis %(quotation_reference)s"
+
+#: pdf/default.py:240
+#, python-format
 msgid "Payment conditions: %(custom_payment_conditions)s"
 msgstr "Conditions de règlement : %(custom_payment_conditions)s"
 
-#: pdf/default.py:237
+#: pdf/default.py:244
 #, python-format
 msgid "Payment due date on %(due_date)s"
 msgstr "Échéance de paiement au %(due_date)s"
 
-#: pdf/default.py:242
+#: pdf/default.py:249
 #, python-format
 msgid "Accepted payment methods: %(accepted_payment_methods)s"
 msgstr "Moyens de règlement acceptés : %(accepted_payment_methods)s"
 
-#: pdf/default.py:246
+#: pdf/default.py:253
 #, python-format
 msgid "Late fee rate: %(late_fee_rate)s"
 msgstr "Taux des pénalités de retard : %(late_fee_rate)s"
 
-#: pdf/default.py:250
+#: pdf/default.py:257
 msgid "Late fee at the legal rate"
 msgstr "Pénalités de retard au taux légal en vigueur"
 
-#: pdf/default.py:252
+#: pdf/default.py:259
 #, python-format
 msgid "Refers to invoice %(invoice_reference)s"
 msgstr "Se réfère à la facture %(invoice_reference)s"

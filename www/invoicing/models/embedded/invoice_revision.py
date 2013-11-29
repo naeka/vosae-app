@@ -34,6 +34,7 @@ class InvoiceRevision(EmbeddedDocument):
     delivery_address = fields.EmbeddedDocumentField("Address")
     quotation_date = DateField()
     quotation_validity = DateField()
+    purchase_order_date = DateField()
     invoicing_date = DateField()
     due_date = DateField()
     credit_note_emission_date = DateField()

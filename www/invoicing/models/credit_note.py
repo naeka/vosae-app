@@ -9,6 +9,8 @@ import datetime
 from vosae_utils import SearchDocumentMixin
 from pyes import mappings as search_mappings
 
+from core.fields import MultipleReferencesField
+
 from invoicing.exceptions import *
 from invoicing.models.invoice_base import InvoiceBase
 from invoicing import CREDIT_NOTE_STATES
@@ -25,7 +27,7 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
     STATES = CREDIT_NOTE_STATES
 
     state = fields.StringField(required=True, choices=STATES, default=STATES.REGISTERED)
-    related_invoice = fields.ReferenceField("Invoice", required=True)
+    related_to = MultipleReferencesField(document_types=['DownPaymentInvoice', 'Invoice'])
 
     class Meta():
         document_type = 'creditnote'
@@ -46,21 +48,27 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
             self.message = 'Invalid credit note state'
 
     def __init__(self, *args, **kwargs):
-        from invoicing.models import DownPaymentInvoice, InvoiceItem
+        from invoicing.models import InvoiceItem
         super(CreditNote, self).__init__(*args, **kwargs)
-        if self.related_invoice and isinstance(self.related_invoice, DownPaymentInvoice):
+        if self.related_to and self.related_to.is_down_payment_invoice():
             credit_note_data = self.current_revision
             if credit_note_data and self.id:
+                description = _("%(percentage)s%% down-payment")
+                if self.related_to.related_to:  # Quotation | Purchase order (| Delivery order)
+                    if self.related_to.related_to.is_quotation():
+                        description = _("%(percentage)s%% down-payment on quotation %(reference)s")
+                    elif self.related_to.related_to.is_purchase_order():
+                        description = _("%(percentage)s%% down-payment on purchase order %(reference)s")                        
                 credit_note_data.line_items.append(
                     InvoiceItem(
-                        reference=self.related_invoice.ITEM_REFERENCE,
-                        description=_("%(percentage)s%% down-payment on quotation %(reference)s") % {
-                            "percentage": floatformat(float(self.related_invoice.percentage * 100), -2),
-                            "reference": self.related_invoice.related_quotation.reference
+                        reference=self.related_to.ITEM_REFERENCE,
+                        description=description % {
+                            "percentage": floatformat(float(self.related_to.percentage * 100), -2),
+                            "reference": self.related_to.related_to.reference
                         },
                         quantity=1,
-                        unit_price=(self.amount / (Decimal('1.00') + self.related_invoice.tax_applied.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP),
-                        tax=self.related_invoice.tax_applied
+                        unit_price=(self.amount / (Decimal('1.00') + self.related_to.tax_applied.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP),
+                        tax=self.related_to.tax_applied
                     )
                 )
 
@@ -68,8 +76,8 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
         kwargs = super(CreditNote, self).get_search_kwargs()
         if self.current_revision.invoicing_date:
             kwargs.update(invoicing_date=self.current_revision.invoicing_date)
-        if self.related_invoice:
-            kwargs.update(related_invoice_reference=self.related_invoice.reference)
+        if self.related_to:
+            kwargs.update(related_invoice_reference=self.related_to.reference)
         return kwargs
 
     @classmethod
@@ -91,11 +99,14 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
         """
         Post save hook handler
 
-        If created, increments the appropriate :class:`~core.models.Tenant`
-        quotations numbering counter.
+        If created:
+        - increments the appropriate :class:`~core.models.Tenant` quotations numbering counter.
+        - append the credit note to the group
         """
         if created:
             document.tenant.tenant_settings.increment_credit_note_counter()
+            document.group.credit_notes.append(document)
+            document.group.save()
 
         # Calling parent
         super(CreditNote, document).post_save(sender, document, created, **kwargs)
@@ -123,9 +134,9 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
         :class:`~invoicing.models.Invoice` and if there is any down payment.
         """
         super(CreditNote, self).set_total()
-        if not self.related_invoice.is_down_payment_invoice() and self.related_invoice.related_quotation:
-            for down_payment in self.related_invoice.related_quotation.down_payments:
-                self.amount += down_payment.amount
+        if not self.related_to.is_down_payment_invoice():
+            for down_payment_invoice in self.group.down_payment_invoices:
+                self.amount += down_payment_invoice.amount
 
     def is_modifiable(self):
         """

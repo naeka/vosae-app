@@ -10,6 +10,8 @@ import uuid
 from vosae_utils import SearchDocumentMixin
 from pyes import mappings as search_mappings
 
+from core.fields import MultipleReferencesField
+
 from invoicing.exceptions import InvalidInvoiceBaseState, NotCancelableInvoice
 from invoicing.models.invoice_base import InvoiceBase
 from invoicing import INVOICE_STATES
@@ -30,9 +32,8 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
     state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
     paid = fields.DecimalField(required=True, default=lambda: Decimal('0.00'))
     balance = fields.DecimalField(required=True)
-    related_quotation = fields.ReferenceField("Quotation")
+    related_to = MultipleReferencesField(document_types=['Quotation', 'PurchaseOrder'])
     payments = fields.ListField(fields.ReferenceField("Payment"))
-    related_credit_note = fields.ReferenceField("CreditNote")
 
     meta = {
         "allow_inheritance": True
@@ -60,8 +61,8 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         kwargs = super(Invoice, self).get_search_kwargs()
         if self.current_revision.invoicing_date:
             kwargs.update(invoicing_date=self.current_revision.invoicing_date)
-        if self.related_quotation:
-            kwargs.update(related_quotation_reference=self.related_quotation.reference)
+        if self.group.quotation:
+            kwargs.update(related_quotation_reference=self.group.quotation.reference)
         return kwargs
 
     @classmethod
@@ -93,6 +94,20 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
             document.tenant.tenant_settings.increment_invoice_counter()
 
     @classmethod
+    def post_save(self, sender, document, created, **kwargs):
+        """
+        Post save hook handler
+
+        If created, set the invoice to the group.
+        """
+        if created:
+            document.group.invoice = document
+            document.group.save()
+
+        # Calling parent
+        super(Invoice, document).post_save(sender, document, created, **kwargs)
+
+    @classmethod
     def post_delete(self, sender, document, **kwargs):
         """
         Post delete hook handler
@@ -100,24 +115,21 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         - Update related quotation to remove linked invoices references
         """
         # Update related quotation
-        if document.related_quotation:
+        if document.group.quotation:
             # Removes invoiced state
-            document.related_quotation.remove_invoiced_state()
-            # Reset related invoice
-            document.related_quotation.related_invoice = None
+            document.group.quotation.remove_invoiced_state()
             # Saves updates
-            document.related_quotation.save()
+            document.group.quotation.save()
+
+        # Update related purchase_order
+        if document.group.purchase_order:
+            # Removes invoiced state
+            document.group.purchase_order.remove_invoiced_state()
+            # Saves updates
+            document.group.purchase_order.save()
 
         # Calling parent
         super(Invoice, document).post_delete(sender, document, **kwargs)
-
-    @property
-    def down_payments(self):
-        """Property returning a list of down payment invoices (retrieved from related quotation)"""
-        try:
-            return self.related_quotation.down_payments
-        except:
-            return []
 
     @property
     def filename(self):
@@ -197,9 +209,8 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         """
         super(Invoice, self).manage_amounts()
         # Substract down-payment invoice amounts from amount
-        if self.related_quotation:
-            for down_payment in self.related_quotation.down_payments:
-                self.amount -= down_payment.amount
+        for down_payment_invoice in self.group.down_payment_invoices:
+            self.amount -= down_payment_invoice.amount
         self.balance = self.amount - self.paid
 
     def manage_paid(self):
@@ -250,7 +261,8 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
             issuer=issuer,
             organization=self.organization,
             contact=self.contact,
-            related_invoice=self
+            related_to=self,
+            group=self.group
         )
         cn_data = credit_note.add_revision(revision=self.current_revision)
         cn_data.issuer = issuer
@@ -261,7 +273,6 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
                 item.reference = unicode(item.reference)
             item.unit_price = -item.unit_price
         credit_note.save()
-        self.update(set__related_credit_note=credit_note)
         self.set_state(Invoice.STATES.CANCELLED)
         return credit_note
 
@@ -282,15 +293,22 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         - Update related quotation state, if invoice
         - Add timeline and notification entries
         """
-        # Update related quotation state, if invoice
-        if document.is_invoice() and document.related_quotation:
-            # Removes invoiced state
-            document.related_quotation.remove_invoiced_state()
+        # Update related quotation/purchase order state, if invoice
+        if document.is_invoice():
+            if document.group.quotation:
+                # Removes invoiced state
+                document.group.quotation.remove_invoiced_state()
+                # Saves updates
+                document.group.quotation.save()
+            if document.group.purchase_order:
+                # Removes invoiced state
+                document.group.purchase_order.remove_invoiced_state()
+                # Saves updates
+                document.group.purchase_order.save()
             # Manage cancelled related invoice
-            document.related_quotation.related_invoices_cancelled.append(document)
-            document.related_quotation.related_invoice = None
-            # Saves updates
-            document.related_quotation.save()
+            document.group.invoices_cancelled.append(document)
+            document.group.invoice = None
+            document.group.save()
 
         # Add timeline and notification entries
         post_cancel_invoice_task.delay(issuer, document, credit_note)

@@ -2,6 +2,7 @@
 
 from django.conf import settings
 from collections import OrderedDict
+from bson import DBRef, SON
 from mongoengine import Document
 from mongoengine.base import get_document
 from mongoengine.fields import (
@@ -10,8 +11,7 @@ from mongoengine.fields import (
     MapField,
     ReferenceField,
     GenericReferenceField,
-    RECURSIVE_REFERENCE_CONSTANT,
-    DBRef
+    RECURSIVE_REFERENCE_CONSTANT
 )
 import datetime
 
@@ -84,11 +84,19 @@ class MultipleReferencesField(GenericReferenceField):
         return self.document_types_obj
 
     def validate(self, value):
-        if not isinstance(value, tuple(self.document_types + [DBRef])):
-            self.error("A MultipleReferencesField only accepts DBRef or documents")
+        if not isinstance(value, tuple(self.document_types + [DBRef, dict, SON])):
+            self.error('A MultipleReferencesField can only contain documents')
 
-        if isinstance(value, Document) and value.id is None:
-            self.error('You can only reference documents once they have been saved to the database')
+        if isinstance(value, (dict, SON)):
+            if '_ref' not in value or '_cls' not in value:
+                self.error('A MultipleReferencesField can only contain documents')
+            elif not any(value['_cls'].endswith(document_type) for document_type in self.document_types):
+                self.error('A MultipleReferencesField can only contain documents')
+
+        # We need the id from the saved object to create the DBRef
+        elif isinstance(value, Document) and value.id is None:
+            self.error('You can only reference documents once they have been'
+                       ' saved to the database')
 
     def to_mongo(self, document):
         """

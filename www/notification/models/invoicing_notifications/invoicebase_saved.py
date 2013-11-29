@@ -7,6 +7,7 @@ from notification.models.invoicing_notifications.invoicing_notification import I
 
 __all__ = (
     'QuotationSaved',
+    'PurchaseOrderSaved',
     'InvoiceSaved',
     'DownPaymentInvoiceSaved',
     'CreditNoteSaved',
@@ -15,6 +16,10 @@ __all__ = (
 
 class QuotationSaved(InvoicingNotification):
     quotation = fields.ReferenceField("Quotation", required=True)
+
+
+class PurchaseOrderSaved(InvoicingNotification):
+    purchase_order = fields.ReferenceField("PurchaseOrder", required=True)
 
 
 class InvoiceSaved(InvoicingNotification):

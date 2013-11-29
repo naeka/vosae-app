@@ -10,7 +10,7 @@ from django.utils.timezone import now as datetime_now
 from django.core.files.base import ContentFile
 from django.template import Template, Context
 from django.core.mail import EmailMessage
-from mongoengine import Document, fields, PULL
+from mongoengine import Document, fields, PULL, NULLIFY
 from decimal import Decimal, ROUND_HALF_UP
 import uuid
 
@@ -33,7 +33,21 @@ from notification.mixins import NotificationAwareDocumentMixin
 from vosae_utils import respect_language
 
 
-__all__ = ('InvoiceBase',)
+__all__ = ('InvoiceBase', 'InvoiceBaseGroup')
+
+
+
+class InvoiceBaseGroup(Document):
+
+    """Group of all :class:`~invoicing.models.InvoiceBase` related documents."""
+
+    tenant = fields.ReferenceField("Tenant", required=True)
+    quotation = fields.ReferenceField("Quotation")
+    purchase_order = fields.ReferenceField("PurchaseOrder")
+    down_payment_invoices = fields.ListField(fields.ReferenceField("DownPaymentInvoice"))
+    invoice = fields.ReferenceField("Invoice")
+    invoices_cancelled = fields.ListField(fields.ReferenceField("Invoice"))
+    credit_notes = fields.ListField(fields.ReferenceField("CreditNote"))
 
 
 class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin):
@@ -48,7 +62,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
     RELATED_WITH_TTL = ['attachments']
 
     tenant = fields.ReferenceField("Tenant", required=True)
-    base_type = fields.StringField(required=True, choices=("QUOTATION", "INVOICE", "CREDIT_NOTE"))
+    base_type = fields.StringField(required=True, choices=("QUOTATION", "PURCHASE_ORDER", "INVOICE", "CREDIT_NOTE"))
     reference = fields.StringField(required=True, unique_with=["tenant", "base_type"])
     account_type = fields.StringField(required=True, choices=ACCOUNT_TYPES)
     total = fields.DecimalField(required=True)
@@ -60,6 +74,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
     revisions = fields.ListField(fields.EmbeddedDocumentField("InvoiceRevision"))
     history = fields.ListField(fields.EmbeddedDocumentField("InvoiceHistoryEntry"))
     notes = fields.ListField(fields.EmbeddedDocumentField("InvoiceNote"))
+    group = fields.ReferenceField("InvoiceBaseGroup", required=True, default=lambda: InvoiceBaseGroup())
     attachments = fields.ListField(fields.ReferenceField("VosaeFile", reverse_delete_rule=PULL))
 
     meta = {
@@ -110,6 +125,11 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
             # Manage total / amount
             document.manage_amounts()
+        
+        # If newly created saves the related group before
+        if not document.group.id or not document.group.tenant:
+            document.group.tenant = document.tenant
+            document.group.save()
 
     @classmethod
     def post_save(self, sender, document, created, **kwargs):
@@ -237,6 +257,10 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         return False
 
     def is_quotation(self):
+        """Always False in the base class."""
+        return False
+
+    def is_purchase_order(self):
         """Always False in the base class."""
         return False
 
@@ -392,7 +416,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             self.add_changed_state_history_entry()
             if self.state in STATES_RESET_CACHED_DATA:
                 self.current_revision.pdf = None
-            self.save()                    
+            self.save()
             return previous_state, new_state
         else:
             try:

@@ -26,6 +26,17 @@ class InvoicingTimelineEntry(TimelineEntry):
         document.module = 'invoicing'
 
     @classmethod
+    def pre_save_purchase_order(self, sender, document, **kwargs):
+        mandatory_perms = document.purchase_order._meta.get('vosae_mandatory_permissions', ())
+        for perm in mandatory_perms:
+            if perm.endswith('_access'):
+                document.access_permission = perm
+                break
+        if 'vosae_timeline_permission' in document.purchase_order._meta:
+            document.see_permission = document.purchase_order._meta.get('vosae_timeline_permission')
+        document.module = 'invoicing'
+
+    @classmethod
     def pre_save_invoice(self, sender, document, **kwargs):
         mandatory_perms = document.invoice._meta.get('vosae_mandatory_permissions', ())
         for perm in mandatory_perms:

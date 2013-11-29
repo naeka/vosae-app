@@ -52,6 +52,12 @@ class InvoiceRevisionResource(VosaeResource):
         blank=True,
         help_text=HELP_TEXT['invoice_revision']['quotation_validity']
     )
+    purchase_order_date = base_fields.DateField(
+        attribute='purchase_order_date',
+        null=True,
+        blank=True,
+        help_text=HELP_TEXT['invoice_revision']['purchase_order_date']
+    )
     invoicing_date = base_fields.DateField(
         attribute='invoicing_date',
         null=True,
