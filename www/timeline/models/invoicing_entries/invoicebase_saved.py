@@ -7,6 +7,7 @@ from timeline.models.invoicing_entries.invoicing_timeline_entry import Invoicing
 
 __all__ = (
     'QuotationSaved',
+    'PurchaseOrderSaved',
     'InvoiceSaved',
     'DownPaymentInvoiceSaved',
     'CreditNoteSaved',
@@ -19,6 +20,10 @@ class Saved(InvoicingTimelineEntry):
 
 class QuotationSaved(Saved):
     quotation = fields.ReferenceField("Quotation", required=True)
+
+
+class PurchaseOrderSaved(Saved):
+    purchase_order = fields.ReferenceField("PurchaseOrder", required=True)
 
 
 class InvoiceSaved(Saved):

@@ -7,6 +7,7 @@ from timeline.models.invoicing_entries.invoicing_timeline_entry import Invoicing
 
 __all__ = (
     'QuotationChangedState',
+    'PurchaseOrderChangedState',
     'InvoiceChangedState',
     'DownPaymentInvoiceChangedState',
     'CreditNoteChangedState',
@@ -20,6 +21,10 @@ class ChangedState(InvoicingTimelineEntry):
 
 class QuotationChangedState(ChangedState):
     quotation = fields.ReferenceField("Quotation", required=True)
+
+
+class PurchaseOrderChangedState(ChangedState):
+    purchase_order = fields.ReferenceField("PurchaseOrder", required=True)
 
 
 class InvoiceChangedState(ChangedState):

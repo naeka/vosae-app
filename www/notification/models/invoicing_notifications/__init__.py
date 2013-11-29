@@ -7,8 +7,10 @@ from notification.models.invoicing_notifications import invoicebase_saved
 from notification.models.invoicing_notifications.invoicebase_saved import *
 from notification.models.invoicing_notifications import invoicebase_changed_state
 from notification.models.invoicing_notifications.invoicebase_changed_state import *
-from notification.models.invoicing_notifications import quotation_make_invoice
-from notification.models.invoicing_notifications.quotation_make_invoice import *
+from notification.models.invoicing_notifications import make_purchase_order
+from notification.models.invoicing_notifications.make_purchase_order import *
+from notification.models.invoicing_notifications import make_invoice
+from notification.models.invoicing_notifications.make_invoice import *
 from notification.models.invoicing_notifications import invoice_cancelled
 from notification.models.invoicing_notifications.invoice_cancelled import *
 
@@ -16,7 +18,8 @@ from notification.models.invoicing_notifications.invoice_cancelled import *
 __all__ = (
 	invoicebase_saved.__all__ +
 	invoicebase_changed_state.__all__ +
-	quotation_make_invoice.__all__ +
+    make_purchase_order.__all__ +
+    make_invoice.__all__ +
 	invoice_cancelled.__all__
 )
 
@@ -28,6 +31,7 @@ SIGNALS
 
 signals.post_save.connect(Notification.post_save, sender=QuotationSaved)
 signals.post_save.connect(Notification.post_save, sender=QuotationChangedState)
+signals.post_save.connect(Notification.post_save, sender=QuotationMakePurchaseOrder)
 signals.post_save.connect(Notification.post_save, sender=QuotationMakeInvoice)
 signals.post_save.connect(Notification.post_save, sender=QuotationMakeDownPaymentInvoice)
 signals.post_save.connect(Notification.post_save, sender=InvoiceSaved)

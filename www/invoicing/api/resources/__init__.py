@@ -9,6 +9,8 @@ from invoicing.api.resources import invoice_base
 from invoicing.api.resources.invoice_base import *
 from invoicing.api.resources import quotation
 from invoicing.api.resources.quotation import *
+from invoicing.api.resources import purchase_order
+from invoicing.api.resources.purchase_order import *
 from invoicing.api.resources import invoice
 from invoicing.api.resources.invoice import *
 from invoicing.api.resources import down_payment_invoice
@@ -29,6 +31,7 @@ __all__ = (
     embedded.__all__ +
     invoice_base.__all__ +
     quotation.__all__ +
+    purchase_order.__all__ +
     invoice.__all__ +
     down_payment_invoice.__all__ +
     credit_note.__all__ +
