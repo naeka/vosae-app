@@ -1,5 +1,7 @@
 # -*- coding:Utf-8 -*-
 
+from core.api import signals
+
 from core.api.resources import embedded
 from core.api.resources.embedded import *
 
@@ -23,3 +25,10 @@ __all__ = (
     vosae_file.__all__ +
     vosae_search.__all__
 )
+
+
+"""
+SIGNALS
+"""
+
+signals.post_create.connect(TenantResource.post_create, sender=TenantResource)

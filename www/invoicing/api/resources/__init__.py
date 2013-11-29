@@ -1,5 +1,7 @@
 # -*- coding:Utf-8 -*-
 
+from core.api import signals
+
 from invoicing.api.resources import embedded
 from invoicing.api.resources.embedded import *
 
@@ -35,3 +37,13 @@ __all__ = (
     item.__all__ +
     tax.__all__
 )
+
+
+"""
+SIGNALS
+"""
+
+signals.post_save.connect(InvoiceBaseResource.post_save, sender=QuotationResource)
+signals.post_save.connect(InvoiceBaseResource.post_save, sender=InvoiceResource)
+signals.post_save.connect(InvoiceBaseResource.post_save, sender=DownPaymentInvoiceResource)
+signals.post_save.connect(InvoiceBaseResource.post_save, sender=CreditNoteResource)

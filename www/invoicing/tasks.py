@@ -15,69 +15,69 @@ def update_invoices_states():
 
 
 @task()
-def invoicebase_saved_task(document, created):
+def invoicebase_saved_task(issuer, document, created):
     notification_list = []
     if document.is_quotation():
         timeline_entry = timeline_entries.QuotationSaved(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             quotation=document,
             created=created
         )
         if not created:
-            for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+            for subscriber in set(document.subscribers).difference([issuer]):
                 notification_list.append(notifications.QuotationSaved(
                     tenant=document.tenant,
                     recipient=subscriber,
-                    issuer=document.current_revision.issuer,
+                    issuer=issuer,
                     quotation=document,
                     created=created
                 ))
     elif document.is_invoice():
         timeline_entry = timeline_entries.InvoiceSaved(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             invoice=document,
             created=created
         )
         if not created:
-            for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+            for subscriber in set(document.subscribers).difference([issuer]):
                 notification_list.append(notifications.InvoiceSaved(
                     tenant=document.tenant,
                     recipient=subscriber,
-                    issuer=document.current_revision.issuer,
+                    issuer=issuer,
                     invoice=document,
                     created=created
                 ))
     elif document.is_down_payment_invoice():
         timeline_entry = timeline_entries.DownPaymentInvoiceSaved(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             down_payment_invoice=document,
             created=created
         )
         if not created:
-            for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+            for subscriber in set(document.subscribers).difference([issuer]):
                 notification_list.append(notifications.DownPaymentInvoiceSaved(
                     tenant=document.tenant,
                     recipient=subscriber,
-                    issuer=document.current_revision.issuer,
+                    issuer=issuer,
                     down_payment_invoice=document,
                     created=created
                 ))
     elif document.is_credit_note():
         timeline_entry = timeline_entries.CreditNoteSaved(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             credit_note=document,
             created=created
         )
         if not created:
-            for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+            for subscriber in set(document.subscribers).difference([issuer]):
                 notification_list.append(notifications.CreditNoteSaved(
                     tenant=document.tenant,
                     recipient=subscriber,
-                    issuer=document.current_revision.issuer,
+                    issuer=issuer,
                     credit_note=document,
                     created=created
                 ))
@@ -87,21 +87,21 @@ def invoicebase_saved_task(document, created):
 
 
 @task()
-def invoicebase_changed_state_task(document, previous_state):
+def invoicebase_changed_state_task(issuer, document, previous_state):
     notification_list = []
     if document.is_quotation():
         timeline_entry = timeline_entries.QuotationChangedState(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             quotation=document,
             previous_state=previous_state,
             new_state=document.state
         )
-        for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+        for subscriber in set(document.subscribers).difference([issuer]):
             notification_list.append(notifications.QuotationChangedState(
                 tenant=document.tenant,
                 recipient=subscriber,
-                issuer=document.current_revision.issuer,
+                issuer=issuer,
                 quotation=document,
                 previous_state=previous_state,
                 new_state=document.state
@@ -109,16 +109,16 @@ def invoicebase_changed_state_task(document, previous_state):
     elif document.is_invoice():
         timeline_entry = timeline_entries.InvoiceChangedState(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             invoice=document,
             previous_state=previous_state,
             new_state=document.state
         )
-        for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+        for subscriber in set(document.subscribers).difference([issuer]):
             notification_list.append(notifications.CreditNoteChangedState(
                 tenant=document.tenant,
                 recipient=subscriber,
-                issuer=document.current_revision.issuer,
+                issuer=issuer,
                 invoice=document,
                 previous_state=previous_state,
                 new_state=document.state
@@ -126,16 +126,16 @@ def invoicebase_changed_state_task(document, previous_state):
     elif document.is_down_payment_invoice():
         timeline_entry = timeline_entries.DownPaymentInvoiceChangedState(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             down_payment_invoice=document,
             previous_state=previous_state,
             new_state=document.state
         )
-        for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+        for subscriber in set(document.subscribers).difference([issuer]):
             notification_list.append(notifications.CreditNoteChangedState(
                 tenant=document.tenant,
                 recipient=subscriber,
-                issuer=document.current_revision.issuer,
+                issuer=issuer,
                 down_payment_invoice=document,
                 previous_state=previous_state,
                 new_state=document.state
@@ -143,16 +143,16 @@ def invoicebase_changed_state_task(document, previous_state):
     elif document.is_credit_note():
         timeline_entry = timeline_entries.CreditNoteChangedState(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             credit_note=document,
             previous_state=previous_state,
             new_state=document.state
         )
-        for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+        for subscriber in set(document.subscribers).difference([issuer]):
             notification_list.append(notifications.CreditNoteChangedState(
                 tenant=document.tenant,
                 recipient=subscriber,
-                issuer=document.current_revision.issuer,
+                issuer=issuer,
                 credit_note=document,
                 previous_state=previous_state,
                 new_state=document.state
@@ -201,7 +201,7 @@ def post_make_invoice_task(document, invoice_or_down_payment_invoice):
 
 
 @task()
-def post_register_invoice_task(document, previous_state):
+def post_register_invoice_task(issuer, document, previous_state):
     from vosae_statistics.models import InvoiceStatistics
     InvoiceStatistics(
         tenant=document.tenant,
@@ -216,35 +216,35 @@ def post_register_invoice_task(document, previous_state):
 
 
 @task()
-def post_cancel_invoice_task(document, credit_note):
+def post_cancel_invoice_task(issuer, document, credit_note):
     notification_list = []
     if document.is_invoice():
         timeline_entry = timeline_entries.InvoiceCancelled(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             invoice=document,
             credit_note=credit_note
         )
-        for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+        for subscriber in set(document.subscribers).difference([issuer]):
             notification_list.append(notifications.InvoiceCancelled(
                 tenant=document.tenant,
                 recipient=subscriber,
-                issuer=document.current_revision.issuer,
+                issuer=issuer,
                 invoice=document,
                 credit_note=credit_note
             ))
     elif document.is_down_payment_invoice():
         timeline_entry = timeline_entries.DownPaymentInvoiceCancelled(
             tenant=document.tenant,
-            issuer=document.current_revision.issuer,
+            issuer=issuer,
             down_payment_invoice=document,
             credit_note=credit_note
         )
-        for subscriber in set(document.subscribers).difference([document.current_revision.issuer]):
+        for subscriber in set(document.subscribers).difference([issuer]):
             notification_list.append(notifications.DownPaymentInvoiceCancelled(
                 tenant=document.tenant,
                 recipient=subscriber,
-                issuer=document.current_revision.issuer,
+                issuer=issuer,
                 down_payment_invoice=document,
                 credit_note=credit_note
             ))

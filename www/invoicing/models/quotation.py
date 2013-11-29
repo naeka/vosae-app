@@ -173,7 +173,6 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
         self.state = Quotation.STATES.INVOICED
         self.related_invoice = invoice
         self.save()
-        invoicing_signals.post_make_invoice.send(self.__class__, document=self, new_document=invoice)
         return invoice
 
     def make_down_payment(self, issuer, percentage, tax, date):

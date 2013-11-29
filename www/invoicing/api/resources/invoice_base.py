@@ -5,21 +5,20 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
 from tastypie import fields as base_fields, http
-from tastypie.bundle import Bundle
 from tastypie.utils import trailing_slash
 from tastypie.exceptions import BadRequest
 from tastypie_mongoengine import fields
 
 from core.api.utils import TenantResource, VosaeIMEXMixinResource
 from invoicing.exceptions import NotDeletableInvoice, InvalidInvoiceBaseState
-from invoicing import MARK_AS_STATES
+from invoicing import MARK_AS_STATES, INVOICE_STATES
 
 from invoicing import imex as invoicing_imex
 from invoicing import signals as invoicing_signals
 from invoicing.models.embedded import invoice_history_entries
+from invoicing.tasks import invoicebase_saved_task, invoicebase_changed_state_task
 from invoicing.api.doc import HELP_TEXT
 from core.api.resources import VosaeFileResource
-from core.models import VosaeFile
 
 from notification.mixins import NotificationAwareResourceMixin
 
@@ -133,6 +132,16 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
         ))
         return urls
 
+    @classmethod
+    def post_save(self, sender, resource, bundle, created, **kwargs):
+        """
+        Post save API hook handler
+
+        - Add timeline and notification entries
+        """
+        # Add timeline and notification entries
+        invoicebase_saved_task.delay(bundle.request.vosae_user, bundle.obj, created)
+
     def obj_delete(self, bundle, **kwargs):
         """Raises a BadRequest if the :class:`~invoicing.models.InvoiceBase` is not in a deletable state"""
         try:
@@ -193,7 +202,8 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
             return http.HttpNotFound()
 
         try:
-            obj.set_state(invoicebase_state.upper(), issuer=request.vosae_user)
+            previous_state, new_state = obj.set_state(invoicebase_state.upper(), issuer=request.vosae_user)
+            invoicing_signals.post_client_changed_invoice_state.send(obj.__class__, issuer=request.vosae_user, document=obj, previous_state=previous_state)
         except (obj.InvalidState, InvalidInvoiceBaseState) as e:
             raise BadRequest(e)
 

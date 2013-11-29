@@ -23,11 +23,8 @@ from invoicing import signals as invoicing_signals
 from invoicing.models.embedded.invoice_revision import InvoiceRevision
 from invoicing.models.embedded.invoice_history_entries import *
 from invoicing.pdf.default import InvoiceBaseReport
-from invoicing.exceptions import (
-    NotDeletableInvoice,
-)
+from invoicing.exceptions import NotDeletableInvoice
 from invoicing.tasks import (
-    invoicebase_saved_task,
     invoicebase_changed_state_task,
     invoicebase_deleted_task
 )
@@ -129,10 +126,6 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         # Index invoice based document in elasticsearch
         es_document_index.delay(document)
 
-        if not getattr(document, '_ignore_saved_task', False):
-            # Add timeline and notification entries
-            invoicebase_saved_task.delay(document, created)
-
     @classmethod
     def post_delete(self, sender, document, **kwargs):
         """
@@ -153,7 +146,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         invoicebase_deleted_task.delay(document)
 
     @classmethod
-    def post_client_changed_invoice_state(cls, sender, document, previous_state, **kwargs):
+    def post_client_changed_invoice_state(cls, sender, issuer, document, previous_state, **kwargs):
         """
         Post client changed invoice state hook handler
 
@@ -162,10 +155,10 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         """
         # Fire invoice registration signal
         if document.is_invoice() and previous_state == INVOICE_STATES.DRAFT and document.state == INVOICE_STATES.REGISTERED:
-            invoicing_signals.post_register_invoice.send(sender, document=document, previous_state=previous_state)
+            invoicing_signals.post_register_invoice.send(sender, issuer=issuer, document=document, previous_state=previous_state)
 
         # Add timeline and notification entries
-        invoicebase_changed_state_task.delay(document, previous_state)
+        invoicebase_changed_state_task.delay(issuer, document, previous_state)
 
     def get_search_kwargs(self):
         kwargs = {
@@ -386,29 +379,21 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
                     continue
         self.amount = self.total
 
-    def set_state(self, new_state, force=False, issuer=None):
+    def set_state(self, new_state, issuer=None):
         """
         Set a new state to the :class:`~invoicing.models.Quotation`/:class:`~invoicing.models.Invoice`.
 
         :param new_state: a state among the (:class:`~invoicing.models.Quotation`|:class:`~invoicing.models.Invoice`|:class:`~invoicing.models.DownPaymentInvoice`|:class:`~invoicing.models.CreditNote`).STATES
-        :param force: do not check for possible states (for automatic state assignation)
         :param issuer: a :class:`~core.models.VosaeUser` object to be associated to the state modification
         """
-        if new_state in self.get_possible_states() or force:
-            try:
-                previous_state = self.state
-                self.state = new_state
-                self.add_changed_state_history_entry()
-                if self.state in STATES_RESET_CACHED_DATA:
-                    self.current_revision.pdf = None
-                self._ignore_saved_task = True
-                self.save()
-                if not force:
-                    # Force are system updates
-                    invoicing_signals.post_client_changed_invoice_state.send(self.__class__, document=self, previous_state=previous_state)
-                return True
-            except:
-                return False
+        if new_state in self.get_possible_states():
+            previous_state = self.state
+            self.state = new_state
+            self.add_changed_state_history_entry()
+            if self.state in STATES_RESET_CACHED_DATA:
+                self.current_revision.pdf = None
+            self.save()                    
+            return previous_state, new_state
         else:
             try:
                 raise self.InvalidState()

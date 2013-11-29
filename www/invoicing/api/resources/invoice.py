@@ -12,6 +12,7 @@ from invoicing.models import Invoice
 from invoicing.exceptions import NotCancelableInvoice, NotPayableInvoice
 from invoicing.api.resources.invoice_base import InvoiceBaseResource
 from invoicing.api.doc import HELP_TEXT
+from invoicing import signals as invoicing_signals
 
 
 __all__ = (
@@ -91,6 +92,7 @@ class InvoiceResource(InvoiceBaseResource):
 
         try:
             credit_note = obj.cancel(request.vosae_user)
+            invoicing_signals.post_cancel_invoice.send(obj.__class__, issuer=request.vosae_user, document=obj, credit_note=credit_note)
             credit_note_resource = CreditNoteResource()
             credit_note_resource_bundle = credit_note_resource.build_bundle(obj=credit_note, request=request)
         except NotCancelableInvoice as e:
