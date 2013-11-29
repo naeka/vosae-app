@@ -94,17 +94,15 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
 
         available_imex_serializers = (contacts_imex.VCardSerializer, contacts_imex.CSVSerializer)
 
-    def obj_create(self, bundle, **kwargs):
-        """Calls the saved task here since we can extract issuer from the request"""
-        bundle = super(EntityResource, self).obj_create(bundle, **kwargs)
-        entity_saved_task.delay(bundle.obj, created=True, issuer=bundle.request.vosae_user)
-        return bundle
+    @classmethod
+    def post_save(self, sender, resource, bundle, created, **kwargs):
+        """
+        Post save API hook handler
 
-    def obj_update(self, bundle, **kwargs):
-        """Calls the saved task here since we can extract issuer from the request"""
-        bundle = super(EntityResource, self).obj_update(bundle, **kwargs)
-        entity_saved_task.delay(bundle.obj, created=False, issuer=bundle.request.vosae_user)
-        return bundle
+        - Add timeline and notification entries
+        """
+        # Add timeline and notification entries
+        entity_saved_task.delay(bundle.obj, created=created, issuer=bundle.request.vosae_user)
 
     def get_object_list(self, request):
         """

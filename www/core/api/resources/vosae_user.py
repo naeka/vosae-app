@@ -72,14 +72,15 @@ class VosaeUserResource(WakeUpMixinResource, ZombieMixinResource, TenantResource
             "email": ('exact',)
         }
 
-    def obj_create(self, bundle, **kwargs):
-        """Fills initial data (based on request's language) after VosaeUser creation"""
-        bundle = super(VosaeUserResource, self).obj_create(bundle, **kwargs)
+    @classmethod
+    def post_create(self, sender, resource, bundle, **kwargs):
+        """
+        Post create hook.
 
+        Fills initial data (based on request's language) after VosaeUser creation
+        """
         # Fill user initial data (Tenant and VosaeUser are required)
         fill_user_initial_data.delay(bundle.obj, bundle.request.LANGUAGE_CODE)
-
-        return bundle
 
     def hydrate_email(self, bundle):
         """

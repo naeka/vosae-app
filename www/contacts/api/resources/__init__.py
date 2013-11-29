@@ -1,5 +1,7 @@
 # -*- coding:Utf-8 -*-
 
+from core.api import signals
+
 from contacts.api.resources import embedded
 from contacts.api.resources.embedded import *
 
@@ -16,3 +18,11 @@ __all__ = (
     contact.__all__ +
     organization.__all__
 )
+
+
+"""
+SIGNALS
+"""
+
+signals.post_save.connect(EntityResource.post_save, sender=ContactResource)
+signals.post_save.connect(EntityResource.post_save, sender=OrganizationResource)

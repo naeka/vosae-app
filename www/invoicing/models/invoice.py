@@ -12,7 +12,6 @@ from pyes import mappings as search_mappings
 
 from invoicing.exceptions import InvalidInvoiceBaseState, NotCancelableInvoice
 from invoicing.models.invoice_base import InvoiceBase
-from invoicing import signals as invoicing_signals
 from invoicing import INVOICE_STATES
 from invoicing.tasks import post_register_invoice_task, post_cancel_invoice_task
 
@@ -263,16 +262,20 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
             item.unit_price = -item.unit_price
         credit_note.save()
         self.update(set__related_credit_note=credit_note)
-        self.set_state(Invoice.STATES.CANCELLED, True)
-        invoicing_signals.post_cancel_invoice.send(self.__class__, document=self, credit_note=credit_note)
+        self.set_state(Invoice.STATES.CANCELLED)
         return credit_note
 
     @classmethod
-    def post_register_invoice(cls, sender, document, previous_state, **kwargs):
-        post_register_invoice_task.delay(document, previous_state)
+    def post_register_invoice(cls, sender, issuer, document, previous_state, **kwargs):
+        """
+        Post register invoice hook handler
+
+        - Add an invoice statictic entry
+        """
+        post_register_invoice_task.delay(issuer, document, previous_state)
 
     @classmethod
-    def post_cancel_invoice(cls, sender, document, credit_note, **kwargs):
+    def post_cancel_invoice(cls, sender, issuer, document, credit_note, **kwargs):
         """
         Post cancel invoice hook handler
 
@@ -290,7 +293,7 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
             document.related_quotation.save()
 
         # Add timeline and notification entries
-        post_cancel_invoice_task.delay(document, credit_note)
+        post_cancel_invoice_task.delay(issuer, document, credit_note)
 
     @staticmethod
     def manage_states():

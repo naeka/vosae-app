@@ -146,7 +146,8 @@ class TenantResource(RemoveFilesOnReplaceMixinResource, TenantRequiredOnPutMixin
         accessible_tenants = [g[0] for g in request.user.groups.values_list('name')]
         return object_list.filter(slug__in=accessible_tenants)
 
-    def obj_create(self, bundle, **kwargs):
+    @classmethod
+    def post_create(self, sender, resource, bundle, **kwargs):
         """
         Some mandatory actions shoud be synchrounous after Tenant creation but
         before returning the response and should not be in `post_save` hooks since
@@ -159,8 +160,7 @@ class TenantResource(RemoveFilesOnReplaceMixinResource, TenantRequiredOnPutMixin
         - Initial data filling
         """
         from core.models import VosaeUser, VosaeGroup
-        bundle = super(TenantResource, self).obj_create(bundle, **kwargs)
-
+        
         # Update django group associated to the Tenant
         group = Group.objects.get(name=bundle.obj.slug)
         group.user_set.add(bundle.request.user)
@@ -178,8 +178,6 @@ class TenantResource(RemoveFilesOnReplaceMixinResource, TenantRequiredOnPutMixin
 
         # Fill first user initial data (Tenant and VosaeUser are required)
         fill_user_initial_data.delay(user, bundle.request.LANGUAGE_CODE)
-
-        return bundle
 
     def full_hydrate(self, bundle):
         """Handle specific fields (supported_currencies/default_currency) on creation"""
