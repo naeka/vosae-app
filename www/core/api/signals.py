@@ -3,6 +3,7 @@
 from blinker import Namespace
 
 __all__ = [
+    'resource_access',
     'pre_save',
     'pre_save_post_validation',
     'post_save',
@@ -18,6 +19,7 @@ __all__ = [
 _signals = Namespace()
 
 
+resource_access = _signals.signal('resource_access')
 pre_save = _signals.signal('pre_save')
 pre_save_post_validation = _signals.signal('pre_save_post_validation')
 post_save = _signals.signal('post_save')

@@ -272,6 +272,10 @@ class VosaeResource(resources.MongoEngineResource):
         super(VosaeResource, self).obj_delete(bundle, **kwargs)
         signals.post_delete.send(self.__class__, resource=self, bundle=bundle)
 
+    def log_throttled_access(self, request):
+        super(VosaeResource, self).log_throttled_access(request)
+        signals.resource_access.send(self.__class__, resource=self, request=request)
+
 
 class TenantResource(TenantRequiredMixinResource, VosaeResource):
 
