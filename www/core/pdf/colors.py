@@ -14,3 +14,9 @@ lightergrey = HexColor('#F7F7F7')
 grey = HexColor('#EEEEEE')
 darkgrey = HexColor('#DCDCDC')
 darkergrey = HexColor('#CCCCCC')
+
+SUPPORTED_FONTS = (
+    'Courier',
+    'Helvetica',
+    'Bariol',
+)

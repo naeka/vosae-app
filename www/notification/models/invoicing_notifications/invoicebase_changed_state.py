@@ -7,6 +7,7 @@ from notification.models.invoicing_notifications.invoicing_notification import I
 
 __all__ = (
     'QuotationChangedState',
+    'PurchaseOrderChangedState',
     'InvoiceChangedState',
     'DownPaymentInvoiceChangedState',
     'CreditNoteChangedState',
@@ -20,6 +21,10 @@ class ChangedState(InvoicingNotification):
 
 class QuotationChangedState(ChangedState):
     quotation = fields.ReferenceField("Quotation", required=True)
+
+
+class PurchaseOrderChangedState(ChangedState):
+    purchase_order = fields.ReferenceField("PurchaseOrder", required=True)
 
 
 class InvoiceChangedState(ChangedState):

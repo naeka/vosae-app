@@ -5,7 +5,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
 from tastypie import fields as base_fields, http
-from tastypie.bundle import Bundle
 from tastypie.utils import trailing_slash
 from tastypie.exceptions import BadRequest
 from tastypie_mongoengine import fields
@@ -17,16 +16,70 @@ from invoicing import MARK_AS_STATES
 from invoicing import imex as invoicing_imex
 from invoicing import signals as invoicing_signals
 from invoicing.models.embedded import invoice_history_entries
+from invoicing.tasks import invoicebase_saved_task
+from invoicing.models import InvoiceBaseGroup
 from invoicing.api.doc import HELP_TEXT
 from core.api.resources import VosaeFileResource
-from core.models import VosaeFile
 
 from notification.mixins import NotificationAwareResourceMixin
 
 
 __all__ = (
+    'InvoiceBaseGroupResource',
     'InvoiceBaseResource',
 )
+
+
+class InvoiceBaseGroupResource(TenantResource):
+    quotation = fields.ReferenceField(
+        to='invoicing.api.resources.QuotationResource',
+        attribute='quotation',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['quotation']
+    )
+    purchase_order = fields.ReferenceField(
+        to='invoicing.api.resources.PurchaseOrderResource',
+        attribute='purchase_order',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['purchase_order']
+    )
+    down_payment_invoices = fields.ReferencedListField(
+        of='invoicing.api.resources.DownPaymentInvoiceResource',
+        attribute='down_payment_invoices',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['down_payment_invoices']
+    )
+    invoice = fields.ReferenceField(
+        to='invoicing.api.resources.InvoiceResource',
+        attribute='invoice',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['invoice']
+    )
+    invoices_cancelled = fields.ReferencedListField(
+        of='invoicing.api.resources.InvoiceResource',
+        attribute='invoices_cancelled',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['invoices_cancelled']
+    )
+    credit_notes = fields.ReferencedListField(
+        of='invoicing.api.resources.CreditNoteResource',
+        attribute='credit_notes',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['invoice_base_group']['credit_notes']
+    )
+
+    class Meta(TenantResource.Meta):
+        resource_name = 'invoice_base_group'
+        object_class = InvoiceBaseGroup
+        list_allowed_methods = ('get',)
+        detail_allowed_methods = ('get',)
+        excludes = ('tenant',)
 
 
 class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeIMEXMixinResource):
@@ -100,6 +153,12 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
         blank=True,
         help_text=HELP_TEXT['invoicebase']['notes']
     )
+    group = fields.ReferenceField(
+        to='invoicing.api.resources.InvoiceBaseGroupResource',
+        attribute='group',
+        readonly=True,
+        help_text=HELP_TEXT['invoicebase']['group']
+    )
     attachments = fields.ReferencedListField(
         of='core.api.resources.VosaeFileResource',
         attribute='attachments',
@@ -132,6 +191,16 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
 
         ))
         return urls
+
+    @classmethod
+    def post_save(self, sender, resource, bundle, created, **kwargs):
+        """
+        Post save API hook handler
+
+        - Add timeline and notification entries
+        """
+        # Add timeline and notification entries
+        invoicebase_saved_task.delay(bundle.request.vosae_user, bundle.obj, created)
 
     def obj_delete(self, bundle, **kwargs):
         """Raises a BadRequest if the :class:`~invoicing.models.InvoiceBase` is not in a deletable state"""
@@ -193,7 +262,8 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
             return http.HttpNotFound()
 
         try:
-            obj.set_state(invoicebase_state.upper(), issuer=request.vosae_user)
+            previous_state, new_state = obj.set_state(invoicebase_state.upper(), issuer=request.vosae_user)
+            invoicing_signals.post_client_changed_invoice_state.send(obj.__class__, issuer=request.vosae_user, document=obj, previous_state=previous_state)
         except (obj.InvalidState, InvalidInvoiceBaseState) as e:
             raise BadRequest(e)
 

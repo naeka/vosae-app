@@ -228,6 +228,13 @@ class InvoiceBaseReport(Report):
             self.p(_("Valid until %(quotation_validity)s") % {
                 'quotation_validity': format_date(self.invoice_base.current_revision.quotation_validity, 'DATE_FORMAT')
             })
+        elif self.invoice_base.is_purchase_order():
+            if self.invoice_base.group.quotation:
+                self.p(_("Refers to quotation %(quotation_reference)s") % {
+                    'quotation_reference': self.invoice_base.group.quotation.reference
+                })
+            else:
+                self.p('')
         elif self.invoice_base.is_invoice() or self.invoice_base.is_down_payment_invoice():
             if self.invoice_base.current_revision.custom_payment_conditions:
                 self.p(_("Payment conditions: %(custom_payment_conditions)s") % {
@@ -250,7 +257,7 @@ class InvoiceBaseReport(Report):
                 self.p(_("Late fee at the legal rate"))
         elif self.invoice_base.is_credit_note():
             self.p(_("Refers to invoice %(invoice_reference)s") % {
-                'invoice_reference': self.invoice_base.related_invoice.reference
+                'invoice_reference': self.invoice_base.group.invoice.reference
             })
         else:
             self.p('')

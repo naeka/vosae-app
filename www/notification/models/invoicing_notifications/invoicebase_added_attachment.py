@@ -7,6 +7,7 @@ from notification.models.invoicing_notifications.invoicing_notification import I
 
 __all__ = (
     'QuotationAddedAttachment',
+    'PurchaseOrderAddedAttachment',
     'InvoiceAddedAttachment',
     'DownPaymentInvoiceAddedAttachment',
     'CreditNoteAddedAttachment',
@@ -19,6 +20,10 @@ class AddedAttachment(InvoicingNotification):
 
 class QuotationAddedAttachment(AddedAttachment):
     quotation = fields.ReferenceField("Quotation", required=True)
+
+
+class PurchaseOrderAddedAttachment(AddedAttachment):
+    purchase_order = fields.ReferenceField("PurchaseOrder", required=True)
 
 
 class InvoiceAddedAttachment(AddedAttachment):

@@ -12,6 +12,7 @@ from invoicing.models import Invoice
 from invoicing.exceptions import NotCancelableInvoice, NotPayableInvoice
 from invoicing.api.resources.invoice_base import InvoiceBaseResource
 from invoicing.api.doc import HELP_TEXT
+from invoicing import signals as invoicing_signals
 
 
 __all__ = (
@@ -41,19 +42,12 @@ class InvoiceResource(InvoiceBaseResource):
         help_text=HELP_TEXT['invoice']['has_temporary_reference']
     )
 
-    related_quotation = fields.ReferenceField(
+    related_to = fields.ReferenceField(
         to='invoicing.api.resources.QuotationResource',
-        attribute='related_quotation',
+        attribute='related_to',
         readonly=True,
         null=True,
-        help_text=HELP_TEXT['invoice']['related_quotation']
-    )
-    related_credit_note = fields.ReferenceField(
-        to='invoicing.api.resources.CreditNoteResource',
-        attribute='related_credit_note',
-        readonly=True,
-        null=True,
-        help_text=HELP_TEXT['invoice']['related_credit_note']
+        help_text=HELP_TEXT['invoice']['related_to']
     )
     payments = fields.ReferencedListField(
         of='invoicing.api.resources.PaymentResource',
@@ -91,6 +85,7 @@ class InvoiceResource(InvoiceBaseResource):
 
         try:
             credit_note = obj.cancel(request.vosae_user)
+            invoicing_signals.post_cancel_invoice.send(obj.__class__, issuer=request.vosae_user, document=obj, credit_note=credit_note)
             credit_note_resource = CreditNoteResource()
             credit_note_resource_bundle = credit_note_resource.build_bundle(obj=credit_note, request=request)
         except NotCancelableInvoice as e:
@@ -103,3 +98,15 @@ class InvoiceResource(InvoiceBaseResource):
         }
         to_be_serialized = self.alter_list_data_to_serialize(request, to_be_serialized)
         return self.create_response(request, to_be_serialized)
+
+    def dehydrate_related_to(self, bundle):
+        from invoicing.api.resources import QuotationResource, PurchaseOrderResource
+        try:
+            if bundle.obj.related_to.is_quotation():
+                resource = QuotationResource()
+            elif bundle.obj.related_to.is_purchase_order():
+                resource = PurchaseOrderResource()
+            resource_bundle = resource.build_bundle(obj=bundle.obj.related_to, request=bundle.request)
+            return resource.get_resource_uri(resource_bundle)
+        except:
+            return

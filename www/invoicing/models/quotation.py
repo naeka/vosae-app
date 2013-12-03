@@ -3,23 +3,22 @@
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.utils.timezone import now as datetime_now
 from mongoengine import fields
-from decimal import Decimal, ROUND_HALF_UP
 import datetime
 
 from vosae_utils import SearchDocumentMixin
 from pyes import mappings as search_mappings
 
-from invoicing.exceptions import *
+from invoicing.exceptions import InvalidInvoiceBaseState
 from invoicing.models.invoice_base import InvoiceBase
-from invoicing import signals as invoicing_signals
-from invoicing import QUOTATION_STATES, get_due_date
-from invoicing.tasks import post_make_invoice_task
+from invoicing.models.mixins import InvoiceMakableMixin
+from invoicing.tasks import post_make_purchase_order_task
+from invoicing import QUOTATION_STATES
 
 
 __all__ = ('Quotation',)
 
 
-class Quotation(InvoiceBase, SearchDocumentMixin):
+class Quotation(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
 
     """Quotations specific class."""
     TYPE = "QUOTATION"
@@ -28,9 +27,6 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
     QUOTATION_VALIDITY_PERIODS = (15, 30, 45, 60, 90)
 
     state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
-    related_invoice = fields.ReferenceField("Invoice")
-    related_invoices_cancelled = fields.ListField(fields.ReferenceField("Invoice"))
-    down_payments = fields.ListField(fields.ReferenceField("DownPaymentInvoice"))
 
     meta = {
         "allow_inheritance": True
@@ -58,8 +54,8 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
         kwargs = super(Quotation, self).get_search_kwargs()
         if self.current_revision.quotation_date:
             kwargs.update(quotation_date=self.current_revision.quotation_date)
-        if self.related_invoice:
-            kwargs.update(related_invoice_reference=self.related_invoice.reference)
+        if self.group.invoice:
+            kwargs.update(related_invoice_reference=self.group.invoice.reference)
         return kwargs
 
     @classmethod
@@ -81,11 +77,15 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
         """
         Post save hook handler
 
-        If created, increments the appropriate :class:`~core.models.Tenant`
-        quotations numbering counter.
+        If created:
+
+        - increments the appropriate :class:`~core.models.Tenant` quotations numbering counter.
+        - set the quotation to the group
         """
         if created:
             document.tenant.tenant_settings.increment_quotation_counter()
+            document.group.quotation = document
+            document.group.save()
 
         # Calling parent
         super(Quotation, document).post_save(sender, document, created, **kwargs)
@@ -112,7 +112,7 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
 
     def is_modifiable(self):
         """A :class:`~invoicing.models.Quotation` is modifiable unless it has been invoiced."""
-        if self.related_invoice:
+        if self.group.invoice:
             return False
         return True
 
@@ -121,7 +121,7 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
         A :class:`~invoicing.models.Quotation` is deletable if not linked to any
         :class:`~invoicing.models.Invoice` or :class:`~invoicing.models.DownPaymentInvoice`.
         """
-        if self.related_invoice or self.down_payments:
+        if self.group.invoice or self.group.down_payment_invoices:
             return False
         return True
 
@@ -147,132 +147,46 @@ class Quotation(InvoiceBase, SearchDocumentMixin):
         else:
             return []
 
-    def make_invoice(self, issuer):
-        """Creates an invoice based on the current quotation"""
-        from invoicing.models.invoice import Invoice
-        # Initialize the invoice
-        invoice = Invoice(
+    def make_purchase_order(self, issuer):
+        """Creates a purchase order based on the current quotation"""
+        from invoicing.models.purchase_order import PurchaseOrder
+        # Initialize the purchase order
+        purchase_order = PurchaseOrder(
             full_init=False,
             tenant=self.tenant,
             account_type=self.account_type,
             issuer=issuer,
             organization=self.organization,
             contact=self.contact,
-            related_quotation=self,
+            group=self.group,
             attachments=self.attachments
         )
-        # Save the invoice, based on the quotation
-        inv_data = invoice.add_revision(revision=self.current_revision)
-        inv_data.state = invoice.state
-        inv_data.issuer = issuer
-        inv_data.issue_date = datetime_now()
-        inv_data.invoicing_date = datetime.date.today()
-        inv_data.due_date = get_due_date(inv_data.invoicing_date, self.tenant.tenant_settings.invoicing.payment_conditions)
-        invoice.save()
-        # Update quotation with related invoice
-        self.state = Quotation.STATES.INVOICED
-        self.related_invoice = invoice
-        self.save()
-        invoicing_signals.post_make_invoice.send(self.__class__, document=self, new_document=invoice)
-        return invoice
-
-    def make_down_payment(self, issuer, percentage, tax, date):
-        """Creates a down payment invoice based on the current quotation"""
-        from invoicing.models.down_payment_invoice import DownPaymentInvoice
-        if percentage <= 0 or percentage >= 1:
-            raise InvalidDownPaymentPercentage("Percentage must be a decimal between 0 and 1.")
-        inv_data = self.current_revision
-        # Calculate the total amount from the base (excluding taxes) to avoid decimal differences.
-        # Check with amount=97.72 and tax_rate=0.196.
-        excl_tax_amount = ((self.amount * percentage).quantize(Decimal('1.00'), ROUND_HALF_UP) / (Decimal('1.00') + tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
-        down_payment_amount = (excl_tax_amount * (Decimal('1.00') + tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
-        current_percentage = Decimal('0.00')
-        for down_payment in self.down_payments:
-            current_percentage += down_payment.percentage
-        if current_percentage + percentage > 1:
-            raise InvalidDownPaymentPercentage("Total of down-payments percentages exceeds 1 (100%).")
-        if date < datetime.date.today() or (date > inv_data.due_date if inv_data.due_date else False):
-            raise InvalidDownPaymentDueDate("Invalid down-payment due date.")
-        down_payment = DownPaymentInvoice(
-            full_init=False,
-            tenant=self.tenant,
-            account_type=self.account_type,
-            issuer=issuer,
-            state="REGISTERED",
-            organization=self.organization,
-            contact=self.contact,
-            related_quotation=self,
-            percentage=percentage,
-            tax_applied=tax,
-            total=down_payment_amount,
-            amount=down_payment_amount,
-            balance=down_payment_amount
-        )
-
-        down_payment.add_revision(
-            state=down_payment.state,
-            issuer=issuer,
-            issue_date=datetime_now(),
-            sender=inv_data.sender,
-            organization=inv_data.organization,
-            contact=inv_data.contact,
-            sender_address=inv_data.sender_address,
-            billing_address=inv_data.billing_address,
-            delivery_address=inv_data.delivery_address,
-            customer_reference=inv_data.customer_reference,
-            currency=inv_data.currency,
-            invoicing_date=inv_data.invoicing_date or date.today(),
-            due_date=date
-        )
-        # Save the down payment invoice
-        down_payment.save()
-        # Update quotation with related down-payment invoice
-        self.down_payments.append(down_payment)
-        self.save()
-        invoicing_signals.post_make_down_payment_invoice.send(self.__class__, document=self, new_document=down_payment)
-        return down_payment
+        
+        # Save the purchase order, based on the quotation
+        purchase_order_data = purchase_order.add_revision(revision=self.current_revision)
+        purchase_order_data.state = purchase_order.state
+        purchase_order_data.issuer = issuer
+        purchase_order_data.issue_date = datetime_now()
+        purchase_order_data.purchase_order_date = datetime.date.today()
+        purchase_order.save()
+        return purchase_order
 
     @classmethod
-    def post_make_invoice(cls, sender, document, new_document, **kwargs):
+    def post_make_purchase_order(cls, sender, issuer, document, new_document, **kwargs):
         """
-        Post make invoice hook handler
+        Post make purchase order hook handler
 
         - Add timeline and notification entries
         """
         # Add timeline and notification entries
-        post_make_invoice_task.delay(document, new_document)
-
-    @classmethod
-    def post_make_down_payment_invoice(cls, sender, document, new_document, **kwargs):
-        """
-        Post make down payment invoice hook handler
-
-        - Add timeline and notification entries
-        - Add a statistic entry
-        """
-        from vosae_statistics.models import DownPaymentInvoiceStatistics
-
-        # Add timeline and notification entries
-        post_make_invoice_task.delay(document, new_document)
-
-        # Saves statistic
-        DownPaymentInvoiceStatistics(
-            tenant=new_document.tenant,
-            date=new_document.current_revision.invoicing_date,
-            amount=new_document.amount,
-            organization=new_document.organization,
-            contact=new_document.contact,
-            location=new_document.current_revision.billing_address if new_document.account_type == 'RECEIVABLE' else new_document.current_revision.sender_address,
-            account_type=new_document.account_type,
-            down_payment_invoice=new_document
-        ).save()
+        post_make_purchase_order_task.delay(issuer, document, new_document)
 
     @staticmethod
     def manage_states():
         """
-        An :class:`~invoicing.models.Invoice` state can be modified by the time.
+        An :class:`~invoicing.models.Quotation` state can be modified by the time.
 
-        This method allows tasks scripts to update Invoices state on a regular basis.
+        This method allows tasks scripts to update Quotations state on a regular basis.
         """
         today = datetime.date.today()
         Quotation.objects\
