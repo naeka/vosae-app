@@ -298,7 +298,8 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
             pdf = obj.get_pdf(issuer=request.vosae_user, language=language)
             pdf_resource = VosaeFileResource()
             pdf_resource_bundle = pdf_resource.build_bundle(obj=pdf, request=request)
-        except:
+        except Exception, e:
+            print e
             raise BadRequest('Can\'t generate PDF. Verify parameters.')
 
         self.log_throttled_access(request)

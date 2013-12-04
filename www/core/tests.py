@@ -132,7 +132,7 @@ class TenantResourceTest(VosaeApiTest):
         self.assertEqual(deserialized.get('name'), u'My Company')
         self.assertEqual(deserialized.get('slug'), u'my-company')
         self.assertEqual(deserialized.get('report_settings').get('font_size'), 10)
-        self.assertEqual(deserialized.get('report_settings').get('font_name'), u'Bariol')
+        self.assertEqual(deserialized.get('report_settings').get('font_name'), u'bariol')
         self.assertEqual(deserialized.get('report_settings').get('language'), u'en')
 
         # XML
@@ -163,7 +163,7 @@ class TenantResourceTest(VosaeApiTest):
     def test_05_put_detail(self):
         # JSON
         infos = {"app": "invoicing", "resource": "TenantResource", "method": "put_detail", "serializer": "json"}
-        tenant_data['report_settings'].update(font_name=u"Bariol", font_size=11)
+        tenant_data['report_settings'].update(font_name=u"helvetica", font_size=11)
         tenant_data.update(slug="immutable")
         response = self.api_client.put(cached_data.get('json_uri'), format='json', data=tenant_data)
         self.assertHttpAccepted(response)
@@ -177,7 +177,7 @@ class TenantResourceTest(VosaeApiTest):
         self.assertEqual(deserialized.get('name'), u'My Company')
         self.assertEqual(deserialized.get('slug'), u'my-company')
         self.assertEqual(deserialized.get('report_settings').get('font_size'), 11)
-        self.assertEqual(deserialized.get('report_settings').get('font_name'), u'Bariol')
+        self.assertEqual(deserialized.get('report_settings').get('font_name'), u'helvetica')
 
         # XML
         infos.update(serializer='xml')

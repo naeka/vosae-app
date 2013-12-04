@@ -10,7 +10,8 @@ from reportlab.platypus import (
 )
 
 from core.pdf.report import *
-from core.pdf import colors
+from core.pdf.conf import colors
+from core.pdf.conf.fonts import get_font
 from invoicing import PAYMENT_TYPES
 
 try:
@@ -56,7 +57,7 @@ class InvoiceBaseReport(Report):
         self.style.add(ParagraphStyle(
             name='Address',
             parent=self.style['Normal'],
-            fontName='%s-Bold' % self.settings.font_name,
+            fontName=get_font(self.settings.font_name).bold,
             fontSize=1.2 * self.settings.font_size,
             leading=1.45 * self.settings.font_size
         ))
@@ -90,7 +91,7 @@ class InvoiceBaseReport(Report):
             name='InvoiceBaseSummaryTable',
             parent=self.style['Table'],
             cmds=[
-                ('FONTNAME', (0, -1), (-1, -1), '%s-Bold' % self.settings.font_name),
+                ('FONTNAME', (0, -1), (-1, -1), get_font(self.settings.font_name).bold),
                 ('FONTSIZE', (0, -1), (-1, -1), 1.2 * self.settings.font_size),
                 ('LEADING', (0, -1), (-1, -1), 1.5 * self.settings.font_size),
                 ('ALIGN', (0, 0), (-1, -1), 'RIGHT'),
@@ -118,7 +119,7 @@ class InvoiceBaseReport(Report):
         canvas.setLineWidth(0.2)
         canvas.setLineCap(1)
         canvas.setStrokeColor(colors.green)
-        canvas.setFont('%s' % self.settings.font_name, 9)
+        canvas.setFont(get_font(self.settings.font_name).regular, 9)
         canvas.setFillColor(colors.green)
         canvas.line(20 * mm, 212 * mm, 95 * mm, 212 * mm)
         canvas.line(115 * mm, 212 * mm, 190 * mm, 212 * mm)

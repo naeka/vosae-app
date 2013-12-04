@@ -1,6 +1,5 @@
 # -*- coding:Utf-8 -*-
 
-from django.conf import settings
 from django.utils.translation import ugettext as _
 from reportlab.lib.styles import ParagraphStyle, StyleSheet1
 from reportlab.lib.units import mm, cm
@@ -9,7 +8,6 @@ from reportlab.platypus import (
     Spacer,
     Frame,
     PageTemplate,
-    NextPageTemplate,
     PageBreak,
     CondPageBreak,
     KeepTogether,
@@ -17,11 +15,10 @@ from reportlab.platypus import (
     TableStyle
 )
 from reportlab.platypus.flowables import HRFlowable
-import os
 
-from core.pdf import colors
+from core.pdf.conf import colors
+from core.pdf.conf.fonts import get_font
 from core.pdf.utils import (
-    register_fonts_from_paths,
     Paragraph,
     ReportingDocTemplate
 )
@@ -77,16 +74,11 @@ class Report(object):
         ])
 
     def generate_style(self):
-        register_fonts_from_paths(
-            font_name='Bariol',
-            regular=os.path.join(settings.FONTS_DIR, 'bariol_regular-webfont.ttf'),
-            bold=os.path.join(settings.FONTS_DIR, 'bariol_bold-webfont.ttf'),
-        )
         self.style = StyleSheet1()
 
         self.style.add(ParagraphStyle(
             name='Normal',
-            fontName=self.settings.font_name,
+            fontName=get_font(self.settings.font_name).regular,
             fontSize=self.settings.font_size,
             textColor=colors.font_color,
             leading=1.2 * self.settings.font_size
@@ -101,13 +93,13 @@ class Report(object):
         self.style.add(ParagraphStyle(
             name='Italic',
             parent=self.style['BodyText'],
-            fontName='%s-Italic' % self.settings.font_name
+            fontName=get_font(self.settings.font_name).italic
         ))
 
         self.style.add(ParagraphStyle(
             name='Heading1',
             parent=self.style['Normal'],
-            fontName='%s-Bold' % self.settings.font_name,
+            fontName=get_font(self.settings.font_name).bold,
             fontSize=1.5 * self.settings.font_size,
             leading=2 * self.settings.font_size,
             spaceAfter=6
@@ -116,7 +108,7 @@ class Report(object):
         self.style.add(ParagraphStyle(
             name='Heading2',
             parent=self.style['Normal'],
-            fontName='%s-Bold' % self.settings.font_name,
+            fontName=get_font(self.settings.font_name).bold,
             fontSize=1.25 * self.settings.font_size,
             leading=1.75 * self.settings.font_size,
             spaceBefore=12,
@@ -140,7 +132,7 @@ class Report(object):
         self.style.add(BaseTableStyle(
             name='Table',
             cmds=[
-                ('FONTNAME', (0, 0), (-1, -1), self.settings.font_name),
+                ('FONTNAME', (0, 0), (-1, -1), get_font(self.settings.font_name).regular),
                 ('FONTSIZE', (0, 0), (-1, -1), self.settings.font_size),
                 ('LEADING', (0, 0), (-1, -1), 1.2 * self.settings.font_size),
                 ('TEXTCOLOR', (0, 0), (-1, -1), colors.font_color),
@@ -165,7 +157,7 @@ class Report(object):
             name='ReportTable',
             parent=self.style['Table'],
             cmds=[
-                ('FONTNAME', (0, 0), (-1, 0), '%s-Bold' % self.settings.font_name),
+                ('FONTNAME', (0, 0), (-1, 0), get_font(self.settings.font_name).bold),
                 ('FONTSIZE', (0, 0), (-1, 0), 1.1 * self.settings.font_size),
                 ('LEADING', (0, 0), (-1, 0), 1.4 * self.settings.font_size),
                 ('ROWBACKGROUNDS', (0, 1), (-1, -1), (colors.lightergrey, colors.white)),
@@ -199,7 +191,7 @@ class Report(object):
         canvas.restoreState()
 
         canvas.saveState()
-        canvas.setFont('%s' % self.settings.font_name, 0.75 * self.settings.font_size)
+        canvas.setFont(get_font(self.settings.font_name).regular, 0.75 * self.settings.font_size)
         canvas.setFillColor(colors.font_color)
         canvas.drawRightString(190 * mm, 13 * mm, _("Page %(current)d on %(total)d") % self.doc.page_index())
         canvas.restoreState()

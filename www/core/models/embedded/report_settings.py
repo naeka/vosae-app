@@ -3,7 +3,7 @@
 from django.conf import settings
 from mongoengine import EmbeddedDocument, fields
 
-from core.pdf.colors import SUPPORTED_FONTS
+from core.pdf.conf.fonts import mapping
 
 
 __all__ = (
@@ -14,7 +14,7 @@ __all__ = (
 class ReportSettings(EmbeddedDocument):
 
     """ReportSettings stores various informations used to customize reports"""
-    font_name = fields.StringField(required=True, default='Bariol', choices=SUPPORTED_FONTS)
+    font_name = fields.StringField(required=True, default='bariol', choices=mapping.keys())
     font_size = fields.IntField(required=True, default=10)
     base_color = fields.StringField()
     force_bw = fields.BooleanField(required=True, default=False)
