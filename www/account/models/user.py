@@ -12,6 +12,10 @@ import datetime
 from vosae_utils import generate_sha1
 from account.managers import UserManager
 
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.core.mail import EmailMessage
+
 
 __all__ = (
     'ActivationMixin',
@@ -94,11 +98,17 @@ class ActivationMixin(models.Model):
             'site': {'name': settings.SITE_NAME, 'url': settings.SITE_URL}
         }
 
-        subject = render_to_string('account/emails/activation_email_subject.txt', context)
+        plaintext_context = Context(autoescape=False)  # HTML escaping not appropriate in plaintext
+        subject = render_to_string("account/emails/activation_email_subject.txt", context, plaintext_context)
         subject = ''.join(subject.splitlines())
+        text_body = render_to_string("account/emails/activation_email_message.txt", context, plaintext_context)
+        html_body = render_to_string("account/emails/activation_email_message.html", context)
 
-        message = render_to_string('account/emails/activation_email_message.txt', context)
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email, ])
+        message = EmailMultiAlternatives(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
+                           to=[self.email], body=text_body)
+        message.attach_alternative(html_body, "text/html")
+        message.send()
+
 
     def change_email(self, email):
         """
