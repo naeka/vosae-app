@@ -59,6 +59,12 @@ class Report(object):
         self.generate_templates()
         self.generate_style()
 
+    def fill(self):
+        pass
+
+    def set_metadata(self):
+        pass
+
     def generate_templates(self):
         frame_kwargs = {
             # 'showBoundary': 1,  # For DEBUG purpose
@@ -236,6 +242,9 @@ class Report(object):
         self.story.append(data)
 
     def generate(self):
+        self.init_report()
+        self.fill()
+        self.set_metadata()
         self.doc.multiBuild(self.story)
 
     def draw_svg(self, canvas, path, xpos=0, ypos=0, xsize=None, ysize=None):
