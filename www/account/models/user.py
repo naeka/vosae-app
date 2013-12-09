@@ -1,4 +1,5 @@
 # -*- coding:Utf-8 -*-
+import datetime
 
 from django.conf import settings
 from django.db import models
@@ -7,14 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone, http
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-import datetime
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.core.mail import EmailMessage
+
 
 from vosae_utils import generate_sha1
 from account.managers import UserManager
 
-from django.core.mail import EmailMultiAlternatives
-from django.template import Context
-from django.core.mail import EmailMessage
 
 
 __all__ = (
