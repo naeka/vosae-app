@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans with site.name as site %}A request to change your email address has been made at {{ site }}.{% endblocktrans %}
+{% blocktrans with site=site.name %}A request to change your email address has been made at {{ site }}.{% endblocktrans %}

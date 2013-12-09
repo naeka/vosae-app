@@ -226,7 +226,7 @@
                                                                     <td valign="top" class="textContent">
                                                                         <h3>{% trans "Getting started" %}</h3>
                                                                         <br />
-                                                                        {% blocktrans %}Once your account is activated, the first step is to set-up your company settings. It's a 3 steps form, we agree there's funniers things to do, but after we'll no more bothering you with that. Promise.{% endblocktrans %}
+                                                                        {% blocktrans %}Once your account is activated, the first step is to configure your company settings. It's a 3 steps form, we agree there're funnier things to do, but after we'll no more bothering you with that. Promise.{% endblocktrans %}
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -281,10 +281,10 @@
                                                             <table align="Right" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
                                                                 <tr>
                                                                     <td valign="top" class="textContentLast">
-                                                                        <h3>{% trans "Developer" %}</h3>
+                                                                        <h3>{% trans "Developers" %}</h3>
                                                                         <br />
                                                                         {% url 'doc_home' as doc_home %}
-                                                                        {% blocktrans with site=site.name site_url=site.url %}{{ site }} is also a service made by developers and therefore naturally a complete and documented API. And because we know that you want complete access to your data, you have complete access to the APIs. It's simple, we use the same ones. See the <a href="{{ site_url }}{{ doc_home }}" target="_blank">API Doc</a>.{% endblocktrans %}
+                                                                        {% blocktrans with site=site.name site_url=site.url %}{{ site }} is also a service made by developers and therefore naturally a complete and documented API. And because we know that you want complete access to your data, you have complete access to the APIs. It's simple, we use the same ones. Look at the <a href="{{ site_url }}{{ doc_home }}" target="_blank">API Doc</a>.{% endblocktrans %}
 
                                                                     </td>
                                                                 </tr>

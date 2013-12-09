@@ -1,6 +1,7 @@
 {% load i18n %}{% autoescape off %}
 {% trans "Old email" %}
-{% blocktrans with site=site.name email_unconfirmed=user.email_unconfirmed first_name=user.first_name %}Hi {{ first_name }},<br /><br />
+{% blocktrans with site=site.name email_unconfirmed=user.email_unconfirmed first_name=user.first_name %}
+Hi {{ first_name }},
 There was a request to change your email address on {{ site }}.
 
 An email has been send to {{ email_unconfirmed }} which contains a verification link. Click on the link in this email to activate it.{% endblocktrans %}

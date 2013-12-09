@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans with site.name as site %}Welcome to {{ site }}!{% endblocktrans %}
+{% blocktrans with site=site.name %}Welcome to {{ site }}!{% endblocktrans %}
