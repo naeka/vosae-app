@@ -1,5 +1,4 @@
 {% load i18n %}{% autoescape off %}
-{% trans "Old email" %}
 {% blocktrans with site=site.name email_unconfirmed=user.email_unconfirmed first_name=user.first_name %}
 Hi {{ first_name }},
 There was a request to change your email address on {{ site }}.

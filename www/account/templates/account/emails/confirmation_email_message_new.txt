@@ -1,6 +1,4 @@
 {% load i18n %}{% autoescape off %}
-{% trans "Email verification" %}
-
 {% blocktrans with site=site.name first_name=user.first_name %}Hi {{ first_name }},
 You have requested a change of your email address on {{ site }}.{% endblocktrans %}
 
