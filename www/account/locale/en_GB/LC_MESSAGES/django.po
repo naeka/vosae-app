@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-09 14:55+0000\n"
+"POT-Creation-Date: 2013-12-10 14:16+0000\n"
 "PO-Revision-Date: 2013-10-21 11:53+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -39,63 +39,67 @@ msgstr ""
 msgid "Change password: %s"
 msgstr ""
 
-#: forms.py:14
+#: forms.py:24
 msgid "A user with that email already exists."
 msgstr ""
 
-#: forms.py:15
+#: forms.py:25
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: forms.py:18 forms.py:94
+#: forms.py:28 forms.py:104
 msgid "E-mail"
 msgstr ""
 
-#: forms.py:20
+#: forms.py:30
 msgid "Valid e-mail only."
 msgstr ""
 
-#: forms.py:21
+#: forms.py:31
 msgid "This value must be a valid e-mail address."
 msgstr ""
 
-#: forms.py:24 forms.py:99
+#: forms.py:34 forms.py:109
 msgid "Password"
 msgstr ""
 
-#: forms.py:26
+#: forms.py:36
 msgid "At least 8 characters."
 msgstr ""
 
-#: forms.py:30
+#: forms.py:40
 msgid "Password confirmation"
 msgstr ""
 
-#: forms.py:33
+#: forms.py:43
 msgid "Enter the same password as above, for verification."
 msgstr ""
 
-#: forms.py:69 forms.py:124
+#: forms.py:79 forms.py:134
 msgid "Firstname"
 msgstr ""
 
-#: forms.py:70 forms.py:125
+#: forms.py:80 forms.py:135
 msgid "Name"
 msgstr ""
 
-#: forms.py:96
+#: forms.py:106
 msgid "Required. 254 characters or fewer. Valid e-mail only."
 msgstr ""
 
-#: forms.py:97
+#: forms.py:107
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 
-#: forms.py:100
+#: forms.py:110
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
 "form</a>."
+msgstr ""
+
+#: forms.py:148
+msgid "Email"
 msgstr ""
 
 #: urls.py:9
@@ -138,81 +142,85 @@ msgstr ""
 msgid "^account/password/reset/complete/$"
 msgstr ""
 
-#: views.py:61
+#: views.py:67
 msgid ""
 "Thank you for your sign up on Vosae.\n"
 "Please follow the instructions that we've just sent to you by e-mail."
 msgstr ""
 
-#: models/user.py:29
+#: views.py:167
+msgid "Password reset"
+msgstr ""
+
+#: models/user.py:30
 msgid "activation key"
 msgstr ""
 
-#: models/user.py:30
+#: models/user.py:31
 msgid "notification send"
 msgstr ""
 
-#: models/user.py:30
+#: models/user.py:31
 msgid ""
 "Designates whether this user has already got a notification about activating "
 "their account."
 msgstr ""
 
-#: models/user.py:31
+#: models/user.py:32
 msgid "unconfirmed email address"
 msgstr ""
 
-#: models/user.py:31
+#: models/user.py:32
 msgid "Temporary email address when the user requests an email change."
 msgstr ""
 
-#: models/user.py:32
+#: models/user.py:33
 msgid "unconfirmed email verification key"
 msgstr ""
 
-#: models/user.py:140
+#: models/user.py:141
 msgid "email address"
 msgstr ""
 
-#: models/user.py:141
+#: models/user.py:142
 msgid "first name"
 msgstr ""
 
-#: models/user.py:142
+#: models/user.py:143
 msgid "last name"
 msgstr ""
 
-#: models/user.py:143
+#: models/user.py:144
 msgid "staff status"
 msgstr ""
 
-#: models/user.py:143
+#: models/user.py:144
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: models/user.py:144
+#: models/user.py:145
 msgid "active"
 msgstr ""
 
-#: models/user.py:144
+#: models/user.py:145
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: models/user.py:145
+#: models/user.py:146
 msgid "date joined"
 msgstr ""
 
-#: models/user.py:146
+#: models/user.py:147
 msgid "browser language"
 msgstr ""
 
-#: models/user.py:154
+#: models/user.py:155
 msgid "user"
 msgstr ""
 
-#: models/user.py:155
+#: models/user.py:156
 msgid "users"
 msgstr ""
 
@@ -436,15 +444,15 @@ msgstr ""
 #: templates/account/emails/activation_email_message.html:340
 #: templates/account/emails/activation_email_message.txt:23
 #: templates/account/emails/confirmation_email_message_new.html:211
-#: templates/account/emails/confirmation_email_message_new.txt:11
+#: templates/account/emails/confirmation_email_message_new.txt:9
 #: templates/account/emails/password_reset_email.html:215
-#: templates/account/emails/password_reset_email.txt:10
+#: templates/account/emails/password_reset_email.txt:9
 msgid "Join the community"
 msgstr ""
 
 #: templates/account/emails/activation_email_message.html:342
 #: templates/account/emails/confirmation_email_message_new.html:213
-#: templates/account/emails/confirmation_email_message_new.txt:12
+#: templates/account/emails/confirmation_email_message_new.txt:10
 #: templates/account/emails/password_reset_email.html:217
 #, python-format
 msgid ""
@@ -476,7 +484,7 @@ msgid ""
 msgstr ""
 
 #: templates/account/emails/activation_email_message.txt:24
-#: templates/account/emails/password_reset_email.txt:11
+#: templates/account/emails/password_reset_email.txt:10
 #, python-format
 msgid ""
 "We aim to add new features and update regularly %(site)s. To be kept "
@@ -493,7 +501,6 @@ msgid "Email verification for %(site)s."
 msgstr ""
 
 #: templates/account/emails/confirmation_email_message_new.html:130
-#: templates/account/emails/confirmation_email_message_new.txt:2
 msgid "Email verification"
 msgstr ""
 
@@ -509,14 +516,14 @@ msgstr ""
 msgid "Verify your email"
 msgstr ""
 
-#: templates/account/emails/confirmation_email_message_new.txt:4
+#: templates/account/emails/confirmation_email_message_new.txt:2
 #, python-format
 msgid ""
 "Hi %(first_name)s,\n"
 "You have requested a change of your email address on %(site)s."
 msgstr ""
 
-#: templates/account/emails/confirmation_email_message_new.txt:7
+#: templates/account/emails/confirmation_email_message_new.txt:5
 msgid "Please confirm this email address by clicking on the link below:"
 msgstr ""
 
@@ -527,7 +534,6 @@ msgid "A request to change your email address has been made at %(site)s."
 msgstr ""
 
 #: templates/account/emails/confirmation_email_message_old.html:130
-#: templates/account/emails/confirmation_email_message_old.txt:2
 msgid "Old email"
 msgstr ""
 
@@ -544,7 +550,7 @@ msgid ""
 "link. Click on the link in this email to activate it."
 msgstr ""
 
-#: templates/account/emails/confirmation_email_message_old.txt:3
+#: templates/account/emails/confirmation_email_message_old.txt:2
 #, python-format
 msgid ""
 "\n"
@@ -560,7 +566,6 @@ msgid "New password."
 msgstr ""
 
 #: templates/account/emails/password_reset_email.html:130
-#: templates/account/emails/password_reset_email.txt:2
 msgid "Forgot your password?"
 msgstr ""
 
@@ -570,7 +575,7 @@ msgid ""
 "Hi %(first_name)s,<br /><br />\n"
 "                                                                        We "
 "understand, it can be hard these days to remember every password. So, you "
-"can reset your password on %(site)s.\n"
+"can reset it on %(site)s.\n"
 "                                                                        "
 msgstr ""
 
@@ -578,7 +583,7 @@ msgstr ""
 msgid "Reset you password"
 msgstr ""
 
-#: templates/account/emails/password_reset_email.txt:3
+#: templates/account/emails/password_reset_email.txt:2
 #, python-format
 msgid ""
 "Hi %(first_name)s,\n"
@@ -586,6 +591,6 @@ msgid ""
 "can reset your password on %(site)s."
 msgstr ""
 
-#: templates/account/emails/password_reset_email.txt:6
+#: templates/account/emails/password_reset_email.txt:5
 msgid "Please go to the following page and choose a new password:"
 msgstr ""

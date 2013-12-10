@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-09 14:55+0000\n"
-"PO-Revision-Date: 2013-12-09 16:54+0100\n"
+"POT-Creation-Date: 2013-12-10 14:16+0000\n"
+"PO-Revision-Date: 2013-12-10 15:19+0100\n"
 "Last-Translator: Maxime Gaillard <maxime@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
 "Language: fr\n"
@@ -39,61 +39,61 @@ msgstr "Mot de passe modifié avec succès"
 msgid "Change password: %s"
 msgstr "Modifier le mot de passe : %s"
 
-#: forms.py:14
+#: forms.py:24
 msgid "A user with that email already exists."
 msgstr "Un utilisateur avec ce nom existe déjà."
 
-#: forms.py:15
+#: forms.py:25
 msgid "The two password fields didn't match."
 msgstr "Les deux mots de passe ne correspondent pas."
 
-#: forms.py:18 forms.py:94
+#: forms.py:28 forms.py:104
 msgid "E-mail"
 msgstr "E-mail"
 
-#: forms.py:20
+#: forms.py:30
 msgid "Valid e-mail only."
 msgstr "E-mail valide uniquement."
 
-#: forms.py:21
+#: forms.py:31
 msgid "This value must be a valid e-mail address."
 msgstr "Cette valeur doit être une adresse e-mail valide."
 
-#: forms.py:24 forms.py:99
+#: forms.py:34 forms.py:109
 msgid "Password"
 msgstr "Mot de passe"
 
-#: forms.py:26
+#: forms.py:36
 msgid "At least 8 characters."
 msgstr "Au moins 8 caractères."
 
-#: forms.py:30
+#: forms.py:40
 msgid "Password confirmation"
 msgstr "Confirmation du mot de passe"
 
-#: forms.py:33
+#: forms.py:43
 msgid "Enter the same password as above, for verification."
 msgstr "Saisissez le même mot de passe que précédemment, pour vérification."
 
-#: forms.py:69 forms.py:124
+#: forms.py:79 forms.py:134
 msgid "Firstname"
 msgstr "Prénom"
 
-#: forms.py:70 forms.py:125
+#: forms.py:80 forms.py:135
 msgid "Name"
 msgstr "Nom"
 
-#: forms.py:96
+#: forms.py:106
 msgid "Required. 254 characters or fewer. Valid e-mail only."
 msgstr "Requis. 254 caractères ou moins. E-mail valide uniquement."
 
-#: forms.py:97
+#: forms.py:107
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 "Cette valeur peut uniquement contenir des lettres, nombres et les caractères "
 "« @ », « . », « + », « - » et « _ »."
 
-#: forms.py:100
+#: forms.py:110
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
@@ -102,6 +102,10 @@ msgstr ""
 "Les mots de passe ne sont pas enregistrés en clair, ce qui ne permet pas "
 "d'afficher le mot de passe de cet utilisateur, mais il est possible de le "
 "changer en utilisant <a href=\"password/\">ce formulaire</a>. "
+
+#: forms.py:148
+msgid "Email"
+msgstr "E-mail"
 
 #: urls.py:9
 msgid "^account/signin/$"
@@ -143,7 +147,7 @@ msgstr "^compte/motdepasse/raz/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$"
 msgid "^account/password/reset/complete/$"
 msgstr "^compte/motdepasse/raz/finie$"
 
-#: views.py:61
+#: views.py:67
 msgid ""
 "Thank you for your sign up on Vosae.\n"
 "Please follow the instructions that we've just sent to you by e-mail."
@@ -152,15 +156,19 @@ msgstr ""
 "Veuillez suivre les instructions que nous vous avons envoyé par e-mail à "
 "l'instant."
 
-#: models/user.py:29
+#: views.py:167
+msgid "Password reset"
+msgstr "Réinitialisation de mot de passe"
+
+#: models/user.py:30
 msgid "activation key"
 msgstr "Clé d'activation"
 
-#: models/user.py:30
+#: models/user.py:31
 msgid "notification send"
 msgstr "notification envoyée"
 
-#: models/user.py:30
+#: models/user.py:31
 msgid ""
 "Designates whether this user has already got a notification about activating "
 "their account."
@@ -168,45 +176,45 @@ msgstr ""
 "Indique si cet utilisateur a déjà reçu une notification d'activation de leur "
 "compte."
 
-#: models/user.py:31
+#: models/user.py:32
 msgid "unconfirmed email address"
 msgstr "Adresse email non confirmé"
 
-#: models/user.py:31
+#: models/user.py:32
 msgid "Temporary email address when the user requests an email change."
 msgstr ""
 "Adresse e-mail temporaire lorsque l'utilisateur demande un changement "
 "d'email."
 
-#: models/user.py:32
+#: models/user.py:33
 msgid "unconfirmed email verification key"
 msgstr "Clé de vérification non-confirmée"
 
-#: models/user.py:140
+#: models/user.py:141
 msgid "email address"
 msgstr "adresse électronique"
 
-#: models/user.py:141
+#: models/user.py:142
 msgid "first name"
 msgstr "prénom"
 
-#: models/user.py:142
+#: models/user.py:143
 msgid "last name"
 msgstr "nom"
 
-#: models/user.py:143
+#: models/user.py:144
 msgid "staff status"
 msgstr "statut équipe"
 
-#: models/user.py:143
+#: models/user.py:144
 msgid "Designates whether the user can log into this admin site."
 msgstr "Précise si l'utilisateur peut se connecter à ce site d'administration."
 
-#: models/user.py:144
+#: models/user.py:145
 msgid "active"
 msgstr "actif"
 
-#: models/user.py:144
+#: models/user.py:145
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -214,19 +222,19 @@ msgstr ""
 "Précise si l'utilisateur doit être considéré comme actif. Décochez ceci "
 "plutôt que de supprimer le compte."
 
-#: models/user.py:145
+#: models/user.py:146
 msgid "date joined"
 msgstr "date d'inscription"
 
-#: models/user.py:146
+#: models/user.py:147
 msgid "browser language"
 msgstr "langue du navigateur"
 
-#: models/user.py:154
+#: models/user.py:155
 msgid "user"
 msgstr "utilisateur"
 
-#: models/user.py:155
+#: models/user.py:156
 msgid "users"
 msgstr "utilisateurs"
 
@@ -480,15 +488,15 @@ msgstr ""
 #: templates/account/emails/activation_email_message.html:340
 #: templates/account/emails/activation_email_message.txt:23
 #: templates/account/emails/confirmation_email_message_new.html:211
-#: templates/account/emails/confirmation_email_message_new.txt:11
+#: templates/account/emails/confirmation_email_message_new.txt:9
 #: templates/account/emails/password_reset_email.html:215
-#: templates/account/emails/password_reset_email.txt:10
+#: templates/account/emails/password_reset_email.txt:9
 msgid "Join the community"
 msgstr "Rejoindre la communauté"
 
 #: templates/account/emails/activation_email_message.html:342
 #: templates/account/emails/confirmation_email_message_new.html:213
-#: templates/account/emails/confirmation_email_message_new.txt:12
+#: templates/account/emails/confirmation_email_message_new.txt:10
 #: templates/account/emails/password_reset_email.html:217
 #, python-format
 msgid ""
@@ -534,7 +542,7 @@ msgstr ""
 "\"%(site_url)s%(doc_home)s\" target=\"_blank\">documentation de l'API</a>."
 
 #: templates/account/emails/activation_email_message.txt:24
-#: templates/account/emails/password_reset_email.txt:11
+#: templates/account/emails/password_reset_email.txt:10
 #, python-format
 msgid ""
 "We aim to add new features and update regularly %(site)s. To be kept "
@@ -557,7 +565,6 @@ msgid "Email verification for %(site)s."
 msgstr "Email de vérification pour %(site)s."
 
 #: templates/account/emails/confirmation_email_message_new.html:130
-#: templates/account/emails/confirmation_email_message_new.txt:2
 msgid "Email verification"
 msgstr "Email de vérification"
 
@@ -576,7 +583,7 @@ msgstr ""
 msgid "Verify your email"
 msgstr "Vérifier votre email"
 
-#: templates/account/emails/confirmation_email_message_new.txt:4
+#: templates/account/emails/confirmation_email_message_new.txt:2
 #, python-format
 msgid ""
 "Hi %(first_name)s,\n"
@@ -585,7 +592,7 @@ msgstr ""
 "Bonjour %(first_name)s,\n"
 "Vous avez demandé un changement d'adresse e-mail sur %(site)s."
 
-#: templates/account/emails/confirmation_email_message_new.txt:7
+#: templates/account/emails/confirmation_email_message_new.txt:5
 msgid "Please confirm this email address by clicking on the link below:"
 msgstr ""
 "S'il vous plaît confirmez cette adresse e-mail en cliquant sur le lien ci-"
@@ -598,7 +605,6 @@ msgid "A request to change your email address has been made at %(site)s."
 msgstr "Une demande de changement d'adresse e-mail a été faite pour %(site)s."
 
 #: templates/account/emails/confirmation_email_message_old.html:130
-#: templates/account/emails/confirmation_email_message_old.txt:2
 msgid "Old email"
 msgstr "Ancien email"
 
@@ -623,7 +629,7 @@ msgstr ""
 "email a été envoyé à %(email_unconfirmed)s et contient un lien de "
 "vérification. Cliquez sur le lien contenu dans cet e-mail pour l'activer."
 
-#: templates/account/emails/confirmation_email_message_old.txt:3
+#: templates/account/emails/confirmation_email_message_old.txt:2
 #, python-format
 msgid ""
 "\n"
@@ -645,7 +651,6 @@ msgid "New password."
 msgstr "Nouveau mot de passe."
 
 #: templates/account/emails/password_reset_email.html:130
-#: templates/account/emails/password_reset_email.txt:2
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié ?"
 
@@ -655,19 +660,19 @@ msgid ""
 "Hi %(first_name)s,<br /><br />\n"
 "                                                                        We "
 "understand, it can be hard these days to remember every password. So, you "
-"can reset your password on %(site)s.\n"
+"can reset it on %(site)s.\n"
 "                                                                        "
 msgstr ""
 "Bonjour %(first_name)s,<br /><br />\n"
 "                                                                        Nous "
 "savons qu'il peut être compliqué de se souvenir de chaque mot de passe. "
-"C'est pourquoi, vous pouvez réinitialiser votre mot de passe %(site)s."
+"C'est pourquoi, vous pouvez le réinitialiser sur %(site)s."
 
 #: templates/account/emails/password_reset_email.html:177
 msgid "Reset you password"
 msgstr "Réinitialisation du mot de passe"
 
-#: templates/account/emails/password_reset_email.txt:3
+#: templates/account/emails/password_reset_email.txt:2
 #, python-format
 msgid ""
 "Hi %(first_name)s,\n"
@@ -678,7 +683,7 @@ msgstr ""
 "Nous savons qu'il peut être compliqué de se souvenir de chaque mot de passe. "
 "C'est pourquoi, vous pouvez réinitialiser votre mot de passe sur %(site)s."
 
-#: templates/account/emails/password_reset_email.txt:6
+#: templates/account/emails/password_reset_email.txt:5
 msgid "Please go to the following page and choose a new password:"
 msgstr ""
 "Veuillez vous rendre sur cette page et choisir un nouveau mot de passe :"
