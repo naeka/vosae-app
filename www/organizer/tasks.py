@@ -7,6 +7,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives, get_connection
 from django.utils.timezone import make_aware, utc
+from django.template import Context
 from datetime import datetime, date, time, timedelta
 
 from bson import DBRef, ObjectId
@@ -98,10 +99,12 @@ def emit_reminders(vosae_event_id):
     connection = get_connection()
     for language, emails in reminders['EMAIL'].items():
         with respect_language(language):
-            subject = render_to_string('organizer/emails/organizer_reminder_subject.txt', context)
+            plaintext_context = Context(autoescape=False)  # HTML escaping not appropriate in plaintext
+            subject = render_to_string('organizer/emails/organizer_reminder_subject.txt', context, plaintext_context)
             subject = ''.join(subject.splitlines())
-            text_content = render_to_string('organizer/emails/organizer_reminder_content.txt', context)
-            html_content = render_to_string('organizer/emails/organizer_reminder_content.html', context)
-            email = EmailMultiAlternatives(subject, text_content, bcc=emails, connection=connection)
-            email.attach_alternative(html_content, "text/html")
-            email.send()
+            text_body = render_to_string('organizer/emails/organizer_reminder_content.txt', context, plaintext_context)
+            html_body = render_to_string('organizer/emails/organizer_reminder_content.html', context)
+
+            message = EmailMultiAlternatives(subject, text_body, bcc=emails, connection=connection)
+            message.attach_alternative(html_body, "text/html")
+            message.send()
