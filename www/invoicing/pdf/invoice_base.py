@@ -106,8 +106,8 @@ class InvoiceBaseReport(Report):
             parent=self.style['ReportTable'],
             cmds=[
                 ('ALIGN', (1, 0), (-1, -1), 'RIGHT'),
-                ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
-                ('BACKGROUND', (0, 0), (-1, 0), colors.green),
+                ('TEXTCOLOR', (0, 0), (-1, 0), self.settings.hex_font_base_color),
+                ('BACKGROUND', (0, 0), (-1, 0), self.settings.hex_base_color),
             ]
         ))
 
@@ -119,9 +119,9 @@ class InvoiceBaseReport(Report):
                 ('FONTSIZE', (0, -1), (-1, -1), 1.2 * self.settings.font_size),
                 ('LEADING', (0, -1), (-1, -1), 1.5 * self.settings.font_size),
                 ('ALIGN', (0, 0), (-1, -1), 'RIGHT'),
-                ('TEXTCOLOR', (-2, -1), (-1, -1), colors.white),
-                ('BACKGROUND', (-1, 0), (-1, -1), colors.grey),
-                ('BACKGROUND', (-2, -1), (-1, -1), colors.green),
+                ('TEXTCOLOR', (-2, -1), (-1, -1), self.settings.hex_font_base_color),
+                ('BACKGROUND', (-1, 0), (-1, -1), self.settings.hex_base_color.clone(alpha=0.1)),
+                ('BACKGROUND', (-2, -1), (-1, -1), self.settings.hex_base_color),
                 ('LINEBELOW', (0, 0), (-1, -2), 4, colors.white),
                 ('TOPPADDING', (0, 1), (-1, -1), 6),
                 ('BOTTOMPADDING', (0, 0), (-1, -2), 6),
@@ -147,9 +147,9 @@ class InvoiceBaseReport(Report):
         canvas.saveState()
         canvas.setLineWidth(0.2)
         canvas.setLineCap(1)
-        canvas.setStrokeColor(colors.green)
+        canvas.setStrokeColor(self.settings.hex_base_color)
         canvas.setFont(get_font(self.settings.font_name).regular, 9)
-        canvas.setFillColor(colors.green)
+        canvas.setFillColor(self.settings.hex_base_color)
         canvas.line(20 * mm, 212 * mm, 95 * mm, 212 * mm)
         canvas.line(115 * mm, 212 * mm, 190 * mm, 212 * mm)
         canvas.drawString(20 * mm, 208 * mm, _("Billing address").upper())

@@ -86,7 +86,7 @@ class Report(object):
             name='Normal',
             fontName=get_font(self.settings.font_name).regular,
             fontSize=self.settings.font_size,
-            textColor=colors.font_color,
+            textColor=self.settings.hex_font_color,
             leading=1.2 * self.settings.font_size
         ), alias='p')
 
@@ -141,7 +141,7 @@ class Report(object):
                 ('FONTNAME', (0, 0), (-1, -1), get_font(self.settings.font_name).regular),
                 ('FONTSIZE', (0, 0), (-1, -1), self.settings.font_size),
                 ('LEADING', (0, 0), (-1, -1), 1.2 * self.settings.font_size),
-                ('TEXTCOLOR', (0, 0), (-1, -1), colors.font_color),
+                ('TEXTCOLOR', (0, 0), (-1, -1), self.settings.hex_font_color),
                 ('TOPPADDING', (0, 0), (-1, -1), 4),
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
                 ('VALIGN', (0, 0), (-1, -1), 'TOP'),
@@ -166,7 +166,7 @@ class Report(object):
                 ('FONTNAME', (0, 0), (-1, 0), get_font(self.settings.font_name).bold),
                 ('FONTSIZE', (0, 0), (-1, 0), 1.1 * self.settings.font_size),
                 ('LEADING', (0, 0), (-1, 0), 1.4 * self.settings.font_size),
-                ('ROWBACKGROUNDS', (0, 1), (-1, -1), (colors.lightergrey, colors.white)),
+                ('ROWBACKGROUNDS', (0, 1), (-1, -1), (colors.transparent, self.settings.hex_base_color.clone(alpha=0.1))),
             ]
         ))
 
@@ -192,13 +192,13 @@ class Report(object):
         canvas.saveState()
         canvas.setLineWidth(0.2)
         canvas.setLineCap(1)
-        canvas.setStrokeColor(colors.green)
+        canvas.setStrokeColor(self.settings.hex_base_color)
         canvas.line(20 * mm, 18 * mm, 190 * mm, 18 * mm)
         canvas.restoreState()
 
         canvas.saveState()
         canvas.setFont(get_font(self.settings.font_name).regular, 0.75 * self.settings.font_size)
-        canvas.setFillColor(colors.font_color)
+        canvas.setFillColor(self.settings.hex_font_color)
         canvas.drawRightString(190 * mm, 13 * mm, _("Page %(current)d on %(total)d") % self.doc.page_index())
         canvas.restoreState()
 
