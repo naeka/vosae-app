@@ -1,4 +1,5 @@
 {% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -213,12 +214,11 @@
                                                             <table align="Right" border="0" cellpadding="0" cellspacing="0" width="280" class="flexibleContainer">
                                                                 <tr>
                                                                     <td align="Left" valign="top" class="imageContent">
-                                                                        <img src="{% static 'account/img/getting_started.gif' %}" width="280" class="flexibleImage"/>
+                                                                        <img src="{% static 'account/img/getting_started_'|add:LANGUAGE_CODE|add:'.gif' %}" width="280" class="flexibleImage"/>
                                                                     </td>
                                                                 </tr>
                                                             </table>
                                                             <!-- // CONTENT TABLE -->
-
 
                                                             <!-- CONTENT TABLE // -->
                                                             <table align="Left" border="0" cellpadding="0" cellspacing="0" width="260" class="flexibleContainer">
