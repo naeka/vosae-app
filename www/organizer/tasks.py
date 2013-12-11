@@ -105,6 +105,7 @@ def emit_reminders(vosae_event_id):
             text_body = render_to_string('organizer/emails/organizer_reminder_content.txt', context, plaintext_context)
             html_body = render_to_string('organizer/emails/organizer_reminder_content.html', context)
 
-            message = EmailMultiAlternatives(subject, text_body, bcc=emails, connection=connection)
+            message = EmailMultiAlternatives(subject, text_body, cc=emails, connection=connection) # Mandrill doesn't support BCC so we have to use CC without preserving recipients
             message.attach_alternative(html_body, "text/html")
+            message.preserve_recipients = False # Useful for Mandrill
             message.send()
