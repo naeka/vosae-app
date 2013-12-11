@@ -77,7 +77,7 @@ def emit_reminders(vosae_event_id):
         'vosae_event': vosae_event,
         'start': start.replace(tzinfo=None),
         'timezone': start.tzname(),
-        'event_url': u'{0}/{1}/organizer/event/{2}'.format(settings.SITE_URL, vosae_event.tenant.slug, unicode(vosae_event.id))
+        'event_url': u'{0}/{1}/organizer/event/{2}'.format(settings.WEB_ENDPOINT, vosae_event.tenant.slug, unicode(vosae_event.id))
     }
 
     # Schedule next reminder
