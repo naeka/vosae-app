@@ -64,11 +64,41 @@ class InvoiceBaseReport(Report):
         address_frame_kwargs = frame_kwargs.copy()
         address_frame_kwargs.update(bottomPadding=2 * mm)
 
-        sender_frame = NoSplitFrame(20 * mm, 260 * mm, 100 * mm, 25 * mm, **frame_kwargs)
-        billing_frame = NoSplitFrame(20 * mm, 212 * mm, 75 * mm, 40 * mm, **address_frame_kwargs)
-        shipping_frame = NoSplitFrame(115 * mm, 212 * mm, 75 * mm, 40 * mm, **address_frame_kwargs)
-        rest_frame = Frame(20 * mm, 25 * mm, 170 * mm, 160 * mm, **frame_kwargs)
-        full_frame = Frame(20 * mm, 25 * mm, 170 * mm, 247 * mm, **frame_kwargs)
+        sender_frame = NoSplitFrame(
+            self.settings.page_size.from_left(),
+            self.settings.page_size.from_bottom(12*mm),  # 25mm height + (-13mm) offset
+            self.settings.page_size.scaled_width(100*mm),
+            25*mm,
+            **frame_kwargs
+        )
+        billing_frame = NoSplitFrame(
+            self.settings.page_size.from_left(),
+            self.settings.page_size.from_bottom(60*mm),  # 40mm height + 8mm offset + 12mm previous
+            self.settings.page_size.scaled_width(75*mm),
+            40*mm,
+            **address_frame_kwargs
+        )
+        shipping_frame = NoSplitFrame(
+            self.settings.page_size.from_left(self.settings.page_size.scaled_width(95*mm)),  # 75mm width + 20mm offset
+            self.settings.page_size.from_bottom(60*mm),  # 40mm height + 8mm offset + 12mm previous
+            self.settings.page_size.scaled_width(75*mm),
+            40*mm,
+            **address_frame_kwargs
+        )
+        rest_frame = Frame(
+            self.settings.page_size.from_left(),
+            self.settings.page_size.margin[2],
+            self.settings.page_size.available_width(),
+            self.settings.page_size.available_height(87*mm),  # 27mm offset + 60mm previous
+            **frame_kwargs
+        )
+        full_frame = Frame(
+            self.settings.page_size.from_left(),
+            self.settings.page_size.margin[2],
+            self.settings.page_size.available_width(),
+            self.settings.page_size.available_height(),
+            **frame_kwargs
+        )
 
         self.doc.addPageTemplates([
             PageTemplate(id='First', frames=[sender_frame, billing_frame, shipping_frame, rest_frame], onPage=self.on_first_page_cb),
@@ -139,7 +169,12 @@ class InvoiceBaseReport(Report):
         canvas.setLineWidth(1.5 * mm)
         canvas.setLineCap(1)
         canvas.setStrokeColor(colors.darkgrey)
-        canvas.line(20 * mm, 193 * mm, 190 * mm, 193 * mm)
+        canvas.line(
+            self.settings.page_size.from_left(),
+            self.settings.page_size.from_bottom(79*mm),
+            document._rightMargin,
+            self.settings.page_size.from_bottom(79*mm)
+        )
         canvas.restoreState()
 
     def draw_addresses_labels(self, canvas, document):
@@ -150,10 +185,20 @@ class InvoiceBaseReport(Report):
         canvas.setStrokeColor(self.settings.hex_base_color)
         canvas.setFont(get_font(self.settings.font_name).regular, 9)
         canvas.setFillColor(self.settings.hex_base_color)
-        canvas.line(20 * mm, 212 * mm, 95 * mm, 212 * mm)
-        canvas.line(115 * mm, 212 * mm, 190 * mm, 212 * mm)
-        canvas.drawString(20 * mm, 208 * mm, _("Billing address").upper())
-        canvas.drawString(115 * mm, 208 * mm, _("Delivery address").upper())
+        canvas.line(
+            self.settings.page_size.from_left(),
+            self.settings.page_size.from_bottom(60*mm),
+            self.settings.page_size.from_left(self.settings.page_size.scaled_width(75*mm)),
+            self.settings.page_size.from_bottom(60*mm)
+        )
+        canvas.line(
+            self.settings.page_size.from_left(self.settings.page_size.scaled_width(95*mm)),
+            self.settings.page_size.from_bottom(60*mm),
+            self.settings.page_size.from_left(self.settings.page_size.scaled_width(170*mm)),
+            self.settings.page_size.from_bottom(60*mm)
+        )
+        canvas.drawString(self.settings.page_size.from_left(), self.settings.page_size.from_bottom(64*mm), _("Billing address").upper())
+        canvas.drawString(self.settings.page_size.from_left(self.settings.page_size.scaled_width(95*mm)), self.settings.page_size.from_bottom(64*mm), _("Delivery address").upper())
         canvas.restoreState()
 
     def footer(self, canvas, document):
@@ -164,7 +209,7 @@ class InvoiceBaseReport(Report):
 
         canvas.saveState()
         registration_info = Paragraph(registration_info_text, style=self.style['Smaller'])
-        available_width, available_height = (140 * mm, 16 * mm)
+        available_width, available_height = (self.settings.page_size.available_width(30*mm), document.bottomMargin - 9*mm)
         w, h = registration_info.wrap(available_width, available_height)
         registration_info.drawOn(canvas, document.leftMargin, available_height - h)
         canvas.restoreState()
@@ -210,12 +255,12 @@ class InvoiceBaseReport(Report):
         # Add layout table if logo or paragraphs
         if self.invoice_base.tenant.logo_cache:
             logo = Image(self.invoice_base.tenant.logo_cache)
-            logo_width, logo_height = logo._restrictSize(50 * mm, 20 * mm)
+            logo_width, logo_height = logo._restrictSize(50*mm, 20*mm)
             self.table(
                 [[logo, sender_paragraphs]],
-                (logo_width + 4 * mm, None),
+                (logo_width + 4*mm, None),
                 self.style['LayoutTable'],
-                rowHeights=(20 * mm,)
+                rowHeights=(20*mm,)
             )
         else:
             for paragraph in sender_paragraphs:
@@ -266,7 +311,7 @@ class InvoiceBaseReport(Report):
                 '{0:.2%}'.format(item.tax.rate),
                 currency_format(item.total_price, self.invoice_base.current_revision.currency.symbol)
             ])
-        col_widths = (85 * mm, 20 * mm, 20 * mm, 20 * mm, 25 * mm)
+        col_widths = self.settings.page_size.scaled_width((85*mm, 20*mm, 20*mm, 20*mm, 25*mm))
         self.table(rows, col_widths, repeatRows=1, style=self.style['InvoiceBaseItemsTable'])
 
     def fill_line_items_summary(self):  
@@ -291,7 +336,7 @@ class InvoiceBaseReport(Report):
             _('TOTAL (incl. tax)'),
             currency_format(self.invoice_base.amount, self.invoice_base.current_revision.currency.symbol)
         ])
-        col_widths = (None, 25 * mm)
+        col_widths = (None, self.settings.page_size.scaled_width(25*mm))
         self.start_keeptogether()
         self.table(rows, col_widths, hAlign='RIGHT', style=self.style['InvoiceBaseSummaryTable'])
         self.end_keeptogether()

@@ -33,7 +33,7 @@ class InvoiceReport(InvoiceBaseReport):
         self.table([[
             ' '.join([unicode(self.invoice_base.RECORD_NAME).upper(), reference]),
             format_date(self.invoice_base.current_revision.invoicing_date, 'DATE_FORMAT')
-        ]], (12 * cm, 5 * cm), style=self.style['InvoiceBaseReferencesTable'])
+        ]], self.settings.page_size.scaled_width((12*cm, 5*cm)), style=self.style['InvoiceBaseReferencesTable'])
 
     def fill_legal_notice(self):
         # Legal notices

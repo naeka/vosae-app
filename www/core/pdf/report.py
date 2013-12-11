@@ -81,7 +81,13 @@ class Report(object):
             'topPadding': 0,
             'bottomPadding': 0
         }
-        full_frame = Frame(20 * mm, 25 * mm, 170 * mm, 247 * mm, **frame_kwargs)
+        full_frame = Frame(
+            self.settings.page_size.margin[3],
+            self.settings.page_size.margin[2],
+            self.settings.page_size.available_width(),
+            self.settings.page_size.available_height(),
+            **frame_kwargs
+        )
 
         self.doc.addPageTemplates([
             PageTemplate(id='Everyone', frames=[full_frame], onPage=self.on_page_cb),
@@ -208,9 +214,15 @@ class Report(object):
         canvas.setLineWidth(0.2)
         canvas.setLineCap(1)
         canvas.setStrokeColor(colors.darkergrey)
-        canvas.line(0, 195 * mm, 8 * mm, 195 * mm)
-        canvas.line(0, 148.5 * mm, 10 * mm, 148.5 * mm)
-        canvas.line(0, 95 * mm, 8 * mm, 95 * mm)
+        height = self.settings.page_size.height
+        # 2-part
+        if self.settings.page_size.bending_pos[0]:
+            pos = self.settings.page_size.bending_pos[0][0]
+            canvas.line(0, int(height*pos), 10*mm, int(height*pos))
+        # 3-part
+        if self.settings.page_size.bending_pos[1]:
+            for pos in self.settings.page_size.bending_pos[1]:
+                canvas.line(0, int(height*pos), 8*mm, int(height*pos))
         canvas.restoreState()
 
     def header(self, canvas, document):
@@ -223,13 +235,18 @@ class Report(object):
         canvas.setLineWidth(0.2)
         canvas.setLineCap(1)
         canvas.setStrokeColor(self.settings.hex_base_color)
-        canvas.line(20 * mm, 18 * mm, 190 * mm, 18 * mm)
+        canvas.line(
+            document.leftMargin,
+            document.bottomMargin - 7*mm,
+            document._rightMargin,
+            document.bottomMargin - 7*mm
+        )
         canvas.restoreState()
 
         # Page numbering
         canvas.saveState()
         numbering = Paragraph(_("Page %(current)d on %(total)d") % self.doc.page_index(), style=self.style['PageNumbering'])
-        available_width, available_height = (25 * mm, 16 * mm)
+        available_width, available_height = (25*mm, document.bottomMargin - 9*mm)
         w, h = numbering.wrap(available_width, available_height)
         numbering.drawOn(canvas, document._rightMargin - w, available_height - h)
         canvas.restoreState()
