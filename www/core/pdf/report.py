@@ -1,6 +1,7 @@
 # -*- coding:Utf-8 -*-
 
 from django.utils.translation import ugettext as _
+from reportlab.lib.enums import TA_RIGHT
 from reportlab.lib.styles import ParagraphStyle, StyleSheet1
 from reportlab.lib.units import mm, cm
 from reportlab.lib import colors as base_colors
@@ -51,8 +52,15 @@ class NoSplitFrame(Frame):
 class Report(object):
 
     def __init__(self, report_settings, *args, **kwargs):
-        self.doc = ReportingDocTemplate(*args, **kwargs)
         self.settings = report_settings
+        kwargs.update(
+            pagesize=self.settings.page_size.portrait,
+            leftMargin=self.settings.page_size.margin[3],
+            rightMargin=self.settings.page_size.margin[1],
+            topMargin=self.settings.page_size.margin[0],
+            bottomMargin=self.settings.page_size.margin[2]
+        )
+        self.doc = ReportingDocTemplate(*args, **kwargs)
         self.story = []
 
     def init_report(self):
@@ -135,6 +143,12 @@ class Report(object):
             leading=0.9 * self.settings.font_size,
         ))
 
+        self.style.add(ParagraphStyle(
+            name='PageNumbering',
+            parent=self.style['Smaller'],
+            alignment=TA_RIGHT
+        ))
+
         self.style.add(BaseTableStyle(
             name='Table',
             cmds=[
@@ -178,6 +192,17 @@ class Report(object):
         ))
 
     def on_page_cb(self, canvas, document):
+        self.draw_bending_lines(canvas, document)
+        self.header(canvas, document)
+        self.footer(canvas, document)
+
+    def on_first_page_cb(self, canvas, document):
+        self.on_page_cb(canvas, document)
+
+    def on_other_pages_cb(self, canvas, document):
+        self.on_page_cb(canvas, document)
+
+    def draw_bending_lines(self, canvas, document):
         # Bending lines
         canvas.saveState()
         canvas.setLineWidth(0.2)
@@ -188,7 +213,12 @@ class Report(object):
         canvas.line(0, 95 * mm, 8 * mm, 95 * mm)
         canvas.restoreState()
 
+    def header(self, canvas, document):
+        pass
+
+    def footer(self, canvas, document):
         # Page footer
+        # Line
         canvas.saveState()
         canvas.setLineWidth(0.2)
         canvas.setLineCap(1)
@@ -196,17 +226,13 @@ class Report(object):
         canvas.line(20 * mm, 18 * mm, 190 * mm, 18 * mm)
         canvas.restoreState()
 
+        # Page numbering
         canvas.saveState()
-        canvas.setFont(get_font(self.settings.font_name).regular, 0.75 * self.settings.font_size)
-        canvas.setFillColor(self.settings.hex_font_color)
-        canvas.drawRightString(190 * mm, 13 * mm, _("Page %(current)d on %(total)d") % self.doc.page_index())
+        numbering = Paragraph(_("Page %(current)d on %(total)d") % self.doc.page_index(), style=self.style['PageNumbering'])
+        available_width, available_height = (25 * mm, 16 * mm)
+        w, h = numbering.wrap(available_width, available_height)
+        numbering.drawOn(canvas, document._rightMargin - w, available_height - h)
         canvas.restoreState()
-
-    def on_first_page_cb(self, canvas, document):
-        self.on_page_cb(canvas, document)
-
-    def on_other_pages_cb(self, canvas, document):
-        self.on_page_cb(canvas, document)
 
     def p(self, text, style=None):
         self.story.append(Paragraph(text, style or self.style['p']))

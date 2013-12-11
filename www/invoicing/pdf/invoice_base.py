@@ -2,7 +2,7 @@
 
 from django.utils.translation import ugettext as _, pgettext
 from django.template.defaultfilters import floatformat
-from reportlab.lib.units import mm, cm
+from reportlab.lib.units import mm
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (
     Frame,
@@ -15,6 +15,7 @@ from core.pdf.report import (
     NoSplitFrame,
     BaseTableStyle
 )
+from core.pdf.utils import Paragraph
 from core.pdf.conf import colors
 from core.pdf.conf.fonts import get_font
 from invoicing import currency_format
@@ -68,11 +69,10 @@ class InvoiceBaseReport(Report):
         shipping_frame = NoSplitFrame(115 * mm, 212 * mm, 75 * mm, 40 * mm, **address_frame_kwargs)
         rest_frame = Frame(20 * mm, 25 * mm, 170 * mm, 160 * mm, **frame_kwargs)
         full_frame = Frame(20 * mm, 25 * mm, 170 * mm, 247 * mm, **frame_kwargs)
-        legal_notice_frame = NoSplitFrame(20 * mm, 5 * mm, 140 * mm, 11 * mm, **frame_kwargs)
 
         self.doc.addPageTemplates([
-            PageTemplate(id='First', frames=[sender_frame, billing_frame, shipping_frame, rest_frame, legal_notice_frame], onPage=self.on_first_page_cb),
-            PageTemplate(id='Other', frames=[full_frame, legal_notice_frame], onPage=self.on_other_pages_cb),
+            PageTemplate(id='First', frames=[sender_frame, billing_frame, shipping_frame, rest_frame], onPage=self.on_first_page_cb),
+            PageTemplate(id='Other', frames=[full_frame], onPage=self.on_other_pages_cb),
         ])
         self.story.append(NextPageTemplate('Other'))
 
@@ -156,6 +156,19 @@ class InvoiceBaseReport(Report):
         canvas.drawString(115 * mm, 208 * mm, _("Delivery address").upper())
         canvas.restoreState()
 
+    def footer(self, canvas, document):
+        super(InvoiceBaseReport, self).footer(canvas, document)
+
+        # Registration information
+        registration_info_text = u' - '.join([self.invoice_base.tenant.name] + self.invoice_base.tenant.registration_info.get_list())
+
+        canvas.saveState()
+        registration_info = Paragraph(registration_info_text, style=self.style['Smaller'])
+        available_width, available_height = (140 * mm, 16 * mm)
+        w, h = registration_info.wrap(available_width, available_height)
+        registration_info.drawOn(canvas, document.leftMargin, available_height - h)
+        canvas.restoreState()
+
     def fill(self):
         """Fills the report"""
         # Sender part
@@ -181,10 +194,6 @@ class InvoiceBaseReport(Report):
 
         # Legal notice
         self.fill_legal_notice()
-
-        # Registration information
-        self.next_frame()
-        self.fill_registration_information()
 
 
     def fill_sender(self):
