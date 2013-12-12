@@ -1,18 +1,12 @@
 {% load i18n %}{% autoescape off %}
-{% trans "Dear user," %}
-
-{% blocktrans with site.name as site %}You have requested a change of your email address at {{ site }}.{% endblocktrans %}
-
+{% blocktrans with site=site.name first_name=user.first_name %}Hi {{ first_name }},
+You have requested a change of your email address on {{ site }}.{% endblocktrans %}
 
 {% trans "Please confirm this email address by clicking on the link below:" %}
-
 {{ site.url }}{% url 'account_confirm_email' user.email user.email_confirmation_key %}
 
-{% trans "Thank you for participating in the Vosae beta!" %}
 
-{% trans "Email: support@vosae.com" %}
-Twitter: @vosae
-Facebook: fb.com/vosaehq
-{% trans "Developer documentation: https://www.vosae.com/docs/api/" %}
+{% trans "Join the community" %}
+{% blocktrans with site=site.name %}We aim to add new features and update regularly {{ site }}. To be kept informed of the latest news, to show everyone how awesome {{ site }} is, to talk to us or simply join the community, you can follow us on <a href="https://twitter.com/Vosae" target="_blank">Twitter</a> or like us on <a href="https://www.facebook.com/vosaehq" target="_blank">Facebook</a>.{% endblocktrans %}
 
 {% endautoescape %}

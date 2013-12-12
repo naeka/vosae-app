@@ -16,3 +16,4 @@ EVENT_DATE_FORMAT = 'l j F Y'               # Lundi 25 octobre 2006
 EVENT_DATETIME_FORMAT = 'l j F Y H:i'       # Lundi 25 octobre 2006 14:30
 EVENT_SHORT_DATE_FORMAT = 'j N Y'           # 25 oct. 2006
 EVENT_SHORT_DATETIME_FORMAT = 'j N Y H:i'   # 25 oct. 2006 14:30
+EVENT_HOUR_DATETIME_FORMAT = 'H:i'          # 14:30
