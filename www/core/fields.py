@@ -70,17 +70,19 @@ class MultipleReferencesField(GenericReferenceField):
                 if not issubclass(document_type, (Document, basestring)):
                     self.error('Argument to ReferenceField constructor must be a document class or a string')
 
-        self.document_types_obj = list(document_types)
+        self.document_types_str = list(document_types)
+        self.document_types_obj = list()
         super(MultipleReferencesField, self).__init__(**kwargs)
 
     @property
     def document_types(self):
-        for idx, document_type in enumerate(self.document_types_obj):
-            if isinstance(document_type, basestring):
+        """Lazy property, used on-demand in particular cases"""
+        if not self.document_types_obj:
+            for document_type in self.document_types_str:
                 if document_type == RECURSIVE_REFERENCE_CONSTANT:
-                    self.document_types_obj[idx] = self.owner_document
+                    self.document_types_obj.append(self.owner_document)
                 else:
-                    self.document_types_obj[idx] = get_document(document_type)
+                    self.document_types_obj.append(get_document(document_type))
         return self.document_types_obj
 
     def validate(self, value):
@@ -90,7 +92,7 @@ class MultipleReferencesField(GenericReferenceField):
         if isinstance(value, (dict, SON)):
             if '_ref' not in value or '_cls' not in value:
                 self.error('A MultipleReferencesField can only contain documents')
-            elif not any(value['_cls'].endswith(document_type) for document_type in self.document_types):
+            elif not any(value['_cls'].endswith(document_type) for document_type in self.document_types_str):
                 self.error('A MultipleReferencesField can only contain documents')
 
         # We need the id from the saved object to create the DBRef
