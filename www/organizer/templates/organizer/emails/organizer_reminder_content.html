@@ -1,339 +1,242 @@
+{% extends "core/skeleton_email.html" %}
 {% load i18n %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.5"/>
-        <title>{{ vosae_event.summary }}</title>
-        <style type="text/css">
-            /*////// RESET STYLES //////*/
-            body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important;}
-            table{border-collapse:collapse;}
-            img, a img{border:0; outline:none; text-decoration:none;}
-            h1, h2, h3, h4, h5, h6{margin:0; padding:0;}
-            p{margin: 1em 0;}
 
-            /*////// CLIENT-SPECIFIC STYLES //////*/
-            .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail/Outlook.com to display emails at full width. */
-            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div{line-height:100%;} /* Force Hotmail/Outlook.com to display line heights normally. */
-            table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up. */
-            #outlook a{padding:0;} /* Force Outlook 2007 and up to provide a "view in browser" message. */
-            img{-ms-interpolation-mode: bicubic;} /* Force IE to smoothly render resized images. */
-            body, table, td, p, a, li, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;} /* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+{% block title %}{{ vosae_event.summary }}{% endblock %}
 
-            /*////// FRAMEWORK STYLES //////*/
-            .flexibleContainerCell{padding-top:20px; padding-Right:20px; padding-Left:20px;}
-            .flexibleImage{height:auto;}
-            .bottomShim{padding-bottom:20px;}
-            .imageContent, .imageContentLast{padding-bottom:20px;}
-            .nestedContainerCell{padding-top:20px; padding-Right:20px; padding-Left:20px;}
+{% block content %}
+<!-- MODULE ROW // -->
+<tr>
+    <td align="center" valign="top">
+        <!-- CENTERING TABLE // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <!-- FLEXIBLE CONTAINER // -->
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                        <tr>
+                            <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
+                                    <tr>
+                                        <td valign="top" class="nestedContainerCell">
 
-            /*////// GENERAL STYLES //////*/
-            body, #bodyTable{background-color:#eeeeee;}
-            #bodyCell{padding-top:40px; padding-bottom:40px;}
-            #emailBody{background-color:#FFFFFF; border:1px solid #DDDDDD; border-collapse:separate; border-radius:4px;}
-            h1, h2, h3, h4, h5, h6{color:#666666; font-family:Helvetica; font-size:20px; line-height:125%; text-align:Left;}
-            .textContent, .textContentLast{color:#666666; font-family:Helvetica; font-size:16px; line-height:125%; text-align:Left; padding-bottom:20px;}
-            .textContent a, .textContentLast a{color:#666666; text-decoration:underline;}
-            .emailButton{background-color:#eb5f3a; border-collapse:separate; border-radius:4px;}
-            .buttonContent{color:#FFFFFF; font-family:Helvetica; font-size:18px; font-weight:bold; line-height:100%; padding:15px; text-align:center;}
-            .buttonContent a{color:#FFFFFF; display:block; text-decoration:none;}
-            .emailCalendar{background-color:#FFFFFF; border:1px solid #CCCCCC;}
-            .emailCalendarMonth{background-color:#44b2ae; color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; padding-top:10px; padding-bottom:10px; text-align:center;}
-            .emailCalendarDay{color:#44b2ae; font-family:Helvetica, Arial, sans-serif; font-size:60px; font-weight:bold; line-height:100%; padding-top:20px; padding-bottom:20px; text-align:center;}
-            .emailCalendarHour{background-color:#44b2ae; color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; padding-top:10px; padding-bottom:10px; text-align:center;}
+                                            <!-- CONTENT TABLE // -->
+                                            <table align="Left" border="0" cellpadding="0" cellspacing="0" width="160" class="flexibleContainer">
+                                                <tr>
+                                                    <td align="center" valign="top" class="bottomShim">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="160" class="emailCalendar">
+                                                            <tr>
+                                                                <td align="center" valign="top" style="padding:5px;">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                        <tr>
+                                                                            <td align="center" valign="top" class="emailCalendarMonth">
+                                                                                {{ start|date:"F" }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="center" valign="top" class="emailCalendarDay">
+                                                                                {{ start|date:"j" }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        {% if not vosae_event.start.date %}
+                                                                        <tr>
+                                                                            <td align="center" valign="top" class="emailCalendarHour">
+                                                                                {{ start|date:"EVENT_HOUR_DATETIME_FORMAT" }} <i>({{ timezone }})</i>
+                                                                            </td>
+                                                                        </tr>
+                                                                        {% endif %}
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // CONTENT TABLE -->
 
-            /*////// MOBILE STYLES //////*/
-            @media only screen and (max-width: 480px){          
-                /*////// CLIENT-SPECIFIC STYLES //////*/
-                body{width:100% !important; min-width:100% !important;} /* Force iOS Mail to render the email at full width. */
-
-                /*////// FRAMEWORK STYLES //////*/
-                /*
-                    CSS selectors are written in attribute
-                    selector format to prevent Yahoo Mail
-                    from rendering media query styles on
-                    desktop.
-                */
-                table[id="emailBody"]{width:100% !important;}
-                table[class="flexibleContainer"]{width:100% !important;}
-                img[class="flexibleImage"]{width:100% !important;}
-                table[class="emailButton"]{width:100% !important;}
-                td[class="buttonContent"]{padding:0 !important;}
-                td[class="buttonContent"] a{padding:15px !important;}
-                td[class="textContentLast"], td[class="imageContentLast"]{padding-top:20px !important;}
-
-                /*////// GENERAL STYLES //////*/
-                td[id="bodyCell"]{padding-top:10px !important; padding-Right:10px !important; padding-Left:10px !important;}
-            }
-        </style>
-        <!--[if mso 12]>
-            <style type="text/css">
-                .flexibleContainer{display:block !important; width:100% !important;}
-            </style>
-        <![endif]-->
-        <!--[if mso 14]>
-            <style type="text/css">
-                .flexibleContainer{display:block !important; width:100% !important;}
-            </style>
-        <![endif]-->
-    </head>
-    <body>
-        <center>
-            <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
-                <tr>
-                    <td align="center" valign="top" id="bodyCell">
-                        <!-- EMAIL CONTAINER // -->
-                        <!--
-                            The table "emailBody" is the email's container.
-                            Its width can be set to 100% for a color band
-                            that spans the width of the page.
-                        -->
-                        <table border="0" cellpadding="0" cellspacing="0" width="600" id="emailBody">
+                                            <!-- CONTENT TABLE // -->
+                                            <table align="Right" border="0" cellpadding="0" cellspacing="0" width="320" class="flexibleContainer">
+                                                <tr>
+                                                    <td valign="top" class="textContent">
+                                                        <h3>{{ vosae_event.summary }}</h3>
+                                                        <br />
+                                                        {% if vosae_event.description %}
+                                                            {{ vosae_event.description|linebreaksbr }}
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- // CONTENT TABLE -->
 
 
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- // FLEXIBLE CONTAINER -->
+                </td>
+            </tr>
+        </table>
+        <!-- // CENTERING TABLE -->
+    </td>
+</tr>
+<!-- // MODULE ROW -->
 
-                            <!-- MODULE ROW // -->
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- CENTERING TABLE // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td align="center" valign="top">
-                                                <!-- FLEXIBLE CONTAINER // -->
-                                                <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                    <tr>
-                                                        <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
-                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="nestedContainer">
-                                                                <tr>
-                                                                    <td valign="top" class="nestedContainerCell">
-
-                                                                        <!-- CONTENT TABLE // -->
-                                                                        <table align="Left" border="0" cellpadding="0" cellspacing="0" width="160" class="flexibleContainer">
-                                                                            <tr>
-                                                                                <td align="center" valign="top" class="bottomShim">
-                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="160" class="emailCalendar">
-                                                                                        <tr>
-                                                                                            <td align="center" valign="top" style="padding:5px;">
-                                                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                                                    <tr>
-                                                                                                        <td align="center" valign="top" class="emailCalendarMonth">
-                                                                                                            {{ start|date:"F" }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td align="center" valign="top" class="emailCalendarDay">
-                                                                                                            {{ start|date:"j" }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    {% if not vosae_event.start.date %}
-                                                                                                    <tr>
-                                                                                                        <td align="center" valign="top" class="emailCalendarHour">
-                                                                                                            {{ start|date:"EVENT_HOUR_DATETIME_FORMAT" }} <i>({{ timezone }})</i>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    {% endif %}
-                                                                                                </table>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <!-- // CONTENT TABLE -->
-            
-                                                                        <!-- CONTENT TABLE // -->
-                                                                        <table align="Right" border="0" cellpadding="0" cellspacing="0" width="320" class="flexibleContainer">
-                                                                            <tr>
-                                                                                <td valign="top" class="textContent">
-                                                                                    <h3>{{ vosae_event.summary }}</h3>
-                                                                                    <br />
-                                                                                    {% if vosae_event.description %}
-                                                                                        {{ vosae_event.description|linebreaksbr }}
-                                                                                    {% endif %}
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <!-- // CONTENT TABLE -->
+<!-- MODULE ROW // -->
+<tr>
+    <td align="center" valign="top">
+        <!-- CENTERING TABLE // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <!-- FLEXIBLE CONTAINER // -->
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                        <tr>
+                            <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
 
 
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- // FLEXIBLE CONTAINER -->
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // CENTERING TABLE -->
-                                </td>
-                            </tr>
-                            <!-- // MODULE ROW -->
+                                <!-- CONTENT TABLE // -->
+                                <!--
+                                    The emailButton table's width can be changed
+                                    to affect the look of the button. To make the
+                                    button width dependent on the text inside, leave
+                                    the width blank. When a button is placed in a column,
+                                    it's helpful to set the width to 100%.
+                                -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
+                                    <tr>
+                                        <td align="center" valign="middle" class="buttonContent">
+                                            <a href="{{ event_url }}" target="_blank">{% trans "View the event" %}</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CONTENT TABLE -->
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- // FLEXIBLE CONTAINER -->
+                </td>
+            </tr>
+        </table>
+        <!-- // CENTERING TABLE -->
+    </td>
+</tr>
+<!-- // MODULE ROW -->
 
-                            <!-- MODULE ROW // -->
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- CENTERING TABLE // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td align="center" valign="top">
-                                                <!-- FLEXIBLE CONTAINER // -->
-                                                <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                    <tr>
-                                                        <td align="center" valign="top" width="600" class="flexibleContainerCell bottomShim">
-
-
-                                                            <!-- CONTENT TABLE // -->
-                                                            <!--
-                                                                The emailButton table's width can be changed
-                                                                to affect the look of the button. To make the
-                                                                button width dependent on the text inside, leave
-                                                                the width blank. When a button is placed in a column,
-                                                                it's helpful to set the width to 100%.
-                                                            -->
-                                                            <table border="0" cellpadding="0" cellspacing="0" width="260" class="emailButton">
-                                                                <tr>
-                                                                    <td align="center" valign="middle" class="buttonContent">
-                                                                        <a href="{{ event_url }}" target="_blank">{% trans "View the event" %}</a>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <!-- // CONTENT TABLE -->
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- // FLEXIBLE CONTAINER -->
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // CENTERING TABLE -->
-                                </td>
-                            </tr>
-                            <!-- // MODULE ROW -->
-                            
-                            {% if vosae_event.location %}
-                            <!-- MODULE ROW // -->
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- CENTERING TABLE // -->
-                                    <!--
-                                        The centering table keeps the content
-                                        tables centered in the emailBody table,
-                                        in case its width is set to 100%.
-                                    -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td align="center" valign="top">
-                                                <!-- FLEXIBLE CONTAINER // -->
-                                                <!--
-                                                    The flexible container has a set width
-                                                    that gets overridden by the media query.
-                                                    Most content tables within can then be
-                                                    given 100% widths.
-                                                -->
-                                                <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                    <tr>
-                                                        <td align="center" valign="top" width="600" class="flexibleContainerCell">
+{% if vosae_event.location %}
+<!-- MODULE ROW // -->
+<tr>
+    <td align="center" valign="top">
+        <!-- CENTERING TABLE // -->
+        <!--
+            The centering table keeps the content
+            tables centered in the emailBody table,
+            in case its width is set to 100%.
+        -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <!-- FLEXIBLE CONTAINER // -->
+                    <!--
+                        The flexible container has a set width
+                        that gets overridden by the media query.
+                        Most content tables within can then be
+                        given 100% widths.
+                    -->
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                        <tr>
+                            <td align="center" valign="top" width="600" class="flexibleContainerCell">
 
 
-                                                            <!-- CONTENT TABLE // -->
-                                                            <!--
-                                                                The content table is the first element
-                                                                that's entirely separate from the structural
-                                                                framework of the email.
-                                                            -->
-                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                <tr>
-                                                                    <td valign="top" class="textContent">
-                                                                        <h3>{% trans "Location" %}</h3>
-                                                                        <br />
-                                                                        {{ vosae_event.location }}
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <!-- // CONTENT TABLE -->
+                                <!-- CONTENT TABLE // -->
+                                <!--
+                                    The content table is the first element
+                                    that's entirely separate from the structural
+                                    framework of the email.
+                                -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td valign="top" class="textContent">
+                                            <h3>{% trans "Location" %}</h3>
+                                            <br />
+                                            {{ vosae_event.location }}
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CONTENT TABLE -->
 
 
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- // FLEXIBLE CONTAINER -->
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // CENTERING TABLE -->
-                                </td>
-                            </tr>
-                            <!-- // MODULE ROW -->
-                            {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- // FLEXIBLE CONTAINER -->
+                </td>
+            </tr>
+        </table>
+        <!-- // CENTERING TABLE -->
+    </td>
+</tr>
+<!-- // MODULE ROW -->
+{% endif %}
 
-                        {% if vosae_event.attendees %}
-                        <!-- MODULE ROW // -->
-                            <tr>
-                                <td align="center" valign="top">
-                                    <!-- CENTERING TABLE // -->
-                                    <!--
-                                        The centering table keeps the content
-                                        tables centered in the emailBody table,
-                                        in case its width is set to 100%.
-                                    -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td align="center" valign="top">
-                                                <!-- FLEXIBLE CONTAINER // -->
-                                                <!--
-                                                    The flexible container has a set width
-                                                    that gets overridden by the media query.
-                                                    Most content tables within can then be
-                                                    given 100% widths.
-                                                -->
-                                                <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
-                                                    <tr>
-                                                        <td align="center" valign="top" width="600" class="flexibleContainerCell">
-
-
-                                                            <!-- CONTENT TABLE // -->
-                                                            <!--
-                                                                The content table is the first element
-                                                                that's entirely separate from the structural
-                                                                framework of the email.
-                                                            -->
-                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                <tr>
-                                                                    <td valign="top" class="textContent">
-                                                                        <h3>{% trans "Attendees" %}</h3>
-                                                                        <br />
-                                                                        {% for attendee in vosae_event.attendees %}
-                                                                            {% if attendee.display_name %}{{ attendee.display_name }}{% endif %}
-                                                                                <a href="mailto:{{ attendee.email }}">{{ attendee.email }}</a>
-                                                                            {% if attendee.organizer %}<span style="color: #ff0000"> - {% trans "organizer" context "person" %}</span>{% endif %}
-                                                                        {% endfor %}
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <!-- // CONTENT TABLE -->
+{% if vosae_event.attendees %}
+<!-- MODULE ROW // -->
+<tr>
+    <td align="center" valign="top">
+        <!-- CENTERING TABLE // -->
+        <!--
+            The centering table keeps the content
+            tables centered in the emailBody table,
+            in case its width is set to 100%.
+        -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <!-- FLEXIBLE CONTAINER // -->
+                    <!--
+                        The flexible container has a set width
+                        that gets overridden by the media query.
+                        Most content tables within can then be
+                        given 100% widths.
+                    -->
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" class="flexibleContainer">
+                        <tr>
+                            <td align="center" valign="top" width="600" class="flexibleContainerCell">
 
 
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!-- // FLEXIBLE CONTAINER -->
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // CENTERING TABLE -->
-                                </td>
-                            </tr>
-                            <!-- // MODULE ROW -->
-                            {% endif %}
+                                <!-- CONTENT TABLE // -->
+                                <!--
+                                    The content table is the first element
+                                    that's entirely separate from the structural
+                                    framework of the email.
+                                -->
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td valign="top" class="textContent">
+                                            <h3>{% trans "Attendees" %}</h3>
+                                            <br />
+                                            {% for attendee in vosae_event.attendees %}
+                                                {% if attendee.display_name %}{{ attendee.display_name }}{% endif %}
+                                                    <a href="mailto:{{ attendee.email }}">{{ attendee.email }}</a>
+                                                {% if attendee.organizer %}<span style="color: #ff0000"> - {% trans "organizer" context "person" %}</span>{% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- // CONTENT TABLE -->
 
-                        </table>
-                        <!-- // EMAIL CONTAINER -->
-                    </td>
-                </tr>
-            </table>
-        </center>
-    </body>
-</html>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- // FLEXIBLE CONTAINER -->
+                </td>
+            </tr>
+        </table>
+        <!-- // CENTERING TABLE -->
+    </td>
+</tr>
+<!-- // MODULE ROW -->
+{% endif %}
+{% endblock %}
