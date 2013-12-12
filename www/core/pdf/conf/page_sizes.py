@@ -6,9 +6,9 @@ from reportlab.lib.pagesizes import A4, LETTER, LEGAL, portrait, landscape
 
 __all__ = (
     'mapping',
-    'A4',
-    'LETTER'
-    'LEGAL'
+    'a4',
+    'letter'
+    'legal'
 )
 
 
