@@ -165,20 +165,12 @@ class PasswordResetForm(forms.Form):
             # a password marked as unusable
             if not user.has_usable_password():
                 continue
-            if not domain_override:
-                current_site = get_current_site(request)
-                site_name = current_site.name
-                domain = current_site.domain
-            else:
-                site_name = domain = domain_override
             c = {
                 'email': user.email,
-                'domain': domain,
-                'site_name': site_name,
+                'site': {'name': settings.SITE_NAME, 'url': settings.SITE_URL},
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'user': user,
                 'token': token_generator.make_token(user),
-                'protocol': 'https' if use_https else 'http',
             }
             subject = loader.render_to_string(subject_template_name, c)
             # Email subject *must not* contain newlines
