@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'south',
     'corsheaders',
+    'djrill',
 )
 
 VOSAE_APPS = (
@@ -191,7 +192,8 @@ FORMAT_MODULE_PATH = 'formats'
 
 TEST_RUNNER = 'test_runner.VosaeTestRunner'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MANDRILL_API_KEY = None
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 DEFAULT_FROM_EMAIL = 'no-reply@vosae.com'
 
 LOGIN_REDIRECT_URL = '/dashboard/'

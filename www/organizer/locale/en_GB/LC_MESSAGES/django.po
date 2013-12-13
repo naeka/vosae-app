@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"POT-Creation-Date: 2013-12-11 15:19+0000\n"
 "PO-Revision-Date: 2013-10-21 11:54+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -18,28 +18,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: templates/organizer/emails/organizer_reminder_content.html:8
-#: templates/organizer/emails/organizer_reminder_content.txt:9
-msgid "Further info"
+#: templates/organizer/emails/organizer_reminder_content.html:199
+msgid "View the event"
 msgstr ""
 
-#: templates/organizer/emails/organizer_reminder_content.html:13
-msgid "Date"
-msgstr ""
-
-#: templates/organizer/emails/organizer_reminder_content.html:24
-msgid "Description"
-msgstr ""
-
-#: templates/organizer/emails/organizer_reminder_content.html:30
+#: templates/organizer/emails/organizer_reminder_content.html:250
+#: templates/organizer/emails/organizer_reminder_content_old.html:30
 msgid "Location"
 msgstr ""
 
-#: templates/organizer/emails/organizer_reminder_content.html:36
+#: templates/organizer/emails/organizer_reminder_content.html:306
+#: templates/organizer/emails/organizer_reminder_content_old.html:36
 msgid "Attendees"
 msgstr ""
 
-#: templates/organizer/emails/organizer_reminder_content.html:43
+#: templates/organizer/emails/organizer_reminder_content.html:311
+#: templates/organizer/emails/organizer_reminder_content_old.html:43
 msgctxt "person"
 msgid "organizer"
 msgstr ""
@@ -52,6 +46,19 @@ msgstr ""
 #: templates/organizer/emails/organizer_reminder_content.txt:6
 #, python-format
 msgid "Your event %(summary)s occurs on %(start)s (%(timezone)s).\n"
+msgstr ""
+
+#: templates/organizer/emails/organizer_reminder_content.txt:9
+#: templates/organizer/emails/organizer_reminder_content_old.html:8
+msgid "Further info"
+msgstr ""
+
+#: templates/organizer/emails/organizer_reminder_content_old.html:13
+msgid "Date"
+msgstr ""
+
+#: templates/organizer/emails/organizer_reminder_content_old.html:24
+msgid "Description"
 msgstr ""
 
 #: templates/organizer/emails/organizer_reminder_subject.txt:3

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"POT-Creation-Date: 2013-12-09 20:49+0000\n"
 "PO-Revision-Date: 2013-10-21 11:53+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -17,31 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: tasks.py:20
+#: tasks.py:23
 msgid "Vosae export.zip"
 msgstr ""
 
-#: tasks.py:46
+#: tasks.py:50
 msgid "Your Vosae export is available"
 msgstr ""
 
-#: templates/data_liberation/emails/export_finished.txt:2
+#: templates/data_liberation/emails/export_finished.html:7
+#, python-format
+msgid "Your %(site)s export"
+msgstr ""
+
+#: templates/data_liberation/emails/export_finished.html:130
+msgid "Your export"
+msgstr ""
+
+#: templates/data_liberation/emails/export_finished.html:132
+#, python-format
 msgid ""
-"Dear user,\n"
-"\n"
-"Your Vosae export is now available at:"
+"Hi %(first_name)s,<br /><br />\n"
+"                                                                        Your "
+"export requested on %(site)s is now available on the link below. This export "
+"remains available until you or one of your coworkers delete it.\n"
+"                                                                        "
 msgstr ""
 
-#: templates/data_liberation/emails/export_finished.txt:8
+#: templates/data_liberation/emails/export_finished.html:177
+msgid "Download the export"
+msgstr ""
+
+#: templates/data_liberation/emails/export_finished.txt:3
+#, python-format
 msgid ""
-"This export remains available on Vosae until you or one of your coworkers "
-"delete it."
-msgstr ""
-
-#: templates/data_liberation/emails/export_finished.txt:10
-msgid "Thanks for using Vosae!"
-msgstr ""
-
-#: templates/data_liberation/emails/export_finished.txt:12
-msgid "Sincerely"
+"Hi %(first_name)s,\n"
+"Your export requested on %(site)s is now available on the link below. This "
+"export remains available until you or one of your coworkers delete it."
 msgstr ""
