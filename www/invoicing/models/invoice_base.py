@@ -10,7 +10,7 @@ from django.utils.timezone import now as datetime_now
 from django.core.files.base import ContentFile
 from django.template import Template, Context
 from django.core.mail import EmailMessage
-from mongoengine import Document, fields, PULL, NULLIFY
+from mongoengine import Document, fields, PULL
 from decimal import Decimal, ROUND_HALF_UP
 import uuid
 
@@ -22,7 +22,6 @@ from invoicing import ACCOUNT_TYPES, HISTORY_STATES, STATES_RESET_CACHED_DATA, I
 from invoicing import signals as invoicing_signals
 from invoicing.models.embedded.invoice_revision import InvoiceRevision
 from invoicing.models.embedded.invoice_history_entries import *
-from invoicing.pdf.default import InvoiceBaseReport
 from invoicing.exceptions import NotDeletableInvoice
 from invoicing.tasks import (
     invoicebase_changed_state_task,
