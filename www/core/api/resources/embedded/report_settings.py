@@ -23,9 +23,13 @@ class ReportSettingsResource(VosaeResource):
         blank=True,
         help_text=HELP_TEXT['report_settings']['font_size']
     )
+    font_color = base_fields.CharField(
+        attribute='font_color',
+        blank=True,
+        help_text=HELP_TEXT['report_settings']['font_color']
+    )
     base_color = base_fields.CharField(
         attribute='base_color',
-        null=True,
         blank=True,
         help_text=HELP_TEXT['report_settings']['base_color']
     )
