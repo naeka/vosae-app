@@ -1,12 +1,8 @@
 {% load i18n %}{% autoescape off %}
-{% trans "Dear user," %}
+{% blocktrans with site=site.name email_unconfirmed=user.email_unconfirmed first_name=user.first_name %}
+Hi {{ first_name }},
+There was a request to change your email address on {{ site }}.
 
-{% blocktrans with site.name as site %}There was a request to change your email address at {{ site }}.{% endblocktrans %}
+An email has been send to {{ email_unconfirmed }} which contains a verification link. Click on the link in this email to activate it.{% endblocktrans %}
 
-{% blocktrans %}An email has been send to {{ user.email_unconfirmed }} which contains a verification link. Click on the link in this email to activate it.{% endblocktrans %}
-
-{% trans "Thanks for using Vosae!" %}
-
-{% trans "Sincerely" %},
-{{ site.name }}
 {% endautoescape %}

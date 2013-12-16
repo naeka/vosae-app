@@ -1,4 +1,5 @@
 # -*- coding:Utf-8 -*-
+import datetime
 
 from django.conf import settings
 from django.db import models
@@ -7,10 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone, http
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-import datetime
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.core.mail import EmailMessage
+
 
 from vosae_utils import generate_sha1
 from account.managers import UserManager
+
 
 
 __all__ = (
@@ -94,11 +99,17 @@ class ActivationMixin(models.Model):
             'site': {'name': settings.SITE_NAME, 'url': settings.SITE_URL}
         }
 
-        subject = render_to_string('account/emails/activation_email_subject.txt', context)
+        plaintext_context = Context(autoescape=False)  # HTML escaping not appropriate in plaintext
+        subject = render_to_string("account/emails/activation_email_subject.txt", context, plaintext_context)
         subject = ''.join(subject.splitlines())
+        text_body = render_to_string("account/emails/activation_email_message.txt", context, plaintext_context)
+        html_body = render_to_string("account/emails/activation_email_message.html", context)
 
-        message = render_to_string('account/emails/activation_email_message.txt', context)
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email, ])
+        message = EmailMultiAlternatives(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
+                           to=[self.email], body=text_body)
+        message.attach_alternative(html_body, "text/html")
+        message.send()
+
 
     def change_email(self, email):
         """

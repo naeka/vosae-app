@@ -1,14 +1,8 @@
 {% load i18n %}{% autoescape off %}
-{% blocktrans %}Dear user,
 
-Your Vosae export is now available at:{% endblocktrans %}
+{% blocktrans with first_name=user.first_name site=site.name %}Hi {{ first_name }},
+Your export requested on {{ site }} is now available on the link below. This export remains available until you or one of your coworkers delete it.{% endblocktrans %}
 
 {{ site.url }}{{file.download_link }}
 
-{% blocktrans %}This export remains available on Vosae until you or one of your coworkers delete it.{% endblocktrans %}
-
-{% trans "Thanks for using Vosae!" %}
-
-{% trans "Sincerely" %},
-{{ site.name }}
 {% endautoescape %}

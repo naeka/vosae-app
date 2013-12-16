@@ -6,6 +6,16 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
+# Imports for Django 1.6 backported code
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.models import get_current_site
+from django.template import loader
+from django.utils.encoding import force_bytes
+import base64
+
+def urlsafe_base64_encode(s):
+    return base64.urlsafe_b64encode(s).rstrip(b'\n=')
+
 
 class UserCreationForm(forms.ModelForm):
 
@@ -127,3 +137,50 @@ class SetIdentityForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ('first_name', 'last_name')
+
+
+class PasswordResetForm(forms.Form):
+    """
+    Backported from django 1.6 for `html_email_template_name`
+    To be removed as soon as we upgrade to 1.6
+    """
+
+    email = forms.EmailField(label=_("Email"), max_length=254)
+
+    def save(self, domain_override=None,
+             subject_template_name='registration/password_reset_subject.txt',
+             email_template_name='registration/password_reset_email.html',
+             use_https=False, token_generator=default_token_generator,
+             from_email=None, request=None, html_email_template_name=None):
+        """
+        Generates a one-use only link for resetting password and sends to the
+        user.
+        """
+        from django.core.mail import EmailMultiAlternatives
+        UserModel = get_user_model()
+        email = self.cleaned_data["email"]
+        users = UserModel._default_manager.filter(email__iexact=email)
+        for user in users:
+            # Make sure that no email is sent to a user that actually has
+            # a password marked as unusable
+            if not user.has_usable_password():
+                continue
+            c = {
+                'email': user.email,
+                'site': {'name': settings.SITE_NAME, 'url': settings.SITE_URL},
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'user': user,
+                'token': token_generator.make_token(user),
+            }
+            subject = loader.render_to_string(subject_template_name, c)
+            # Email subject *must not* contain newlines
+            subject = ''.join(subject.splitlines())
+            email = loader.render_to_string(email_template_name, c)
+
+            message = EmailMultiAlternatives(subject=subject, from_email=from_email, to=[user.email], body=email)
+
+            if html_email_template_name:
+                html_email = loader.render_to_string(html_email_template_name, c)
+                message.attach_alternative(html_email, "text/html")
+            
+            message.send()

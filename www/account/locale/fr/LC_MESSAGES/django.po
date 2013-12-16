@@ -39,61 +39,61 @@ msgstr "Mot de passe modifié avec succès"
 msgid "Change password: %s"
 msgstr "Modifier le mot de passe : %s"
 
-#: forms.py:14
+#: forms.py:24
 msgid "A user with that email already exists."
 msgstr "Un utilisateur avec ce nom existe déjà."
 
-#: forms.py:15
+#: forms.py:25
 msgid "The two password fields didn't match."
 msgstr "Les deux mots de passe ne correspondent pas."
 
-#: forms.py:18 forms.py:94
+#: forms.py:28 forms.py:104
 msgid "E-mail"
 msgstr "E-mail"
 
-#: forms.py:20
+#: forms.py:30
 msgid "Valid e-mail only."
 msgstr "E-mail valide uniquement."
 
-#: forms.py:21
+#: forms.py:31
 msgid "This value must be a valid e-mail address."
 msgstr "Cette valeur doit être une adresse e-mail valide."
 
-#: forms.py:24 forms.py:99
+#: forms.py:34 forms.py:109
 msgid "Password"
 msgstr "Mot de passe"
 
-#: forms.py:26
+#: forms.py:36
 msgid "At least 8 characters."
 msgstr "Au moins 8 caractères."
 
-#: forms.py:30
+#: forms.py:40
 msgid "Password confirmation"
 msgstr "Confirmation du mot de passe"
 
-#: forms.py:33
+#: forms.py:43
 msgid "Enter the same password as above, for verification."
 msgstr "Saisissez le même mot de passe que précédemment, pour vérification."
 
-#: forms.py:69 forms.py:124
+#: forms.py:79 forms.py:134
 msgid "Firstname"
 msgstr "Prénom"
 
-#: forms.py:70 forms.py:125
+#: forms.py:80 forms.py:135
 msgid "Name"
 msgstr "Nom"
 
-#: forms.py:96
+#: forms.py:106
 msgid "Required. 254 characters or fewer. Valid e-mail only."
 msgstr "Requis. 254 caractères ou moins. E-mail valide uniquement."
 
-#: forms.py:97
+#: forms.py:107
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr ""
 "Cette valeur peut uniquement contenir des lettres, nombres et les caractères "
 "« @ », « . », « + », « - » et « _ »."
 
-#: forms.py:100
+#: forms.py:110
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
@@ -102,6 +102,10 @@ msgstr ""
 "Les mots de passe ne sont pas enregistrés en clair, ce qui ne permet pas "
 "d'afficher le mot de passe de cet utilisateur, mais il est possible de le "
 "changer en utilisant <a href=\"password/\">ce formulaire</a>. "
+
+#: forms.py:148
+msgid "Email"
+msgstr "E-mail"
 
 #: urls.py:9
 msgid "^account/signin/$"
@@ -143,7 +147,7 @@ msgstr "^compte/motdepasse/raz/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$"
 msgid "^account/password/reset/complete/$"
 msgstr "^compte/motdepasse/raz/finie$"
 
-#: views.py:61
+#: views.py:67
 msgid ""
 "Thank you for your sign up on Vosae.\n"
 "Please follow the instructions that we've just sent to you by e-mail."
@@ -152,15 +156,19 @@ msgstr ""
 "Veuillez suivre les instructions que nous vous avons envoyé par e-mail à "
 "l'instant."
 
-#: models/user.py:25
+#: views.py:167
+msgid "Password reset"
+msgstr "Réinitialisation de mot de passe"
+
+#: models/user.py:30
 msgid "activation key"
 msgstr "Clé d'activation"
 
-#: models/user.py:26
+#: models/user.py:31
 msgid "notification send"
 msgstr "notification envoyée"
 
-#: models/user.py:26
+#: models/user.py:31
 msgid ""
 "Designates whether this user has already got a notification about activating "
 "their account."
@@ -168,45 +176,45 @@ msgstr ""
 "Indique si cet utilisateur a déjà reçu une notification d'activation de leur "
 "compte."
 
-#: models/user.py:27
+#: models/user.py:32
 msgid "unconfirmed email address"
 msgstr "Adresse email non confirmé"
 
-#: models/user.py:27
+#: models/user.py:32
 msgid "Temporary email address when the user requests an email change."
 msgstr ""
 "Adresse e-mail temporaire lorsque l'utilisateur demande un changement "
 "d'email."
 
-#: models/user.py:28
+#: models/user.py:33
 msgid "unconfirmed email verification key"
 msgstr "Clé de vérification non-confirmée"
 
-#: models/user.py:130
+#: models/user.py:141
 msgid "email address"
 msgstr "adresse électronique"
 
-#: models/user.py:131
+#: models/user.py:142
 msgid "first name"
 msgstr "prénom"
 
-#: models/user.py:132
+#: models/user.py:143
 msgid "last name"
 msgstr "nom"
 
-#: models/user.py:133
+#: models/user.py:144
 msgid "staff status"
 msgstr "statut équipe"
 
-#: models/user.py:133
+#: models/user.py:144
 msgid "Designates whether the user can log into this admin site."
 msgstr "Précise si l'utilisateur peut se connecter à ce site d'administration."
 
-#: models/user.py:134
+#: models/user.py:145
 msgid "active"
 msgstr "actif"
 
-#: models/user.py:134
+#: models/user.py:145
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -214,19 +222,19 @@ msgstr ""
 "Précise si l'utilisateur doit être considéré comme actif. Décochez ceci "
 "plutôt que de supprimer le compte."
 
-#: models/user.py:135
+#: models/user.py:146
 msgid "date joined"
 msgstr "date d'inscription"
 
-#: models/user.py:136
+#: models/user.py:147
 msgid "browser language"
 msgstr "langue du navigateur"
 
-#: models/user.py:144
+#: models/user.py:155
 msgid "user"
 msgstr "utilisateur"
 
-#: models/user.py:145
+#: models/user.py:156
 msgid "users"
 msgstr "utilisateurs"
 
@@ -399,128 +407,337 @@ msgstr "S'inscrire"
 msgid "Already have an account? Log in"
 msgstr "Vous avez déjà un compte? Connectez-vous"
 
+#: templates/account/emails/activation_email_message.html:7
+#: templates/account/emails/activation_email_message.html:130
+#: templates/account/emails/activation_email_message.txt:4
+#: templates/account/emails/activation_email_subject.txt:2
+#, python-format
+msgid "Welcome to %(site)s!"
+msgstr "Bienvenue sur %(site)s !"
+
+#: templates/account/emails/activation_email_message.html:132
+#: templates/account/emails/activation_email_message.txt:6
+msgid ""
+"We're excited that you've joined us to finally simplify your daily company "
+"management. You can now enjoy an enterly new experience to manage your "
+"invoicing, your calendars and your contacts."
+msgstr ""
+"Nous sommes ravis que vous nous ayez rejoint pour enfin simplifier la "
+"gestion quotidienne de votre entreprise. Vous pouvez désormais expérimenter "
+"une nouvelle façon de gérer vos factures, vos agendas et vos contacts."
+
+#: templates/account/emails/activation_email_message.html:175
+msgid "Activate your account"
+msgstr "Activer votre compte"
+
+#: templates/account/emails/activation_email_message.html:227
+#: templates/account/emails/activation_email_message.txt:13
+msgid "Getting started"
+msgstr "Premiers pas"
+
+#: templates/account/emails/activation_email_message.html:229
+#: templates/account/emails/activation_email_message.txt:14
+msgid ""
+"Once your account is activated, the first step is to configure your company "
+"settings. It's a 3 steps form, we agree there're funnier things to do, but "
+"after we'll no more bothering you with that. Promise."
+msgstr ""
+"Une fois que votre compte est activé, la première étape est de configurer "
+"les paramètres de votre entreprise. C'est un formulaire en 3 étapes, nous "
+"sommes d'accord qu'il y a des choses plus drôles à faire, mais après on ne "
+"vous embêtera plus avec ça. Promis."
+
+#: templates/account/emails/activation_email_message.html:271
+#: templates/account/emails/activation_email_message.txt:16
+msgid "Support"
+msgstr "Support"
+
+#: templates/account/emails/activation_email_message.html:273
+#: templates/account/emails/activation_email_message.txt:17
+#, python-format
+msgid ""
+"%(site)s is in beta. If you have a question, a bug, want a new feature, or "
+"just want to talk, do not hesitate, send us an email to support@vosae.com, "
+"it's our mission to help you!"
+msgstr ""
+"%(site)s est en bêta. Si vous avez des questions, un bug, voulez une "
+"nouvelle fonctionnalité, ou que vous souhaitez simplement nous parler, "
+"n'hésitez pas, envoyez nous un email à support@vosae.com, notre mission est "
+"de vous aider !"
+
+#: templates/account/emails/activation_email_message.html:284
+#: templates/account/emails/activation_email_message.txt:19
+msgid "Developers"
+msgstr "Développeurs"
+
+#: templates/account/emails/activation_email_message.html:287
+#, python-format
+msgid ""
+"%(site)s is also a service made by developers and therefore naturally a "
+"complete and documented API. And because we know that you want complete "
+"access to your data, you have complete access to the APIs. It's simple, we "
+"use the same ones. Look at the <a href=\"%(site_url)s%(doc_home)s\" target="
+"\"_blank\">API Doc</a>."
+msgstr ""
+"%(site)s c’est aussi un service créé par des développeurs et qui offre donc "
+"tout naturellement une API complète et documentée. Et parce que nous savons "
+"que vous voulez un accès complet à vos données, vous avez un accès complet "
+"aux API. C’est simple, nous utilisons les mêmes. Regardez la <a href="
+"\"%(site_url)s%(doc_home)s\" target=\"_blank\">documentation de l'API</a>."
+
+#: templates/account/emails/activation_email_message.html:340
+#: templates/account/emails/activation_email_message.txt:23
+#: templates/account/emails/confirmation_email_message_new.html:211
+#: templates/account/emails/confirmation_email_message_new.txt:9
+#: templates/account/emails/password_reset_email.html:215
+#: templates/account/emails/password_reset_email.txt:9
+msgid "Join the community"
+msgstr "Rejoindre la communauté"
+
+#: templates/account/emails/activation_email_message.html:342
+#: templates/account/emails/confirmation_email_message_new.html:213
+#: templates/account/emails/confirmation_email_message_new.txt:10
+#: templates/account/emails/password_reset_email.html:217
+#, python-format
+msgid ""
+"We aim to add new features and update regularly %(site)s. To be kept "
+"informed of the latest news, to show everyone how awesome %(site)s is, to "
+"talk to us or simply join the community, you can follow us on <a href="
+"\"https://twitter.com/Vosae\" target=\"_blank\">Twitter</a> or like us on <a "
+"href=\"https://www.facebook.com/vosaehq\" target=\"_blank\">Facebook</a>."
+msgstr ""
+"Nous aimons ajouter de nouvelles fonctionnalités et mettre à jour "
+"régulièrement %(site)s. Pour être tenu informé des dernières nouveautés, "
+"pour montrer à tout le monde que %(site)s est vraiment bien, pour nous "
+"parler ou simplement rejoindre la communauté, vous pouvez nous suivre sur <a "
+"href=\"https://twitter.com/Vosae\" target=\"_blank\">Twitter</a> ou nous "
+"aimer sur <a href=\"https://www.facebook.com/vosaehq\" target=\"_blank"
+"\">Facebook</a>."
+
 #: templates/account/emails/activation_email_message.txt:2
-#: templates/account/emails/confirmation_email_message_new.txt:2
-#: templates/account/emails/confirmation_email_message_old.txt:2
 msgid "Dear user,"
 msgstr "Cher utilisateur,"
 
-#: templates/account/emails/activation_email_message.txt:4
+#: templates/account/emails/activation_email_message.txt:8
 #, python-format
 msgid ""
-"Thank you for signing up at %(site)s. Getting started is easy.\n"
-"\n"
-"First, activate your account, please click on the link below within the next "
+"To activate your account, please click on the link below within the next "
 "%(activation_days)s days:"
 msgstr ""
-"Merci de vous être inscrit sur %(site)s.\n"
-"\n"
-"Tout d'abord, afin d'activer votre compte, merci de cliquer sur le lien ci-"
-"dessous dans les %(activation_days)s prochains jours :"
-
-#: templates/account/emails/activation_email_message.txt:9
-msgid ""
-"Once your account is activated, we'll ask you to fill some information about "
-"you and your organization.\n"
-"Finally, you'll have access to Vosae!"
-msgstr ""
-"Une fois votre compte activé, nous vous demanderons de remplir quelques "
-"informations sur vous et votre organisation.\n"
-"Enfin, vous aurez accès à Vosae!"
-
-#: templates/account/emails/activation_email_message.txt:12
-#, python-format
-msgid ""
-"%(site)s is in beta. That means there's probably some bugs and unfinished "
-"features. If you have a question, a bug, something strange happens, or just "
-"want to talk, do not hesitate, send us an email to support@vosae.com, we're "
-"here to help you!"
-msgstr ""
-"%(site)s est en bêta. Cela veut dire qu'il y a probablement quelques bugs et "
-"des fonctionnalités incomplètes. Si vous avez des questions, des bugs, que "
-"quelque chose d'étrange se passe, ou que vous souhaitez simplement nous "
-"parler, n'hésitez pas, envoyez nous un email à support@vosae.com, nous "
-"sommes là pour vous aider !"
-
-#: templates/account/emails/activation_email_message.txt:15
-#: templates/account/emails/confirmation_email_message_new.txt:11
-msgid "Thank you for participating in the Vosae beta!"
-msgstr "Merci de participer à la bêta de Vosae !"
-
-#: templates/account/emails/activation_email_message.txt:17
-#: templates/account/emails/confirmation_email_message_new.txt:13
-msgid "Email: support@vosae.com"
-msgstr "Email: support@vosae.com"
+"Afin d'activer votre compte, merci de cliquer sur le lien ci-dessous dans "
+"les %(activation_days)s prochains jours :"
 
 #: templates/account/emails/activation_email_message.txt:20
-#: templates/account/emails/confirmation_email_message_new.txt:16
-msgid "Developer documentation: https://www.vosae.com/docs/api/"
-msgstr "Documentation pour développeur: https://www.vosae.com/docs/api/"
-
-#: templates/account/emails/activation_email_subject.txt:2
-#, python-format
-msgid "Your signup at %(site)s."
-msgstr "Votre inscription sur %(site)s."
-
-#: templates/account/emails/confirmation_email_message_new.txt:4
-#, python-format
-msgid "You have requested a change of your email address at %(site)s."
-msgstr "Vous avez demandé un changement d'adresse e-mail sur %(site)s."
-
-#: templates/account/emails/confirmation_email_message_new.txt:7
-msgid "Please confirm this email address by clicking on the link below:"
-msgstr ""
-"S'il vous plaît confirmez cette adresse e-mail en cliquant sur le lien ci-"
-"dessous:"
-
-#: templates/account/emails/confirmation_email_message_old.txt:4
-#, python-format
-msgid "There was a request to change your email address at %(site)s."
-msgstr ""
-"Il y a eu une demande de modification votre adresse e-mail pour %(site)s."
-
-#: templates/account/emails/confirmation_email_message_old.txt:6
 #, python-format
 msgid ""
-"An email has been send to %(user.email_unconfirmed)s which contains a "
-"verification link. Click on the link in this email to activate it."
+"%(site)s is also a service made by developers and therefore naturally a "
+"complete and documented API. And because we know that you want complete "
+"access to your data, you have complete access to the APIs. It's simple, we "
+"use the same ones. Look at the API Doc: %(site_url)s%(doc_home)s"
 msgstr ""
-"Un email a été envoyé à %(user.email_unconfirmed)s et contient un lien de "
-"vérification. Cliquez sur le lien contenu dans cet e-mail pour l'activer."
+"%(site)s c’est aussi un service créé par des développeurs et qui offre donc "
+"tout naturellement une API complète et documentée. Et parce que nous savons "
+"que vous voulez un accès complet à vos données, vous avez un accès complet "
+"aux API. C’est simple, nous utilisons les mêmes. Regardez la <a href="
+"\"%(site_url)s%(doc_home)s\" target=\"_blank\">documentation de l'API</a>."
 
-#: templates/account/emails/confirmation_email_message_old.txt:8
+#: templates/account/emails/activation_email_message.txt:24
 #: templates/account/emails/password_reset_email.txt:10
-msgid "Thanks for using Vosae!"
-msgstr "Merci d'utiliser Vosae !"
+#, python-format
+msgid ""
+"We aim to add new features and update regularly %(site)s. To be kept "
+"informed of the latest news, to show everyone how awesome %(site)s is, to "
+"talk to us or simply join the community, you can follow us on Twitter "
+"( https://twitter.com/Vosae ) or like us on Facebook ( https://www.facebook."
+"com/vosaehq )."
+msgstr ""
+"Nous aimons ajouter de nouvelles fonctionnalités et mettre à jour "
+"régulièrement %(site)s. Pour être tenu informé des dernières nouveautés, "
+"pour montrer à tout le monde que %(site)s est vraiment bien, pour nous "
+"parler ou simplement rejoindre la communauté, vous pouvez nous suivre sur "
+"Twitter ( https://twitter.com/Vosae ) ou nous aimer sur Facebook ( https://"
+"www.facebook.com/vosaehq )."
 
-#: templates/account/emails/confirmation_email_message_old.txt:10
-#: templates/account/emails/password_reset_email.txt:12
-msgid "Sincerely"
-msgstr "Cordialement"
-
+#: templates/account/emails/confirmation_email_message_new.html:7
 #: templates/account/emails/confirmation_email_subject_new.txt:2
 #, python-format
 msgid "Email verification for %(site)s."
 msgstr "Email de vérification pour %(site)s."
 
+#: templates/account/emails/confirmation_email_message_new.html:130
+msgid "Email verification"
+msgstr "Email de vérification"
+
+#: templates/account/emails/confirmation_email_message_new.html:132
+#, python-format
+msgid ""
+"Hi %(first_name)s,<br /><br />\n"
+"                                                                        You "
+"have requested a change of your email address on %(site)s."
+msgstr ""
+"Bonjour %(first_name)s,<br /><br />\n"
+"                                                                        Vous "
+"avez demandé un changement d'adresse e-mail sur %(site)s."
+
+#: templates/account/emails/confirmation_email_message_new.html:174
+msgid "Verify your email"
+msgstr "Vérifier votre email"
+
+#: templates/account/emails/confirmation_email_message_new.txt:2
+#, python-format
+msgid ""
+"Hi %(first_name)s,\n"
+"You have requested a change of your email address on %(site)s."
+msgstr ""
+"Bonjour %(first_name)s,\n"
+"Vous avez demandé un changement d'adresse e-mail sur %(site)s."
+
+#: templates/account/emails/confirmation_email_message_new.txt:5
+msgid "Please confirm this email address by clicking on the link below:"
+msgstr ""
+"S'il vous plaît confirmez cette adresse e-mail en cliquant sur le lien ci-"
+"dessous:"
+
+#: templates/account/emails/confirmation_email_message_old.html:7
 #: templates/account/emails/confirmation_email_subject_old.txt:2
 #, python-format
 msgid "A request to change your email address has been made at %(site)s."
 msgstr "Une demande de changement d'adresse e-mail a été faite pour %(site)s."
 
-#: templates/account/emails/password_reset_email.txt:2
-msgid ""
-"You're receiving this email because you requested a password reset for your "
-"user account on Vosae."
-msgstr ""
-"Vous recevez ce message en réponse à votre demande de réinitialisation du "
-"mot de passe de votre compte sur %(site_name)s."
+#: templates/account/emails/confirmation_email_message_old.html:130
+msgid "Old email"
+msgstr "Ancien email"
 
-#: templates/account/emails/password_reset_email.txt:4
+#: templates/account/emails/confirmation_email_message_old.html:132
+#, python-format
+msgid ""
+"Hi %(first_name)s,<br /><br />\n"
+"                                                                        There "
+"was a request to change your email address on %(site)s.\n"
+"                                                                        <br /"
+"><br />\n"
+"                                                                        An "
+"email has been send to %(email_unconfirmed)s which contains a verification "
+"link. Click on the link in this email to activate it."
+msgstr ""
+"Bonjour %(first_name)s,<br /><br />\n"
+"                                                                        Il y "
+"a eu une demande sur %(site)s pour changer votre adresse email.\n"
+"                                                                        <br /"
+"><br />\n"
+"                                                                        Un "
+"email a été envoyé à %(email_unconfirmed)s et contient un lien de "
+"vérification. Cliquez sur le lien contenu dans cet e-mail pour l'activer."
+
+#: templates/account/emails/confirmation_email_message_old.txt:2
+#, python-format
+msgid ""
+"\n"
+"Hi %(first_name)s,\n"
+"There was a request to change your email address on %(site)s.\n"
+"\n"
+"An email has been send to %(email_unconfirmed)s which contains a "
+"verification link. Click on the link in this email to activate it."
+msgstr ""
+"\n"
+"Bonjour %(first_name)s,\n"
+"Il y a eu une demande sur %(site)s pour changer votre adresse email.\n"
+"\n"
+"Un email a été envoyé à %(email_unconfirmed)s et contient un lien de "
+"vérification. Cliquez sur le lien contenu dans cet e-mail pour l'activer."
+
+#: templates/account/emails/password_reset_email.html:7
+msgid "New password."
+msgstr "Nouveau mot de passe."
+
+#: templates/account/emails/password_reset_email.html:130
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ?"
+
+#: templates/account/emails/password_reset_email.html:132
+#, python-format
+msgid ""
+"Hi %(first_name)s,<br /><br />\n"
+"                                                                        We "
+"understand, it can be hard these days to remember every password. So, you "
+"can reset it on %(site)s.\n"
+"                                                                        "
+msgstr ""
+"Bonjour %(first_name)s,<br /><br />\n"
+"                                                                        Nous "
+"savons qu'il peut être compliqué de se souvenir de chaque mot de passe. "
+"C'est pourquoi, vous pouvez le réinitialiser sur %(site)s."
+
+#: templates/account/emails/password_reset_email.html:177
+msgid "Reset you password"
+msgstr "Réinitialisation du mot de passe"
+
+#: templates/account/emails/password_reset_email.txt:2
+#, python-format
+msgid ""
+"Hi %(first_name)s,\n"
+"We understand, it can be hard these days to remember every password. So, you "
+"can reset your password on %(site)s."
+msgstr ""
+"Bonjour %(first_name)s,\n"
+"Nous savons qu'il peut être compliqué de se souvenir de chaque mot de passe. "
+"C'est pourquoi, vous pouvez réinitialiser votre mot de passe sur %(site)s."
+
+#: templates/account/emails/password_reset_email.txt:5
 msgid "Please go to the following page and choose a new password:"
 msgstr ""
 "Veuillez vous rendre sur cette page et choisir un nouveau mot de passe :"
 
-#: templates/account/emails/password_reset_email.txt:8
-msgid "Your username, in case you've forgotten:"
-msgstr "Votre nom d'utilisateur, en cas d'oubli :"
+#, fuzzy
+#~ msgid ""
+#~ "%(site)s is in beta. That means there's probably some bugs features. If "
+#~ "you have a question, a bug, want a new feature, or just want to talk, do "
+#~ "not hesitate, send us an email to support@vosae.com, it's our mission to "
+#~ "help you!"
+#~ msgstr ""
+#~ "%(site)s est en bêta. Cela veut dire qu'il y a probablement quelques bugs "
+#~ "et des fonctionnalités incomplètes. Si vous avez des questions, des bugs, "
+#~ "que quelque chose d'étrange se passe, ou que vous souhaitez simplement "
+#~ "nous parler, n'hésitez pas, envoyez nous un email à support@vosae.com, "
+#~ "nous sommes là pour vous aider !"
+
+#~ msgid ""
+#~ "Once your account is activated, we'll ask you to fill some information "
+#~ "about you and your organization.\n"
+#~ "Finally, you'll have access to Vosae!"
+#~ msgstr ""
+#~ "Une fois votre compte activé, nous vous demanderons de remplir quelques "
+#~ "informations sur vous et votre organisation.\n"
+#~ "Enfin, vous aurez accès à Vosae!"
+
+#~ msgid "Thank you for participating in the Vosae beta!"
+#~ msgstr "Merci de participer à la bêta de Vosae !"
+
+#~ msgid "Email: support@vosae.com"
+#~ msgstr "Email: support@vosae.com"
+
+#~ msgid "Developer documentation: https://www.vosae.com/docs/api/"
+#~ msgstr "Documentation pour développeur: https://www.vosae.com/docs/api/"
+
+#~ msgid "Your signup at %(site)s."
+#~ msgstr "Votre inscription sur %(site)s."
+
+#~ msgid "There was a request to change your email address at %(site)s."
+#~ msgstr ""
+#~ "Il y a eu une demande de modification votre adresse e-mail pour %(site)s."
+
+#~ msgid "Thanks for using Vosae!"
+#~ msgstr "Merci d'utiliser Vosae !"
+
+#~ msgid "Sincerely"
+#~ msgstr "Cordialement"
+
+#~ msgid ""
+#~ "You're receiving this email because you requested a password reset for "
+#~ "your user account on Vosae."
+#~ msgstr ""
+#~ "Vous recevez ce message en réponse à votre demande de réinitialisation du "
+#~ "mot de passe de votre compte sur %(site_name)s."
+
+#~ msgid "Your username, in case you've forgotten:"
+#~ msgstr "Votre nom d'utilisateur, en cas d'oubli :"
