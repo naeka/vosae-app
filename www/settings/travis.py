@@ -17,7 +17,12 @@ SECRET_KEY = 'o4bpk#)!d5gxy7p9o5we6inz(yjqad=&o8p)n!3cr_k_csjl0i'
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        "BACKEND": "redis_cache.cache.RedisCache",
+        "LOCATION": "127.0.0.1:6379:0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+            'PARSER_CLASS': 'redis.connection.HiredisParser',
+        }
     },
     'api_throttling': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
