@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-12 11:45+0000\n"
-"PO-Revision-Date: 2013-10-21 11:53+0100\n"
+"POT-Creation-Date: 2013-12-18 16:18+0000\n"
+"PO-Revision-Date: 2013-12-18 17:22+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
 "Language: fr\n"
@@ -407,15 +407,15 @@ msgstr "S'inscrire"
 msgid "Already have an account? Log in"
 msgstr "Vous avez déjà un compte? Connectez-vous"
 
-#: templates/account/emails/activation_email_message.html:7
-#: templates/account/emails/activation_email_message.html:130
+#: templates/account/emails/activation_email_message.html:5
+#: templates/account/emails/activation_email_message.html:46
 #: templates/account/emails/activation_email_message.txt:4
 #: templates/account/emails/activation_email_subject.txt:2
 #, python-format
 msgid "Welcome to %(site)s!"
 msgstr "Bienvenue sur %(site)s !"
 
-#: templates/account/emails/activation_email_message.html:132
+#: templates/account/emails/activation_email_message.html:48
 #: templates/account/emails/activation_email_message.txt:6
 msgid ""
 "We're excited that you've joined us to finally simplify your daily company "
@@ -426,16 +426,16 @@ msgstr ""
 "gestion quotidienne de votre entreprise. Vous pouvez désormais expérimenter "
 "une nouvelle façon de gérer vos factures, vos agendas et vos contacts."
 
-#: templates/account/emails/activation_email_message.html:175
+#: templates/account/emails/activation_email_message.html:91
 msgid "Activate your account"
 msgstr "Activer votre compte"
 
-#: templates/account/emails/activation_email_message.html:227
+#: templates/account/emails/activation_email_message.html:142
 #: templates/account/emails/activation_email_message.txt:13
 msgid "Getting started"
 msgstr "Premiers pas"
 
-#: templates/account/emails/activation_email_message.html:229
+#: templates/account/emails/activation_email_message.html:144
 #: templates/account/emails/activation_email_message.txt:14
 msgid ""
 "Once your account is activated, the first step is to configure your company "
@@ -447,12 +447,12 @@ msgstr ""
 "sommes d'accord qu'il y a des choses plus drôles à faire, mais après on ne "
 "vous embêtera plus avec ça. Promis."
 
-#: templates/account/emails/activation_email_message.html:271
+#: templates/account/emails/activation_email_message.html:186
 #: templates/account/emails/activation_email_message.txt:16
 msgid "Support"
 msgstr "Support"
 
-#: templates/account/emails/activation_email_message.html:273
+#: templates/account/emails/activation_email_message.html:188
 #: templates/account/emails/activation_email_message.txt:17
 #, python-format
 msgid ""
@@ -465,12 +465,12 @@ msgstr ""
 "n'hésitez pas, envoyez nous un email à support@vosae.com, notre mission est "
 "de vous aider !"
 
-#: templates/account/emails/activation_email_message.html:284
+#: templates/account/emails/activation_email_message.html:199
 #: templates/account/emails/activation_email_message.txt:19
 msgid "Developers"
 msgstr "Développeurs"
 
-#: templates/account/emails/activation_email_message.html:287
+#: templates/account/emails/activation_email_message.html:202
 #, python-format
 msgid ""
 "%(site)s is also a service made by developers and therefore naturally a "
@@ -485,19 +485,19 @@ msgstr ""
 "aux API. C’est simple, nous utilisons les mêmes. Regardez la <a href="
 "\"%(site_url)s%(doc_home)s\" target=\"_blank\">documentation de l'API</a>."
 
-#: templates/account/emails/activation_email_message.html:340
+#: templates/account/emails/activation_email_message.html:255
 #: templates/account/emails/activation_email_message.txt:23
-#: templates/account/emails/confirmation_email_message_new.html:211
+#: templates/account/emails/confirmation_email_message_new.html:121
 #: templates/account/emails/confirmation_email_message_new.txt:9
-#: templates/account/emails/password_reset_email.html:215
+#: templates/account/emails/password_reset_email.html:123
 #: templates/account/emails/password_reset_email.txt:9
 msgid "Join the community"
 msgstr "Rejoindre la communauté"
 
-#: templates/account/emails/activation_email_message.html:342
-#: templates/account/emails/confirmation_email_message_new.html:213
+#: templates/account/emails/activation_email_message.html:257
+#: templates/account/emails/confirmation_email_message_new.html:123
 #: templates/account/emails/confirmation_email_message_new.txt:10
-#: templates/account/emails/password_reset_email.html:217
+#: templates/account/emails/password_reset_email.html:125
 #, python-format
 msgid ""
 "We aim to add new features and update regularly %(site)s. To be kept "
@@ -558,28 +558,28 @@ msgstr ""
 "Twitter ( https://twitter.com/Vosae ) ou nous aimer sur Facebook ( https://"
 "www.facebook.com/vosaehq )."
 
-#: templates/account/emails/confirmation_email_message_new.html:7
+#: templates/account/emails/confirmation_email_message_new.html:4
 #: templates/account/emails/confirmation_email_subject_new.txt:2
 #, python-format
 msgid "Email verification for %(site)s."
 msgstr "Email de vérification pour %(site)s."
 
-#: templates/account/emails/confirmation_email_message_new.html:130
+#: templates/account/emails/confirmation_email_message_new.html:40
 msgid "Email verification"
 msgstr "Email de vérification"
 
-#: templates/account/emails/confirmation_email_message_new.html:132
+#: templates/account/emails/confirmation_email_message_new.html:42
 #, python-format
 msgid ""
 "Hi %(first_name)s,<br /><br />\n"
-"                                                                        You "
-"have requested a change of your email address on %(site)s."
+"                                            You have requested a change of "
+"your email address on %(site)s."
 msgstr ""
 "Bonjour %(first_name)s,<br /><br />\n"
-"                                                                        Vous "
-"avez demandé un changement d'adresse e-mail sur %(site)s."
+"                                            Vous avez demandé un changement "
+"d'adresse e-mail sur %(site)s."
 
-#: templates/account/emails/confirmation_email_message_new.html:174
+#: templates/account/emails/confirmation_email_message_new.html:84
 msgid "Verify your email"
 msgstr "Vérifier votre email"
 
@@ -598,31 +598,30 @@ msgstr ""
 "S'il vous plaît confirmez cette adresse e-mail en cliquant sur le lien ci-"
 "dessous:"
 
-#: templates/account/emails/confirmation_email_message_old.html:7
+#: templates/account/emails/confirmation_email_message_old.html:4
 #: templates/account/emails/confirmation_email_subject_old.txt:2
 #, python-format
 msgid "A request to change your email address has been made at %(site)s."
 msgstr "Une demande de changement d'adresse e-mail a été faite pour %(site)s."
 
-#: templates/account/emails/confirmation_email_message_old.html:130
+#: templates/account/emails/confirmation_email_message_old.html:40
 msgid "Old email"
 msgstr "Ancien email"
 
-#: templates/account/emails/confirmation_email_message_old.html:132
+#: templates/account/emails/confirmation_email_message_old.html:42
 #, python-format
 msgid ""
 "Hi %(first_name)s,<br /><br />\n"
-"                                                                        There "
-"was a request to change your email address on %(site)s.\n"
-"                                                                        <br /"
-"><br />\n"
-"                                                                        An "
-"email has been send to %(email_unconfirmed)s which contains a verification "
-"link. Click on the link in this email to activate it."
+"                                            There was a request to change "
+"your email address on %(site)s.\n"
+"                                            <br /><br />\n"
+"                                            An email has been send to "
+"%(email_unconfirmed)s which contains a verification link. Click on the link "
+"in this email to activate it."
 msgstr ""
 "Bonjour %(first_name)s,<br /><br />\n"
-"                                                                        Il y "
-"a eu une demande sur %(site)s pour changer votre adresse email.\n"
+"                                            Il y a eu une demande sur "
+"%(site)s pour changer votre adresse email.\n"
 "                                                                        <br /"
 "><br />\n"
 "                                                                        Un "
@@ -646,29 +645,28 @@ msgstr ""
 "Un email a été envoyé à %(email_unconfirmed)s et contient un lien de "
 "vérification. Cliquez sur le lien contenu dans cet e-mail pour l'activer."
 
-#: templates/account/emails/password_reset_email.html:7
+#: templates/account/emails/password_reset_email.html:4
 msgid "New password."
 msgstr "Nouveau mot de passe."
 
-#: templates/account/emails/password_reset_email.html:130
+#: templates/account/emails/password_reset_email.html:40
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié ?"
 
-#: templates/account/emails/password_reset_email.html:132
+#: templates/account/emails/password_reset_email.html:42
 #, python-format
 msgid ""
 "Hi %(first_name)s,<br /><br />\n"
-"                                                                        We "
-"understand, it can be hard these days to remember every password. So, you "
-"can reset it on %(site)s.\n"
-"                                                                        "
+"                                            We understand, it can be hard "
+"these days to remember every password. So, you can reset it on %(site)s.\n"
+"                                            "
 msgstr ""
 "Bonjour %(first_name)s,<br /><br />\n"
-"                                                                        Nous "
-"savons qu'il peut être compliqué de se souvenir de chaque mot de passe. "
-"C'est pourquoi, vous pouvez le réinitialiser sur %(site)s."
+"                                            Nous savons qu'il peut être "
+"compliqué de se souvenir de chaque mot de passe. C'est pourquoi, vous pouvez "
+"le réinitialiser sur %(site)s."
 
-#: templates/account/emails/password_reset_email.html:177
+#: templates/account/emails/password_reset_email.html:87
 msgid "Reset you password"
 msgstr "Réinitialisation du mot de passe"
 
