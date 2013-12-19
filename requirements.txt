@@ -35,4 +35,5 @@ pusher==0.7
 johnny-cache==1.4
 Pillow==2.1.0
 django-cors-headers==0.11
+djrill==0.7.0
 raven

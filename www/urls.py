@@ -8,6 +8,8 @@ from django.conf.urls import patterns, url, include
 
 
 from django.contrib import admin
+from djrill import DjrillAdminSite
+admin.site = DjrillAdminSite()
 admin.autodiscover()
 
 from api import v1_api

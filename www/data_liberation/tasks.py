@@ -5,7 +5,10 @@ from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.core.files.base import ContentFile
 from django.template.loader import render_to_string
-from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.core.mail import EmailMessage
 import zipfile
 
 from core.models import VosaeFile
@@ -43,6 +46,12 @@ def export_documents(export):
         }
 
         # Email to issuer
-        subject = _('Your Vosae export is available')
-        message = render_to_string('data_liberation/emails/export_finished.txt', context)
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [export.issuer.email])
+        plaintext_context = Context(autoescape=False)  # HTML escaping not appropriate in plaintext
+        subject = subject = _("Your Vosae export is available")
+        text_body = render_to_string('data_liberation/emails/export_finished.txt', context, plaintext_context)
+        html_body = render_to_string("data_liberation/emails/export_finished.html", context)
+
+        message = EmailMessage(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
+                           to=[export.issuer.email], body=text_body)
+        message.attach_alternative(html_body, "text/html")
+        message.send()

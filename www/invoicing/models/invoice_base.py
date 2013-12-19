@@ -10,7 +10,7 @@ from django.utils.timezone import now as datetime_now
 from django.core.files.base import ContentFile
 from django.template import Template, Context
 from django.core.mail import EmailMessage
-from mongoengine import Document, fields, PULL, NULLIFY
+from mongoengine import Document, fields, PULL
 from decimal import Decimal, ROUND_HALF_UP
 import uuid
 
@@ -22,7 +22,6 @@ from invoicing import ACCOUNT_TYPES, HISTORY_STATES, STATES_RESET_CACHED_DATA, I
 from invoicing import signals as invoicing_signals
 from invoicing.models.embedded.invoice_revision import InvoiceRevision
 from invoicing.models.embedded.invoice_history_entries import *
-from invoicing.pdf.default import InvoiceBaseReport
 from invoicing.exceptions import NotDeletableInvoice
 from invoicing.tasks import (
     invoicebase_changed_state_task,
@@ -424,12 +423,27 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             except AttributeError:
                 raise InvalidInvoiceBaseState("Invalid state.")
 
+    def get_report_class(self):
+        from invoicing.pdf import (
+            QuotationReport,
+            PurchaseOrderReport,
+            InvoiceReport,
+            CreditNoteReport
+        )
+        if self.is_quotation():
+            return QuotationReport
+        if self.is_purchase_order():
+            return PurchaseOrderReport
+        if self.is_invoice() or self.is_down_payment_invoice():
+            return InvoiceReport
+        if self.is_credit_note():
+            return CreditNoteReport
+        raise ValueError('No report class available for this type')
+
     def gen_pdf(self):
         """Process PDF generation based on InvoiceBaseReport"""
         buf = StringIO()
-        report = InvoiceBaseReport(self.tenant.report_settings, self, buf)
-        report.init_report()
-        report.fill()
+        report = self.get_report_class()(self.tenant.report_settings, self, buf)
         report.generate()
         return buf
 

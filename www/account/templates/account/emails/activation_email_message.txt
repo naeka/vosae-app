@@ -1,22 +1,26 @@
 {% load i18n %}{% autoescape off %}
 {% trans "Dear user," %}
 
-{% blocktrans with site.name as site %}Thank you for signing up at {{ site }}. Getting started is easy.
+{% blocktrans with site=site.name %}Welcome to {{ site }}!{% endblocktrans %}
 
-First, activate your account, please click on the link below within the next {{ activation_days }} days:{% endblocktrans %}
+{% blocktrans %}We're excited that you've joined us to finally simplify your daily company management. You can now enjoy an enterly new experience to manage your invoicing, your calendars and your contacts.{% endblocktrans %}
+
+{% blocktrans%}To activate your account, please click on the link below within the next {{ activation_days }} days:{% endblocktrans %}
 {{ site.url }}{% url 'account_activate' quoted_email user.activation_key %}
 
-{% blocktrans%}Once your account is activated, we'll ask you to fill some information about you and your organization.
-Finally, you'll have access to Vosae!{% endblocktrans %}
-
-{% blocktrans with site.name as site %}{{ site }} is in beta. That means there's probably some bugs and unfinished features. If you have a question, a bug, something strange happens, or just want to talk, do not hesitate, send us an email to support@vosae.com, we're here to help you!{% endblocktrans %}
 
 
-{% trans "Thank you for participating in the Vosae beta!" %}
+{% trans "Getting started" %}
+{% blocktrans %}Once your account is activated, the first step is to configure your company settings. It's a 3 steps form, we agree there're funnier things to do, but after we'll no more bothering you with that. Promise.{% endblocktrans %}
 
-{% trans "Email: support@vosae.com" %}
-Twitter: @vosae
-Facebook: fb.com/vosaehq
-{% trans "Developer documentation: https://www.vosae.com/docs/api/" %}
+{% trans "Support" %}                                                                        
+{% blocktrans with site=site.name %}{{ site }} is in beta. If you have a question, a bug, want a new feature, or just want to talk, do not hesitate, send us an email to support@vosae.com, it's our mission to help you!{% endblocktrans %}
+
+{% trans "Developers" %}{% url 'doc_home' as doc_home %}
+{% blocktrans with site=site.name site_url=site.url %}{{ site }} is also a service made by developers and therefore naturally a complete and documented API. And because we know that you want complete access to your data, you have complete access to the APIs. It's simple, we use the same ones. Look at the API Doc: {{ site_url }}{{ doc_home }}{% endblocktrans %}
+
+
+{% trans "Join the community" %}
+{% blocktrans with site=site.name %}We aim to add new features and update regularly {{ site }}. To be kept informed of the latest news, to show everyone how awesome {{ site }} is, to talk to us or simply join the community, you can follow us on Twitter ( https://twitter.com/Vosae ) or like us on Facebook ( https://www.facebook.com/vosaehq ).{% endblocktrans %}
 
 {% endautoescape %}

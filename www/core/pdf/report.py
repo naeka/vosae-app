@@ -1,7 +1,7 @@
 # -*- coding:Utf-8 -*-
 
-from django.conf import settings
 from django.utils.translation import ugettext as _
+from reportlab.lib.enums import TA_RIGHT
 from reportlab.lib.styles import ParagraphStyle, StyleSheet1
 from reportlab.lib.units import mm, cm
 from reportlab.lib import colors as base_colors
@@ -9,7 +9,6 @@ from reportlab.platypus import (
     Spacer,
     Frame,
     PageTemplate,
-    NextPageTemplate,
     PageBreak,
     CondPageBreak,
     KeepTogether,
@@ -17,11 +16,10 @@ from reportlab.platypus import (
     TableStyle
 )
 from reportlab.platypus.flowables import HRFlowable
-import os
 
-from core.pdf import colors
+from core.pdf.conf import colors
+from core.pdf.conf.fonts import get_font
 from core.pdf.utils import (
-    register_fonts_from_paths,
     Paragraph,
     ReportingDocTemplate
 )
@@ -54,13 +52,26 @@ class NoSplitFrame(Frame):
 class Report(object):
 
     def __init__(self, report_settings, *args, **kwargs):
-        self.doc = ReportingDocTemplate(*args, **kwargs)
         self.settings = report_settings
+        kwargs.update(
+            pagesize=self.settings.page_size.portrait,
+            leftMargin=self.settings.page_size.margin[3],
+            rightMargin=self.settings.page_size.margin[1],
+            topMargin=self.settings.page_size.margin[0],
+            bottomMargin=self.settings.page_size.margin[2]
+        )
+        self.doc = ReportingDocTemplate(*args, **kwargs)
         self.story = []
 
     def init_report(self):
         self.generate_templates()
         self.generate_style()
+
+    def fill(self):
+        pass
+
+    def set_metadata(self):
+        pass
 
     def generate_templates(self):
         frame_kwargs = {
@@ -70,25 +81,26 @@ class Report(object):
             'topPadding': 0,
             'bottomPadding': 0
         }
-        full_frame = Frame(20 * mm, 25 * mm, 170 * mm, 247 * mm, **frame_kwargs)
+        full_frame = Frame(
+            self.settings.page_size.margin[3],
+            self.settings.page_size.margin[2],
+            self.settings.page_size.available_width(),
+            self.settings.page_size.available_height(),
+            **frame_kwargs
+        )
 
         self.doc.addPageTemplates([
             PageTemplate(id='Everyone', frames=[full_frame], onPage=self.on_page_cb),
         ])
 
     def generate_style(self):
-        register_fonts_from_paths(
-            font_name='Bariol',
-            regular=os.path.join(settings.FONTS_DIR, 'bariol_regular-webfont.ttf'),
-            bold=os.path.join(settings.FONTS_DIR, 'bariol_bold-webfont.ttf'),
-        )
         self.style = StyleSheet1()
 
         self.style.add(ParagraphStyle(
             name='Normal',
-            fontName=self.settings.font_name,
+            fontName=get_font(self.settings.font_name).regular,
             fontSize=self.settings.font_size,
-            textColor=colors.font_color,
+            textColor=self.settings.hex_font_color,
             leading=1.2 * self.settings.font_size
         ), alias='p')
 
@@ -101,13 +113,13 @@ class Report(object):
         self.style.add(ParagraphStyle(
             name='Italic',
             parent=self.style['BodyText'],
-            fontName='%s-Italic' % self.settings.font_name
+            fontName=get_font(self.settings.font_name).italic
         ))
 
         self.style.add(ParagraphStyle(
             name='Heading1',
             parent=self.style['Normal'],
-            fontName='%s-Bold' % self.settings.font_name,
+            fontName=get_font(self.settings.font_name).bold,
             fontSize=1.5 * self.settings.font_size,
             leading=2 * self.settings.font_size,
             spaceAfter=6
@@ -116,7 +128,7 @@ class Report(object):
         self.style.add(ParagraphStyle(
             name='Heading2',
             parent=self.style['Normal'],
-            fontName='%s-Bold' % self.settings.font_name,
+            fontName=get_font(self.settings.font_name).bold,
             fontSize=1.25 * self.settings.font_size,
             leading=1.75 * self.settings.font_size,
             spaceBefore=12,
@@ -137,13 +149,19 @@ class Report(object):
             leading=0.9 * self.settings.font_size,
         ))
 
+        self.style.add(ParagraphStyle(
+            name='PageNumbering',
+            parent=self.style['Smaller'],
+            alignment=TA_RIGHT
+        ))
+
         self.style.add(BaseTableStyle(
             name='Table',
             cmds=[
-                ('FONTNAME', (0, 0), (-1, -1), self.settings.font_name),
+                ('FONTNAME', (0, 0), (-1, -1), get_font(self.settings.font_name).regular),
                 ('FONTSIZE', (0, 0), (-1, -1), self.settings.font_size),
                 ('LEADING', (0, 0), (-1, -1), 1.2 * self.settings.font_size),
-                ('TEXTCOLOR', (0, 0), (-1, -1), colors.font_color),
+                ('TEXTCOLOR', (0, 0), (-1, -1), self.settings.hex_font_color),
                 ('TOPPADDING', (0, 0), (-1, -1), 4),
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
                 ('VALIGN', (0, 0), (-1, -1), 'TOP'),
@@ -165,10 +183,10 @@ class Report(object):
             name='ReportTable',
             parent=self.style['Table'],
             cmds=[
-                ('FONTNAME', (0, 0), (-1, 0), '%s-Bold' % self.settings.font_name),
+                ('FONTNAME', (0, 0), (-1, 0), get_font(self.settings.font_name).bold),
                 ('FONTSIZE', (0, 0), (-1, 0), 1.1 * self.settings.font_size),
                 ('LEADING', (0, 0), (-1, 0), 1.4 * self.settings.font_size),
-                ('ROWBACKGROUNDS', (0, 1), (-1, -1), (colors.lightergrey, colors.white)),
+                ('ROWBACKGROUNDS', (0, 1), (-1, -1), (colors.transparent, self.settings.hex_base_color.clone(alpha=0.1))),
             ]
         ))
 
@@ -180,35 +198,58 @@ class Report(object):
         ))
 
     def on_page_cb(self, canvas, document):
-        # Bending lines
-        canvas.saveState()
-        canvas.setLineWidth(0.2)
-        canvas.setLineCap(1)
-        canvas.setStrokeColor(colors.darkergrey)
-        canvas.line(0, 195 * mm, 8 * mm, 195 * mm)
-        canvas.line(0, 148.5 * mm, 10 * mm, 148.5 * mm)
-        canvas.line(0, 95 * mm, 8 * mm, 95 * mm)
-        canvas.restoreState()
-
-        # Page footer
-        canvas.saveState()
-        canvas.setLineWidth(0.2)
-        canvas.setLineCap(1)
-        canvas.setStrokeColor(colors.green)
-        canvas.line(20 * mm, 18 * mm, 190 * mm, 18 * mm)
-        canvas.restoreState()
-
-        canvas.saveState()
-        canvas.setFont('%s' % self.settings.font_name, 0.75 * self.settings.font_size)
-        canvas.setFillColor(colors.font_color)
-        canvas.drawRightString(190 * mm, 13 * mm, _("Page %(current)d on %(total)d") % self.doc.page_index())
-        canvas.restoreState()
+        self.draw_bending_lines(canvas, document)
+        self.header(canvas, document)
+        self.footer(canvas, document)
 
     def on_first_page_cb(self, canvas, document):
         self.on_page_cb(canvas, document)
 
     def on_other_pages_cb(self, canvas, document):
         self.on_page_cb(canvas, document)
+
+    def draw_bending_lines(self, canvas, document):
+        # Bending lines
+        canvas.saveState()
+        canvas.setLineWidth(0.2)
+        canvas.setLineCap(1)
+        canvas.setStrokeColor(colors.darkergrey)
+        height = self.settings.page_size.height
+        # 2-part
+        if self.settings.page_size.bending_pos[0]:
+            pos = self.settings.page_size.bending_pos[0][0]
+            canvas.line(0, int(height*pos), 10*mm, int(height*pos))
+        # 3-part
+        if self.settings.page_size.bending_pos[1]:
+            for pos in self.settings.page_size.bending_pos[1]:
+                canvas.line(0, int(height*pos), 8*mm, int(height*pos))
+        canvas.restoreState()
+
+    def header(self, canvas, document):
+        pass
+
+    def footer(self, canvas, document):
+        # Page footer
+        # Line
+        canvas.saveState()
+        canvas.setLineWidth(0.2)
+        canvas.setLineCap(1)
+        canvas.setStrokeColor(self.settings.hex_base_color)
+        canvas.line(
+            document.leftMargin,
+            document.bottomMargin - 7*mm,
+            document._rightMargin,
+            document.bottomMargin - 7*mm
+        )
+        canvas.restoreState()
+
+        # Page numbering
+        canvas.saveState()
+        numbering = Paragraph(_("Page %(current)d on %(total)d") % self.doc.page_index(), style=self.style['PageNumbering'])
+        available_width, available_height = (25*mm, document.bottomMargin - 9*mm)
+        w, h = numbering.wrap(available_width, available_height)
+        numbering.drawOn(canvas, document._rightMargin - w, available_height - h)
+        canvas.restoreState()
 
     def p(self, text, style=None):
         self.story.append(Paragraph(text, style or self.style['p']))
@@ -244,6 +285,9 @@ class Report(object):
         self.story.append(data)
 
     def generate(self):
+        self.init_report()
+        self.fill()
+        self.set_metadata()
         self.doc.multiBuild(self.story)
 
     def draw_svg(self, canvas, path, xpos=0, ypos=0, xsize=None, ysize=None):

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 09:16+0000\n"
+"POT-Creation-Date: 2013-12-12 11:46+0000\n"
 "PO-Revision-Date: 2013-10-21 11:54+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -252,11 +252,11 @@ msgctxt "item type"
 msgid "Service"
 msgstr ""
 
-#: imex.py:46 models/quotation.py:202
+#: imex.py:46 models/quotation.py:200
 msgid "Quotations"
 msgstr ""
 
-#: imex.py:56 models/invoice.py:331
+#: imex.py:56 models/invoice.py:332
 msgid "Invoices"
 msgstr ""
 
@@ -273,12 +273,12 @@ msgstr ""
 msgid "%(percentage)s%% down-payment"
 msgstr ""
 
-#: models/credit_note.py:59 models/down_payment_invoice.py:54
+#: models/credit_note.py:59 models/down_payment_invoice.py:52
 #, python-format
 msgid "%(percentage)s%% down-payment on quotation %(reference)s"
 msgstr ""
 
-#: models/credit_note.py:61
+#: models/credit_note.py:61 models/down_payment_invoice.py:54
 #, python-format
 msgid "%(percentage)s%% down-payment on purchase order %(reference)s"
 msgstr ""
@@ -287,26 +287,26 @@ msgstr ""
 msgid "DOWN-PAYMENT"
 msgstr ""
 
-#: models/invoice.py:29
+#: models/invoice.py:28
 msgid "Invoice"
 msgstr ""
 
-#: models/invoice.py:141
+#: models/invoice.py:138
 msgctxt "invoice reference"
 msgid "not registered"
 msgstr ""
 
-#: models/invoice_base.py:61
+#: models/invoice_base.py:58
 msgctxt "invoicing sending vars"
 msgid "{Reference}"
 msgstr ""
 
-#: models/invoice_base.py:62
+#: models/invoice_base.py:59
 msgctxt "invoicing sending vars"
 msgid "{Signature}"
 msgstr ""
 
-#: models/invoice_base.py:63
+#: models/invoice_base.py:60
 msgctxt "invoicing sending vars"
 msgid "{Invoicing_Date}"
 msgstr ""
@@ -327,91 +327,91 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: pdf/default.py:125
-msgid "Billing address"
+#: pdf/credit_note.py:38
+#, python-format
+msgid "Refers to invoice %(invoice_reference)s"
 msgstr ""
 
-#: pdf/default.py:126
-msgid "Delivery address"
-msgstr ""
-
-#: pdf/default.py:177
-msgctxt "date"
+#: pdf/invoice.py:32
+msgctxt "reference"
 msgid "Undefined"
 msgstr ""
 
-#: pdf/default.py:185
+#: pdf/invoice.py:41
+#, python-format
+msgid "Payment conditions: %(custom_payment_conditions)s"
+msgstr ""
+
+#: pdf/invoice.py:45
+#, python-format
+msgid "Payment due date on %(due_date)s"
+msgstr ""
+
+#: pdf/invoice.py:50
+#, python-format
+msgid "Accepted payment methods: %(accepted_payment_methods)s"
+msgstr ""
+
+#: pdf/invoice.py:54
+#, python-format
+msgid "Late fee rate: %(late_fee_rate)s"
+msgstr ""
+
+#: pdf/invoice.py:58
+msgid "Late fee at the legal rate"
+msgstr ""
+
+#: pdf/invoice_base.py:200
+msgid "Billing address"
+msgstr ""
+
+#: pdf/invoice_base.py:201
+msgid "Delivery address"
+msgstr ""
+
+#: pdf/invoice_base.py:300
 msgctxt "table-headers"
 msgid "Description"
 msgstr ""
 
-#: pdf/default.py:186
+#: pdf/invoice_base.py:301
 msgctxt "table-headers"
 msgid "Qty"
 msgstr ""
 
-#: pdf/default.py:187
+#: pdf/invoice_base.py:302
 msgctxt "table-headers"
 msgid "Unit price (excl. tax)"
 msgstr ""
 "Unit price\n"
 "(excl. tax)"
 
-#: pdf/default.py:188
+#: pdf/invoice_base.py:303
 msgctxt "table-headers"
 msgid "Tax"
 msgstr ""
 
-#: pdf/default.py:189
+#: pdf/invoice_base.py:304
 msgctxt "table-headers"
 msgid "Total (excl. tax)"
 msgstr ""
 "Total\n"
 "(excl. tax)"
 
-#: pdf/default.py:204
+#: pdf/invoice_base.py:324
 msgid "TOTAL (excl. tax)"
 msgstr ""
 
-#: pdf/default.py:216
+#: pdf/invoice_base.py:336
 msgid "TOTAL (incl. tax)"
 msgstr ""
 
-#: pdf/default.py:228
-#, python-format
-msgid "Valid until %(quotation_validity)s"
-msgstr ""
-
-#: pdf/default.py:233
+#: pdf/purchase_order.py:41
 #, python-format
 msgid "Refers to quotation %(quotation_reference)s"
 msgstr ""
 
-#: pdf/default.py:240
+#: pdf/quotation.py:41
 #, python-format
-msgid "Payment conditions: %(custom_payment_conditions)s"
-msgstr ""
-
-#: pdf/default.py:244
-#, python-format
-msgid "Payment due date on %(due_date)s"
-msgstr ""
-
-#: pdf/default.py:249
-#, python-format
-msgid "Accepted payment methods: %(accepted_payment_methods)s"
-msgstr ""
-
-#: pdf/default.py:253
-#, python-format
-msgid "Late fee rate: %(late_fee_rate)s"
-msgstr ""
-
-#: pdf/default.py:257
-msgid "Late fee at the legal rate"
-msgstr ""
-
-#: pdf/default.py:259
-#, python-format
-msgid "Refers to invoice %(invoice_reference)s"
+msgid "Valid until %(quotation_validity)s"
 msgstr ""

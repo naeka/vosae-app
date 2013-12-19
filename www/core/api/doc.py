@@ -25,6 +25,7 @@ HELP_TEXT = {
     'report_settings': {
         'font_name': 'Name of the font to use on Vosae\'s reports.\nCommon fonts can be used, such as "Helvetica", "Times Roman", etc.\nWill default to Vosae\'s font, Bariol.\nIf the provided font is not supported, we fallback to the closest one',
         'font_size': 'Base font size on reports.\nNote that all sizes (from titles to subnotes) depends on this',
+        'font_color': 'The color of the font on the report. We recommand the use of a dark font (lightness <= 0.2)',
         'base_color': 'The principal color used on the report',
         'force_bw': 'Force all reports to be in grayscale',
         'language': 'Default language for reports',
