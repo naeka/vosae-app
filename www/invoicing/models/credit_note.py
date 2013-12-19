@@ -27,6 +27,8 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
     STATES = CREDIT_NOTE_STATES
 
     state = fields.StringField(required=True, choices=STATES, default=STATES.REGISTERED)
+    current_revision = fields.EmbeddedDocumentField("CreditNoteRevision", required=True)
+    revisions = fields.ListField(fields.EmbeddedDocumentField("CreditNoteRevision"))
     related_to = MultipleReferencesField(document_types=['DownPaymentInvoice', 'Invoice'])
 
     class Meta():
@@ -37,7 +39,7 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
             search_mappings.StringField(name="related_invoice_reference", boost=document_boost * 1.5, index="analyzed", term_vector="with_positions_offsets"),
             search_mappings.StringField(name="contact", index="analyzed", term_vector="with_positions_offsets"),
             search_mappings.StringField(name="organization", index="analyzed", term_vector="with_positions_offsets"),
-            search_mappings.DateField(name="invoicing_date_date", index="analyzed", term_vector="with_positions_offsets", include_in_all=False),
+            search_mappings.DateField(name="credit_note_emission_date", index="analyzed", term_vector="with_positions_offsets", include_in_all=False),
             search_mappings.StringField(name="state", index="not_analyzed", term_vector="with_positions_offsets", include_in_all=False),
         ]
 
@@ -74,8 +76,8 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
 
     def get_search_kwargs(self):
         kwargs = super(CreditNote, self).get_search_kwargs()
-        if self.current_revision.invoicing_date:
-            kwargs.update(invoicing_date=self.current_revision.invoicing_date)
+        if self.current_revision.credit_note_emission_date:
+            kwargs.update(credit_note_emission_date=self.current_revision.credit_note_emission_date)
         if self.related_to:
             kwargs.update(related_invoice_reference=self.related_to.reference)
         return kwargs

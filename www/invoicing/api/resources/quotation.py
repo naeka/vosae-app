@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from tastypie import fields as base_fields, http
 from tastypie.utils import trailing_slash
+from tastypie_mongoengine import fields
 
 from invoicing import signals as invoicing_signals
 from invoicing.models import Quotation
@@ -23,6 +24,20 @@ class QuotationResource(InvoiceBaseResource, InvoiceMakableResourceMixin):
         attribute='state',
         readonly=True,
         help_text=HELP_TEXT['quotation']['state']
+    )
+
+    current_revision = fields.EmbeddedDocumentField(
+        embedded='invoicing.api.resources.QuotationRevisionResource',
+        attribute='current_revision',
+        help_text=HELP_TEXT['quotation']['current_revision']
+    )
+    revisions = fields.EmbeddedListField(
+        of='invoicing.api.resources.QuotationRevisionResource',
+        attribute='revisions',
+        readonly=True,
+        null=True,
+        blank=True,
+        help_text=HELP_TEXT['quotation']['revisions']
     )
 
     class Meta(InvoiceBaseResource.Meta):
