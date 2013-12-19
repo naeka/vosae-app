@@ -1,8 +1,12 @@
 # -*- coding:Utf-8 -*-
 
+import json
+import time
+from urlparse import urlparse
+
 from django.core.cache import get_cache
 from tastypie.throttle import BaseThrottle
-import time
+from django.core.cache import cache
 
 
 __all__ = (
@@ -65,13 +69,12 @@ class VosaeCacheDBThrottle(VosaeCacheThrottle):
     """
 
     def accessed(self, identifier, **kwargs):
-        # Do the import here, instead of top-level, so that the model is
-        # only required when using this throttling mechanism.
-        from account.models import ApiAccess
-        super(VosaeCacheDBThrottle, self).accessed(identifier, **kwargs)
-        # Write out the access to the DB for logging purposes.
-        ApiAccess.objects.create(
-            identifier=identifier,
-            url=kwargs.get('url', ''),
-            request_method=kwargs.get('request_method', '')
-        )
+        log = json.dumps({
+            'identifier': identifier,
+            'endpoint': urlparse(kwargs.get('url', '')).path,
+            'request_method': kwargs.get('request_method', '')
+        })
+
+        # Write out the access to Redis for logging purposes.
+        # Logging accuracy: milliseconds
+        cache.set('apiaccess:'+ str(int(time.time() * 1000)), log, timeout=2592000) # expire in 30 days

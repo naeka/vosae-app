@@ -14,7 +14,7 @@ from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from account.models import User, ApiKey, ApiAccess
+from account.models import User, ApiKey
 from account.forms import UserChangeForm, UserCreationForm
 
 csrf_protect_m = method_decorator(csrf_protect)
@@ -162,11 +162,5 @@ class ApiKeyAdmin(admin.ModelAdmin):
     list_display = ('user', 'label', 'key', 'created_at')
 
 
-class ApiAccessAdmin(admin.ModelAdmin):
-    list_display = ('identifier', 'request_method', 'url', 'accessed_at')
-    list_filter = ('request_method',)
-
-
 admin.site.register(User, UserAdmin)
 admin.site.register(ApiKey, ApiKeyAdmin)
-admin.site.register(ApiAccess, ApiAccessAdmin)

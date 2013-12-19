@@ -78,11 +78,12 @@ CSRF_COOKIE_SECURE = True
 # Caches must be defined
 CACHES = {
     'default': {
-        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
-        'LOCATION': os.environ.get('MEMCACHE_SERVERS', '').replace(',', ';'),
-        'PREFIX': 'default',
-        'TIMEOUT': 1800,
-        'BINARY': True,
+        "BACKEND": "redis_cache.cache.RedisCache",
+        "LOCATION": "127.0.0.1:6379:0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+            'PARSER_CLASS': 'redis.connection.HiredisParser',
+        }
     },
     'johnny': {
         'BACKEND': 'vosae_utils.JohnnyPyLibMCCache',
