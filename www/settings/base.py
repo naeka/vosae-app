@@ -21,6 +21,8 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__ + '/../'))
 WEB_ENDPOINT = os.environ.get('VOSAE_WEB_ENDPOINT').rstrip('/') if os.environ.get('VOSAE_WEB_ENDPOINT') else None
 SESSION_COOKIE_DOMAIN = os.environ.get('VOSAE_COOKIE_DOMAIN')
 CSRF_COOKIE_DOMAIN = os.environ.get('VOSAE_COOKIE_DOMAIN')
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 DATABASES = {
     'default': {
