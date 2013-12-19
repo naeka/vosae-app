@@ -140,12 +140,31 @@ class SetIdentityForm(forms.ModelForm):
 
 
 class PasswordResetForm(forms.Form):
-    """
-    Backported from django 1.6 for `html_email_template_name`
-    To be removed as soon as we upgrade to 1.6
-    """
-
+    error_messages = {
+        'unknown': _("That email address doesn't have an associated "
+                     "user account. Are you sure you've registered?"),
+        'unusable': _("The user account associated with this email "
+                      "address cannot reset the password."),
+    }
     email = forms.EmailField(label=_("Email"), max_length=254)
+
+    def clean_email(self):
+        """
+        Validates that an active user exists with the given email address.
+        """
+        from django.contrib.auth.hashers import UNUSABLE_PASSWORD
+        UserModel = get_user_model()
+        email = self.cleaned_data["email"]
+        self.users_cache = UserModel._default_manager.filter(email__iexact=email)
+        if not len(self.users_cache):
+            raise forms.ValidationError(self.error_messages['unknown'])
+        if not any(user.is_active for user in self.users_cache):
+            # none of the filtered users are active
+            raise forms.ValidationError(self.error_messages['unknown'])
+        if any((user.password == UNUSABLE_PASSWORD)
+               for user in self.users_cache):
+            raise forms.ValidationError(self.error_messages['unusable'])
+        return email
 
     def save(self, domain_override=None,
              subject_template_name='registration/password_reset_subject.txt',
@@ -157,18 +176,12 @@ class PasswordResetForm(forms.Form):
         user.
         """
         from django.core.mail import EmailMultiAlternatives
-        UserModel = get_user_model()
-        email = self.cleaned_data["email"]
-        users = UserModel._default_manager.filter(email__iexact=email)
-        for user in users:
-            # Make sure that no email is sent to a user that actually has
-            # a password marked as unusable
-            if not user.has_usable_password():
-                continue
+        from django.utils.http import int_to_base36
+        for user in self.users_cache:
             c = {
                 'email': user.email,
                 'site': {'name': settings.SITE_NAME, 'url': settings.SITE_URL},
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'uid': int_to_base36(user.pk),
                 'user': user,
                 'token': token_generator.make_token(user),
             }
@@ -184,3 +197,4 @@ class PasswordResetForm(forms.Form):
                 message.attach_alternative(html_email, "text/html")
             
             message.send()
+
