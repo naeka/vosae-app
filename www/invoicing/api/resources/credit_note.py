@@ -20,6 +20,19 @@ class CreditNoteResource(InvoiceBaseResource):
         help_text=HELP_TEXT['creditnote']['state']
     )
 
+    current_revision = fields.EmbeddedDocumentField(
+        embedded='invoicing.api.resources.CreditNoteRevisionResource',
+        attribute='current_revision',
+        help_text=HELP_TEXT['creditnote']['current_revision']
+    )
+    revisions = fields.EmbeddedListField(
+        of='invoicing.api.resources.CreditNoteRevisionResource',
+        attribute='revisions',
+        readonly=True,
+        null=True,
+        blank=True,
+        help_text=HELP_TEXT['creditnote']['revisions']
+    )
     related_to = fields.ReferenceField(
         to='invoicing.api.resources.InvoiceResource',
         attribute='related_to',

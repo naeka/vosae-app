@@ -19,7 +19,7 @@ class InvoiceMakableMixin(object):
 
     def make_invoice(self, issuer):
         """Creates an invoice based on the current quotation/purchase order"""
-        from invoicing.models.invoice import Invoice
+        from invoicing.models import Invoice, InvoiceRevision
         # Initialize the invoice
         invoice = Invoice(
             full_init=False,
@@ -34,7 +34,7 @@ class InvoiceMakableMixin(object):
         )
         
         # Save the invoice, based on the quotation/purchase order
-        inv_data = invoice.add_revision(revision=self.current_revision)
+        inv_data = invoice.add_revision(revision=InvoiceRevision(based_on=self.current_revision))
         inv_data.state = invoice.state
         inv_data.issuer = issuer
         inv_data.issue_date = datetime_now()
@@ -52,7 +52,7 @@ class InvoiceMakableMixin(object):
 
     def make_down_payment_invoice(self, issuer, percentage, tax, date):
         """Creates a down payment invoice based on the current quotation/purchase order"""
-        from invoicing.models.down_payment_invoice import DownPaymentInvoice
+        from invoicing.models import DownPaymentInvoice
         if percentage <= 0 or percentage >= 1:
             raise InvalidDownPaymentPercentage("Percentage must be a decimal between 0 and 1.")
         inv_data = self.current_revision
@@ -72,7 +72,7 @@ class InvoiceMakableMixin(object):
             raise InvalidDownPaymentPercentage("Total of down-payments percentages exceeds 1 (100%).")
         
         # Ensure that date is correct
-        if date < datetime.date.today() or (date > inv_data.due_date if inv_data.due_date else False):
+        if date < datetime.date.today():
             raise InvalidDownPaymentDueDate("Invalid down-payment due date.")
         down_payment_invoice = DownPaymentInvoice(
             full_init=False,
@@ -104,7 +104,7 @@ class InvoiceMakableMixin(object):
             delivery_address=inv_data.delivery_address,
             customer_reference=inv_data.customer_reference,
             currency=inv_data.currency,
-            invoicing_date=inv_data.invoicing_date or date.today(),
+            invoicing_date=date.today(),
             due_date=date
         )
         

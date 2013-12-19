@@ -123,19 +123,6 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
         null=True,
         help_text=HELP_TEXT['invoicebase']['contact']
     )
-    current_revision = fields.EmbeddedDocumentField(
-        embedded='invoicing.api.resources.InvoiceRevisionResource',
-        attribute='current_revision',
-        help_text=HELP_TEXT['invoicebase']['current_revision']
-    )
-    revisions = fields.EmbeddedListField(
-        of='invoicing.api.resources.InvoiceRevisionResource',
-        attribute='revisions',
-        readonly=True,
-        null=True,
-        blank=True,
-        help_text=HELP_TEXT['invoicebase']['revisions']
-    )
     history = fields.EmbeddedListField(
         of='invoicing.api.resources.InvoiceHistoryEntryResource',
         attribute='history',

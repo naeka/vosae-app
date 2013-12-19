@@ -9,18 +9,20 @@ from core.fields import DateField, LocalizedMapField, NotPrivateReferenceField
 from invoicing import TAXES_APPLICATION
 
 
-__all__ = ('InvoiceRevision',)
+__all__ = (
+    'QuotationRevision',
+    'PurchaseOrderRevision',
+    'InvoiceRevision',
+    'CreditNoteRevision',
+)
 
 
-class InvoiceRevision(EmbeddedDocument):
+class BaseRevision(EmbeddedDocument):
 
-    """
-    An :class:`~invoicing.models.InvoiceRevision` object is the state of the invoice
-    at a specified time.
-
-    When an invoice is updated, a revision is automatically created.
-    """
+    """Base class for revisions"""
+    
     TAXES_APPLICATION = TAXES_APPLICATION
+    NOT_DUPLICABLE_FIELDS = ('revision', 'issuer', 'issue_date', 'pdf')
 
     revision = fields.UUIDField(required=True, binary=True)
     issuer = fields.ReferenceField("VosaeUser")
@@ -32,12 +34,6 @@ class InvoiceRevision(EmbeddedDocument):
     organization = NotPrivateReferenceField("Organization")
     billing_address = fields.EmbeddedDocumentField("Address")
     delivery_address = fields.EmbeddedDocumentField("Address")
-    quotation_date = DateField()
-    quotation_validity = DateField()
-    purchase_order_date = DateField()
-    invoicing_date = DateField()
-    due_date = DateField()
-    credit_note_emission_date = DateField()
     custom_payment_conditions = fields.StringField(max_length=256)
     customer_reference = fields.StringField(max_length=128)
     currency = fields.EmbeddedDocumentField("SnapshotCurrency", required=True)
@@ -46,6 +42,8 @@ class InvoiceRevision(EmbeddedDocument):
     pdf = LocalizedMapField(fields.ReferenceField("VosaeFile"))
 
     meta = {
+        "allow_inheritance": True,
+
         # Vosae specific
         "vosae_mandatory_permissions": ("invoicing_access",),
     }
@@ -54,14 +52,20 @@ class InvoiceRevision(EmbeddedDocument):
         return unicode(self.revision)
 
     def __init__(self, *args, **kwargs):
-        super(InvoiceRevision, self).__init__(*args, **kwargs)
+        based_on = kwargs.pop('based_on', None)
+        super(BaseRevision, self).__init__(*args, **kwargs)
+        if based_on:
+            # Update revision with base values
+            for field in list(set(self._fields.keys()).difference(self.NOT_DUPLICABLE_FIELDS)):
+                if hasattr(based_on, field):
+                    setattr(self, field, getattr(based_on, field))
         if not self.revision:
             self.revision = unicode(uuid.uuid4())
 
     def validate(self, value, **kwargs):
         errors = {}
         try:
-            super(InvoiceRevision, self).validate(value, **kwargs)
+            super(BaseRevision, self).validate(value, **kwargs)
         except ValidationError as e:
             errors = e.errors
         if not self.contact and not self.organization:
@@ -103,3 +107,49 @@ class InvoiceRevision(EmbeddedDocument):
         if self.contact and self.contact.get_full_name():
             return self.contact.get_full_name()
         return None
+
+
+class QuotationRevision(BaseRevision):
+
+    """
+    An :class:`~invoicing.models.QuotationRevision` object is the state of the quotation
+    at a specified time.
+
+    When a quotation is updated, a revision is automatically created.
+    """
+    quotation_date = DateField()
+    quotation_validity = DateField()
+
+
+class PurchaseOrderRevision(BaseRevision):
+
+    """
+    An :class:`~invoicing.models.PurchaseOrderRevision` object is the state of a purchase order
+    at a specified time.
+
+    When a purchase order is updated, a revision is automatically created.
+    """
+    purchase_order_date = DateField()
+
+
+class InvoiceRevision(BaseRevision):
+
+    """
+    An :class:`~invoicing.models.InvoiceRevision` object is the state of a (down-payment) invoice
+    at a specified time.
+
+    When an invoice is updated, a revision is automatically created.
+    """
+    invoicing_date = DateField()
+    due_date = DateField()
+
+
+class CreditNoteRevision(BaseRevision):
+
+    """
+    An :class:`~invoicing.models.CreditNoteRevision` object is the state of a credit note
+    at a specified time.
+
+    When a credit note is updated, a revision is automatically created.
+    """
+    credit_note_emission_date = DateField()
