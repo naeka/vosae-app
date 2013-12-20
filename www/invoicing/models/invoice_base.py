@@ -283,8 +283,10 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             self._sub_total = 0
             current_revision = self.current_revision
             if current_revision:
-                for item in current_revision.line_items:
-                    self._sub_total += (item.quantity * item.unit_price).quantize(Decimal('1.00'), ROUND_HALF_UP)
+                for line_item in current_revision.line_items:
+                    if line_item.optional:
+                        continue
+                    self._sub_total += (line_item.quantity * line_item.unit_price).quantize(Decimal('1.00'), ROUND_HALF_UP)
         return self._sub_total
 
     @property
@@ -358,11 +360,13 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         self.total = Decimal('0.00')
         current_revision = self.current_revision
         if current_revision:
-            for item in current_revision.line_items:
+            for line_item in current_revision.line_items:
+                if line_item.optional:
+                    continue
                 if current_revision.taxes_application == "EXCLUSIVE":
-                    self.total += Decimal(Decimal(item.quantity) * Decimal(item.unit_price) * (Decimal('1.00') + item.tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
+                    self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price) * (Decimal('1.00') + line_item.tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
                 elif current_revision.taxes_application == "NOT_APPLICABLE":
-                    self.total += Decimal(Decimal(item.quantity) * Decimal(item.unit_price)).quantize(Decimal('1.00'), ROUND_HALF_UP)
+                    self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price)).quantize(Decimal('1.00'), ROUND_HALF_UP)
                 else:
                     continue
         self.amount = self.total

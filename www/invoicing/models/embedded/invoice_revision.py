@@ -59,13 +59,14 @@ class BaseRevision(EmbeddedDocument):
             for field in list(set(self._fields.keys()).difference(self.NOT_DUPLICABLE_FIELDS)):
                 if hasattr(based_on, field):
                     setattr(self, field, getattr(based_on, field))
+            self.post_based_on(based_on)
         if not self.revision:
             self.revision = unicode(uuid.uuid4())
 
-    def validate(self, value, **kwargs):
+    def validate(self, clean=True):
         errors = {}
         try:
-            super(BaseRevision, self).validate(value, **kwargs)
+            super(BaseRevision, self).validate(clean)
         except ValidationError as e:
             errors = e.errors
         if not self.contact and not self.organization:
@@ -73,6 +74,10 @@ class BaseRevision(EmbeddedDocument):
             errors['organization'] = ValidationError('Either contact or organization is required', field_name='organization')
         if errors:
             raise ValidationError('ValidationError', errors=errors)
+
+    def post_based_on(self, based_on):
+        """Callback called on init if revision is based on another one"""
+        pass
 
     def duplicate(self, issuer=None):
         """
@@ -109,6 +114,23 @@ class BaseRevision(EmbeddedDocument):
         return None
 
 
+class NoOptionalLineItemsMixin(object):
+    def validate(self, clean=True):
+        errors = {}
+        try:
+            super(NoOptionalLineItemsMixin, self).validate(clean)
+        except ValidationError as e:
+            errors = e.errors
+        if any(line_item.optional for line_item in self.line_items):
+            errors['line_items'] = ValidationError('Line items can not be optional on this type of document', field_name='line_items')
+        if errors:
+            raise ValidationError('ValidationError', errors=errors)
+
+    def post_based_on(self, based_on):
+        """Removes optional line items"""
+        self.line_items = [line_item for line_item in self.line_items if not line_item.optional]
+
+
 class QuotationRevision(BaseRevision):
 
     """
@@ -132,7 +154,7 @@ class PurchaseOrderRevision(BaseRevision):
     purchase_order_date = DateField()
 
 
-class InvoiceRevision(BaseRevision):
+class InvoiceRevision(NoOptionalLineItemsMixin, BaseRevision):
 
     """
     An :class:`~invoicing.models.InvoiceRevision` object is the state of a (down-payment) invoice
@@ -143,8 +165,7 @@ class InvoiceRevision(BaseRevision):
     invoicing_date = DateField()
     due_date = DateField()
 
-
-class CreditNoteRevision(BaseRevision):
+class CreditNoteRevision(NoOptionalLineItemsMixin, BaseRevision):
 
     """
     An :class:`~invoicing.models.CreditNoteRevision` object is the state of a credit note

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-12 11:29+0000\n"
-"PO-Revision-Date: 2014-02-12 12:30+0100\n"
+"PO-Revision-Date: 2014-02-27 19:04+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
 "Language: fr\n"
@@ -362,44 +362,49 @@ msgstr "Taux des pénalités de retard : %(late_fee_rate)s"
 msgid "Late fee at the legal rate"
 msgstr "Pénalités de retard au taux légal en vigueur"
 
-#: pdf/invoice_base.py:200
+#: pdf/invoice_base.py:234
 msgid "Billing address"
 msgstr "Adresse de facturation"
 
-#: pdf/invoice_base.py:201
+#: pdf/invoice_base.py:235
 msgid "Delivery address"
 msgstr "Adresse de livraison"
 
-#: pdf/invoice_base.py:300
+#: pdf/invoice_base.py:334
 msgctxt "table-headers"
 msgid "Description"
 msgstr "Description"
 
-#: pdf/invoice_base.py:301
+#: pdf/invoice_base.py:335
 msgctxt "table-headers"
 msgid "Qty"
 msgstr "Qté"
 
-#: pdf/invoice_base.py:302
+#: pdf/invoice_base.py:336
 msgctxt "table-headers"
 msgid "Unit price (excl. tax)"
 msgstr "PU HT"
 
-#: pdf/invoice_base.py:303
+#: pdf/invoice_base.py:337
 msgctxt "table-headers"
 msgid "Tax"
 msgstr "Taxe"
 
-#: pdf/invoice_base.py:304
+#: pdf/invoice_base.py:338
 msgctxt "table-headers"
 msgid "Total (excl. tax)"
 msgstr "Total HT"
 
-#: pdf/invoice_base.py:324
+#: pdf/invoice_base.py:343 pdf/invoice_base.py:347
+msgctxt "line item"
+msgid "Optional"
+msgstr "En option"
+
+#: pdf/invoice_base.py:368
 msgid "TOTAL (excl. tax)"
 msgstr "TOTAL HT"
 
-#: pdf/invoice_base.py:336
+#: pdf/invoice_base.py:380
 msgid "TOTAL (incl. tax)"
 msgstr "TOTAL TTC"
 

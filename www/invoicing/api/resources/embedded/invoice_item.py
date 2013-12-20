@@ -30,6 +30,10 @@ class InvoiceItemResource(VosaeResource):
         attribute='unit_price',
         help_text=HELP_TEXT['invoice_item']['unit_price']
     )
+    optional = base_fields.BooleanField(
+        attribute='optional',
+        help_text=HELP_TEXT['invoice_item']['optional']
+    )
 
     tax = fields.ReferenceField(
         to='invoicing.api.resources.TaxResource',

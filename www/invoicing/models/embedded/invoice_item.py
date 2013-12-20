@@ -16,10 +16,11 @@ class InvoiceItem(EmbeddedDocument):
     It corresponds to the line of an invoice.
     """
     reference = fields.StringField(required=True, max_length=32)
-    description = fields.StringField(required=True, max_length=512)
+    description = fields.StringField(required=True, max_length=1024)
     quantity = fields.DecimalField(required=True, default=lambda: Decimal("1"))
     unit_price = fields.DecimalField(required=True)
     tax = fields.ReferenceField("Tax", required=True)
+    optional = fields.BooleanField(required=True, default=False)
     item_id = fields.ObjectIdField()
     #footnote = fields.StringField(max_length=512)
 

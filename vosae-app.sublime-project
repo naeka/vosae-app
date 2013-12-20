@@ -49,5 +49,14 @@
 		"translate_tabs_to_spaces": true,
 		"trim_automatic_white_space": true,
 		"use_tab_stops": true
-	}
+	},
+	"SublimeLinter":
+    {
+        "linters":
+        {
+            "pep8": {
+                "max-line-length": 300
+            }
+        }
+    }
 }

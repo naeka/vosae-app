@@ -57,7 +57,9 @@ class BaseFont(object):
 register_fonts_from_paths(
     font_name='Bariol',
     regular=os.path.join(settings.FONTS_DIR, 'bariol_regular-webfont.ttf'),
+    italic=os.path.join(settings.FONTS_DIR, 'bariol_regular_italic.ttf'),
     bold=os.path.join(settings.FONTS_DIR, 'bariol_bold-webfont.ttf'),
+    bolditalic=os.path.join(settings.FONTS_DIR, 'bariol_bold_italic.ttf'),
 )
 
 
