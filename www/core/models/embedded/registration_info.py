@@ -133,9 +133,10 @@ class FRRegistrationInfo(EURegistrationInfoMixin, RegistrationInfo):
     """
     COUNTRY_CODE = 'FR'
     DEFAULT_TAXES = (
-        (Decimal('0.196'), 'TVA'),
-        (Decimal('0.07'), 'TVA'),
-        (Decimal('0.055'), 'TVA')
+        (Decimal('0.20'), 'TVA'),
+        (Decimal('0.10'), 'TVA'),
+        (Decimal('0.055'), 'TVA'),
+        (Decimal('0.021'), 'TVA')
     )
 
     siret = fields.StringField(required=True, verbose_name=_('SIRET'))
