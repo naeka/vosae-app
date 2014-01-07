@@ -94,17 +94,15 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
 
         available_imex_serializers = (contacts_imex.VCardSerializer, contacts_imex.CSVSerializer)
 
-    def obj_create(self, bundle, **kwargs):
-        """Calls the saved task here since we can extract issuer from the request"""
-        bundle = super(EntityResource, self).obj_create(bundle, **kwargs)
-        entity_saved_task.delay(bundle.obj, created=True, issuer=bundle.request.vosae_user)
-        return bundle
+    @classmethod
+    def post_save(self, sender, resource, bundle, created, **kwargs):
+        """
+        Post save API hook handler
 
-    def obj_update(self, bundle, **kwargs):
-        """Calls the saved task here since we can extract issuer from the request"""
-        bundle = super(EntityResource, self).obj_update(bundle, **kwargs)
-        entity_saved_task.delay(bundle.obj, created=False, issuer=bundle.request.vosae_user)
-        return bundle
+        - Add timeline and notification entries
+        """
+        # Add timeline and notification entries
+        entity_saved_task.delay(bundle.obj, created=created, issuer=bundle.request.vosae_user)
 
     def get_object_list(self, request):
         """
@@ -129,6 +127,17 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
         if bundle.request.method.lower() == 'put' and bundle.request.vosae_user != bundle.obj.creator:
             bundle.data['private'] = bundle.obj.private
         return bundle
+
+    def dehydrate_photo_uri(self, bundle):
+        """
+        Ensures that photo URI is absolute.  
+        From gravatar: nothing to do, already a secure URL
+        From API: relative, prepend app endpoint to path
+        """
+        if bundle.data['photo_uri'] and not bundle.data['photo_uri'].startswith('http'):
+            scheme = 'https' if bundle.request.is_secure() else 'http'
+            return "{0}://{1}{2}".format(scheme, bundle.request.get_host(), bundle.data['photo_uri'])
+        return bundle.data['photo_uri']
 
     def get_resource_uri(self, bundle_or_obj=None):
         if bundle_or_obj:

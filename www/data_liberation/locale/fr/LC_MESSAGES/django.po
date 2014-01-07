@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 09:52+0000\n"
+"POT-Creation-Date: 2013-12-12 11:46+0000\n"
 "PO-Revision-Date: 2013-10-21 11:53+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -18,36 +18,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: tasks.py:20
+#: tasks.py:23
 msgid "Vosae export.zip"
 msgstr "Export Vosae.zip"
 
-#: tasks.py:46
+#: tasks.py:50
 msgid "Your Vosae export is available"
 msgstr "Votre export Vosae est disponible"
 
-#: templates/data_liberation/emails/export_finished.txt:2
-msgid ""
-"Dear user,\n"
-"\n"
-"Your Vosae export is now available at:"
-msgstr ""
-"Cher utilisateur,\n"
-"\n"
-"Votre export de données Vosae est à présent disponible :"
+#: templates/data_liberation/emails/export_finished.html:7
+#, python-format
+msgid "Your %(site)s export"
+msgstr "Votre export %(site)s"
 
-#: templates/data_liberation/emails/export_finished.txt:8
+#: templates/data_liberation/emails/export_finished.html:130
+msgid "Your export"
+msgstr "Votre export"
+
+#: templates/data_liberation/emails/export_finished.html:132
+#, python-format
 msgid ""
-"This export remains available on Vosae until you or one of your coworkers "
-"delete it."
+"Hi %(first_name)s,<br /><br />\n"
+"                                                                        Your "
+"export requested on %(site)s is now available on the link below. This export "
+"remains available until you or one of your coworkers delete it.\n"
+"                                                                        "
 msgstr ""
+"Bonjour %(first_name)s,<br /><br />\n"
+"                                                                        Votre "
+"export fait sur %(site)s est maintenant disponible sur le lien ci-dessous. "
 "Cet export demeure disponible sur Vosae jusqu'à ce que vous ou l'un de vos "
-"collaborateurs de le supprime."
+"collaborateurs de le supprime.\n"
+"                                                                        "
 
-#: templates/data_liberation/emails/export_finished.txt:10
-msgid "Thanks for using Vosae!"
-msgstr "Merci d'utiliser Vosae !"
+#: templates/data_liberation/emails/export_finished.html:177
+msgid "Download the export"
+msgstr "Télécharger l'export"
 
-#: templates/data_liberation/emails/export_finished.txt:12
-msgid "Sincerely"
-msgstr "Cordialement"
+#: templates/data_liberation/emails/export_finished.txt:3
+#, python-format
+msgid ""
+"Hi %(first_name)s,\n"
+"Your export requested on %(site)s is now available on the link below. This "
+"export remains available until you or one of your coworkers delete it."
+msgstr ""
+"Bonjour %(first_name)s,\n"
+"Votre export fait sur %(site)s est maintenant disponible sur le lien ci-"
+"dessous. Cet export demeure disponible sur Vosae jusqu'à ce que vous ou l'un "
+"de vos collaborateurs de le supprime."
+
+#~ msgid ""
+#~ "Dear user,\n"
+#~ "\n"
+#~ "Your Vosae export is now available at:"
+#~ msgstr ""
+#~ "Cher utilisateur,\n"
+#~ "\n"
+#~ "Votre export de données Vosae est à présent disponible :"
+
+#~ msgid "Thanks for using Vosae!"
+#~ msgstr "Merci d'utiliser Vosae !"
+
+#~ msgid "Sincerely"
+#~ msgstr "Cordialement"

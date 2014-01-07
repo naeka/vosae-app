@@ -11,6 +11,7 @@ from vosae_utils import StateList
 
 INVOICEBASE_DERIVED = (
     'Quotation',
+    'PurchaseOrder',
     'Invoice',
     'DownPaymentInvoice',
     'CreditNote'

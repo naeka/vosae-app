@@ -22,22 +22,38 @@ class NotificationResource(NotificationBaseResource):
         queryset = Notification.objects.all()
 
         polymorphic = {
+            # entity_saved
             'contact_saved_ne': contacts_notifications.ContactSavedResource,
             'organization_saved_ne': contacts_notifications.OrganizationSavedResource,
 
+            # invoicebase_saved
             'quotation_saved_ne': invoicing_notifications.QuotationSavedResource,
+            'purchase_order_saved_ne': invoicing_notifications.PurchaseOrderSavedResource,
             'invoice_saved_ne': invoicing_notifications.InvoiceSavedResource,
             'down_payment_invoice_saved_ne': invoicing_notifications.DownPaymentInvoiceSavedResource,
             'credit_note_saved_ne': invoicing_notifications.CreditNoteSavedResource,
+            
+            # invoicebase_changed_state
             'quotation_changed_state_ne': invoicing_notifications.QuotationChangedStateResource,
+            'purchase_order_changed_state_ne': invoicing_notifications.PurchaseOrderChangedStateResource,
             'invoice_changed_state_ne': invoicing_notifications.InvoiceChangedStateResource,
             'down_payment_invoice_changed_state_ne': invoicing_notifications.DownPaymentInvoiceChangedStateResource,
             'credit_note_changed_state_ne': invoicing_notifications.CreditNoteChangedStateResource,
+            
+            # make_purchase_order
+            'quotation_make_purchase_order_ne': invoicing_notifications.QuotationMakePurchaseOrderResource,
+            
+            # make_invoice
             'quotation_make_invoice_ne': invoicing_notifications.QuotationMakeInvoiceResource,
             'quotation_make_down_payment_invoice_ne': invoicing_notifications.QuotationMakeDownPaymentInvoiceResource,
+            'purchase_order_make_invoice_ne': invoicing_notifications.PurchaseOrderMakeInvoiceResource,
+            'purchase_order_make_down_payment_invoice_ne': invoicing_notifications.PurchaseOrderMakeDownPaymentInvoiceResource,
+            
+            # invoice_cancelled
             'invoice_cancelled_ne': invoicing_notifications.InvoiceCancelledResource,
             'down_payment_invoice_cancelled_ne': invoicing_notifications.DownPaymentInvoiceCancelledResource,
 
+            # event_reminder
             'event_reminder_ne': organizer_notifications.EventReminderResource,
         }
 

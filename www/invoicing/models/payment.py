@@ -2,6 +2,7 @@
 
 from mongoengine import Document, fields
 from django.utils.timezone import now
+import decimal
 
 from core.fields import DateField
 from invoicing import PAYMENT_TYPES, currency_format
@@ -51,6 +52,9 @@ class Payment(Document):
 
         Validates payment amount
         """
+        # If amount set from float (not from string), the rounding is only done on init or on save
+        # So, we round here to prevent incorrect comparison
+        document.amount = document.amount.quantize(decimal.Decimal('.00'), decimal.ROUND_HALF_UP)
         if document.amount < 0 or document.amount > document.related_to.balance:
             raise InvalidPaymentAmount()
 

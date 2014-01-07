@@ -1,9 +1,6 @@
 # -*- coding:Utf-8 -*-
 
 from django.conf import settings
-from reportlab.lib.fonts import addMapping
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     BaseDocTemplate,
     PageBreak,
@@ -11,26 +8,10 @@ from reportlab.platypus import (
 )
 
 __all__ = (
-    'register_fonts_from_paths',
     'Paragraph',
     'RestartPageBreak',
     'ReportingDocTemplate',
 )
-
-
-def register_fonts_from_paths(regular, italic=None, bold=None, bolditalic=None, font_name='Reporting'):
-    """
-    Pass paths to TTF files which should be used for the PDFDocument
-    """
-    pdfmetrics.registerFont(TTFont('%s' % font_name, regular))
-    pdfmetrics.registerFont(TTFont('%s-Italic' % font_name, italic or regular))
-    pdfmetrics.registerFont(TTFont('%s-Bold' % font_name, bold or regular))
-    pdfmetrics.registerFont(TTFont('%s-BoldItalic' % font_name, bolditalic or bold or regular))
-
-    addMapping('%s' % font_name, 0, 0, '%s' % font_name)  # regular
-    addMapping('%s' % font_name, 0, 1, '%s-Italic' % font_name)  # italic
-    addMapping('%s' % font_name, 1, 0, '%s-Bold' % font_name)  # bold
-    addMapping('%s' % font_name, 1, 1, '%s-BoldItalic' % font_name)  # bold & italic
 
 
 def sanitize(text):

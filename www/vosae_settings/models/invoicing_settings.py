@@ -69,9 +69,11 @@ class InvoicingNumberingSettings(EmbeddedDocument):
     separator = fields.StringField(required=True, choices=SEPARATORS, default="-")
     date_format = fields.StringField(required=True, choices=DATE_FORMATS, default="Ym")
     all_time_quotation_counter = fields.IntField(required=True, min_value=1, default=1)
+    all_time_purchase_order_counter = fields.IntField(required=True, min_value=1, default=1)
     all_time_invoice_counter = fields.IntField(required=True, min_value=1, default=1)
     all_time_credit_note_counter = fields.IntField(required=True, min_value=1, default=1)
     fy_quotation_counter = fields.IntField(required=True, min_value=1, default=1)
+    fy_purchase_order_counter = fields.IntField(required=True, min_value=1, default=1)
     fy_invoice_counter = fields.IntField(required=True, min_value=1, default=1)
     fy_credit_note_counter = fields.IntField(required=True, min_value=1, default=1)
     fy_reset = fields.BooleanField(required=True, default=True)
@@ -125,6 +127,16 @@ class VosaeInvoicingMixin(object):
             return self.invoicing.numbering.fy_quotation_counter
         return self.invoicing.numbering.all_time_quotation_counter
 
+    def get_purchase_order_counter(self):
+        """
+        Returns the appropriate :class:`~invoicing.models.PurchaseOrder` counter,
+        based on date scheme and FY reset.
+        """
+        self.reload()
+        if self.invoicing.numbering.fy_reset:
+            return self.invoicing.numbering.fy_purchase_order_counter
+        return self.invoicing.numbering.all_time_purchase_order_counter
+
     def get_invoice_counter(self):
         """
         Returns the appropriate :class:`~invoicing.models.Invoice` counter,
@@ -163,6 +175,25 @@ class VosaeInvoicingMixin(object):
         else:
             self.update(set__invoicing__numbering__all_time_quotation_counter=value)
             self.invoicing.numbering.all_time_quotation_counter = value
+
+    def set_purchase_order_counter(self, value, force=False):
+        """
+        Set the given value to the appropriate :class:`~invoicing.models.PurchaseOrder` counter,
+        based on date scheme and FY reset.
+
+        *This performs an update on the database. Does not reload settings.*
+        """
+        if not isinstance(value, (int, long)):
+            raise Exception("Counter value must be integer or long")
+        if self.get_purchase_order_counter() > value and not force:
+            raise Exception("Counter value can only be incremented")
+
+        if self.invoicing.numbering.fy_reset:
+            self.update(set__invoicing__numbering__fy_purchase_order_counter=value)
+            self.invoicing.numbering.fy_purchase_order_counter = value
+        else:
+            self.update(set__invoicing__numbering__all_time_purchase_order_counter=value)
+            self.invoicing.numbering.all_time_purchase_order_counter = value
 
     def set_invoice_counter(self, value, force=False):
         """
@@ -214,6 +245,20 @@ class VosaeInvoicingMixin(object):
             self.reload()
         else:
             self.update(inc__invoicing__numbering__all_time_quotation_counter=1)
+            self.reload()
+
+    def increment_purchase_order_counter(self):
+        """
+        Increments the appropriate :class:`~invoicing.models.PurchaseOrder` counter,
+        based on date scheme and FY reset.
+
+        *This performs an update on the database. Does not reload settings.*
+        """
+        if self.invoicing.numbering.fy_reset:
+            self.update(inc__invoicing__numbering__fy_purchase_order_counter=1)
+            self.reload()
+        else:
+            self.update(inc__invoicing__numbering__all_time_purchase_order_counter=1)
             self.reload()
 
     def increment_invoice_counter(self):

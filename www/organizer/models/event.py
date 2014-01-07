@@ -371,7 +371,7 @@ class VosaeEvent(Document, SearchDocumentMixin):
         next_occurrence = self._get_next_occurrence()
         if not next_occurrence:
             return None, None
-        if isinstance(next_occurrence, date):
+        if type(next_occurrence) is date:
             tz = self.get_start_timezone()
             next_occurrence = tz.localize(datetime(next_occurrence.year, next_occurrence.month, next_occurrence.day))
         # Get a set of reminders threshold
