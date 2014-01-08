@@ -1,0 +1,16 @@
+{% load i18n %}{% autoescape off %}
+{% if user.first_name %}
+{% blocktrans with first_name=user.first_name %}Hi {{ first_name }},{% endblocktrans %}
+{% else %}
+{% trans "Hi," %}
+{% endif %}
+{% blocktrans with site=site.name %}I notice you've set up a {{ site }} account, but have yet activated your account. Please let me know if you were running into any issues, or have any questions, I would love to help!
+
+Regards,
+--
+Maxime Gaillard
+Co-founder, CEO
+Vosae
+{% endblocktrans %}
+{% endautoescape %}
+
