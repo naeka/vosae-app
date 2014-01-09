@@ -3,9 +3,11 @@ import datetime
 
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone, http
+from django.utils.translation import get_language
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
@@ -170,3 +172,12 @@ class User(AbstractBaseUser, PermissionsMixin, ActivationMixin):
         if self.first_name and self.last_name:
             return True
         return False
+
+
+def add_user_language(sender, instance, created, **kwargs):
+    if created:
+        instance.browser_language = get_language()
+        instance.save(update_fields=['browser_language'])
+
+# register the signal
+post_save.connect(add_user_language, sender=User)
