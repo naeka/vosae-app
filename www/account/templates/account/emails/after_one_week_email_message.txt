@@ -1,0 +1,21 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans with site=site.name first_name=user.first_name %}Hi {{ first_name }},
+
+You signed up with {{ site }} a little over a week ago. And, I was wondering how's it going? If you want to share with me your first feelings, if you are running into any issues, or have any questions, I would love to help!
+If you are looking for a little guidance on a conversation, you can answer the following questions:
+
+- Every company is different... what kind of business are you running?
+- How many colleagues do you have?
+- What have you enjoyed about {{ site }}?
+- What is not perfect?
+- What questions can I answer for you about {{ site }}?
+- Just respond, and we can get the dialog going. We have worked with many customers, and would like to know how we can help you.
+
+
+Regards,
+--
+Maxime Gaillard
+Co-founder, CEO
+Vosae
+{% endblocktrans %}
+{% endautoescape %}
