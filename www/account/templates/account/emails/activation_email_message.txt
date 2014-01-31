@@ -3,15 +3,19 @@
 
 {% blocktrans with site=site.name %}Welcome to {{ site }}!{% endblocktrans %}
 
+{% block existing_tenant %}{% endblock existing_tenant %}
 {% blocktrans %}We're excited that you've joined us to finally simplify your daily company management. You can now enjoy an enterly new experience to manage your invoicing, your calendars and your contacts.{% endblocktrans %}
 
+{% block activation_row %}
 {% blocktrans%}To activate your account, please click on the link below within the next {{ activation_days }} days:{% endblocktrans %}
 {{ site.url }}{% url 'account_activate' quoted_email user.activation_key %}
+{% endblock activation_row %}
 
 
-
+{% block getting_started_row %}
 {% trans "Getting started" %}
 {% blocktrans %}Once your account is activated, the first step is to configure your company settings. It's a 3 steps form, we agree there're funnier things to do, but after we'll no more bothering you with that. Promise.{% endblocktrans %}
+{% endblock getting_started_row %}
 
 {% trans "Support" %}                                                                        
 {% blocktrans with site=site.name %}{{ site }} is in beta. If you have a question, a bug, want a new feature, or just want to talk, do not hesitate, send us an email to support@vosae.com, it's our mission to help you!{% endblocktrans %}

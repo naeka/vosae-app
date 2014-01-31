@@ -17,7 +17,6 @@ from vosae_utils import generate_sha1
 from account.managers import UserManager
 
 
-
 __all__ = (
     'ActivationMixin',
     'User',
@@ -106,10 +105,38 @@ class ActivationMixin(models.Model):
         html_body = render_to_string("account/emails/activation_email_message.html", context)
 
         message = EmailMultiAlternatives(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
-                           to=[self.email], body=text_body)
+                                         to=[self.email], body=text_body)
         message.attach_alternative(html_body, "text/html")
         message.send()
 
+    def send_associated_to_tenant_email(self, tenant):
+        """
+        Sends a activation email to the user.
+
+        This email is send when the user wants to activate their newly created user.
+        """
+        context = {
+            'user': self,
+            'quoted_email': http.urlquote(self.email),
+            'activation_days': settings.ACCOUNT_ACTIVATION_DAYS,
+            'site': {'name': settings.SITE_NAME, 'url': settings.SITE_URL},
+            'tenant': tenant.name
+        }
+
+        plaintext_context = Context(autoescape=False)  # HTML escaping not appropriate in plaintext
+        subject = render_to_string("account/emails/associated_to_tenant_subject.txt", context, plaintext_context)
+        subject = ''.join(subject.splitlines())
+        text_body = render_to_string("account/emails/associated_to_tenant_message.txt", context, plaintext_context)
+        html_body = render_to_string("account/emails/associated_to_tenant_message.html", context)
+
+        message = EmailMultiAlternatives(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
+                                         to=[self.email], body=text_body)
+        message.attach_alternative(html_body, "text/html")
+        message.send()
+
+    def set_activation_key(self):
+        salt, activation_key = generate_sha1(self.email)
+        self.activation_key = activation_key
 
     def change_email(self, email):
         """

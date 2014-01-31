@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-18 16:18+0000\n"
+"POT-Creation-Date: 2014-01-30 15:03+0000\n"
 "PO-Revision-Date: 2013-10-21 11:53+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -98,7 +98,19 @@ msgid ""
 "form</a>."
 msgstr ""
 
-#: forms.py:148
+#: forms.py:144
+msgid ""
+"That email address doesn't have an associated user account. Are you sure "
+"you've registered?"
+msgstr ""
+
+#: forms.py:146
+msgid ""
+"The user account associated with this email address cannot reset the "
+"password."
+msgstr ""
+
+#: forms.py:149
 msgid "Email"
 msgstr ""
 
@@ -152,75 +164,75 @@ msgstr ""
 msgid "Password reset"
 msgstr ""
 
-#: models/user.py:30
+#: models/user.py:29
 msgid "activation key"
 msgstr ""
 
-#: models/user.py:31
+#: models/user.py:30
 msgid "notification send"
 msgstr ""
 
-#: models/user.py:31
+#: models/user.py:30
 msgid ""
 "Designates whether this user has already got a notification about activating "
 "their account."
 msgstr ""
 
-#: models/user.py:32
+#: models/user.py:31
 msgid "unconfirmed email address"
 msgstr ""
 
-#: models/user.py:32
+#: models/user.py:31
 msgid "Temporary email address when the user requests an email change."
 msgstr ""
 
-#: models/user.py:33
+#: models/user.py:32
 msgid "unconfirmed email verification key"
 msgstr ""
 
-#: models/user.py:141
+#: models/user.py:164
 msgid "email address"
 msgstr ""
 
-#: models/user.py:142
+#: models/user.py:165
 msgid "first name"
 msgstr ""
 
-#: models/user.py:143
+#: models/user.py:166
 msgid "last name"
 msgstr ""
 
-#: models/user.py:144
+#: models/user.py:167
 msgid "staff status"
 msgstr ""
 
-#: models/user.py:144
+#: models/user.py:167
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: models/user.py:145
+#: models/user.py:168
 msgid "active"
 msgstr ""
 
-#: models/user.py:145
+#: models/user.py:168
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: models/user.py:146
+#: models/user.py:169
 msgid "date joined"
 msgstr ""
 
-#: models/user.py:147
+#: models/user.py:170
 msgid "browser language"
 msgstr ""
 
-#: models/user.py:155
+#: models/user.py:178
 msgid "user"
 msgstr ""
 
-#: models/user.py:156
+#: models/user.py:179
 msgid "users"
 msgstr ""
 
@@ -387,38 +399,38 @@ msgstr ""
 msgid "Welcome to %(site)s!"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:48
-#: templates/account/emails/activation_email_message.txt:6
+#: templates/account/emails/activation_email_message.html:49
+#: templates/account/emails/activation_email_message.txt:7
 msgid ""
 "We're excited that you've joined us to finally simplify your daily company "
 "management. You can now enjoy an enterly new experience to manage your "
 "invoicing, your calendars and your contacts."
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:91
+#: templates/account/emails/activation_email_message.html:93
 msgid "Activate your account"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:142
-#: templates/account/emails/activation_email_message.txt:13
+#: templates/account/emails/activation_email_message.html:145
+#: templates/account/emails/activation_email_message.txt:16
 msgid "Getting started"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:144
-#: templates/account/emails/activation_email_message.txt:14
+#: templates/account/emails/activation_email_message.html:147
+#: templates/account/emails/activation_email_message.txt:17
 msgid ""
 "Once your account is activated, the first step is to configure your company "
 "settings. It's a 3 steps form, we agree there're funnier things to do, but "
 "after we'll no more bothering you with that. Promise."
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:186
-#: templates/account/emails/activation_email_message.txt:16
+#: templates/account/emails/activation_email_message.html:190
+#: templates/account/emails/activation_email_message.txt:20
 msgid "Support"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:188
-#: templates/account/emails/activation_email_message.txt:17
+#: templates/account/emails/activation_email_message.html:192
+#: templates/account/emails/activation_email_message.txt:21
 #, python-format
 msgid ""
 "%(site)s is in beta. If you have a question, a bug, want a new feature, or "
@@ -426,12 +438,12 @@ msgid ""
 "it's our mission to help you!"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:199
-#: templates/account/emails/activation_email_message.txt:19
+#: templates/account/emails/activation_email_message.html:203
+#: templates/account/emails/activation_email_message.txt:23
 msgid "Developers"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:202
+#: templates/account/emails/activation_email_message.html:206
 #, python-format
 msgid ""
 "%(site)s is also a service made by developers and therefore naturally a "
@@ -441,8 +453,8 @@ msgid ""
 "\"_blank\">API Doc</a>."
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:255
-#: templates/account/emails/activation_email_message.txt:23
+#: templates/account/emails/activation_email_message.html:259
+#: templates/account/emails/activation_email_message.txt:27
 #: templates/account/emails/confirmation_email_message_new.html:121
 #: templates/account/emails/confirmation_email_message_new.txt:9
 #: templates/account/emails/password_reset_email.html:123
@@ -450,7 +462,7 @@ msgstr ""
 msgid "Join the community"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.html:257
+#: templates/account/emails/activation_email_message.html:261
 #: templates/account/emails/confirmation_email_message_new.html:123
 #: templates/account/emails/confirmation_email_message_new.txt:10
 #: templates/account/emails/password_reset_email.html:125
@@ -467,14 +479,14 @@ msgstr ""
 msgid "Dear user,"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.txt:8
+#: templates/account/emails/activation_email_message.txt:10
 #, python-format
 msgid ""
 "To activate your account, please click on the link below within the next "
 "%(activation_days)s days:"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.txt:20
+#: templates/account/emails/activation_email_message.txt:24
 #, python-format
 msgid ""
 "%(site)s is also a service made by developers and therefore naturally a "
@@ -483,7 +495,7 @@ msgid ""
 "use the same ones. Look at the API Doc: %(site_url)s%(doc_home)s"
 msgstr ""
 
-#: templates/account/emails/activation_email_message.txt:24
+#: templates/account/emails/activation_email_message.txt:28
 #: templates/account/emails/password_reset_email.txt:10
 #, python-format
 msgid ""
@@ -494,8 +506,13 @@ msgid ""
 "com/vosaehq )."
 msgstr ""
 
+#: templates/account/emails/associated_to_tenant_message.html:5
+#: templates/account/emails/associated_to_tenant_message.txt:5
+#, python-format
+msgid "You've just been added to %(tenant)s on Vosae."
+msgstr ""
+
 #: templates/account/emails/confirmation_email_message_new.html:4
-#: templates/account/emails/confirmation_email_subject_new.txt:2
 #, python-format
 msgid "Email verification for %(site)s."
 msgstr ""
@@ -528,7 +545,6 @@ msgid "Please confirm this email address by clicking on the link below:"
 msgstr ""
 
 #: templates/account/emails/confirmation_email_message_old.html:4
-#: templates/account/emails/confirmation_email_subject_old.txt:2
 #, python-format
 msgid "A request to change your email address has been made at %(site)s."
 msgstr ""
@@ -558,6 +574,16 @@ msgid ""
 "\n"
 "An email has been send to %(email_unconfirmed)s which contains a "
 "verification link. Click on the link in this email to activate it."
+msgstr ""
+
+#: templates/account/emails/confirmation_email_subject_new.txt:2
+#, python-format
+msgid "Email verification for %(site)s"
+msgstr ""
+
+#: templates/account/emails/confirmation_email_subject_old.txt:2
+#, python-format
+msgid "A request to change your email address has been made at %(site)s"
 msgstr ""
 
 #: templates/account/emails/password_reset_email.html:4
@@ -591,4 +617,9 @@ msgstr ""
 
 #: templates/account/emails/password_reset_email.txt:5
 msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/account/emails/password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site)s"
 msgstr ""
