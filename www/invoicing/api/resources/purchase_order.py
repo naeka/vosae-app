@@ -4,6 +4,7 @@ from django.conf.urls import url
 
 from tastypie import fields as base_fields
 from tastypie.utils import trailing_slash
+from tastypie_mongoengine import fields
 
 from invoicing.models import PurchaseOrder
 from invoicing.api.resources.invoice_base import InvoiceBaseResource
@@ -21,6 +22,20 @@ class PurchaseOrderResource(InvoiceBaseResource, InvoiceMakableResourceMixin):
         attribute='state',
         readonly=True,
         help_text=HELP_TEXT['purchase_order']['state']
+    )
+
+    current_revision = fields.EmbeddedDocumentField(
+        embedded='invoicing.api.resources.PurchaseOrderRevisionResource',
+        attribute='current_revision',
+        help_text=HELP_TEXT['purchase_order']['current_revision']
+    )
+    revisions = fields.EmbeddedListField(
+        of='invoicing.api.resources.PurchaseOrderRevisionResource',
+        attribute='revisions',
+        readonly=True,
+        null=True,
+        blank=True,
+        help_text=HELP_TEXT['purchase_order']['revisions']
     )
 
     class Meta(InvoiceBaseResource.Meta):

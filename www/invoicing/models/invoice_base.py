@@ -20,7 +20,6 @@ from core.fields import NotPrivateReferenceField
 
 from invoicing import ACCOUNT_TYPES, HISTORY_STATES, STATES_RESET_CACHED_DATA, INVOICE_STATES
 from invoicing import signals as invoicing_signals
-from invoicing.models.embedded.invoice_revision import InvoiceRevision
 from invoicing.models.embedded.invoice_history_entries import *
 from invoicing.exceptions import NotDeletableInvoice
 from invoicing.tasks import (
@@ -69,8 +68,6 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
     issuer = fields.ReferenceField("VosaeUser")
     organization = NotPrivateReferenceField("Organization")
     contact = NotPrivateReferenceField("Contact")
-    current_revision = fields.EmbeddedDocumentField("InvoiceRevision", required=True)
-    revisions = fields.ListField(fields.EmbeddedDocumentField("InvoiceRevision"))
     history = fields.ListField(fields.EmbeddedDocumentField("InvoiceHistoryEntry"))
     notes = fields.ListField(fields.EmbeddedDocumentField("InvoiceNote"))
     group = fields.ReferenceField("InvoiceBaseGroup", required=True, default=lambda: InvoiceBaseGroup())
@@ -275,27 +272,6 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         """Always False in the base class."""
         return False
 
-    def revision(self, revision_id=None, get_pos=False):
-        """
-        Returns the appropriate :class:`~invoicing.models.InvoiceRevision`.
-
-        If there is no revision_id supplied, returns the lastest revision.
-        """
-        if self.revisions:
-            if revision_id:
-                for (pos, revision) in enumerate(self.revisions):
-                    if revision.revision == uuid.UUID(revision_id):
-                        if get_pos:
-                            return (revision, pos)
-                        else:
-                            return revision
-            else:
-                if get_pos:
-                    return (self.current_revision, None)
-                else:
-                    return self.current_revision
-        return None
-
     @property
     def sub_total(self):
         """
@@ -359,7 +335,10 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         The :class:`~invoicing.models.InvoiceRevision` can be created with defaults
         by passing arguments.
         """
-        if revision and isinstance(revision, InvoiceRevision):
+        # Retrieve the proper revision class
+        document_revision = self._fields.get('current_revision').document_type
+
+        if revision and isinstance(revision, document_revision):
             duplicate = revision.duplicate()
             if self.current_revision:
                 self.revisions.insert(0, self.current_revision)
@@ -367,21 +346,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         else:
             if self.current_revision:
                 self.revisions.insert(0, self.current_revision)
-            self.current_revision = InvoiceRevision(*args, **kwargs)
-        return self.current_revision
-
-    def duplicate_revision(self, issuer=None):
-        """
-        Duplicate a :class:`~invoicing.models.InvoiceRevision`.
-
-        The default behavior to keep an history of all modifications on the
-        :class:`~invoicing.models.Invoice`.
-        """
-        if not self.current_revision:
-            return False
-        duplicate = self.current_revision.duplicate(issuer)
-        self.revisions.insert(0, self.current_revision)
-        self.current_revision = duplicate
+            self.current_revision = document_revision(*args, **kwargs)
         return self.current_revision
 
     def manage_amounts(self):

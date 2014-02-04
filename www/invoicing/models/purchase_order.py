@@ -24,6 +24,8 @@ class PurchaseOrder(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
     STATES = PURCHASE_ORDER_STATES
 
     state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
+    current_revision = fields.EmbeddedDocumentField("PurchaseOrderRevision", required=True)
+    revisions = fields.ListField(fields.EmbeddedDocumentField("PurchaseOrderRevision"))
 
     meta = {
         "allow_inheritance": True

@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans with site=site.name %}Email verification for {{ site }}.{% endblocktrans %}
+{% blocktrans with site=site.name %}Email verification for {{ site }}{% endblocktrans %}

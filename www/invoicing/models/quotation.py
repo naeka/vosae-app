@@ -27,6 +27,8 @@ class Quotation(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
     QUOTATION_VALIDITY_PERIODS = (15, 30, 45, 60, 90)
 
     state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
+    current_revision = fields.EmbeddedDocumentField("QuotationRevision", required=True)
+    revisions = fields.ListField(fields.EmbeddedDocumentField("QuotationRevision"))
 
     meta = {
         "allow_inheritance": True
@@ -149,7 +151,8 @@ class Quotation(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
 
     def make_purchase_order(self, issuer):
         """Creates a purchase order based on the current quotation"""
-        from invoicing.models.purchase_order import PurchaseOrder
+        from invoicing.models import PurchaseOrder, PurchaseOrderRevision
+
         # Initialize the purchase order
         purchase_order = PurchaseOrder(
             full_init=False,
@@ -163,7 +166,7 @@ class Quotation(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
         )
         
         # Save the purchase order, based on the quotation
-        purchase_order_data = purchase_order.add_revision(revision=self.current_revision)
+        purchase_order_data = purchase_order.add_revision(revision=PurchaseOrderRevision(based_on=self.current_revision))
         purchase_order_data.state = purchase_order.state
         purchase_order_data.issuer = issuer
         purchase_order_data.issue_date = datetime_now()

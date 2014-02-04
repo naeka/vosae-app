@@ -9,8 +9,6 @@ HELP_TEXT = {
         'issuer': 'User in charge of the quotation/invoice/credit note',
         'organization': 'Billed organization',
         'contact': 'Billed contact',
-        'current_revision': 'The current quotation/invoice/credit note revision',
-        'revisions': 'All past quotation/invoice/credit note revisions',
         'history': 'All history actions',
         'notes': 'Notes related to the quotation/invoice/credit note',
         'group': 'References to all grouped documents of an invoicing process',
@@ -26,9 +24,13 @@ HELP_TEXT = {
     },
     'quotation': {
         'state': 'Quotation state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">AWAITING_APPROVAL</li> <li class="text-info">APPROVED</li> <li class="text-info">REFUSED</li> <li class="text-info">EXPIRED</li> <li class="text-info">INVOICED</li></ul>',
+        'current_revision': 'The current quotation revision',
+        'revisions': 'All past quotation revisions',
     },
     'purchase_order': {
         'state': 'Purchase order state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">AWAITING_APPROVAL</li> <li class="text-info">APPROVED</li> <li class="text-info">REFUSED</li> <li class="text-info">INVOICED</li></ul>',
+        'current_revision': 'The current purchase order revision',
+        'revisions': 'All past purchase order revisions',
     },
     'invoice': {
         'state': 'Invoice state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">REGISTERED</li> <li class="text-info">OVERDUE</li> <li class="text-info">PART_PAID</li> <li class="text-info">PAID</li> <li class="text-info">CANCELLED</li></ul>',
@@ -37,6 +39,8 @@ HELP_TEXT = {
         'has_temporary_reference': 'Invoices and down-payment invoices references must follow a continuous numbering scheme. So, only charged invoices have a well-defined reference. This indicates if the invoice has a temporary reference',
         'payments': 'Invoice\'s related payments',
         'related_to': 'Related quotation or purchase order',
+        'current_revision': 'The current invoice revision',
+        'revisions': 'All past invoice revisions',
     },
     'downpayment': {
         'state': 'Down-payment invoice state.\nOne of: <ul><li class="text-info">DRAFT</li> <li class="text-info">REGISTERED</li> <li class="text-info">OVERDUE</li> <li class="text-info">PART_PAID</li> <li class="text-info">PAID</li> <li class="text-info">CANCELLED</li></ul>',
@@ -46,6 +50,8 @@ HELP_TEXT = {
     'creditnote': {
         'state': 'Credit note state.\nOne of: <ul><li class="text-info">REGISTERED</li> <li class="text-info">SENT</li> <li class="text-info">PAID</li></ul>',
         'related_to': 'Related (down-payment) invoice',
+        'current_revision': 'The current credit note revision',
+        'revisions': 'All past credit note revisions',
     },
     'item': {
         'reference': 'Reference of the item.\nThis is internal and won\'t be displayed on a generated document.\nLimited to this set of chars: [a-zA-Z0-9_-] (max_length = 32)',
@@ -74,17 +80,11 @@ HELP_TEXT = {
         'invoice': 'The related invoice',
         'down_payment_invoice': 'The related down-payment invoice',
     },
-    'invoice_revision': {
+    'base_revision': {
         'revision': 'UID of the revision',
         'issue_date': 'Revision\'s creation datetime',
         'sender': 'Name of the sender (person)',
         'sender_organization': 'Sender\'s organization',
-        'quotation_date': 'Quotation issue date',
-        'quotation_validity': 'Quotation validity date.\nFree value, must be greater than or equal to <code>quotation_date</code>',
-        'purchase_order_date': 'Purchase order issue date',
-        'invoicing_date': 'Invoice issue date',
-        'due_date': 'Invoice due date.\nFree value, must be greater than or equal to <code>invoicing_date</code>.\n<span class="label label-warning">Warning</span> A maximum duration may exist depending on your registration country',
-        'credit_note_emission_date': 'Emission date of the credit note',
         'custom_payment_conditions': 'Custom payment conditions.\nIn some businesses custom payment conditions may be applied depending on the work or the delivery process.\nIn such cases, <code>due_date</code> acts as an expected due date used for budget projections',
         'customer_reference': 'Some customers may request to figure a reference on the generated documents, linked to their tools.\nThis <code>customer_reference</code> is displayed between the document reference and the line items',
         'taxes_application': 'Taxes application.\nOne of: <ul><li class="text-info">EXCLUSIVE</li> <li class="text-info">NOT_APPLICABLE</li></ul>',
@@ -97,6 +97,20 @@ HELP_TEXT = {
         'currency': 'The currency used.\nThis is an embedded snapshot on which are based items conversions (if needed)',
         'line_items': 'The items present in the revision',
         'pdf': 'A language-based dictionnary of previously generated PDFs of the document revision',
+    },
+    'quotation_revision': {
+        'quotation_date': 'Quotation issue date',
+        'quotation_validity': 'Quotation validity date.\nFree value, must be greater than or equal to <code>quotation_date</code>',
+    },
+    'purchase_order_revision': {
+        'purchase_order_date': 'Purchase order issue date',
+    },
+    'invoice_revision': {
+        'invoicing_date': 'Invoice issue date',
+        'due_date': 'Invoice due date.\nFree value, must be greater than or equal to <code>invoicing_date</code>.\n<span class="label label-warning">Warning</span> A maximum duration may exist depending on your registration country',
+    },
+    'credit_note_revision': {
+        'credit_note_emission_date': 'Emission date of the credit note',
     },
     'invoice_note': {
         'datetime': 'Note\'s creation datetime',

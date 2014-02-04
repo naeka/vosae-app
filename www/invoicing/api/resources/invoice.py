@@ -42,6 +42,19 @@ class InvoiceResource(InvoiceBaseResource):
         help_text=HELP_TEXT['invoice']['has_temporary_reference']
     )
 
+    current_revision = fields.EmbeddedDocumentField(
+        embedded='invoicing.api.resources.InvoiceRevisionResource',
+        attribute='current_revision',
+        help_text=HELP_TEXT['invoice']['current_revision']
+    )
+    revisions = fields.EmbeddedListField(
+        of='invoicing.api.resources.InvoiceRevisionResource',
+        attribute='revisions',
+        readonly=True,
+        null=True,
+        blank=True,
+        help_text=HELP_TEXT['invoice']['revisions']
+    )
     related_to = fields.ReferenceField(
         to='invoicing.api.resources.QuotationResource',
         attribute='related_to',

@@ -53,9 +53,7 @@ class UserManager(BaseUserManager):
         user.set_password(password)
 
         if not active:
-            # Activation:
-            salt, activation_key = generate_sha1(user.email)
-            user.activation_key = activation_key
+            user.set_activation_key()
 
         user.save(using=self._db)
 

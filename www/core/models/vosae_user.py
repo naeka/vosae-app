@@ -1,11 +1,14 @@
 # -*- coding:Utf-8 -*-
 
 from mongoengine import Document, fields, signals
+from django.utils import translation
 from django.contrib.auth import get_user_model
 from django_gravatar.helpers import get_gravatar_url
 
 from vosae_utils import SearchDocumentMixin
 from pyes import mappings as search_mappings
+
+from account.tasks import user_send_associated_to_tenant_email
 
 from core.models.embedded.vosae_permissions import VosaePermissions
 from core.models.embedded.vosae_user_settings import VosaeUserSettings
@@ -83,12 +86,16 @@ class VosaeUser(ZombieMixin, Document, SearchDocumentMixin):
         if not document.id:
             UserModel = get_user_model()
             try:
-                UserModel._default_manager.get(email=document.email)
+                user = UserModel._default_manager.get(email=document.email)
+                if not user.is_active and not user.activation_key:
+                    user.set_activation_key()
+                    user.save()
+                user_send_associated_to_tenant_email.delay(user=user, tenant=document.tenant, language=translation.get_language())
             except UserModel.DoesNotExist:
-                new_user = UserModel.objects.create_user(document.email)
-                group = Group.objects.get(name=document.tenant.slug)
-                group.user_set.add(new_user)
-                group.save()
+                user = UserModel.objects.create_user(document.email)
+            group = Group.objects.get(name=document.tenant.slug)
+            group.user_set.add(user)
+            group.save()
 
     @classmethod
     def post_save(self, sender, document, created, **kwargs):

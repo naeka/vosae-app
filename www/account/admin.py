@@ -14,7 +14,7 @@ from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from account.models import User, ApiKey, ApiAccess
+from account.models import User, ApiKey
 from account.forms import UserChangeForm, UserCreationForm
 
 csrf_protect_m = method_decorator(csrf_protect)
@@ -26,6 +26,7 @@ class UserAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name')}),
+        (_('Activation'), {'fields': ('activation_key', 'email_confirmation_key')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -162,11 +163,5 @@ class ApiKeyAdmin(admin.ModelAdmin):
     list_display = ('user', 'label', 'key', 'created_at')
 
 
-class ApiAccessAdmin(admin.ModelAdmin):
-    list_display = ('identifier', 'request_method', 'url', 'accessed_at')
-    list_filter = ('request_method',)
-
-
 admin.site.register(User, UserAdmin)
 admin.site.register(ApiKey, ApiKeyAdmin)
-admin.site.register(ApiAccess, ApiAccessAdmin)

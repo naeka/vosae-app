@@ -1,0 +1,16 @@
+{% extends "account/emails/activation_email_message.txt" %}
+{% load i18n %}
+
+{% block existing_tenant %}
+{% blocktrans %}You've just been added to {{ tenant }} on Vosae.{% endblocktrans %}
+{% endblock existing_tenant %}
+
+
+{% block activation_row %}
+    {% if not user.is_active %}
+        {{ block.super }}
+    {% endif %}
+{% endblock activation_row %}
+
+
+{% block getting_started_row %}{% endblock getting_started_row %}

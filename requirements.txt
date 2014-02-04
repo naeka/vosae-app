@@ -37,3 +37,6 @@ Pillow==2.1.0
 django-cors-headers==0.11
 djrill==0.7.0
 raven
+redis==2.8.0
+hiredis==0.1.1
+django-redis==3.4.0
