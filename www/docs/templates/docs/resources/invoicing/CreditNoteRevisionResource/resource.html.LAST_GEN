@@ -1,0 +1,17 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Creditnoterevision | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Credit note revision</h1>
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/CreditNoteRevisionResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}

@@ -8,18 +8,18 @@
 <h1>Tenant</h1>
 
 
-{% include "docs/resources/core/TenantrResource/endpoint_informations.html" %}
+{% include "docs/resources/core/TenantResource/endpoint_informations.html" %}
 
 
 
 <div class="specifications">
-  {% include "docs/resources/core/TenantrResource/spec.html" %}
+  {% include "docs/resources/core/TenantResource/spec.html" %}
 </div>
 
 
 
 <div class="methods">
-  {% include "docs/resources/core/TenantrResource/methods/methods.html" %}
+  {% include "docs/resources/core/TenantResource/methods/methods.html" %}
 </div>
 
 

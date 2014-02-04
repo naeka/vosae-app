@@ -35,17 +35,6 @@
     </tr>
     
     <tr>
-      <td>credit_note_emission_date</td>
-      <td>Date</td>
-      <td>
-        <span class="label label-important">Readonly</span>
-        <span class="label label-warning">Nullable</span>
-        <span class="label label-info">Blankable</span>
-      </td>
-      <td>Emission date of the credit note</td>
-    </tr>
-    
-    <tr>
       <td>currency</td>
       <td>Embedded</td>
       <td>
@@ -115,7 +104,7 @@
       <td>issue_date</td>
       <td>Datetime</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -126,7 +115,7 @@
       <td>issuer</td>
       <td>Reference</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         
       </td>
@@ -159,7 +148,7 @@
       <td>pdf</td>
       <td>Dict</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         
       </td>
@@ -167,32 +156,10 @@
     </tr>
     
     <tr>
-      <td>quotation_date</td>
-      <td>Date</td>
-      <td>
-        
-        <span class="label label-warning">Nullable</span>
-        <span class="label label-info">Blankable</span>
-      </td>
-      <td>Quotation issue date</td>
-    </tr>
-    
-    <tr>
-      <td>quotation_validity</td>
-      <td>Date</td>
-      <td>
-        
-        <span class="label label-warning">Nullable</span>
-        <span class="label label-info">Blankable</span>
-      </td>
-      <td>Quotation validity date.<br />Free value, must be greater than or equal to <code>quotation_date</code></td>
-    </tr>
-    
-    <tr>
       <td>revision</td>
       <td>String</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -225,7 +192,7 @@
       <td>sender_organization</td>
       <td>String</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         
       </td>

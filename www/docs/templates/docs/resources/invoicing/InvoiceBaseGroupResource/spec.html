@@ -1,0 +1,105 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>credit_notes</td>
+      <td>Related</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>List of all credit notes of the group</td>
+    </tr>
+    
+    <tr>
+      <td>down_payment_invoices</td>
+      <td>Related</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>List of all down-payment invoices of the group</td>
+    </tr>
+    
+    <tr>
+      <td>id</td>
+      <td>Objectid</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        
+        
+      </td>
+      <td>Unique identifier of the resource</td>
+    </tr>
+    
+    <tr>
+      <td>invoice</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Invoice of the group</td>
+    </tr>
+    
+    <tr>
+      <td>invoices_cancelled</td>
+      <td>Related</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>List of all cancelled invoices of the group</td>
+    </tr>
+    
+    <tr>
+      <td>purchase_order</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Purchase order of the group</td>
+    </tr>
+    
+    <tr>
+      <td>quotation</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Quotation of the group</td>
+    </tr>
+    
+    <tr>
+      <td>resource_uri</td>
+      <td>String</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        
+        
+      </td>
+      <td>URI which represent a specific resource. All references are based upon this scheme</td>
+    </tr>
+    
+  </tbody>
+</table>
+
