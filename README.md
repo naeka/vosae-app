@@ -92,7 +92,7 @@ You need to have Node.js and Node Package Manager (npm) on your system.
 $ gem install compass
 $ gem install sass
 $ gem install sass-rails
-$ gem install bootstrap-sass --version 2.3.2.2
+$ gem install bootstrap-sass --version 3.1.0.1
 ```
 
 #### Install Grunt:
