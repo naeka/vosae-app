@@ -36,5 +36,5 @@ class CreditNoteReport(InvoiceBaseReport):
     def fill_legal_notice(self):
         # Legal notices
         self.p(_("Refers to invoice %(invoice_reference)s") % {
-            'invoice_reference': self.invoice_base.group.invoice.reference
+            'invoice_reference': self.invoice_base.related_to.reference
         })

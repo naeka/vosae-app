@@ -270,6 +270,9 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         cn_data.issuer = issuer
         cn_data.issue_date = datetime_now()
         cn_data.credit_note_emission_date = datetime.date.today()
+        if self.is_down_payment_invoice():
+            # XXX should be removed in favor of translatable line items
+            cn_data.line_items = []
         credit_note.save()
         self.set_state(Invoice.STATES.CANCELLED)
         return credit_note
