@@ -183,3 +183,13 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
             kwargs.update(current_revision__issue_date__lt=end_date)
         queryset = CreditNote.objects.filter(**kwargs)
         return queryset, get_path, get_doc
+
+    def manage_amounts(self):
+        """
+        Set total and amount of the :class:`~invoicing.models.CreditNote`.
+        """
+        if self.related_to.is_down_payment_invoice():
+            self.total = self.related_to.amount
+            self.amount = self.related_to.amount
+        else:
+            super(CreditNote, self).manage_amounts()
