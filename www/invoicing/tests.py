@@ -2103,7 +2103,7 @@ class InvoiceResourceTest(InvoiceBaseResourceTest):
         deserialized_invoice = self.deserialize(response)
         self.assertEqual(deserialized_invoice.get('state'), u'CANCELLED')
         self.assertEqual(
-            decimal.Decimal(deserialized_invoice.get('amount')) +
+            decimal.Decimal(deserialized_invoice.get('amount')) -
             decimal.Decimal(deserialized_credit_note.get('amount')),
             decimal.Decimal("0")
         )
@@ -2298,7 +2298,7 @@ class DownPaymentInvoiceResourceTest(InvoiceBaseResourceTest):
         deserialized_invoice = self.deserialize(response)
         self.assertEqual(deserialized_invoice.get('state'), u'CANCELLED')
         self.assertEqual(
-            decimal.Decimal(deserialized_invoice.get('amount')) +
+            decimal.Decimal(deserialized_invoice.get('amount')) -
             decimal.Decimal(deserialized_credit_note.get('amount')),
             decimal.Decimal("0")
         )
@@ -2362,7 +2362,7 @@ class CreditNoteResourceTest(InvoiceBaseResourceTest):
         # Create an organization which will be referenced
         organization = Organization(tenant=settings.TENANT, creator=settings.VOSAE_USER, corporate_name="My Company", private=False).save()
 
-        item = Item.objects.first()
+        item = Item.objects(unit_price=19.9).first()
         line_item = InvoiceItem(
             reference=item.reference,
             description=item.description,
@@ -2446,9 +2446,9 @@ class CreditNoteResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(len(deserialized['revisions']), 0)
         self.assertEqual(deserialized['current_revision']['line_items'][0]['reference'], u'DOWN-PAYMENT')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['description'], u'30%% down-payment on quotation %s' % expected_first_reference)
-        # self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'11.94')  # XXX Should be fixed
+        self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'11.94')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['quantity'], u'1.00')
-        # self.assertEqual(deserialized['amount'], u'14.28')  # XXX Should be fixed
+        self.assertEqual(deserialized['amount'], u'14.28')
         self.save_test_result(infos, response)
 
         # XML

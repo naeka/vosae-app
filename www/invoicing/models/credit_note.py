@@ -105,10 +105,21 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
         - increments the appropriate :class:`~core.models.Tenant` quotations numbering counter.
         - append the credit note to the group
         """
+        from vosae_statistics.models import CreditNoteStatistics
         if created:
             document.tenant.tenant_settings.increment_credit_note_counter()
             document.group.credit_notes.append(document)
             document.group.save()
+            CreditNoteStatistics(
+                tenant=document.tenant,
+                date=document.current_revision.credit_note_emission_date,
+                amount=(-document.amount),
+                organization=document.organization,
+                contact=document.contact,
+                location=document.current_revision.billing_address if document.account_type == 'RECEIVABLE' else document.current_revision.sender_address,
+                account_type=document.account_type,
+                credit_note=document
+            ).save()
 
         # Calling parent
         super(CreditNote, document).post_save(sender, document, created, **kwargs)
@@ -172,3 +183,13 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
             kwargs.update(current_revision__issue_date__lt=end_date)
         queryset = CreditNote.objects.filter(**kwargs)
         return queryset, get_path, get_doc
+
+    def manage_amounts(self):
+        """
+        Set total and amount of the :class:`~invoicing.models.CreditNote`.
+        """
+        if self.related_to.is_down_payment_invoice():
+            self.total = self.related_to.amount
+            self.amount = self.related_to.amount
+        else:
+            super(CreditNote, self).manage_amounts()
