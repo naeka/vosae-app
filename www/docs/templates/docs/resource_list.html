@@ -1,321 +1,350 @@
+
 {% load static %}
 
 <a href="{% url 'doc_home' %}" id="vosae-api-home">
-  <img src="{% static 'core/img/logo-vosae.png' %}" />
+  <img src="{% static "core/img/logo-vosae.png" %}" />
   Vosae API
 </a>
 
-<div class="well">
-  <ul id="resourceList" class="nav nav-list">
-    
-      <li class="accordion-group">
-        <div class="accordion-heading">
+<div class="panel-group" id="resourceList">
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
           <a href="#collapseCore" class="accordion-toggle" data-toggle="collapse" data-parent="resourceList">
             Core
           </a>
-        </div>
-        <div id="collapseCore" class="accordion-body collapse {% if app == 'core' %}in{% endif %}">
-          <div class="accordion-inner">
-            <ul class="resources nav nav-list">
-              
-                <li class="endpoint">Endpoints</li>
-              
-              
-                <li {% if app == 'core' and resource == 'Tenant' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'tenant' %}"><i class="icon-angle-right"></i>Tenant</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'VosaeFile' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'vosae_file' %}"><i class="icon-angle-right"></i>Vosae file</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'VosaeGroup' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'vosae_group' %}"><i class="icon-angle-right"></i>Vosae group</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'VosaeSearch' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'vosae_search' %}"><i class="icon-angle-right"></i>Vosae search</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'VosaeUser' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'vosae_user' %}"><i class="icon-angle-right"></i>Vosae user</a>
-                </li>
-              
+        </h4>
+      </div>
+      <div class="panel-collapse collapse {% if app == 'core' %}in{% endif %}" id="collapseCore">
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            
+              <li class="endpoint"><strong>Endpoints</strong></li>
+            
+            
+              <li {% if app == 'core' and resource == 'Tenant' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'tenant' %}"><span class="glyphicon glyphicon-chevron-right"></span>Tenant</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'VosaeFile' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'vosae_file' %}"><span class="glyphicon glyphicon-chevron-right"></span>Vosae file</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'VosaeGroup' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'vosae_group' %}"><span class="glyphicon glyphicon-chevron-right"></span>Vosae group</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'VosaeSearch' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'vosae_search' %}"><span class="glyphicon glyphicon-chevron-right"></span>Vosae search</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'VosaeUser' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'vosae_user' %}"><span class="glyphicon glyphicon-chevron-right"></span>Vosae user</a>
+              </li>
+            
 
+            
               
-                
-                  <hr>
-                
-                <li class="endpoint">Embedded</li>
+                <hr>
               
-              
-                <li {% if app == 'core' and resource == 'BERegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'be_registration_info' %}"><i class="icon-double-angle-right"></i>Be registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'CHRegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'ch_registration_info' %}"><i class="icon-double-angle-right"></i>Ch registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'FRRegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'fr_registration_info' %}"><i class="icon-double-angle-right"></i>Fr registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'GBRegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'gb_registration_info' %}"><i class="icon-double-angle-right"></i>Gb registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'LURegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'lu_registration_info' %}"><i class="icon-double-angle-right"></i>Lu registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'RegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'registration_info' %}"><i class="icon-double-angle-right"></i>Registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'ReportSettings' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'report_settings' %}"><i class="icon-double-angle-right"></i>Report settings</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'USRegistrationInfo' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'us_registration_info' %}"><i class="icon-double-angle-right"></i>Us registration info</a>
-                </li>
-              
-                <li {% if app == 'core' and resource == 'VosaeUserSettings' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'core' 'vosae_user_settings' %}"><i class="icon-double-angle-right"></i>Vosae user settings</a>
-                </li>
-              
-            </ul>
-          </div>
+              <li class="endpoint"><strong>Embedded</strong></li>
+            
+            
+              <li {% if app == 'core' and resource == 'BERegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'be_registration_info' %}"><span class="glyphicon glyphicon-link"></span>Be registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'CHRegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'ch_registration_info' %}"><span class="glyphicon glyphicon-link"></span>Ch registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'FRRegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'fr_registration_info' %}"><span class="glyphicon glyphicon-link"></span>Fr registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'GBRegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'gb_registration_info' %}"><span class="glyphicon glyphicon-link"></span>Gb registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'LURegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'lu_registration_info' %}"><span class="glyphicon glyphicon-link"></span>Lu registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'RegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'registration_info' %}"><span class="glyphicon glyphicon-link"></span>Registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'ReportSettings' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'report_settings' %}"><span class="glyphicon glyphicon-link"></span>Report settings</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'USRegistrationInfo' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'us_registration_info' %}"><span class="glyphicon glyphicon-link"></span>Us registration info</a>
+              </li>
+            
+              <li {% if app == 'core' and resource == 'VosaeUserSettings' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'core' 'vosae_user_settings' %}"><span class="glyphicon glyphicon-link"></span>Vosae user settings</a>
+              </li>
+            
+          </ul>
         </div>
-      </li>
-    
-      <li class="accordion-group">
-        <div class="accordion-heading">
+      </div>
+    </div>
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
           <a href="#collapseAccount" class="accordion-toggle" data-toggle="collapse" data-parent="resourceList">
             Account
           </a>
-        </div>
-        <div id="collapseAccount" class="accordion-body collapse {% if app == 'account' %}in{% endif %}">
-          <div class="accordion-inner">
-            <ul class="resources nav nav-list">
-              
-                <li class="endpoint">Endpoints</li>
-              
-              
-                <li {% if app == 'account' and resource == 'ApiKey' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'account' 'api_key' %}"><i class="icon-angle-right"></i>Api key</a>
-                </li>
-              
+        </h4>
+      </div>
+      <div class="panel-collapse collapse {% if app == 'account' %}in{% endif %}" id="collapseAccount">
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            
+              <li class="endpoint"><strong>Endpoints</strong></li>
+            
+            
+              <li {% if app == 'account' and resource == 'ApiKey' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'account' 'api_key' %}"><span class="glyphicon glyphicon-chevron-right"></span>Api key</a>
+              </li>
+            
 
-              
-              
-            </ul>
-          </div>
+            
+            
+          </ul>
         </div>
-      </li>
-    
-      <li class="accordion-group">
-        <div class="accordion-heading">
+      </div>
+    </div>
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
           <a href="#collapseInvoicing" class="accordion-toggle" data-toggle="collapse" data-parent="resourceList">
             Invoicing
           </a>
-        </div>
-        <div id="collapseInvoicing" class="accordion-body collapse {% if app == 'invoicing' %}in{% endif %}">
-          <div class="accordion-inner">
-            <ul class="resources nav nav-list">
-              
-                <li class="endpoint">Endpoints</li>
-              
-              
-                <li {% if app == 'invoicing' and resource == 'CreditNote' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'credit_note' %}"><i class="icon-angle-right"></i>Credit note</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'Currency' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'currency' %}"><i class="icon-angle-right"></i>Currency</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'DownPaymentInvoice' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'down_payment_invoice' %}"><i class="icon-angle-right"></i>Down payment invoice</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'Invoice' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'invoice' %}"><i class="icon-angle-right"></i>Invoice</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'Item' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'item' %}"><i class="icon-angle-right"></i>Item</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'Payment' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'payment' %}"><i class="icon-angle-right"></i>Payment</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'Quotation' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'quotation' %}"><i class="icon-angle-right"></i>Quotation</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'Tax' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'tax' %}"><i class="icon-angle-right"></i>Tax</a>
-                </li>
-              
+        </h4>
+      </div>
+      <div class="panel-collapse collapse {% if app == 'invoicing' %}in{% endif %}" id="collapseInvoicing">
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            
+              <li class="endpoint"><strong>Endpoints</strong></li>
+            
+            
+              <li {% if app == 'invoicing' and resource == 'CreditNote' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'credit_note' %}"><span class="glyphicon glyphicon-chevron-right"></span>Credit note</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'Currency' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'currency' %}"><span class="glyphicon glyphicon-chevron-right"></span>Currency</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'DownPaymentInvoice' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'down_payment_invoice' %}"><span class="glyphicon glyphicon-chevron-right"></span>Down payment invoice</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'InvoiceBaseGroup' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'invoice_base_group' %}"><span class="glyphicon glyphicon-chevron-right"></span>Invoice base group</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'Invoice' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'invoice' %}"><span class="glyphicon glyphicon-chevron-right"></span>Invoice</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'Item' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'item' %}"><span class="glyphicon glyphicon-chevron-right"></span>Item</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'Payment' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'payment' %}"><span class="glyphicon glyphicon-chevron-right"></span>Payment</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'PurchaseOrder' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'purchase_order' %}"><span class="glyphicon glyphicon-chevron-right"></span>Purchase order</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'Quotation' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'quotation' %}"><span class="glyphicon glyphicon-chevron-right"></span>Quotation</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'Tax' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'tax' %}"><span class="glyphicon glyphicon-chevron-right"></span>Tax</a>
+              </li>
+            
 
+            
               
-                
-                  <hr>
-                
-                <li class="endpoint">Embedded</li>
+                <hr>
               
-              
-                <li {% if app == 'invoicing' and resource == 'ActionHistoryEntry' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'action_history_entry' %}"><i class="icon-double-angle-right"></i>Action history entry</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'ChangedStateHistoryEntry' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'changed_state_history_entry' %}"><i class="icon-double-angle-right"></i>Changed state history entry</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'ExchangeRate' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'exchange_rate' %}"><i class="icon-double-angle-right"></i>Exchange rate</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'InvoiceHistoryEntry' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'invoice_history_entry' %}"><i class="icon-double-angle-right"></i>Invoice history entry</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'InvoiceItem' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'invoice_item' %}"><i class="icon-double-angle-right"></i>Invoice item</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'InvoiceNote' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'invoice_note' %}"><i class="icon-double-angle-right"></i>Invoice note</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'InvoiceRevision' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'invoice_revision' %}"><i class="icon-double-angle-right"></i>Invoice revision</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'SentHistoryEntry' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'sent_history_entry' %}"><i class="icon-double-angle-right"></i>Sent history entry</a>
-                </li>
-              
-                <li {% if app == 'invoicing' and resource == 'SnapshotCurrency' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'invoicing' 'snapshot_currency' %}"><i class="icon-double-angle-right"></i>Snapshot currency</a>
-                </li>
-              
-            </ul>
-          </div>
+              <li class="endpoint"><strong>Embedded</strong></li>
+            
+            
+              <li {% if app == 'invoicing' and resource == 'ActionHistoryEntry' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'action_history_entry' %}"><span class="glyphicon glyphicon-link"></span>Action history entry</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'ChangedStateHistoryEntry' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'changed_state_history_entry' %}"><span class="glyphicon glyphicon-link"></span>Changed state history entry</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'CreditNoteRevision' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'credit_note_revision' %}"><span class="glyphicon glyphicon-link"></span>Credit note revision</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'ExchangeRate' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'exchange_rate' %}"><span class="glyphicon glyphicon-link"></span>Exchange rate</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'InvoiceHistoryEntry' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'invoice_history_entry' %}"><span class="glyphicon glyphicon-link"></span>Invoice history entry</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'InvoiceItem' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'invoice_item' %}"><span class="glyphicon glyphicon-link"></span>Invoice item</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'InvoiceNote' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'invoice_note' %}"><span class="glyphicon glyphicon-link"></span>Invoice note</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'InvoiceRevision' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'invoice_revision' %}"><span class="glyphicon glyphicon-link"></span>Invoice revision</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'PurchaseOrderRevision' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'purchase_order_revision' %}"><span class="glyphicon glyphicon-link"></span>Purchase order revision</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'QuotationRevision' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'quotation_revision' %}"><span class="glyphicon glyphicon-link"></span>Quotation revision</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'SentHistoryEntry' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'sent_history_entry' %}"><span class="glyphicon glyphicon-link"></span>Sent history entry</a>
+              </li>
+            
+              <li {% if app == 'invoicing' and resource == 'SnapshotCurrency' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'invoicing' 'snapshot_currency' %}"><span class="glyphicon glyphicon-link"></span>Snapshot currency</a>
+              </li>
+            
+          </ul>
         </div>
-      </li>
-    
-      <li class="accordion-group">
-        <div class="accordion-heading">
+      </div>
+    </div>
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
           <a href="#collapseOrganizer" class="accordion-toggle" data-toggle="collapse" data-parent="resourceList">
             Organizer
           </a>
-        </div>
-        <div id="collapseOrganizer" class="accordion-body collapse {% if app == 'organizer' %}in{% endif %}">
-          <div class="accordion-inner">
-            <ul class="resources nav nav-list">
-              
-                <li class="endpoint">Endpoints</li>
-              
-              
-                <li {% if app == 'organizer' and resource == 'CalendarList' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'calendar_list' %}"><i class="icon-angle-right"></i>Calendar list</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'VosaeCalendar' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'vosae_calendar' %}"><i class="icon-angle-right"></i>Vosae calendar</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'VosaeEvent' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'vosae_event' %}"><i class="icon-angle-right"></i>Vosae event</a>
-                </li>
-              
+        </h4>
+      </div>
+      <div class="panel-collapse collapse {% if app == 'organizer' %}in{% endif %}" id="collapseOrganizer">
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            
+              <li class="endpoint"><strong>Endpoints</strong></li>
+            
+            
+              <li {% if app == 'organizer' and resource == 'CalendarList' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'calendar_list' %}"><span class="glyphicon glyphicon-chevron-right"></span>Calendar list</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'VosaeCalendar' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'vosae_calendar' %}"><span class="glyphicon glyphicon-chevron-right"></span>Vosae calendar</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'VosaeEvent' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'vosae_event' %}"><span class="glyphicon glyphicon-chevron-right"></span>Vosae event</a>
+              </li>
+            
 
+            
               
-                
-                  <hr>
-                
-                <li class="endpoint">Embedded</li>
+                <hr>
               
-              
-                <li {% if app == 'organizer' and resource == 'Attendee' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'attendee' %}"><i class="icon-double-angle-right"></i>Attendee</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'CalendarAcl' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'calendar_acl' %}"><i class="icon-double-angle-right"></i>Calendar acl</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'CalendarAclRule' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'calendar_acl_rule' %}"><i class="icon-double-angle-right"></i>Calendar acl rule</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'EventDateTime' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'event_date_time' %}"><i class="icon-double-angle-right"></i>Event date time</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'ReminderEntry' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'reminder_entry' %}"><i class="icon-double-angle-right"></i>Reminder entry</a>
-                </li>
-              
-                <li {% if app == 'organizer' and resource == 'ReminderSettings' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'organizer' 'reminder_settings' %}"><i class="icon-double-angle-right"></i>Reminder settings</a>
-                </li>
-              
-            </ul>
-          </div>
+              <li class="endpoint"><strong>Embedded</strong></li>
+            
+            
+              <li {% if app == 'organizer' and resource == 'Attendee' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'attendee' %}"><span class="glyphicon glyphicon-link"></span>Attendee</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'CalendarAcl' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'calendar_acl' %}"><span class="glyphicon glyphicon-link"></span>Calendar acl</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'CalendarAclRule' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'calendar_acl_rule' %}"><span class="glyphicon glyphicon-link"></span>Calendar acl rule</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'EventDateTime' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'event_date_time' %}"><span class="glyphicon glyphicon-link"></span>Event date time</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'ReminderEntry' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'reminder_entry' %}"><span class="glyphicon glyphicon-link"></span>Reminder entry</a>
+              </li>
+            
+              <li {% if app == 'organizer' and resource == 'ReminderSettings' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'organizer' 'reminder_settings' %}"><span class="glyphicon glyphicon-link"></span>Reminder settings</a>
+              </li>
+            
+          </ul>
         </div>
-      </li>
-    
-      <li class="accordion-group">
-        <div class="accordion-heading">
+      </div>
+    </div>
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
           <a href="#collapseContacts" class="accordion-toggle" data-toggle="collapse" data-parent="resourceList">
             Contacts
           </a>
-        </div>
-        <div id="collapseContacts" class="accordion-body collapse {% if app == 'contacts' %}in{% endif %}">
-          <div class="accordion-inner">
-            <ul class="resources nav nav-list">
-              
-                <li class="endpoint">Endpoints</li>
-              
-              
-                <li {% if app == 'contacts' and resource == 'Contact' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'contacts' 'contact' %}"><i class="icon-angle-right"></i>Contact</a>
-                </li>
-              
-                <li {% if app == 'contacts' and resource == 'Organization' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'contacts' 'organization' %}"><i class="icon-angle-right"></i>Organization</a>
-                </li>
-              
+        </h4>
+      </div>
+      <div class="panel-collapse collapse {% if app == 'contacts' %}in{% endif %}" id="collapseContacts">
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            
+              <li class="endpoint"><strong>Endpoints</strong></li>
+            
+            
+              <li {% if app == 'contacts' and resource == 'Contact' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'contacts' 'contact' %}"><span class="glyphicon glyphicon-chevron-right"></span>Contact</a>
+              </li>
+            
+              <li {% if app == 'contacts' and resource == 'Organization' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'contacts' 'organization' %}"><span class="glyphicon glyphicon-chevron-right"></span>Organization</a>
+              </li>
+            
 
+            
               
-                
-                  <hr>
-                
-                <li class="endpoint">Embedded</li>
+                <hr>
               
-              
-                <li {% if app == 'contacts' and resource == 'Address' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'contacts' 'address' %}"><i class="icon-double-angle-right"></i>Address</a>
-                </li>
-              
-                <li {% if app == 'contacts' and resource == 'Email' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'contacts' 'email' %}"><i class="icon-double-angle-right"></i>Email</a>
-                </li>
-              
-                <li {% if app == 'contacts' and resource == 'Phone' %}class="active"{% endif %}>
-                  <a href="{% url 'doc_resource' 'contacts' 'phone' %}"><i class="icon-double-angle-right"></i>Phone</a>
-                </li>
-              
-            </ul>
-          </div>
+              <li class="endpoint"><strong>Embedded</strong></li>
+            
+            
+              <li {% if app == 'contacts' and resource == 'Address' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'contacts' 'address' %}"><span class="glyphicon glyphicon-link"></span>Address</a>
+              </li>
+            
+              <li {% if app == 'contacts' and resource == 'Email' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'contacts' 'email' %}"><span class="glyphicon glyphicon-link"></span>Email</a>
+              </li>
+            
+              <li {% if app == 'contacts' and resource == 'Phone' %}class="active"{% endif %}>
+                <a href="{% url 'doc_resource' 'contacts' 'phone' %}"><span class="glyphicon glyphicon-link"></span>Phone</a>
+              </li>
+            
+          </ul>
         </div>
-      </li>
-    
-  </ul>
+      </div>
+    </div>
+  
 </div>

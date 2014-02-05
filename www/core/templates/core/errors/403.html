@@ -29,7 +29,7 @@
       <p>
         {% trans "Click on our logo to go back on the home page. If the problem persists, contact us." %}<br>
         {% if request.sentry.id %}{% trans "Error" context "Error page" %} <strong>{{ request.sentry.id }}</strong><br>{% endif %}
-        <a href="mailto:support@vosae.com" class="btn big grey">{% trans "Contact support" %}</a>
+        <a href="mailto:support@vosae.com" class="btn btn-success">{% trans "Contact support" %}</a>
       </p>
     </div>
     <script type="text/javascript">

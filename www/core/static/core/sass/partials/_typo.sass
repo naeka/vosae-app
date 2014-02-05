@@ -1,48 +1,66 @@
-// Font
+// 
+// Fonts
+// 
 @font-face
-  font-family: $fontPictos
-  src: font-url('pictos-web.eot')
-  src: font-url('pictos-web.woff') format("woff"), font-url('pictos-web.svg#webfontIyfZbseF') format("svg"), font-url('pictos-web.ttf') format("truetype")
-  font-weight: normal
-  font-style: normal
-
-@font-face
-  font-family: $fontBariol
+  font-family: "bariol"
   src: font-url('bariol_regular-webfont.eot')
   src: font-url('bariol_regular-webfont.woff') format("woff"), font-url('bariol_regular-webfont.svg#webfontIyfZbseF') format("svg"), font-url('bariol_regular-webfont.ttf') format("truetype")
   font-weight: normal
   font-style: normal
 
 @font-face
-  font-family: $fontBariol
+  font-family: "bariol"
   src: font-url('bariol_bold-webfont.eot')
   src: font-url('bariol_bold-webfont.woff') format("woff"), font-url('bariol_bold-webfont.svg#webfontIyfZbseF') format("svg"), font-url('bariol_bold-webfont.ttf') format("truetype")
   font-weight: bold
   font-style: normal
 
-// Color
-.yellow
-  color: $yellow
+@font-face
+  font-family: "Glyphicons Halflings"
+  src: font-url('glyphicons-halflings-regular.eot')
+  src: font-url('glyphicons-halflings-regular.woff') format("woff"), font-url('glyphicons-halflings-regular.svg') format("svg"), font-url('glyphicons-halflings-regular.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: "font-pictos"
+  src: font-url('pictos-web.eot')
+  src: font-url('pictos-web.woff') format("woff"), font-url('pictos-web.svg#webfontIyfZbseF') format("svg"), font-url('pictos-web.ttf') format("truetype")
+  font-weight: normal !important
+  font-style: normal !important
+
+
+// Colors
+.text-orange,
+.text-brand-primary
+  color: $brand-primary
   &:hover
-    color: $yellow
-.green
-  color: $green 
+    color: $brand-primary
+
+.text-green,
+.text-brand-success
+  color: $brand-success
   &:hover
-    color: $green
-.orange
-  color: $orange
+    color: $brand-success
+
+.text-yellow,
+.text-brand-warning
+  color: $brand-warning
   &:hover
-    color: $orange
-.white
-  color: $white
+    color: $brand-warning
+
+.text-red,
+.text-brand-danger
+  color: $brand-danger
   &:hover
-    color: $white
+    color: $brand-danger
+
 
 // Pictos
 [class^="picto-"], 
 [class*=" picto-"]
   font-style: normal
-  font-family: $fontPictos
+  font-family: $font-pictos
   font-weight: normal !important
   display: inline-block
   vertical-align: middle

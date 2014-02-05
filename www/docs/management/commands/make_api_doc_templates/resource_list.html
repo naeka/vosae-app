@@ -2,46 +2,46 @@
 {% templatetag openblock %} load static {% templatetag closeblock %}
 
 <a href="{% templatetag openblock %} url 'doc_home' {% templatetag closeblock %}" id="vosae-api-home">
-  <img src="{% templatetag openblock %} static "front/img/logo-vosae.png" {% templatetag closeblock %}" />
+  <img src="{% templatetag openblock %} static "core/img/logo-vosae.png" {% templatetag closeblock %}" />
   Vosae API
 </a>
 
-<div class="well">
-  <ul id="resourceList" class="nav nav-list">
-    {% for app_name, app in apps.items %}
-      <li class="accordion-group">
-        <div class="accordion-heading">
+<div class="panel-group" id="resourceList">
+  {% for app_name, app in apps.items %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
           <a href="#collapse{{ app_name|capfirst }}" class="accordion-toggle" data-toggle="collapse" data-parent="resourceList">
             {{ app_name|capfirst }}
           </a>
-        </div>
-        <div id="collapse{{ app_name|capfirst }}" class="accordion-body collapse {% templatetag openblock %} if app == '{{ app_name }}' {% templatetag closeblock %}in{% templatetag openblock %} endif {% templatetag closeblock %}">
-          <div class="accordion-inner">
-            <ul class="resources nav nav-list">
-              {% if app.endpoints %}
-                <li class="endpoint">Endpoints</li>
-              {% endif %}
-              {% for endpoint_resource in app.endpoints %}
-                <li {% templatetag openblock %} if app == '{{ app_name }}' and resource == '{{ endpoint_resource|classname }}' {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
-                  <a href="{% templatetag openblock %} url 'doc_resource' '{{ app_name }}' '{{ endpoint_resource|classname|underscore }}' {% templatetag closeblock %}"><i class="icon-angle-right"></i>{{ endpoint_resource|classname|underscore|humanize }}</a>
-                </li>
-              {% endfor %}
+        </h4>
+      </div>
+      <div class="panel-collapse collapse {% templatetag openblock %} if app == '{{ app_name }}' {% templatetag closeblock %}in{% templatetag openblock %} endif {% templatetag closeblock %}" id="collapse{{ app_name|capfirst }}">
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            {% if app.endpoints %}
+              <li class="endpoint"><strong>Endpoints</strong></li>
+            {% endif %}
+            {% for endpoint_resource in app.endpoints %}
+              <li {% templatetag openblock %} if app == '{{ app_name }}' and resource == '{{ endpoint_resource|classname }}' {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
+                <a href="{% templatetag openblock %} url 'doc_resource' '{{ app_name }}' '{{ endpoint_resource|classname|underscore }}' {% templatetag closeblock %}"><span class="glyphicon glyphicon-chevron-right"></span>{{ endpoint_resource|classname|underscore|humanize }}</a>
+              </li>
+            {% endfor %}
 
-              {% if app.subsidiary %}
-                {% if app.endpoints %}
-                  <hr>
-                {% endif %}
-                <li class="endpoint">Embedded</li>
+            {% if app.subsidiary %}
+              {% if app.endpoints %}
+                <hr>
               {% endif %}
-              {% for subsidiary_resource in app.subsidiary %}
-                <li {% templatetag openblock %} if app == '{{ app_name }}' and resource == '{{ subsidiary_resource|classname }}' {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
-                  <a href="{% templatetag openblock %} url 'doc_resource' '{{ app_name }}' '{{ subsidiary_resource|classname|underscore }}' {% templatetag closeblock %}"><i class="icon-double-angle-right"></i>{{ subsidiary_resource|classname|underscore|humanize }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+              <li class="endpoint"><strong>Embedded</strong></li>
+            {% endif %}
+            {% for subsidiary_resource in app.subsidiary %}
+              <li {% templatetag openblock %} if app == '{{ app_name }}' and resource == '{{ subsidiary_resource|classname }}' {% templatetag closeblock %}class="active"{% templatetag openblock %} endif {% templatetag closeblock %}>
+                <a href="{% templatetag openblock %} url 'doc_resource' '{{ app_name }}' '{{ subsidiary_resource|classname|underscore }}' {% templatetag closeblock %}"><span class="glyphicon glyphicon-link"></span>{{ subsidiary_resource|classname|underscore|humanize }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-      </li>
-    {% endfor %}
-  </ul>
+      </div>
+    </div>
+  {% endfor %}
 </div>

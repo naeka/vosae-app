@@ -103,7 +103,6 @@ module.exports = (grunt) ->
         dest: CORE_BUILD_DIR + "core.js"
       docs_css:
         src: [
-          DOCS_CSS_DIR + "bootstrap.css",
           DOCS_CSS_DIR + "pygments.css",
           DOCS_CSS_DIR + "docs.css"
         ]
