@@ -57,10 +57,12 @@ SIGNALS
 """
 
 
+signals.post_init.connect(InvoiceItem.post_init, sender=InvoiceItem)
+
 signals.pre_save.connect(Quotation.pre_save, sender=Quotation)
 signals.pre_save.connect(PurchaseOrder.pre_save, sender=PurchaseOrder)
 signals.pre_save.connect(Invoice.pre_save, sender=Invoice)
-signals.pre_save.connect(DownPaymentInvoice.pre_save, sender=DownPaymentInvoice)
+signals.pre_save.connect(Invoice.pre_save, sender=DownPaymentInvoice)
 signals.pre_save.connect(CreditNote.pre_save, sender=CreditNote)
 signals.pre_save.connect(Payment.pre_save, sender=InvoicePayment)
 signals.pre_save.connect(Payment.pre_save, sender=DownPaymentInvoicePayment)

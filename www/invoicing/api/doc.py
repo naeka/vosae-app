@@ -122,6 +122,7 @@ HELP_TEXT = {
         'description': 'Invoice item\'s description, can override the original item\'s description',
         'quantity': 'Invoice item\'s quantity',
         'unit_price': 'Invoice item\'s unit price',
+        'is_translatable': 'Indicates if the description is translatable (mainly used for down-payment labels)',
         'tax': 'Invoice item\'s tax',
     },
     'exchange_rate': {

@@ -20,7 +20,7 @@ __all__ = (
 class BaseRevision(EmbeddedDocument):
 
     """Base class for revisions"""
-    
+
     TAXES_APPLICATION = TAXES_APPLICATION
     NOT_DUPLICABLE_FIELDS = ('revision', 'issuer', 'issue_date', 'pdf')
 
@@ -58,7 +58,7 @@ class BaseRevision(EmbeddedDocument):
             # Update revision with base values
             for field in list(set(self._fields.keys()).difference(self.NOT_DUPLICABLE_FIELDS)):
                 if hasattr(based_on, field):
-                    setattr(self, field, getattr(based_on, field))
+                    setattr(self, field, copy.deepcopy(getattr(based_on, field)))
         if not self.revision:
             self.revision = unicode(uuid.uuid4())
 
@@ -74,17 +74,17 @@ class BaseRevision(EmbeddedDocument):
         if errors:
             raise ValidationError('ValidationError', errors=errors)
 
-    def duplicate(self, issuer=None):
-        """
-        Return the duplicate of the current revision with generated revision
-        unique parameters.
-        """
-        duplicate = copy.deepcopy(self)
-        duplicate.revision = unicode(uuid.uuid4())
-        duplicate.issue_date = datetime_now()
-        if issuer:
-            duplicate.issuer = issuer
-        return duplicate
+    # def duplicate(self, issuer=None):
+    #     """
+    #     Return the duplicate of the current revision with generated revision
+    #     unique parameters.
+    #     """
+    #     duplicate = copy.deepcopy(self)
+    #     duplicate.revision = unicode(uuid.uuid4())
+    #     duplicate.issue_date = datetime_now()
+    #     if issuer:
+    #         duplicate.issuer = issuer
+    #     return duplicate
 
     def get_customer_display(self, only_company=False):
         """
@@ -153,3 +153,9 @@ class CreditNoteRevision(BaseRevision):
     When a credit note is updated, a revision is automatically created.
     """
     credit_note_emission_date = DateField()
+
+    def __init__(self, *args, **kwargs):
+        super(CreditNoteRevision, self).__init__(*args, **kwargs)
+        based_on = kwargs.get('based_on', None)
+        if based_on and based_on._instance.is_down_payment_invoice() and based_on.line_items[0].is_translatable:
+            self.line_items[0].description = based_on._instance.get_item_description()[0]
