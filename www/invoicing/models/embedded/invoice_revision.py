@@ -74,18 +74,6 @@ class BaseRevision(EmbeddedDocument):
         if errors:
             raise ValidationError('ValidationError', errors=errors)
 
-    # def duplicate(self, issuer=None):
-    #     """
-    #     Return the duplicate of the current revision with generated revision
-    #     unique parameters.
-    #     """
-    #     duplicate = copy.deepcopy(self)
-    #     duplicate.revision = unicode(uuid.uuid4())
-    #     duplicate.issue_date = datetime_now()
-    #     if issuer:
-    #         duplicate.issuer = issuer
-    #     return duplicate
-
     def get_customer_display(self, only_company=False):
         """
         Returns the customer's name according to this scheme:
