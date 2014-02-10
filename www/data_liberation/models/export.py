@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.utils.timezone import now as datetime_now
-from mongoengine import Document, fields, CASCADE
+from mongoengine import Document, fields, NULLIFY
 
 from core.fields import DateField
 
@@ -25,7 +25,7 @@ class Export(Document):
     documents_types = fields.ListField(fields.StringField(), required=True)
     from_date = DateField()
     to_date = DateField()
-    zipfile = fields.ReferenceField("VosaeFile", reverse_delete_rule=CASCADE)
+    zipfile = fields.ReferenceField("VosaeFile", reverse_delete_rule=NULLIFY)
 
     @classmethod
     def post_save(self, sender, document, created, **kwargs):
