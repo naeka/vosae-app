@@ -27,7 +27,7 @@
       <td>amount</td>
       <td>Decimal</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -49,7 +49,7 @@
       <td>balance</td>
       <td>Decimal</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -60,7 +60,7 @@
       <td>contact</td>
       <td>Reference</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         
       </td>
@@ -75,14 +75,25 @@
         
         
       </td>
-      <td>The current quotation/invoice/credit note revision</td>
+      <td>The current invoice revision</td>
+    </tr>
+    
+    <tr>
+      <td>group</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        
+        
+      </td>
+      <td>References to all grouped documents of an invoicing process</td>
     </tr>
     
     <tr>
       <td>has_temporary_reference</td>
       <td>Boolean</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -93,7 +104,7 @@
       <td>history</td>
       <td>Related</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         <span class="label label-info">Blankable</span>
       </td>
@@ -104,7 +115,7 @@
       <td>id</td>
       <td>Objectid</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -115,7 +126,7 @@
       <td>issuer</td>
       <td>Reference</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -137,7 +148,7 @@
       <td>organization</td>
       <td>Reference</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         
       </td>
@@ -148,7 +159,7 @@
       <td>paid</td>
       <td>Decimal</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -159,7 +170,7 @@
       <td>payments</td>
       <td>Related</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         <span class="label label-info">Blankable</span>
       </td>
@@ -181,7 +192,7 @@
       <td>reference</td>
       <td>String</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -189,32 +200,21 @@
     </tr>
     
     <tr>
-      <td>related_credit_note</td>
+      <td>related_to</td>
       <td>Reference</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         
       </td>
-      <td>Invoice's related credit note</td>
-    </tr>
-    
-    <tr>
-      <td>related_quotation</td>
-      <td>Reference</td>
-      <td>
-        <span class="label label-important">Readonly</span>
-        <span class="label label-warning">Nullable</span>
-        
-      </td>
-      <td>Invoice's related quotation</td>
+      <td>Related quotation or purchase order</td>
     </tr>
     
     <tr>
       <td>resource_uri</td>
       <td>String</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -225,18 +225,18 @@
       <td>revisions</td>
       <td>Related</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         <span class="label label-warning">Nullable</span>
         <span class="label label-info">Blankable</span>
       </td>
-      <td>All past quotation/invoice/credit note revisions</td>
+      <td>All past invoice revisions</td>
     </tr>
     
     <tr>
       <td>state</td>
       <td>String</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>
@@ -258,7 +258,7 @@
       <td>total</td>
       <td>Decimal</td>
       <td>
-        <span class="label label-important">Readonly</span>
+        <span class="label label-danger">Readonly</span>
         
         
       </td>

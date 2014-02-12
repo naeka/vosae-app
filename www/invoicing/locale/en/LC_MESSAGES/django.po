@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vosae\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-12 11:46+0000\n"
+"POT-Creation-Date: 2014-02-12 11:29+0000\n"
 "PO-Revision-Date: 2013-10-21 11:54+0100\n"
 "Last-Translator: Léo S <leo@naeka.fr>\n"
 "Language-Team: Léo S. <leo@naeka.fr>\n"
@@ -252,15 +252,15 @@ msgctxt "item type"
 msgid "Service"
 msgstr ""
 
-#: imex.py:46 models/quotation.py:200
+#: imex.py:46 models/quotation.py:203
 msgid "Quotations"
 msgstr ""
 
-#: imex.py:56 models/invoice.py:332
+#: imex.py:56 models/invoice.py:333
 msgid "Invoices"
 msgstr ""
 
-#: imex.py:66 models/credit_note.py:161
+#: imex.py:66 models/credit_note.py:174
 msgid "Credit notes"
 msgstr ""
 
@@ -268,17 +268,17 @@ msgstr ""
 msgid "Credit note"
 msgstr ""
 
-#: models/credit_note.py:56
+#: models/credit_note.py:58
 #, python-format
 msgid "%(percentage)s%% down-payment"
 msgstr ""
 
-#: models/credit_note.py:59 models/down_payment_invoice.py:52
+#: models/credit_note.py:61 models/down_payment_invoice.py:52
 #, python-format
 msgid "%(percentage)s%% down-payment on quotation %(reference)s"
 msgstr ""
 
-#: models/credit_note.py:61 models/down_payment_invoice.py:54
+#: models/credit_note.py:63 models/down_payment_invoice.py:54
 #, python-format
 msgid "%(percentage)s%% down-payment on purchase order %(reference)s"
 msgstr ""
@@ -291,22 +291,22 @@ msgstr ""
 msgid "Invoice"
 msgstr ""
 
-#: models/invoice.py:138
+#: models/invoice.py:140
 msgctxt "invoice reference"
 msgid "not registered"
 msgstr ""
 
-#: models/invoice_base.py:58
+#: models/invoice_base.py:56
 msgctxt "invoicing sending vars"
 msgid "{Reference}"
 msgstr ""
 
-#: models/invoice_base.py:59
+#: models/invoice_base.py:57
 msgctxt "invoicing sending vars"
 msgid "{Signature}"
 msgstr ""
 
-#: models/invoice_base.py:60
+#: models/invoice_base.py:58
 msgctxt "invoicing sending vars"
 msgid "{Invoicing_Date}"
 msgstr ""
@@ -315,7 +315,7 @@ msgstr ""
 msgid "Purchase order"
 msgstr ""
 
-#: models/purchase_order.py:159
+#: models/purchase_order.py:161
 msgid "Purchase orders"
 msgstr ""
 
@@ -414,4 +414,8 @@ msgstr ""
 #: pdf/quotation.py:41
 #, python-format
 msgid "Valid until %(quotation_validity)s"
+msgstr ""
+
+#: pdf/quotation.py:45
+msgid "Signature and stamp preceded by \"Valid for agreement\""
 msgstr ""

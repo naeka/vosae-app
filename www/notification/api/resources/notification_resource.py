@@ -81,7 +81,7 @@ class NotificationResource(NotificationBaseResource):
         try:
             obj.read = True
             obj.save()
-        except (obj.InvalidState, InvalidInvoiceBaseState) as e:
+        except Exception as e:
             raise BadRequest(e)
 
         self.log_throttled_access(request)

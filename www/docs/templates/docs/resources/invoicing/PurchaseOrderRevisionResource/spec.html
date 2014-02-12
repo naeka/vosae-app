@@ -1,0 +1,226 @@
+
+<h3>Specifications</h3>
+
+<table class="spec table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Flags</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>billing_address</td>
+      <td>Embedded</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>The billing address</td>
+    </tr>
+    
+    <tr>
+      <td>contact</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>The contact linked to this revision</td>
+    </tr>
+    
+    <tr>
+      <td>currency</td>
+      <td>Embedded</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>The currency used.<br />This is an embedded snapshot on which are based items conversions (if needed)</td>
+    </tr>
+    
+    <tr>
+      <td>custom_payment_conditions</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Custom payment conditions.<br />In some businesses custom payment conditions may be applied depending on the work or the delivery process.<br />In such cases, <code>due_date</code> acts as an expected due date used for budget projections</td>
+    </tr>
+    
+    <tr>
+      <td>customer_reference</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Some customers may request to figure a reference on the generated documents, linked to their tools.<br />This <code>customer_reference</code> is displayed between the document reference and the line items</td>
+    </tr>
+    
+    <tr>
+      <td>delivery_address</td>
+      <td>Embedded</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>The delivery address</td>
+    </tr>
+    
+    <tr>
+      <td>due_date</td>
+      <td>Datetime</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>A date & time as a string. Ex: "2010-11-10T03:07:43"</td>
+    </tr>
+    
+    <tr>
+      <td>invoicing_date</td>
+      <td>Datetime</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>A date & time as a string. Ex: "2010-11-10T03:07:43"</td>
+    </tr>
+    
+    <tr>
+      <td>issue_date</td>
+      <td>Datetime</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        
+        
+      </td>
+      <td>Revision's creation datetime</td>
+    </tr>
+    
+    <tr>
+      <td>issuer</td>
+      <td>Reference</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>The Vosae user which has created this revision</td>
+    </tr>
+    
+    <tr>
+      <td>line_items</td>
+      <td>Related</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>The items present in the revision</td>
+    </tr>
+    
+    <tr>
+      <td>organization</td>
+      <td>Reference</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>The organization linked to this revision</td>
+    </tr>
+    
+    <tr>
+      <td>pdf</td>
+      <td>Dict</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>A language-based dictionnary of previously generated PDFs of the document revision</td>
+    </tr>
+    
+    <tr>
+      <td>purchase_order_date</td>
+      <td>Date</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Purchase order issue date</td>
+    </tr>
+    
+    <tr>
+      <td>revision</td>
+      <td>String</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        
+        
+      </td>
+      <td>UID of the revision</td>
+    </tr>
+    
+    <tr>
+      <td>sender</td>
+      <td>String</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        <span class="label label-info">Blankable</span>
+      </td>
+      <td>Name of the sender (person)</td>
+    </tr>
+    
+    <tr>
+      <td>sender_address</td>
+      <td>Embedded</td>
+      <td>
+        
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Address of the sender</td>
+    </tr>
+    
+    <tr>
+      <td>sender_organization</td>
+      <td>String</td>
+      <td>
+        <span class="label label-danger">Readonly</span>
+        <span class="label label-warning">Nullable</span>
+        
+      </td>
+      <td>Sender's organization</td>
+    </tr>
+    
+    <tr>
+      <td>taxes_application</td>
+      <td>String</td>
+      <td>
+        
+        
+        
+      </td>
+      <td>Taxes application.<br />One of: <ul><li class="text-info">EXCLUSIVE</li> <li class="text-info">NOT_APPLICABLE</li></ul></td>
+    </tr>
+    
+  </tbody>
+</table>
+

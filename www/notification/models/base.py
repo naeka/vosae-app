@@ -8,6 +8,7 @@ from realtime.utils import emit_to_channel
 class Notification(DynamicDocument):
     tenant = fields.ReferenceField("Tenant", required=False)
     recipient = fields.ReferenceField("VosaeUser", required=True)
+    issuer = fields.ReferenceField("VosaeUser")
     sent_at = fields.DateTimeField(required=True, default=datetime_now)
     read = fields.BooleanField(required=True, default=False)
 

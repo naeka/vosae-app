@@ -4,6 +4,7 @@
 
 .page-doc
   background: #FFF
+  font-size: 14px
 
   .container-fluid
     padding: 30px
@@ -21,93 +22,72 @@
     .well
       padding: 0
 
-    .nav-list
-      .accordion-group
-        border: none
-        border-radius: 0
-        margin: 0 -15px
+    .resource-list
+      .panel-title
+        color: $brand-success
+      .panel-body 
+        li
+          padding: 3px 0
+        a
+          color: $brand-primary
+          text-decoration: none
+        .glyphicon
+          font-size: 13px
+          padding-right: 8px
+          padding-left: 15px
 
-        & + .accordion-group
-          border-top: 1px solid $darkgrey
+  h1
+    border-bottom: 1px solid $gray-lighter
+    margin: 0 0 20px
+    padding: 0 0 20px
 
-        &:first-child
-          .accordion-heading
-            a
-              @include border-radius(3px 3px 0 0)
+  h3
+    margin: 0 0 5px
 
-        &:last-child
-          .accordion-heading
-            a:not(.collapsed)
-              @include border-radius(0 0 3px 3px)
+  pre
+    font-size: 12px
 
-        .accordion-heading
-          a
-            color: $green
-            font-weight: bold
-            background: $white
+  .resource
+    margin-bottom: 40px
 
-        .accordion-body
-          .resources
-            margin: 0 -15px
-            padding: 0
+  .methods
+    .method-description
+      margin-top: 60px
 
-            li
-              &.active
-                a
-                  color: $white
-                  background: $orange
+  table.endpoint
+    width: 100%
 
-              &.endpoint, &.embedded
-                font-weight: bold
-                padding: 0 15px 4px 15px
-              a
-                display: list-item
-                margin-left: 0
-                margin-right: 0
-                max-width: 100%
-                overflow: hidden
-                text-overflow: ellipsis
-                color: $orange
-              i
-                padding-right: 6px
-                font-size: 13px
+    tr
+      td
+        line-height: 24px
 
-    h1
-      border-bottom: 1px solid $darkgrey
-      margin: 0 0 20px
-      padding: 0 0 20px
+      td:first-child
+        white-space: nowrap
+        padding-right: 20px
 
-    h3
-      margin: 0 0 5px
+      td:last-child
+        width: 100%
 
+  .spec
+    width: 100%
+  
+  .source
     pre
-      font-size: 12px
+      overflow: auto
+      max-height: 300px
 
-    .resource
-      margin-bottom: 40px
+  .label + .label
+    margin-left: 4px
 
-    .methods
-      .method-description
-        margin-top: 60px
+  .nav.nav-pills
+    margin-bottom: 30px
 
-    table.endpoint
-      width: 100%
 
-      tr
-        td
-          line-height: 24px
-
-        td:first-child
-          white-space: nowrap
-          padding-right: 20px
-
-        td:last-child
-          width: 100%
-
-    .spec
-      width: 100%
-    
-    .source
-      pre
-        overflow: auto
-        max-height: 300px
+  .label-success
+    background-color: #468847
+  .label-warning
+    background-color: #F89406
+  .label-info
+    background-color: #3A87AD
+  .label-danger
+    background-color: #B94A48

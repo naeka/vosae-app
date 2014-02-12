@@ -20,7 +20,7 @@ watchdog==0.6.0
 dj-database-url==0.2.1
 -e git+git://github.com/Naeka/icalendar.git#egg=icalendar
 vobject==0.8.1c
-MySQL-python==1.2.4
+MySQL-python==1.2.5
 newrelic==2.0.0.1
 pylibmc==1.2.3
 django-pylibmc-sasl==0.2.4

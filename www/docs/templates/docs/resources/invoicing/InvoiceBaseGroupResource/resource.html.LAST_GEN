@@ -1,0 +1,21 @@
+
+{% extends "docs/base.html" %}
+
+{% block title %}Invoice_base_group | Vosae API Documentation{%  endblock title %}
+
+{% block resource %}
+
+<h1>Invoice base group</h1>
+
+
+{% include "docs/resources/invoicing/InvoiceBaseGroupResource/endpoint_informations.html" %}
+
+
+
+<div class="specifications">
+  {% include "docs/resources/invoicing/InvoiceBaseGroupResource/spec.html" %}
+</div>
+
+
+
+{%  endblock resource %}
