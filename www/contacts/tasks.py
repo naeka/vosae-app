@@ -23,6 +23,7 @@ def entity_saved_task(document, created, issuer):
                     notification_list.append(notifications.ContactSaved(
                         tenant=document.tenant,
                         recipient=subscriber,
+                        issuer=issuer,
                         contact=document
                     ))
         elif type(document) is Organization:
@@ -37,6 +38,7 @@ def entity_saved_task(document, created, issuer):
                     notification_list.append(notifications.OrganizationSaved(
                         tenant=document.tenant,
                         recipient=subscriber,
+                        issuer=issuer,
                         organization=document
                     ))
         timeline_entry.save()
