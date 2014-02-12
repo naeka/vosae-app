@@ -117,6 +117,12 @@ class Report(object):
         ))
 
         self.style.add(ParagraphStyle(
+            name='Bold',
+            parent=self.style['BodyText'],
+            fontName=get_font(self.settings.font_name).bold
+        ))
+
+        self.style.add(ParagraphStyle(
             name='Heading1',
             parent=self.style['Normal'],
             fontName=get_font(self.settings.font_name).bold,

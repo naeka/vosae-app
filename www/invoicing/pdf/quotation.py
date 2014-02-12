@@ -41,4 +41,6 @@ class QuotationReport(InvoiceBaseReport):
             self.p(_("Valid until %(quotation_validity)s") % {
                 'quotation_validity': format_date(self.invoice_base.current_revision.quotation_validity, 'DATE_FORMAT')
             })
+            self.spacer()
+            self.p(_('Signature and stamp preceded by "Valid for agreement"'), self.style['Bold'])
             self.end_keeptogether()
