@@ -5,6 +5,7 @@ HELP_TEXT = {
         'sent_at': 'Notification\'s sent datetime',
         'recipient': 'Notification\'s recipient',
         'read': 'Notification\'s read status',
+        'issuer': 'User which have done an action resulting in the notification creation',
     },
     'entity_saved': {
         'contact': 'Contact saved',

@@ -1,6 +1,7 @@
 # -*- coding:Utf-8 -*-
 
 from tastypie import fields as base_fields
+from tastypie_mongoengine import fields
 
 from core.api.utils import TenantResource
 from notification.models import Notification
@@ -22,6 +23,14 @@ class NotificationBaseResource(TenantResource):
         attribute='read',
         readonly=True,
         help_text=HELP_TEXT['notification_base']['read']
+    )
+
+    issuer = fields.ReferenceField(
+        to='core.api.resources.VosaeUserResource',
+        attribute='issuer',
+        readonly=True,
+        null=True,
+        help_text=HELP_TEXT['notification_base']['issuer']
     )
 
     class Meta(TenantResource.Meta):

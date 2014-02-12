@@ -7,10 +7,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone, http
 from django.template.loader import render_to_string
-from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template import Context
-from django.core.mail import EmailMessage
 
 
 from vosae_utils import generate_sha1
