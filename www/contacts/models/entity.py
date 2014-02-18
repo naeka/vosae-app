@@ -3,7 +3,7 @@
 from mongoengine import Document, fields
 from django_gravatar.helpers import get_gravatar_url
 
-from core.mixins import ZombieMixin, AsyncTTLUploadsMixin
+from core.mixins import RestorableMixin, AsyncTTLUploadsMixin
 from notification.mixins import NotificationAwareDocumentMixin
 from core.tasks import es_document_index, es_document_deindex
 
@@ -13,16 +13,13 @@ __all__ = (
 )
 
 
-class Entity(ZombieMixin, Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin):
+class Entity(RestorableMixin, Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin):
 
     """A base class for :class:`~contacts.models.Contact` and :class:`~contacts.models.Organization`."""
-    STATUSES = ('ACTIVE', 'DELETED')
-    DELETE_STATUS = 'DELETED'
     RELATED_WITH_TTL = ['photo']
 
     tenant = fields.ReferenceField("Tenant", required=True)
     creator = fields.ReferenceField("VosaeUser", required=True)
-    status = fields.StringField(choices=STATUSES, required=True, default=ZombieMixin.DEFAULT_STATUS)
     private = fields.BooleanField(required=True, default=False)
     photo_source = fields.StringField(choices=["LOCAL", "GRAVATAR"])
     photo = fields.ReferenceField("VosaeFile")
@@ -72,11 +69,6 @@ class Entity(ZombieMixin, Document, AsyncTTLUploadsMixin, NotificationAwareDocum
 
         # De-index entity from elasticsearch
         es_document_deindex.delay(document)
-
-    @classmethod
-    def get_indexable_documents(cls, **kwargs):
-        """Overrides `get_indexable_documents` method by filtering on only active entities"""
-        return cls.objects.filter(status="ACTIVE", **kwargs)
 
     @property
     def photo_uri(self):

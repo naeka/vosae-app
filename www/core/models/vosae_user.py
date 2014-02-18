@@ -12,7 +12,7 @@ from account.tasks import user_send_associated_to_tenant_email
 
 from core.models.embedded.vosae_permissions import VosaePermissions
 from core.models.embedded.vosae_user_settings import VosaeUserSettings
-from core.mixins import ZombieMixin
+from core.mixins import RestorableMixin
 from core.tasks import es_document_index, es_document_deindex
 
 
@@ -21,25 +21,24 @@ __all__ = (
 )
 
 
-class VosaeUser(ZombieMixin, Document, SearchDocumentMixin):
+class VosaeUser(RestorableMixin, Document, SearchDocumentMixin):
 
     """
     A user class linking :class:`~core.models.Tenant` to Django's user
     in our SaaS environnement.
     """
-    STATUSES = ('ACTIVE', 'DISABLED', 'DELETED')
-    DELETE_STATUS = 'DELETED'
+    STATES = ('ACTIVE', 'DISABLED', 'DELETED')
 
     tenant = fields.ReferenceField("Tenant", required=True)
     email = fields.EmailField(unique_with="tenant", required=True)
-    status = fields.StringField(choices=STATUSES, required=True, default=ZombieMixin.DEFAULT_STATUS)
+    state = fields.StringField(choices=STATES, required=True, default=RestorableMixin.DEFAULT_STATE)
     groups = fields.ListField(fields.ReferenceField("VosaeGroup"))
     specific_permissions = fields.DictField()
     permissions = fields.EmbeddedDocumentField("VosaePermissions", default=lambda: VosaePermissions())
     settings = fields.EmbeddedDocumentField("VosaeUserSettings", default=lambda: VosaeUserSettings())
 
     meta = {
-        "indexes": ["tenant", "email", "status"],
+        "indexes": ["tenant", "email", "state"],
 
         # Vosae specific
         "vosae_permissions": ("see_vosaeuser", "add_vosaeuser", "change_vosaeuser", "delete_vosaeuser"),
@@ -62,10 +61,6 @@ class VosaeUser(ZombieMixin, Document, SearchDocumentMixin):
             'full_name': self.get_full_name(),
             'email': self.email
         }
-
-    @classmethod
-    def get_indexable_documents(cls, **kwargs):
-        return cls.objects.filter(status='ACTIVE', **kwargs)
 
     @classmethod
     def pre_save(self, sender, document, **kwargs):
@@ -154,7 +149,7 @@ class VosaeUser(ZombieMixin, Document, SearchDocumentMixin):
         return False
 
     def is_active(self):
-        return self.status == 'ACTIVE'
+        return self.state == 'ACTIVE'
 
     def get_full_name(self):
         """

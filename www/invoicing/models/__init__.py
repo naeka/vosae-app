@@ -44,15 +44,6 @@ __all__ = (
 
 
 """
-DELETE RULES
-"""
-DownPaymentInvoice.register_delete_rule(InvoiceBaseGroup, 'down_payment_invoices', PULL)
-Invoice.register_delete_rule(InvoiceBaseGroup, 'invoice', NULLIFY)
-Quotation.register_delete_rule(InvoiceBaseGroup, 'quotation', NULLIFY)
-PurchaseOrder.register_delete_rule(InvoiceBaseGroup, 'purchase_order', NULLIFY)
-
-
-"""
 SIGNALS
 """
 

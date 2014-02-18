@@ -2,7 +2,7 @@
 
 from tastypie import fields as base_fields
 
-from core.api.utils import TenantResource, ZombieMixinResource
+from core.api.utils import TenantResource, RestorableMixinResource
 from invoicing.models import Tax
 from invoicing.api.doc import HELP_TEXT
 
@@ -12,7 +12,7 @@ __all__ = (
 )
 
 
-class TaxResource(ZombieMixinResource, TenantResource):
+class TaxResource(RestorableMixinResource, TenantResource):
     name = base_fields.CharField(
         attribute='name',
         help_text=HELP_TEXT['tax']['name']
@@ -31,3 +31,9 @@ class TaxResource(ZombieMixinResource, TenantResource):
         if bundle.request.method.lower() == 'put':
             bundle.data['rate'] = bundle.obj.rate
         return bundle
+
+    def is_restorable(self):
+        """
+        Taxes are not (currently) restorable
+        """
+        return False

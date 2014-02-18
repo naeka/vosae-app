@@ -95,6 +95,14 @@ class DownPaymentInvoice(Invoice, SearchDocumentMixin):
         # Calling *Invoice* parent
         super(Invoice, document).post_save(sender, document, created, **kwargs)
 
+    @classmethod
+    def post_delete(self, sender, document, **kwargs):
+        """
+        Post delete hook handler
+        """
+        # Calling *Invoice* parent
+        super(Invoice, document).post_delete(sender, document, **kwargs)
+
     def is_modifiable(self):
         """
         A :class:`~invoicing.models.DownPaymentInvoice` is automatically generated

@@ -5,8 +5,7 @@ from tastypie_mongoengine import fields
 
 from core.api.utils import (
     TenantResource,
-    WakeUpMixinResource,
-    ZombieMixinResource
+    RestorableMixinResource
 )
 from invoicing.models import Item
 from invoicing.api.doc import HELP_TEXT
@@ -17,7 +16,7 @@ __all__ = (
 )
 
 
-class ItemResource(WakeUpMixinResource, ZombieMixinResource, TenantResource):
+class ItemResource(RestorableMixinResource, TenantResource):
     reference = base_fields.CharField(
         attribute='reference',
         help_text=HELP_TEXT['item']['reference']

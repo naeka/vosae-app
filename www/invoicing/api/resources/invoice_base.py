@@ -9,7 +9,7 @@ from tastypie.utils import trailing_slash
 from tastypie.exceptions import BadRequest
 from tastypie_mongoengine import fields
 
-from core.api.utils import TenantResource, VosaeIMEXMixinResource
+from core.api.utils import TenantResource, VosaeIMEXMixinResource, RestorableMixinResource
 from invoicing.exceptions import NotDeletableInvoice, InvalidInvoiceBaseState
 from invoicing import MARK_AS_STATES
 
@@ -79,10 +79,10 @@ class InvoiceBaseGroupResource(TenantResource):
         object_class = InvoiceBaseGroup
         list_allowed_methods = ('get',)
         detail_allowed_methods = ('get',)
-        excludes = ('tenant',)
+        excludes = ('tenant', 'deleted_documents')
 
 
-class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeIMEXMixinResource):
+class InvoiceBaseResource(RestorableMixinResource, NotificationAwareResourceMixin, TenantResource, VosaeIMEXMixinResource):
     reference = base_fields.CharField(
         attribute='reference',
         readonly=True,
@@ -188,6 +188,10 @@ class InvoiceBaseResource(NotificationAwareResourceMixin, TenantResource, VosaeI
         """
         # Add timeline and notification entries
         invoicebase_saved_task.delay(bundle.request.vosae_user, bundle.obj, created)
+
+    def is_restorable(self):
+        """Invoicing documents are not (currently) restorable"""
+        return False
 
     def obj_delete(self, bundle, **kwargs):
         """Raises a BadRequest if the :class:`~invoicing.models.InvoiceBase` is not in a deletable state"""

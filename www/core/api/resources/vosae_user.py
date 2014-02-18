@@ -5,8 +5,7 @@ from tastypie_mongoengine import fields
 
 from core.api.utils import (
     TenantResource,
-    ZombieMixinResource,
-    WakeUpMixinResource
+    RestorableMixinResource
 )
 from core.models import VosaeUser
 from core.api.doc import HELP_TEXT
@@ -18,7 +17,7 @@ __all__ = (
 )
 
 
-class VosaeUserResource(WakeUpMixinResource, ZombieMixinResource, TenantResource):
+class VosaeUserResource(RestorableMixinResource, TenantResource):
     full_name = base_fields.CharField(
         attribute='get_full_name',
         readonly=True,
@@ -28,10 +27,10 @@ class VosaeUserResource(WakeUpMixinResource, ZombieMixinResource, TenantResource
         attribute='email',
         help_text=HELP_TEXT['vosae_user']['email']
     )
-    status = base_fields.CharField(
-        attribute='status',
+    state = base_fields.CharField(
+        attribute='state',
         blank=True,
-        help_text=HELP_TEXT['vosae_user']['status']
+        help_text=HELP_TEXT['vosae_user']['state']
     )
     photo_uri = base_fields.CharField(
         attribute='photo_uri',

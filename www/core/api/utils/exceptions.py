@@ -6,7 +6,7 @@ from tastypie import http
 
 __all__ = (
     'TenantNotProvided',
-    'ZombiePostConflict'
+    'RestorablePostConflict'
 )
 
 
@@ -18,8 +18,8 @@ class TenantNotProvided(ImmediateHttpResponse):
             self._response = response
 
 
-class ZombiePostConflict(ImmediateHttpResponse):
-    _response = http.HttpConflict('This document already exists. It can be waked up thanks to the X-WakeUp header')
+class RestorablePostConflict(ImmediateHttpResponse):
+    _response = http.HttpConflict('This document already exists. It can be restored thanks to the X-Restore header')
 
     def __init__(self, response=None):
         if response:

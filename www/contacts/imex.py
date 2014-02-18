@@ -34,7 +34,7 @@ EXPORTABLE_DOCUMENTS_TYPES = (
 def get_exportable_documents(export):
     documents = []
     if 'CONTACT' in export.documents_types:
-        qs = Contact.objects.filter(tenant=export.tenant, status='ACTIVE')
+        qs = Contact.objects.filter(tenant=export.tenant, state='ACTIVE')
         serializer = CSVSerializer()
         documents.append((
             [serializer.serialize(qs)],
@@ -42,7 +42,7 @@ def get_exportable_documents(export):
             lambda buf: buf
         ))
     if 'ORGANIZATION' in export.documents_types:
-        qs = Organization.objects.filter(tenant=export.tenant, status='ACTIVE')
+        qs = Organization.objects.filter(tenant=export.tenant, state='ACTIVE')
         serializer = CSVSerializer()
         documents.append((
             [serializer.serialize(qs)],

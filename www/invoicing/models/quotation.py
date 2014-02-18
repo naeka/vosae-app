@@ -24,9 +24,10 @@ class Quotation(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
     TYPE = "QUOTATION"
     RECORD_NAME = _("Quotation")
     STATES = QUOTATION_STATES
+    DEFAULT_STATE = QUOTATION_STATES.DRAFT
     QUOTATION_VALIDITY_PERIODS = (15, 30, 45, 60, 90)
 
-    state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
+    state = fields.StringField(required=True, choices=STATES, default=DEFAULT_STATE)
     current_revision = fields.EmbeddedDocumentField("QuotationRevision", required=True)
     revisions = fields.ListField(fields.EmbeddedDocumentField("QuotationRevision"))
 
@@ -91,6 +92,21 @@ class Quotation(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
 
         # Calling parent
         super(Quotation, document).post_save(sender, document, created, **kwargs)
+
+    @classmethod
+    def post_delete(self, sender, document, **kwargs):
+        """
+        Post delete hook handler
+
+        - Update group relations
+        """
+        # Update group relations
+        document.group.deleted_documents.append(document)
+        document.group.quotation = None
+        document.group.save()
+
+        # Calling parent
+        super(Quotation, document).post_delete(sender, document, **kwargs)
 
     def genere_reference(self, tenant_settings):
         """

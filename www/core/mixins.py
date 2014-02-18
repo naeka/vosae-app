@@ -4,28 +4,32 @@ from mongoengine import fields, signals
 
 
 __all__ = (
-    'ZombieMixin',
+    'RestorableMixin',
 )
 
 
-class ZombieMixin(object):
-    STATUSES = ('ACTIVE', 'INACTIVE')
-    DEFAULT_STATUS = 'ACTIVE'
-    DELETE_STATUS = 'INACTIVE'
+class RestorableMixin(object):
+    STATES = ('ACTIVE', 'DELETED')
+    DEFAULT_STATE = 'ACTIVE'
+    DELETE_STATE = 'DELETED'
 
-    status = fields.StringField(choices=STATUSES, required=True, default=DEFAULT_STATUS)
+    state = fields.StringField(choices=STATES, required=True, default=DEFAULT_STATE)
 
     def delete(self, force=False, *args, **kwargs):
         """
-        A :class:`~core.models.ZombieMixin` cannot be deleted: a lot of objects
-        refers to this. On delete, a specific status is applied.
+        A :class:`~core.models.RestorableMixin` cannot be deleted: a lot of objects
+        refers to this. On delete, a specific state is applied.
         """
         if force:
-            super(ZombieMixin, self).delete(*args, **kwargs)
+            super(RestorableMixin, self).delete(*args, **kwargs)
         else:
-            self.status = self.DELETE_STATUS
-            self.update(set__status=self.status)
+            self.state = self.DELETE_STATE
+            self.update(set__state=self.state)
             signals.post_delete.send(self.__class__, document=self)
+
+    @classmethod
+    def get_indexable_documents(cls, **kwargs):
+        return cls.objects.filter(state__ne=cls.DELETE_STATE, **kwargs)
 
 
 class AsyncTTLUploadsMixin(object):

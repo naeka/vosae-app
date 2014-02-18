@@ -46,7 +46,7 @@ class Organization(Entity, SearchDocumentMixin):
     def contacts(self):
         from contacts.models.contact import Contact
         if self._contacts is None:
-            self._contacts = Contact.objects.filter(status='ACTIVE', organization=self)
+            self._contacts = Contact.objects.filter(state='ACTIVE', organization=self)
         return self._contacts
 
     @contacts.setter

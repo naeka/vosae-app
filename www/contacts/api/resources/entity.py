@@ -4,7 +4,7 @@ from tastypie import fields as base_fields
 from tastypie.bundle import Bundle
 from tastypie_mongoengine import fields
 
-from core.api.utils import TenantResource, ZombieMixinResource, RemoveFilesOnReplaceMixinResource
+from core.api.utils import TenantResource, RestorableMixinResource, RemoveFilesOnReplaceMixinResource
 from contacts import imex as contacts_imex
 from contacts.api.doc import HELP_TEXT
 from contacts.tasks import entity_saved_task
@@ -17,7 +17,7 @@ __all__ = (
 )
 
 
-class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, NotificationAwareResourceMixin, TenantResource):
+class EntityResource(RestorableMixinResource, RemoveFilesOnReplaceMixinResource, NotificationAwareResourceMixin, TenantResource):
     TO_REMOVE_ON_REPLACE = ['photo']
 
     private = base_fields.BooleanField(
@@ -104,6 +104,12 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
         # Add timeline and notification entries
         entity_saved_task.delay(bundle.obj, created=created, issuer=bundle.request.vosae_user)
 
+    def is_restorable(self):
+        """
+        Entities are not (currently) restorable
+        """
+        return False
+
     def get_object_list(self, request):
         """
         Filters the queryset from private results.  
@@ -138,13 +144,3 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
             scheme = 'https' if bundle.request.is_secure() else 'http'
             return "{0}://{1}{2}".format(scheme, bundle.request.get_host(), bundle.data['photo_uri'])
         return bundle.data['photo_uri']
-
-    def get_resource_uri(self, bundle_or_obj=None):
-        if bundle_or_obj:
-            if isinstance(bundle_or_obj, Bundle):
-                if bundle_or_obj.obj.status != 'ACTIVE':
-                    return ''
-            else:
-                if bundle_or_obj.status != 'ACTIVE':
-                    return ''
-        return super(EntityResource, self).get_resource_uri(bundle_or_obj)

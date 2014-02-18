@@ -544,7 +544,7 @@ class VosaeUserResourceTest(VosaeApiTest):
         response = self.api_client.post(self.resourceListURI('user'), format='json', data=vosae_user_data)
         # Default user has this email, HTTP 409 expected
         self.assertHttpConflict(response)
-        self.assertEqual(response.content, u"A document with this email already exists. It can be waked up thanks to the X-WakeUp header (if in a DELETED/INACTIVE status)  or you can set different values")
+        self.assertEqual(response.content, u"A document with this email already exists. It can be restored thanks to the X-Restore header (if in a DELETED/INACTIVE state)  or you can set different values")
         vosae_user_data.update(email=u"nobody1@vosae.com")
         response = self.api_client.post(self.resourceListURI('user'), format='json', data=vosae_user_data)
         self.assertHttpCreated(response)
@@ -601,7 +601,7 @@ class VosaeUserResourceTest(VosaeApiTest):
         deserialized = self.deserialize(response)
         self.assertIn(u'core_access', deserialized.get('permissions'))
         self.assertNotIn(u'invoicing_access', deserialized.get('permissions'))
-        self.assertEqual(deserialized.get('status'), u'ACTIVE')
+        self.assertEqual(deserialized.get('state'), u'ACTIVE')
         self.assertEqual(deserialized.get('settings').get('language_code'), None)
 
         # XML
@@ -649,7 +649,7 @@ class VosaeUserResourceTest(VosaeApiTest):
         self.assertEqual(deserialized.get('email'), u'nobody1@vosae.com')  # Checks that it is immutable
         self.assertIn(u'core_access', deserialized.get('permissions'))
         self.assertIn(u'invoicing_access', deserialized.get('permissions'))
-        self.assertEqual(deserialized.get('status'), u'ACTIVE')
+        self.assertEqual(deserialized.get('state'), u'ACTIVE')
         self.assertEqual(deserialized.get('settings').get('email_signature'), u'An email signature')
 
         # XML
@@ -677,8 +677,8 @@ class VosaeUserResourceTest(VosaeApiTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertIn('status', deserialized)
-        self.assertEqual('DELETED', deserialized.get('status'))
+        self.assertIn('state', deserialized)
+        self.assertEqual('DELETED', deserialized.get('state'))
 
         # XML
         infos.update(serializer='xml')
@@ -714,9 +714,9 @@ class VosaeUserResourceTest(VosaeApiTest):
         vosae_user_data.update(email=u'nobody1@vosae.com')
         response = self.api_client.post(self.resourceListURI('user'), format='json', data=vosae_user_data)
         self.assertHttpConflict(response)
-        self.assertEqual(response.content, 'A document with this email already exists. It can be waked up thanks to the X-WakeUp header (if in a DELETED/INACTIVE status)  or you can set different values')
+        self.assertEqual(response.content, 'A document with this email already exists. It can be restored thanks to the X-Restore header (if in a DELETED/INACTIVE state)  or you can set different values')
 
-        response = self.api_client.post(self.resourceListURI('user'), format='json', data=vosae_user_data, HTTP_X_WAKEUP='ACTIVE')
+        response = self.api_client.post(self.resourceListURI('user'), format='json', data=vosae_user_data, HTTP_X_RESTORE='ACTIVE')
         self.assertHttpCreated(response)
         self.assertValidJSON(response.content)
 
@@ -790,4 +790,4 @@ class VosaeCorsMiddlewareProcessResponseTest(VosaeApiTest):
         self.assertTrue(response.has_header('Access-Control-Expose-Headers'))
         self.assertEqual(response['Access-Control-Allow-Credentials'], 'true')
         self.assertEqual(response['Access-Control-Allow-Origin'], 'https://localhost:8001')
-        self.assertEqual(response['Access-Control-Expose-Headers'], 'x-tenant, x-report-language, x-wakeup')
+        self.assertEqual(response['Access-Control-Expose-Headers'], 'x-tenant, x-report-language, x-restore')

@@ -23,7 +23,8 @@ QUOTATION_STATES = StateList((
     ("APPROVED", pgettext_lazy("quotation state", "Approved")),
     ("REFUSED", pgettext_lazy("quotation state", "Refused")),
     ("EXPIRED", pgettext_lazy("quotation state", "Expired")),
-    ("INVOICED", pgettext_lazy("quotation state", "Invoiced"))
+    ("INVOICED", pgettext_lazy("quotation state", "Invoiced")),
+    ("DELETED", pgettext_lazy("quotation state", "Deleted"))
 ))
 
 PURCHASE_ORDER_STATES = StateList((
@@ -31,7 +32,8 @@ PURCHASE_ORDER_STATES = StateList((
     ("AWAITING_APPROVAL", pgettext_lazy("purchase order state", "Awaiting approval")),
     ("APPROVED", pgettext_lazy("purchase order state", "Approved")),
     ("REFUSED", pgettext_lazy("purchase order state", "Refused")),
-    ("INVOICED", pgettext_lazy("purchase order state", "Invoiced"))
+    ("INVOICED", pgettext_lazy("purchase order state", "Invoiced")),
+    ("DELETED", pgettext_lazy("purchase order state", "Deleted"))
 ))
 
 DELIVERY_ORDER_STATES = StateList((
@@ -39,7 +41,8 @@ DELIVERY_ORDER_STATES = StateList((
     ("REGISTERED", pgettext_lazy("delivery order state", "Registered")),
     ("DELIVERED", pgettext_lazy("delivery order state", "Delivered")),
     ("REFUSED", pgettext_lazy("delivery order state", "Refused")),
-    ("INVOICED", pgettext_lazy("delivery order state", "Invoiced"))
+    ("INVOICED", pgettext_lazy("delivery order state", "Invoiced")),
+    ("DELETED", pgettext_lazy("delivery order state", "Deleted"))
 ))
 
 INVOICE_STATES = StateList((
@@ -48,7 +51,8 @@ INVOICE_STATES = StateList((
     ("OVERDUE", pgettext_lazy("invoice state", "Overdue")),
     ("PART_PAID", pgettext_lazy("invoice state", "Part paid")),
     ("PAID", pgettext_lazy("invoice state", "Paid")),
-    ("CANCELLED", pgettext_lazy("invoice state", "Cancelled"))
+    ("CANCELLED", pgettext_lazy("invoice state", "Cancelled")),
+    ("DELETED", pgettext_lazy("invoice state", "Deleted"))
 ))
 
 CREDIT_NOTE_STATES = StateList((

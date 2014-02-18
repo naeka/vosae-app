@@ -6,14 +6,14 @@ from vosae_utils import SearchDocumentMixin
 from pyes import mappings as search_mappings
 
 from core.tasks import es_document_index, es_document_deindex
-from core.mixins import ZombieMixin
+from core.mixins import RestorableMixin
 from invoicing import ITEM_TYPES
 
 
 __all__ = ('Item',)
 
 
-class Item(ZombieMixin, Document, SearchDocumentMixin):
+class Item(RestorableMixin, Document, SearchDocumentMixin):
 
     """An item represents an invoicable product or service."""
     TYPES = ITEM_TYPES
@@ -52,10 +52,6 @@ class Item(ZombieMixin, Document, SearchDocumentMixin):
             'description': self.description,
             'type': self.type
         }
-
-    @classmethod
-    def get_indexable_documents(cls, **kwargs):
-        return cls.objects.filter(status='ACTIVE', **kwargs)
 
     @classmethod
     def post_save(self, sender, document, created, **kwargs):

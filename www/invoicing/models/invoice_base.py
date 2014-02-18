@@ -14,7 +14,7 @@ from mongoengine import Document, fields, PULL
 from decimal import Decimal, ROUND_HALF_UP
 import uuid
 
-from core.mixins import AsyncTTLUploadsMixin
+from core.mixins import AsyncTTLUploadsMixin, RestorableMixin
 from core.tasks import es_document_index, es_document_deindex
 from core.fields import NotPrivateReferenceField
 
@@ -22,17 +22,13 @@ from invoicing import ACCOUNT_TYPES, HISTORY_STATES, STATES_RESET_CACHED_DATA, I
 from invoicing import signals as invoicing_signals
 from invoicing.models.embedded.invoice_history_entries import *
 from invoicing.exceptions import NotDeletableInvoice
-from invoicing.tasks import (
-    invoicebase_changed_state_task,
-    invoicebase_deleted_task
-)
+from invoicing.tasks import invoicebase_changed_state_task
 
 from notification.mixins import NotificationAwareDocumentMixin
 from vosae_utils import respect_language
 
 
 __all__ = ('InvoiceBase', 'InvoiceBaseGroup')
-
 
 
 class InvoiceBaseGroup(Document):
@@ -46,9 +42,10 @@ class InvoiceBaseGroup(Document):
     invoice = fields.ReferenceField("Invoice")
     invoices_cancelled = fields.ListField(fields.ReferenceField("Invoice"))
     credit_notes = fields.ListField(fields.ReferenceField("CreditNote"))
+    deleted_documents = fields.ListField(fields.ReferenceField("InvoiceBase"))
 
 
-class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin):
+class InvoiceBase(RestorableMixin, Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin):
 
     """Base class for all quotations and invoices (either payable or receivable)."""
     ACCOUNT_TYPES = ACCOUNT_TYPES
@@ -149,7 +146,6 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
         - Deletes related attachments, if exists
         - De-index invoice based document from elasticsearch
-        - Removes timeline and notification entries
         """
         # Deletes related attachments, if exists
         for attachment in document.attachments:
@@ -157,9 +153,6 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
         # De-index invoice based document from elasticsearch
         es_document_deindex.delay(document)
-
-        # Removes timeline and notification entries
-        invoicebase_deleted_task.delay(document)
 
     @classmethod
     def post_client_changed_invoice_state(cls, sender, issuer, document, previous_state, **kwargs):

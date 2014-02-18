@@ -22,8 +22,9 @@ class PurchaseOrder(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
     TYPE = "PURCHASE_ORDER"
     RECORD_NAME = _("Purchase order")
     STATES = PURCHASE_ORDER_STATES
+    DEFAULT_STATE = PURCHASE_ORDER_STATES.DRAFT
 
-    state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
+    state = fields.StringField(required=True, choices=STATES, default=DEFAULT_STATE)
     current_revision = fields.EmbeddedDocumentField("PurchaseOrderRevision", required=True)
     revisions = fields.ListField(fields.EmbeddedDocumentField("PurchaseOrderRevision"))
 
@@ -91,6 +92,21 @@ class PurchaseOrder(InvoiceBase, InvoiceMakableMixin, SearchDocumentMixin):
 
         # Calling parent
         super(PurchaseOrder, document).post_save(sender, document, created, **kwargs)
+
+    @classmethod
+    def post_delete(self, sender, document, **kwargs):
+        """
+        Post delete hook handler
+
+        - Update group relations
+        """
+        # Update group relations
+        document.group.deleted_documents.append(document)
+        document.group.purchase_order = None
+        document.group.save()
+
+        # Calling parent
+        super(PurchaseOrder, document).post_delete(sender, document, **kwargs)
 
     def genere_reference(self, tenant_settings):
         """

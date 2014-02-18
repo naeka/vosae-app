@@ -70,7 +70,7 @@ class Statistics(DynamicDocument):
         """
         from core.models import VosaeUser
         if document.USED_BY:
-            for user_id in VosaeUser.objects.filter(tenant=document.tenant, status='ACTIVE').values_list('id'):
+            for user_id in VosaeUser.objects.filter(tenant=document.tenant, state='ACTIVE').values_list('id'):
                 emit_to_channel(u'private-user-{0}'.format(unicode(user_id)), u'statistics-update', {
                     u'statistics': document.USED_BY
                 })

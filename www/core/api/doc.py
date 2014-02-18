@@ -39,7 +39,7 @@ HELP_TEXT = {
         'groups': 'List of the user\'s groups',
         'settings': 'User\'s personal settings',
         'full_name': 'User\'s full name',
-        'status': 'User\'s status. One of ["ACTIVE", "DISABLED"]',
+        'state': 'User\'s state. One of ["ACTIVE", "DISABLED"]',
         'photo_uri': 'User\'s photo URI',
         'email': 'User\'s email address',
         'specific_permissions': 'A dictionnary of user\'s specific permissions: groups permissions are applied and these ones allow fine-grained perms per user',
@@ -62,7 +62,7 @@ HELP_TEXT = {
         'created_at': 'File\'s creation datetime',
         'modified_at': 'File\'s last modification datetime',
     },
-    'zombie_mixin': {
-        'status': 'The current status of the resource.\nDepending on the resource type, it can be "ACTIVE", "DELETED", "DISABLED", [...].\nOnly included on detail requests'
+    'restorable_mixin': {
+        'state': 'The current state of the resource.\nDepending on the resource type, it can be "ACTIVE", "DELETED", "DISABLED", [...].\nOnly included on detail requests'
     }
 }

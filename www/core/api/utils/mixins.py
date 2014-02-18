@@ -16,7 +16,7 @@ from tastypie_mongoengine.resources import MongoEngineResource
 import mimetypes
 
 from core.models import Tenant, VosaeUser
-from core.api.utils.exceptions import TenantNotProvided, ZombiePostConflict
+from core.api.utils.exceptions import TenantNotProvided, RestorablePostConflict
 from core.api.utils.metaclass import VosaeModelDeclarativeMetaclass
 from core.api.doc import HELP_TEXT
 
@@ -26,8 +26,7 @@ __all__ = (
     'TenantRequiredOnPutMixinResource',
     'MultipartMixinResource',
     'VosaeIMEXMixinResource',
-    'ZombieMixinResource',
-    'WakeUpMixinResource',
+    'RestorableMixinResource',
     'RemoveFilesOnReplaceMixinResource'
 )
 
@@ -89,9 +88,7 @@ class MultipartMixinResource(object):
 
 class VosaeIMEXMixinResource(object):
 
-    """
-    Mixin for import/export operations
-    """
+    """Mixin for import/export operations"""
 
     def get_serializer(self, slug_or_mimetype):
         for serializer in self._meta.available_imex_serializers:
@@ -104,9 +101,7 @@ class VosaeIMEXMixinResource(object):
         raise Exception('Serializer not available')
 
     def prepend_urls(self):
-        """
-        Add urls for resources import/export.
-        """
+        """Add urls for resources import/export."""
         urls = []
         if self._meta.available_imex_serializers:
             imex_serializers = '|'.join([s.type_slug for s in self._meta.available_imex_serializers])
@@ -199,56 +194,57 @@ class VosaeIMEXMixinResource(object):
         raise NotImplementedError("Can't export directly. Needs subclassing.")
 
 
-class ZombieMixinResource(MongoEngineResource):
+class RestorableMixinResource(MongoEngineResource):
 
     """
-    Zombie resources can not be deleted. A special status flag is set.
-    Zombie can still be accessed, but only on a detail request.
+    Restorable resources can not be deleted. A special state flag is set.  
+    Restorable can still be accessed, but only on a detail request.
     """
     __metaclass__ = VosaeModelDeclarativeMetaclass
 
-    status = base_fields.CharField(
-        attribute='status',
+    state = base_fields.CharField(
+        attribute='state',
         use_in='detail',
         readonly=True,
-        help_text=HELP_TEXT['zombie_mixin']['status']
+        help_text=HELP_TEXT['restorable_mixin']['state']
     )
 
+    def is_restorable(self):
+        """By default, always restorable"""
+        return True
+
     def get_object_list(self, request):
-        """
-        Only display non-INACTIVE elements when getting list
-        """
+        """Only display non-DELETED elements when getting list"""
         if request.method.lower() == 'get' and request.resolver_match.url_name == 'api_dispatch_list':
-            return super(ZombieMixinResource, self).get_object_list(request).filter(status__ne=self._meta.object_class.DELETE_STATUS)
-        return super(ZombieMixinResource, self).get_object_list(request)
-
-
-class WakeUpMixinResource(object):
-
-    """Mixin used to "wake up" (usually re-activate) a resource"""
+            return super(RestorableMixinResource, self).get_object_list(request).filter(state__ne=self._meta.object_class.DELETE_STATE)
+        return super(RestorableMixinResource, self).get_object_list(request)
 
     def obj_create(self, bundle, **kwargs):
         try:
-            return super(WakeUpMixinResource, self).obj_create(bundle, **kwargs)
+            return super(RestorableMixinResource, self).obj_create(bundle, **kwargs)
         except NotUniqueError:
             unique_fields = [field_name for field_name, field in self._meta.object_class._fields.iteritems() if field.unique]
 
-            # If the header is set, try to wake up the document
+            # If the header is set, try to restore the document
             # Moving to the update process
-            if bundle.request.META.get('HTTP_X_WAKEUP'):
+            if self.is_restorable() and bundle.request.META.get('HTTP_X_RESTORE'):
                 filter_kwargs = {}
                 for field in unique_fields:
                     filter_kwargs[field] = bundle.data.get(field)
                 bundle.obj = self.get_object_list(bundle.request).filter(**filter_kwargs)[0]
-                bundle.obj.status = bundle.request.META.get('HTTP_X_WAKEUP')
+                bundle.obj.state = bundle.request.META.get('HTTP_X_RESTORE')
                 return self.obj_update(bundle, **kwargs)
 
             # If the header is not set, raise an explicative error message
             if len(unique_fields) == 1:
-                err_msg = 'A document with this {0} already exists. It can be waked up thanks to the X-WakeUp header (if in a DELETED/INACTIVE status)  or you can set different values'.format(*unique_fields)
+                err_msg = 'A document with this {0} already exists. It can be restored thanks to the X-Restore header (if in a DELETED/INACTIVE state)  or you can set different values'.format(*unique_fields)
             else:
-                err_msg = 'A document with these {0} already exists. It can be waked up thanks to the X-WakeUp header (if in a DELETED/INACTIVE status)  or you can set different values'.format(', '.join(unique_fields))
-            raise ZombiePostConflict(http.HttpConflict(err_msg))
+                err_msg = 'A document with these {0} already exists. It can be restored thanks to the X-Restore header (if in a DELETED/INACTIVE state)  or you can set different values'.format(', '.join(unique_fields))
+            raise RestorablePostConflict(http.HttpConflict(err_msg))
+
+    def authorized_update_detail(self, object_list, bundle):
+        if bundle.obj and bundle.obj.state == bundle.obj.DELETE_STATE:
+            raise BadRequest('A deleted document can\'t be updated')
 
 
 class RemoveFilesOnReplaceMixinResource(object):

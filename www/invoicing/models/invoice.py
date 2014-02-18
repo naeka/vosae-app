@@ -27,9 +27,10 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
     TYPE = "INVOICE"
     RECORD_NAME = _("Invoice")
     STATES = INVOICE_STATES
+    DEFAULT_STATE = INVOICE_STATES.DRAFT
 
     has_temporary_reference = fields.BooleanField(required=True, default=True)
-    state = fields.StringField(required=True, choices=STATES, default=STATES.DRAFT)
+    state = fields.StringField(required=True, choices=STATES, default=DEFAULT_STATE)
     current_revision = fields.EmbeddedDocumentField("InvoiceRevision", required=True)
     revisions = fields.ListField(fields.EmbeddedDocumentField("InvoiceRevision"))
     paid = fields.DecimalField(required=True, default=lambda: Decimal('0.00'))
@@ -115,6 +116,7 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
         Post delete hook handler
 
         - Update related quotation to remove linked invoices references
+        - Update group relations
         """
         # Update related quotation
         if document.group.quotation:
@@ -129,6 +131,11 @@ class Invoice(InvoiceBase, SearchDocumentMixin):
             document.group.purchase_order.remove_invoiced_state()
             # Saves updates
             document.group.purchase_order.save()
+
+        # Update group relations
+        document.group.deleted_documents.append(document)
+        document.group.invoice = None
+        document.group.save()
 
         # Calling parent
         super(Invoice, document).post_delete(sender, document, **kwargs)

@@ -25,8 +25,9 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
     TYPE = "CREDIT_NOTE"
     RECORD_NAME = _("Credit note")
     STATES = CREDIT_NOTE_STATES
+    DEFAULT_STATE = CREDIT_NOTE_STATES.REGISTERED
 
-    state = fields.StringField(required=True, choices=STATES, default=STATES.REGISTERED)
+    state = fields.StringField(required=True, choices=STATES, default=DEFAULT_STATE)
     current_revision = fields.EmbeddedDocumentField("CreditNoteRevision", required=True)
     revisions = fields.ListField(fields.EmbeddedDocumentField("CreditNoteRevision"))
     related_to = MultipleReferencesField(document_types=['DownPaymentInvoice', 'Invoice'])

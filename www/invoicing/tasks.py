@@ -338,24 +338,3 @@ def post_cancel_invoice_task(issuer, document, credit_note):
     timeline_entry.save()
     for notification in notification_list:
         notification.save()
-
-
-@task()
-def invoicebase_deleted_task(document):
-    from timeline.models import TimelineEntry
-    from notification.models import Notification
-    if document.is_quotation():
-        TimelineEntry.objects.filter(tenant=document.tenant, quotation=document).delete()
-        Notification.objects.filter(tenant=document.tenant, quotation=document).delete()
-    elif document.is_purchase_order():
-        TimelineEntry.objects.filter(tenant=document.tenant, purchase_order=document).delete()
-        Notification.objects.filter(tenant=document.tenant, purchase_order=document).delete()
-    elif document.is_invoice():
-        TimelineEntry.objects.filter(tenant=document.tenant, invoice=document).delete()
-        Notification.objects.filter(tenant=document.tenant, invoice=document).delete()
-    elif document.is_down_payment_invoice():
-        TimelineEntry.objects.filter(tenant=document.tenant, down_payment_invoice=document).delete()
-        Notification.objects.filter(tenant=document.tenant, down_payment_invoice=document).delete()
-    elif document.is_credit_note():
-        TimelineEntry.objects.filter(tenant=document.tenant, credit_note=document).delete()
-        Notification.objects.filter(tenant=document.tenant, credit_note=document).delete()

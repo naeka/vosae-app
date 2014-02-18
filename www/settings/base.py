@@ -213,12 +213,12 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-tenant',
     'x-report-language',
-    'x-wakeup'
+    'x-restore'
 )
 CORS_EXPOSE_HEADERS = (
     'x-tenant',
     'x-report-language',
-    'x-wakeup'
+    'x-restore'
 )
 
 ES_SERVERS = [

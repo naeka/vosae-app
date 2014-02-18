@@ -184,8 +184,8 @@ class OrganizationResourceTest(VosaeApiTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertIn('status', deserialized)
-        self.assertEqual('DELETED', deserialized.get('status'))
+        self.assertIn('state', deserialized)
+        self.assertEqual('DELETED', deserialized.get('state'))
 
         # XML
         infos.update(serializer='xml')
@@ -372,8 +372,8 @@ class ContactResourceTest(VosaeApiTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertIn('status', deserialized)
-        self.assertEqual('DELETED', deserialized.get('status'))
+        self.assertIn('state', deserialized)
+        self.assertEqual('DELETED', deserialized.get('state'))
 
         # XML
         infos.update(serializer='xml')

@@ -333,8 +333,8 @@ class TaxResourceTest(VosaeApiTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertIn('status', deserialized)
-        self.assertEqual('INACTIVE', deserialized.get('status'))
+        self.assertIn('state', deserialized)
+        self.assertEqual('DELETED', deserialized.get('state'))
 
         # XML
         infos.update(serializer='xml')
@@ -365,7 +365,7 @@ class TaxResourceTest(VosaeApiTest):
         response = self.api_client.delete(self.resourceListURI('tax'), format='yaml')
         self.assertHttpMethodNotAllowed(response)
 
-    def test_08_repost_inactive(self):
+    def test_08_repost_deleted(self):
         # JSON
         # No uniqueness constraint with taxes, repost should be accepted
         response = self.api_client.post(self.resourceListURI('tax'), format='json', data=tax_data)
@@ -521,8 +521,8 @@ class ItemResourceTest(VosaeApiTest):
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
         self.assertValidJSONResponse(response)
         deserialized = self.deserialize(response)
-        self.assertIn('status', deserialized)
-        self.assertEqual('INACTIVE', deserialized.get('status'))
+        self.assertIn('state', deserialized)
+        self.assertEqual('DELETED', deserialized.get('state'))
 
         # XML
         infos.update(serializer='xml')
@@ -553,13 +553,13 @@ class ItemResourceTest(VosaeApiTest):
         response = self.api_client.delete(self.resourceListURI('item'), format='yaml')
         self.assertHttpMethodNotAllowed(response)
 
-    def test_08_repost_inactive(self):
+    def test_08_repost_deleted(self):
         # JSON
         response = self.api_client.post(self.resourceListURI('item'), format='json', data=item_data)
         self.assertHttpConflict(response)
-        self.assertEqual(response.content, 'A document with this reference already exists. It can be waked up thanks to the X-WakeUp header (if in a DELETED/INACTIVE status)  or you can set different values')
+        self.assertEqual(response.content, 'A document with this reference already exists. It can be restored thanks to the X-Restore header (if in a DELETED/INACTIVE state)  or you can set different values')
 
-        response = self.api_client.post(self.resourceListURI('item'), format='json', data=item_data, HTTP_X_WAKEUP='ACTIVE')
+        response = self.api_client.post(self.resourceListURI('item'), format='json', data=item_data, HTTP_X_RESTORE='ACTIVE')
         self.assertHttpCreated(response)
         self.assertValidJSON(response.content)
 
@@ -1216,7 +1216,14 @@ class QuotationResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('json_uri2'), format='json')
-        self.assertHttpNotFound(response)
+        self.assertValidJSONResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('quotation'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_list = self.deserialize(response)
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [quotation['resource_uri'] for quotation in deserialized_list.get('objects')])
 
         # XML
         infos.update(serializer='xml')
@@ -1226,7 +1233,14 @@ class QuotationResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('xml_uri2'), format='xml')
-        self.assertHttpNotFound(response)
+        self.assertValidXMLResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('quotation'), format='xml')
+        self.assertValidXMLResponse(response)
+        deserialized_list = self.serializer.deserialize(self.api_client.replace_root_tag(response.content, 'request'), format=self.api_client.get_content_type('xml'))
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [quotation['resource_uri'] for quotation in deserialized_list])
 
         # YAML
         infos.update(serializer='yaml')
@@ -1236,7 +1250,14 @@ class QuotationResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('yaml_uri2'), format='yaml')
-        self.assertHttpNotFound(response)
+        self.assertValidYAMLResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('quotation'), format='yaml')
+        self.assertValidYAMLResponse(response)
+        deserialized_list = self.deserialize(response)
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [quotation['resource_uri'] for quotation in deserialized_list.get('objects')])
 
     def test_12_delete_list(self):
         # JSON
@@ -1634,7 +1655,14 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('json_uri2'), format='json')
-        self.assertHttpNotFound(response)
+        self.assertValidJSONResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('purchase_order'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_list = self.deserialize(response)
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [purchase_order['resource_uri'] for purchase_order in deserialized_list.get('objects')])
 
         # XML
         infos.update(serializer='xml')
@@ -1644,7 +1672,14 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('xml_uri2'), format='xml')
-        self.assertHttpNotFound(response)
+        self.assertValidXMLResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('purchase_order'), format='xml')
+        self.assertValidXMLResponse(response)
+        deserialized_list = self.serializer.deserialize(self.api_client.replace_root_tag(response.content, 'request'), format=self.api_client.get_content_type('xml'))
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [purchase_order['resource_uri'] for purchase_order in deserialized_list])
 
         # YAML
         infos.update(serializer='yaml')
@@ -1654,7 +1689,14 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('yaml_uri2'), format='yaml')
-        self.assertHttpNotFound(response)
+        self.assertValidYAMLResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('purchase_order'), format='yaml')
+        self.assertValidYAMLResponse(response)
+        deserialized_list = self.deserialize(response)
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [purchase_order['resource_uri'] for purchase_order in deserialized_list.get('objects')])
 
     def test_11_delete_list(self):
         # JSON
@@ -2064,7 +2106,14 @@ class InvoiceResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('json_uri2'), format='json')
-        self.assertHttpNotFound(response)
+        self.assertValidJSONResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('invoice'), format='json')
+        self.assertValidJSONResponse(response)
+        deserialized_list = self.deserialize(response)
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [invoice['resource_uri'] for invoice in deserialized_list.get('objects')])
 
         # XML
         infos.update(serializer='xml')
@@ -2074,7 +2123,14 @@ class InvoiceResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('xml_uri2'), format='xml')
-        self.assertHttpNotFound(response)
+        self.assertValidXMLResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('invoice'), format='xml')
+        self.assertValidXMLResponse(response)
+        deserialized_list = self.serializer.deserialize(self.api_client.replace_root_tag(response.content, 'request'), format=self.api_client.get_content_type('xml'))
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [invoice['resource_uri'] for invoice in deserialized_list])
 
         # YAML
         infos.update(serializer='yaml')
@@ -2084,7 +2140,14 @@ class InvoiceResourceTest(InvoiceBaseResourceTest):
         self.assertHttpAccepted(response)
         self.save_test_result(infos, response)
         response = self.api_client.get(cached_data.get('yaml_uri2'), format='yaml')
-        self.assertHttpNotFound(response)
+        self.assertValidYAMLResponse(response)  # Direct access is possible (DELETED state)
+        deserialized = self.deserialize(response)
+        self.assertEqual(deserialized['state'], "DELETED")
+        response = self.api_client.get(self.resourceListURI('invoice'), format='yaml')
+        self.assertValidYAMLResponse(response)
+        deserialized_list = self.deserialize(response)
+        # Should not be listed (DELETED state)
+        self.assertNotIn(deserialized['resource_uri'], [invoice['resource_uri'] for invoice in deserialized_list.get('objects')])
 
     def test_12_cancel(self):
         # JSON

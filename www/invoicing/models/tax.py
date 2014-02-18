@@ -2,14 +2,14 @@
 
 from mongoengine import Document, fields
 
-from core.mixins import ZombieMixin
+from core.mixins import RestorableMixin
 from invoicing.exceptions import InvalidTaxRate
 
 
 __all__ = ('Tax',)
 
 
-class Tax(ZombieMixin, Document):
+class Tax(RestorableMixin, Document):
     """A tax is associated to :class:`~invoicing.models.Item`\ s and :class:`~invoicing.models.InvoiceItem`\ s."""
     tenant = fields.ReferenceField("Tenant", required=True)
     name = fields.StringField(required=True, max_length=64)
