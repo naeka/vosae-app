@@ -6,6 +6,8 @@ from timeline.models.invoicing_entries.invoicing_timeline_entry import Invoicing
 
 from timeline.models.invoicing_entries import invoicebase_saved
 from timeline.models.invoicing_entries.invoicebase_saved import *
+from timeline.models.invoicing_entries import invoicebase_deleted
+from timeline.models.invoicing_entries.invoicebase_deleted import *
 from timeline.models.invoicing_entries import invoicebase_changed_state
 from timeline.models.invoicing_entries.invoicebase_changed_state import *
 from timeline.models.invoicing_entries import make_purchase_order
@@ -18,6 +20,7 @@ from timeline.models.invoicing_entries.invoice_cancelled import *
 
 __all__ = (
     invoicebase_saved.__all__ +
+    invoicebase_deleted.__all__ +
     invoicebase_changed_state.__all__ +
     make_purchase_order.__all__ +
     make_invoice.__all__ +
@@ -31,17 +34,20 @@ SIGNALS
 
 
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_quotation, sender=QuotationSaved)
+signals.pre_save.connect(InvoicingTimelineEntry.pre_save_quotation, sender=QuotationDeleted)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_quotation, sender=QuotationChangedState)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_quotation, sender=QuotationMakePurchaseOrder)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_quotation, sender=QuotationMakeInvoice)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_quotation, sender=QuotationMakeDownPaymentInvoice)
 
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_purchase_order, sender=PurchaseOrderSaved)
+signals.pre_save.connect(InvoicingTimelineEntry.pre_save_purchase_order, sender=PurchaseOrderDeleted)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_purchase_order, sender=PurchaseOrderChangedState)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_purchase_order, sender=PurchaseOrderMakeInvoice)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_purchase_order, sender=PurchaseOrderMakeDownPaymentInvoice)
 
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_invoice, sender=InvoiceSaved)
+signals.pre_save.connect(InvoicingTimelineEntry.pre_save_invoice, sender=InvoiceDeleted)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_invoice, sender=InvoiceChangedState)
 signals.pre_save.connect(InvoicingTimelineEntry.pre_save_invoice, sender=InvoiceCancelled)
 
@@ -54,14 +60,17 @@ signals.pre_save.connect(InvoicingTimelineEntry.pre_save_credit_note, sender=Cre
 
 
 signals.post_save.connect(TimelineEntry.post_save, sender=QuotationSaved)
+signals.post_save.connect(TimelineEntry.post_save, sender=QuotationDeleted)
 signals.post_save.connect(TimelineEntry.post_save, sender=QuotationChangedState)
 signals.post_save.connect(TimelineEntry.post_save, sender=QuotationMakeInvoice)
 signals.post_save.connect(TimelineEntry.post_save, sender=QuotationMakeDownPaymentInvoice)
 signals.post_save.connect(TimelineEntry.post_save, sender=PurchaseOrderSaved)
+signals.post_save.connect(TimelineEntry.post_save, sender=PurchaseOrderDeleted)
 signals.post_save.connect(TimelineEntry.post_save, sender=PurchaseOrderChangedState)
 signals.post_save.connect(TimelineEntry.post_save, sender=PurchaseOrderMakeInvoice)
 signals.post_save.connect(TimelineEntry.post_save, sender=PurchaseOrderMakeDownPaymentInvoice)
 signals.post_save.connect(TimelineEntry.post_save, sender=InvoiceSaved)
+signals.post_save.connect(TimelineEntry.post_save, sender=InvoiceDeleted)
 signals.post_save.connect(TimelineEntry.post_save, sender=InvoiceChangedState)
 signals.post_save.connect(TimelineEntry.post_save, sender=InvoiceCancelled)
 signals.post_save.connect(TimelineEntry.post_save, sender=DownPaymentInvoiceSaved)

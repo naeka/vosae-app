@@ -28,6 +28,15 @@ HELP_TEXT = {
         'organization': 'The related organization',
         'has_temporary_reference': 'Invoice/Down-payment invoice temporary reference status',
     },
+    'invoicebase_deleted': {
+        'quotation_reference': 'The reference of the quotation',
+        'purchase_order_reference': 'The reference of the purchase order',
+        'invoice_reference': 'The reference of the invoice',
+        'quotation': 'The quotation saved',
+        'purchase_order': 'The purchase order saved',
+        'invoice': 'The invoice saved',
+        'customer_display': 'Customer\'s representation',
+    },
     'invoicebase_changed_state': {
         'quotation': 'Quotation whose state has changed',
         'purchase_order': 'Purchase order whose state has changed',

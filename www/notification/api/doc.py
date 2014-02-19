@@ -20,6 +20,12 @@ HELP_TEXT = {
         'customer_display': 'Customer\'s representation',
         'has_temporary_reference': 'Invoice/Down-payment invoice temporary reference status',
     },
+    'invoicebase_deleted': {
+        'quotation': 'Quotation deleted',
+        'purchase_order': 'Purchase order deleted',
+        'invoice': 'Invoice deleted',
+        'customer_display': 'Customer\'s representation',
+    },
     'invoicebase_changed_state': {
         'quotation': 'Quotation whose state has changed',
         'purchase_order': 'Purchase order whose state has changed',

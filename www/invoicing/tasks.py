@@ -30,8 +30,7 @@ def invoicebase_saved_task(issuer, document, created):
                     tenant=document.tenant,
                     recipient=subscriber,
                     issuer=issuer,
-                    quotation=document,
-                    created=created
+                    quotation=document
                 ))
     elif document.is_purchase_order():
         timeline_entry = timeline_entries.PurchaseOrderSaved(
@@ -46,8 +45,7 @@ def invoicebase_saved_task(issuer, document, created):
                     tenant=document.tenant,
                     recipient=subscriber,
                     issuer=issuer,
-                    purchase_order=document,
-                    created=created
+                    purchase_order=document
                 ))
     elif document.is_invoice():
         timeline_entry = timeline_entries.InvoiceSaved(
@@ -62,8 +60,7 @@ def invoicebase_saved_task(issuer, document, created):
                     tenant=document.tenant,
                     recipient=subscriber,
                     issuer=issuer,
-                    invoice=document,
-                    created=created
+                    invoice=document
                 ))
     elif document.is_down_payment_invoice():
         timeline_entry = timeline_entries.DownPaymentInvoiceSaved(
@@ -78,8 +75,7 @@ def invoicebase_saved_task(issuer, document, created):
                     tenant=document.tenant,
                     recipient=subscriber,
                     issuer=issuer,
-                    down_payment_invoice=document,
-                    created=created
+                    down_payment_invoice=document
                 ))
     elif document.is_credit_note():
         timeline_entry = timeline_entries.CreditNoteSaved(
@@ -94,8 +90,57 @@ def invoicebase_saved_task(issuer, document, created):
                     tenant=document.tenant,
                     recipient=subscriber,
                     issuer=issuer,
-                    credit_note=document,
-                    created=created
+                    credit_note=document
+                ))
+    timeline_entry.save()
+    for notification in notification_list:
+        notification.save()
+
+
+@task()
+def invoicebase_deleted_task(issuer, document):
+    notification_list = []
+    if document.is_quotation():
+        timeline_entry = timeline_entries.QuotationDeleted(
+            tenant=document.tenant,
+            issuer=issuer,
+            quotation=document
+        )
+        if not created:
+            for subscriber in set(document.subscribers).difference([issuer]):
+                notification_list.append(notifications.QuotationDeleted(
+                    tenant=document.tenant,
+                    recipient=subscriber,
+                    issuer=issuer,
+                    quotation=document
+                ))
+    elif document.is_purchase_order():
+        timeline_entry = timeline_entries.PurchaseOrderDeleted(
+            tenant=document.tenant,
+            issuer=issuer,
+            purchase_order=document
+        )
+        if not created:
+            for subscriber in set(document.subscribers).difference([issuer]):
+                notification_list.append(notifications.PurchaseOrderDeleted(
+                    tenant=document.tenant,
+                    recipient=subscriber,
+                    issuer=issuer,
+                    purchase_order=document
+                ))
+    elif document.is_invoice():
+        timeline_entry = timeline_entries.InvoiceDeleted(
+            tenant=document.tenant,
+            issuer=issuer,
+            invoice=document
+        )
+        if not created:
+            for subscriber in set(document.subscribers).difference([issuer]):
+                notification_list.append(notifications.InvoiceDeleted(
+                    tenant=document.tenant,
+                    recipient=subscriber,
+                    issuer=issuer,
+                    invoice=document
                 ))
     timeline_entry.save()
     for notification in notification_list:
