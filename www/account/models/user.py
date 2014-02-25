@@ -105,6 +105,7 @@ class ActivationMixin(models.Model):
         message = EmailMultiAlternatives(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
                                          to=[self.email], body=text_body)
         message.attach_alternative(html_body, "text/html")
+        message.tags = ["signup"]
         message.send()
 
     def send_associated_to_tenant_email(self, tenant):
@@ -130,6 +131,7 @@ class ActivationMixin(models.Model):
         message = EmailMultiAlternatives(subject=subject, from_email=settings.DEFAULT_FROM_EMAIL,
                                          to=[self.email], body=text_body)
         message.attach_alternative(html_body, "text/html")
+        message.tags = ["associated_to_tenant"]
         message.send()
 
     def set_activation_key(self):

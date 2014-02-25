@@ -196,5 +196,6 @@ class PasswordResetForm(forms.Form):
                 html_email = loader.render_to_string(html_email_template_name, c)
                 message.attach_alternative(html_email, "text/html")
             
+            message.tags = ["password_reset"]
             message.send()
 
