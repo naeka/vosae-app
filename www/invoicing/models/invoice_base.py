@@ -300,6 +300,8 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             current_revision = self.current_revision
             if current_revision:
                 for item in current_revision.line_items:
+                    if item.optional:
+                        continue
                     if taxes_amounts.get(str(item.tax.id)):
                         taxes_amounts[str(item.tax.id)]["amount"] += (item.quantity * item.unit_price * item.tax.rate).quantize(Decimal('1.00'), ROUND_HALF_UP)
                     else:
