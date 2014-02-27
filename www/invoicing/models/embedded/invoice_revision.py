@@ -165,6 +165,7 @@ class InvoiceRevision(NoOptionalLineItemsMixin, BaseRevision):
     invoicing_date = DateField()
     due_date = DateField()
 
+
 class CreditNoteRevision(NoOptionalLineItemsMixin, BaseRevision):
 
     """

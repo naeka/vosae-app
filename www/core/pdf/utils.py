@@ -6,7 +6,6 @@ from reportlab.platypus import (
     PageBreak,
     Paragraph as _Paragraph
 )
-import re
 
 
 __all__ = (
@@ -18,21 +17,13 @@ __all__ = (
 
 def sanitize(text):
     """
-    Replace interpreted chars and strip non allowed tags.
+    Replace interpreted chars.
     """
     REPLACE_MAP = [
         (u'&', '&#38;'),
-        (u'\n', '<br />'),
-        (u'\r', ''),
+        (u'<br>', '<br />'),  # No need with reportlab 3.0+ ?
     ]
-    ALLOWED_TAGS = ['b', 'i', 'u']
 
-    # Strip not allowed tags
-    allowed_tags_re = u'({0})'.format(u'|'.join(ALLOWED_TAGS))
-    striptags_re = re.compile(ur'</(?!{0}).*?>|<(?!/)(?!{0}).*?>'.format(allowed_tags_re), re.U)
-    text = striptags_re.sub(u'', text)
-
-    # Replace interpreted chars
     for p, q in REPLACE_MAP:
         text = text.replace(p, q)
     return text

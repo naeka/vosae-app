@@ -32,7 +32,6 @@ __all__ = ('InvoiceBaseReport',)
 
 class InvoiceBaseReport(Report):
     """Base class for all InvoiceBase documents reports"""
-    
     def __init__(self, report_settings, invoice_base, *args, **kwargs):
         from invoicing.models import InvoiceBase
         if not isinstance(invoice_base, InvoiceBase):
@@ -256,7 +255,7 @@ class InvoiceBaseReport(Report):
         # Billing address
         self.next_frame()
         self.fill_billing_address()
-        
+
         # Delivery address
         self.next_frame()
         self.fill_delivery_address()
@@ -274,7 +273,6 @@ class InvoiceBaseReport(Report):
         # Legal notice
         self.fill_legal_notice()
 
-
     def fill_sender(self):
         """Fills sender identity"""
         from reportlab.platypus.flowables import Image
@@ -285,7 +283,7 @@ class InvoiceBaseReport(Report):
             sender_paragraphs.append(Paragraph(self.invoice_base.current_revision.sender, self.style['Small']))
         sender_paragraphs.append(Paragraph(self.invoice_base.tenant.name, self.style['Small']))
         if self.invoice_base.current_revision.sender_address:
-            sender_paragraphs.append(Paragraph(u'\n'.join(self.invoice_base.current_revision.sender_address.get_formatted()), self.style['Small']))
+            sender_paragraphs.append(Paragraph(u'<br />'.join(self.invoice_base.current_revision.sender_address.get_formatted()), self.style['Small']))
         # Add layout table if logo or paragraphs
         if self.invoice_base.tenant.logo_cache:
             logo = Image(self.invoice_base.tenant.logo_cache)
@@ -308,7 +306,7 @@ class InvoiceBaseReport(Report):
         if self.invoice_base.current_revision.organization:
             self.p(self.invoice_base.current_revision.organization.corporate_name, style=self.style['Address'])
         if self.invoice_base.current_revision.billing_address:
-            self.p(u'\n'.join(self.invoice_base.current_revision.billing_address.get_formatted()), style=self.style['Address'])
+            self.p(u'<br />'.join(self.invoice_base.current_revision.billing_address.get_formatted()), style=self.style['Address'])
 
     def fill_delivery_address(self):
         """Fills delivery address"""
@@ -318,7 +316,7 @@ class InvoiceBaseReport(Report):
         if self.invoice_base.current_revision.organization:
             self.p(self.invoice_base.current_revision.organization.corporate_name, style=self.style['Address'])
         if self.invoice_base.current_revision.delivery_address:
-            self.p(u'\n'.join(self.invoice_base.current_revision.delivery_address.get_formatted()), style=self.style['Address'])
+            self.p(u'<br />'.join(self.invoice_base.current_revision.delivery_address.get_formatted()), style=self.style['Address'])
 
     def fill_description(self):
         """Fills the description"""
@@ -354,11 +352,11 @@ class InvoiceBaseReport(Report):
                     Paragraph('{0:.2%}'.format(line_item.tax.rate), style=self.style['LineItemRight']),
                     Paragraph(currency_format(line_item.total_price, self.invoice_base.current_revision.currency.symbol), style=self.style['LineItemRight'])
                 ])
-            
+
         col_widths = self.settings.page_size.scaled_width((85*mm, 20*mm, 20*mm, 20*mm, 25*mm))
         self.table(rows, col_widths, repeatRows=1, style=self.style['InvoiceBaseItemsTable'])
 
-    def fill_line_items_summary(self):  
+    def fill_line_items_summary(self):
         """
         Fills line items summary table  
         Should start with a spacer
@@ -384,7 +382,6 @@ class InvoiceBaseReport(Report):
         self.start_keeptogether()
         self.table(rows, col_widths, hAlign='RIGHT', style=self.style['InvoiceBaseSummaryTable'])
         self.end_keeptogether()
-
 
     def fill_legal_notice(self):
         """

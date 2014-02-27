@@ -34,7 +34,6 @@ from vosae_utils import respect_language
 __all__ = ('InvoiceBase', 'InvoiceBaseGroup')
 
 
-
 class InvoiceBaseGroup(Document):
 
     """Group of all :class:`~invoicing.models.InvoiceBase` related documents."""

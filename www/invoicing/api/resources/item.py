@@ -6,7 +6,8 @@ from tastypie_mongoengine import fields
 from core.api.utils import (
     TenantResource,
     WakeUpMixinResource,
-    ZombieMixinResource
+    ZombieMixinResource,
+    TagsStripper
 )
 from invoicing.models import Item
 from invoicing.api.doc import HELP_TEXT
@@ -51,3 +52,9 @@ class ItemResource(WakeUpMixinResource, ZombieMixinResource, TenantResource):
     class Meta(TenantResource.Meta):
         queryset = Item.objects.all()
         excludes = ('tenant',)
+
+    def hydrate_description(self, bundle):
+        parser = TagsStripper(allowed_tags=['br', 'b', 'i', 'u'])
+        parser.feed(bundle.data['description'])
+        bundle.data['description'] = parser.get_data()
+        return bundle

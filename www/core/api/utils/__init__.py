@@ -14,6 +14,8 @@ from core.api.utils import throttling
 from core.api.utils.throttling import *
 from core.api.utils import mixins
 from core.api.utils.mixins import *
+from core.api.utils import parsers
+from core.api.utils.parsers import *
 from core.api.utils import resources
 from core.api.utils.resources import *
 from core.api.utils import fields
@@ -28,6 +30,7 @@ __all__ = (
     authorization.__all__ +
     throttling.__all__ +
     mixins.__all__ +
+    parsers.__all__ +
     resources.__all__ +
     fields.__all__
 )
