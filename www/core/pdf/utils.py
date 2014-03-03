@@ -7,6 +7,7 @@ from reportlab.platypus import (
     Paragraph as _Paragraph
 )
 
+
 __all__ = (
     'Paragraph',
     'RestartPageBreak',
@@ -20,11 +21,9 @@ def sanitize(text):
     """
     REPLACE_MAP = [
         (u'&', '&#38;'),
-        (u'<', '&#60;'),
-        (u'>', '&#62;'),
-        (u'\n', '<br />'),
-        (u'\r', ''),
+        (u'<br>', '<br />'),  # No need with reportlab 3.0+ ?
     ]
+
     for p, q in REPLACE_MAP:
         text = text.replace(p, q)
     return text

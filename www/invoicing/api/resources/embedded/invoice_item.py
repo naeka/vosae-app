@@ -3,7 +3,7 @@
 from tastypie import fields as base_fields
 from tastypie_mongoengine import fields
 
-from core.api.utils import VosaeResource
+from core.api.utils import VosaeResource, TagsStripper
 from invoicing.models import InvoiceItem
 from invoicing.api.doc import HELP_TEXT
 
@@ -30,6 +30,10 @@ class InvoiceItemResource(VosaeResource):
         attribute='unit_price',
         help_text=HELP_TEXT['invoice_item']['unit_price']
     )
+    optional = base_fields.BooleanField(
+        attribute='optional',
+        help_text=HELP_TEXT['invoice_item']['optional']
+    )
 
     tax = fields.ReferenceField(
         to='invoicing.api.resources.TaxResource',
@@ -40,3 +44,9 @@ class InvoiceItemResource(VosaeResource):
 
     class Meta(VosaeResource.Meta):
         object_class = InvoiceItem
+
+    def hydrate_description(self, bundle):
+        parser = TagsStripper(allowed_tags=['br', 'b', 'i', 'u'])
+        parser.feed(bundle.data['description'])
+        bundle.data['description'] = parser.get_data()
+        return bundle

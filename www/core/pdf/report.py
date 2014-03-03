@@ -105,6 +105,12 @@ class Report(object):
         ), alias='p')
 
         self.style.add(ParagraphStyle(
+            name='NormalOnBaseColor',
+            parent=self.style['Normal'],
+            textColor=self.settings.hex_font_base_color
+        ))
+
+        self.style.add(ParagraphStyle(
             name='BodyText',
             parent=self.style['Normal'],
             spaceBefore=6

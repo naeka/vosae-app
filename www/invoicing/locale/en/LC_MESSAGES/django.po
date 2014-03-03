@@ -361,48 +361,53 @@ msgstr ""
 msgid "Late fee at the legal rate"
 msgstr ""
 
-#: pdf/invoice_base.py:200
+#: pdf/invoice_base.py:234
 msgid "Billing address"
 msgstr ""
 
-#: pdf/invoice_base.py:201
+#: pdf/invoice_base.py:235
 msgid "Delivery address"
 msgstr ""
 
-#: pdf/invoice_base.py:300
+#: pdf/invoice_base.py:334
 msgctxt "table-headers"
 msgid "Description"
 msgstr ""
 
-#: pdf/invoice_base.py:301
+#: pdf/invoice_base.py:335
 msgctxt "table-headers"
 msgid "Qty"
 msgstr ""
 
-#: pdf/invoice_base.py:302
+#: pdf/invoice_base.py:336
 msgctxt "table-headers"
 msgid "Unit price (excl. tax)"
 msgstr ""
 "Unit price\n"
 "(excl. tax)"
 
-#: pdf/invoice_base.py:303
+#: pdf/invoice_base.py:337
 msgctxt "table-headers"
 msgid "Tax"
 msgstr ""
 
-#: pdf/invoice_base.py:304
+#: pdf/invoice_base.py:338
 msgctxt "table-headers"
 msgid "Total (excl. tax)"
 msgstr ""
 "Total\n"
 "(excl. tax)"
 
-#: pdf/invoice_base.py:324
+#: pdf/invoice_base.py:343 pdf/invoice_base.py:347
+msgctxt "line item"
+msgid "Optional"
+msgstr ""
+
+#: pdf/invoice_base.py:368
 msgid "TOTAL (excl. tax)"
 msgstr ""
 
-#: pdf/invoice_base.py:336
+#: pdf/invoice_base.py:380
 msgid "TOTAL (incl. tax)"
 msgstr ""
 

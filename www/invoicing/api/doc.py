@@ -122,6 +122,7 @@ HELP_TEXT = {
         'description': 'Invoice item\'s description, can override the original item\'s description',
         'quantity': 'Invoice item\'s quantity',
         'unit_price': 'Invoice item\'s unit price',
+        'optional': 'Indicates if the line item is optional or not.\nOnly available for quotations and purchase orders.\nAn optional line item is listed like other line items but its total is not added to the whole document total.',
         'tax': 'Invoice item\'s tax',
     },
     'exchange_rate': {

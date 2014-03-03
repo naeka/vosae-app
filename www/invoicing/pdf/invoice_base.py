@@ -2,6 +2,7 @@
 
 from django.utils.translation import ugettext as _, pgettext
 from django.template.defaultfilters import floatformat
+from reportlab.lib.enums import TA_RIGHT
 from reportlab.lib.units import mm
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import (
@@ -31,7 +32,6 @@ __all__ = ('InvoiceBaseReport',)
 
 class InvoiceBaseReport(Report):
     """Base class for all InvoiceBase documents reports"""
-    
     def __init__(self, report_settings, invoice_base, *args, **kwargs):
         from invoicing.models import InvoiceBase
         if not isinstance(invoice_base, InvoiceBase):
@@ -114,6 +114,39 @@ class InvoiceBaseReport(Report):
             fontName=get_font(self.settings.font_name).bold,
             fontSize=1.2 * self.settings.font_size,
             leading=1.45 * self.settings.font_size
+        ))
+
+        self.style.add(ParagraphStyle(
+            name='LineItemHeaderRight',
+            parent=self.style['NormalOnBaseColor'],
+            alignment=TA_RIGHT
+        ))
+
+        self.style.add(ParagraphStyle(
+            name='LineItemRight',
+            parent=self.style['Normal'],
+            alignment=TA_RIGHT
+        ))
+
+        self.style.add(ParagraphStyle(
+            name='LineItemOptionalRight',
+            parent=self.style['LineItemRight'],
+            fontName=get_font(self.settings.font_name).italic
+        ))
+
+        self.style.add(ParagraphStyle(
+            name='LineItemOptionalLabel',
+            parent=self.style['Small'],
+            spaceBefore=1 * mm,
+            textColor=self.settings.hex_base_color
+        ))
+
+        self.style.add(ParagraphStyle(
+            name='LineItemOptionalRightLabel',
+            parent=self.style['Smaller'],
+            leading=1 * self.settings.font_size,
+            fontName=get_font(self.settings.font_name).italic,
+            alignment=TA_RIGHT
         ))
 
         self.style.add(BaseTableStyle(
@@ -222,7 +255,7 @@ class InvoiceBaseReport(Report):
         # Billing address
         self.next_frame()
         self.fill_billing_address()
-        
+
         # Delivery address
         self.next_frame()
         self.fill_delivery_address()
@@ -240,7 +273,6 @@ class InvoiceBaseReport(Report):
         # Legal notice
         self.fill_legal_notice()
 
-
     def fill_sender(self):
         """Fills sender identity"""
         from reportlab.platypus.flowables import Image
@@ -251,7 +283,7 @@ class InvoiceBaseReport(Report):
             sender_paragraphs.append(Paragraph(self.invoice_base.current_revision.sender, self.style['Small']))
         sender_paragraphs.append(Paragraph(self.invoice_base.tenant.name, self.style['Small']))
         if self.invoice_base.current_revision.sender_address:
-            sender_paragraphs.append(Paragraph(u'\n'.join(self.invoice_base.current_revision.sender_address.get_formatted()), self.style['Small']))
+            sender_paragraphs.append(Paragraph(u'<br />'.join(self.invoice_base.current_revision.sender_address.get_formatted()), self.style['Small']))
         # Add layout table if logo or paragraphs
         if self.invoice_base.tenant.logo_cache:
             logo = Image(self.invoice_base.tenant.logo_cache)
@@ -274,7 +306,7 @@ class InvoiceBaseReport(Report):
         if self.invoice_base.current_revision.organization:
             self.p(self.invoice_base.current_revision.organization.corporate_name, style=self.style['Address'])
         if self.invoice_base.current_revision.billing_address:
-            self.p(u'\n'.join(self.invoice_base.current_revision.billing_address.get_formatted()), style=self.style['Address'])
+            self.p(u'<br />'.join(self.invoice_base.current_revision.billing_address.get_formatted()), style=self.style['Address'])
 
     def fill_delivery_address(self):
         """Fills delivery address"""
@@ -284,7 +316,7 @@ class InvoiceBaseReport(Report):
         if self.invoice_base.current_revision.organization:
             self.p(self.invoice_base.current_revision.organization.corporate_name, style=self.style['Address'])
         if self.invoice_base.current_revision.delivery_address:
-            self.p(u'\n'.join(self.invoice_base.current_revision.delivery_address.get_formatted()), style=self.style['Address'])
+            self.p(u'<br />'.join(self.invoice_base.current_revision.delivery_address.get_formatted()), style=self.style['Address'])
 
     def fill_description(self):
         """Fills the description"""
@@ -297,24 +329,34 @@ class InvoiceBaseReport(Report):
         """
         self.spacer()
         rows = [[
-            pgettext('table-headers', 'Description'),
-            pgettext('table-headers', 'Qty'),
-            pgettext('table-headers', 'Unit price (excl. tax)'),
-            pgettext('table-headers', 'Tax'),
-            pgettext('table-headers', 'Total (excl. tax)')
+            Paragraph(pgettext('table-headers', 'Description'), style=self.style['NormalOnBaseColor']),
+            Paragraph(pgettext('table-headers', 'Qty'), style=self.style['LineItemHeaderRight']),
+            Paragraph(pgettext('table-headers', 'Unit price (excl. tax)'), style=self.style['LineItemHeaderRight']),
+            Paragraph(pgettext('table-headers', 'Tax'), style=self.style['LineItemHeaderRight']),
+            Paragraph(pgettext('table-headers', 'Total (excl. tax)'), style=self.style['LineItemHeaderRight'])
         ]]
-        for item in self.invoice_base.current_revision.line_items:
-            rows.append([
-                item.description,
-                floatformat(item.quantity, -2),
-                currency_format(item.unit_price),
-                '{0:.2%}'.format(item.tax.rate),
-                currency_format(item.total_price, self.invoice_base.current_revision.currency.symbol)
-            ])
+        for line_item in self.invoice_base.current_revision.line_items:
+            if line_item.optional:
+                rows.append([
+                    [Paragraph(line_item.description, style=self.style['Normal']), Paragraph(pgettext('line item', 'Optional').upper(), style=self.style['LineItemOptionalLabel'])],
+                    Paragraph(floatformat(line_item.quantity, -2), style=self.style['LineItemOptionalRight']),
+                    Paragraph(currency_format(line_item.unit_price), style=self.style['LineItemOptionalRight']),
+                    Paragraph('{0:.2%}'.format(line_item.tax.rate), style=self.style['LineItemOptionalRight']),
+                    [Paragraph(currency_format(line_item.total_price, self.invoice_base.current_revision.currency.symbol), style=self.style['LineItemOptionalRight']), Paragraph(pgettext('line item', 'Optional'), style=self.style['LineItemOptionalRightLabel'])]
+                ])
+            else:
+                rows.append([
+                    Paragraph(line_item.description, style=self.style['Normal']),
+                    Paragraph(floatformat(line_item.quantity, -2), style=self.style['LineItemRight']),
+                    Paragraph(currency_format(line_item.unit_price), style=self.style['LineItemRight']),
+                    Paragraph('{0:.2%}'.format(line_item.tax.rate), style=self.style['LineItemRight']),
+                    Paragraph(currency_format(line_item.total_price, self.invoice_base.current_revision.currency.symbol), style=self.style['LineItemRight'])
+                ])
+
         col_widths = self.settings.page_size.scaled_width((85*mm, 20*mm, 20*mm, 20*mm, 25*mm))
         self.table(rows, col_widths, repeatRows=1, style=self.style['InvoiceBaseItemsTable'])
 
-    def fill_line_items_summary(self):  
+    def fill_line_items_summary(self):
         """
         Fills line items summary table  
         Should start with a spacer
@@ -340,7 +382,6 @@ class InvoiceBaseReport(Report):
         self.start_keeptogether()
         self.table(rows, col_widths, hAlign='RIGHT', style=self.style['InvoiceBaseSummaryTable'])
         self.end_keeptogether()
-
 
     def fill_legal_notice(self):
         """
