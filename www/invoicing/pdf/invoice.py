@@ -37,6 +37,8 @@ class InvoiceReport(InvoiceBaseReport):
 
     def fill_legal_notice(self):
         # Legal notices
+        self.spacer()
+        self.start_keeptogether()
         if self.invoice_base.current_revision.custom_payment_conditions:
             self.p(_("Payment conditions: %(custom_payment_conditions)s") % {
                 'custom_payment_conditions': self.invoice_base.current_revision.custom_payment_conditions
@@ -56,3 +58,4 @@ class InvoiceReport(InvoiceBaseReport):
             })
         else:
             self.p(_("Late fee at the legal rate"))
+        self.end_keeptogether()
