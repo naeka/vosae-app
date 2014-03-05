@@ -20,7 +20,6 @@ def sanitize(text):
     Replace interpreted chars.
     """
     REPLACE_MAP = [
-        (u'&', '&#38;'),
         (u'<br>', '<br />'),  # No need with reportlab 3.0+ ?
     ]
 
