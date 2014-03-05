@@ -1,5 +1,6 @@
 # -*- coding:Utf-8 -*-
 
+from django.utils.translation import ugettext as _
 from mongoengine import EmbeddedDocument, fields
 from decimal import Decimal
 
@@ -22,12 +23,21 @@ class InvoiceItem(EmbeddedDocument):
     tax = fields.ReferenceField("Tax", required=True)
     optional = fields.BooleanField(required=True, default=False)
     item_id = fields.ObjectIdField()
-    #footnote = fields.StringField(max_length=512)
+    is_translatable = fields.BooleanField(required=True, default=False)
+    translation_context = fields.DictField()
 
     def __unicode__(self):
         if isinstance(self.reference, basestring):
             return self.reference
         return unicode(self.reference)
+
+    @classmethod
+    def post_init(self, sender, document, **kwargs):
+        if document.description and document.is_translatable:
+            try:
+                document.description = _(document.description) % document.translation_context
+            except TypeError:
+                pass
 
     @property
     def total_price(self):

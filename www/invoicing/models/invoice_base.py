@@ -342,10 +342,9 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
         document_revision = self._fields.get('current_revision').document_type
 
         if revision and isinstance(revision, document_revision):
-            duplicate = revision.duplicate()
             if self.current_revision:
                 self.revisions.insert(0, self.current_revision)
-            self.current_revision = duplicate
+            self.current_revision = revision
         else:
             if self.current_revision:
                 self.revisions.insert(0, self.current_revision)
@@ -412,8 +411,13 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
     def gen_pdf(self):
         """Process PDF generation based on InvoiceBaseReport"""
+        # Retrieve the document inside the correct language context
+        try:
+            document = self._qs.get(**self._object_key)
+        except:
+            document = self
         buf = StringIO()
-        report = self.get_report_class()(self.tenant.report_settings, self, buf)
+        report = self.get_report_class()(self.tenant.report_settings, document, buf)
         report.generate()
         return buf
 

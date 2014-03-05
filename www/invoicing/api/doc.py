@@ -123,6 +123,7 @@ HELP_TEXT = {
         'quantity': 'Invoice item\'s quantity',
         'unit_price': 'Invoice item\'s unit price',
         'optional': 'Indicates if the line item is optional or not.\nOnly available for quotations and purchase orders.\nAn optional line item is listed like other line items but its total is not added to the whole document total.',
+        'is_translatable': 'Indicates if the description is translatable (mainly used for down-payment labels)',
         'tax': 'Invoice item\'s tax',
     },
     'exchange_rate': {

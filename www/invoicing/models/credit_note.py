@@ -49,31 +49,6 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
             super(CreditNote.InvalidState, self).__init__(**kwargs)
             self.message = 'Invalid credit note state'
 
-    def __init__(self, *args, **kwargs):
-        from invoicing.models import InvoiceItem
-        super(CreditNote, self).__init__(*args, **kwargs)
-        if self.related_to and self.related_to.is_down_payment_invoice():
-            credit_note_data = self.current_revision
-            if credit_note_data and self.id:
-                description = _("%(percentage)s%% down-payment")
-                if self.related_to.related_to:  # Quotation | Purchase order (| Delivery order)
-                    if self.related_to.related_to.is_quotation():
-                        description = _("%(percentage)s%% down-payment on quotation %(reference)s")
-                    elif self.related_to.related_to.is_purchase_order():
-                        description = _("%(percentage)s%% down-payment on purchase order %(reference)s")                        
-                credit_note_data.line_items.append(
-                    InvoiceItem(
-                        reference=self.related_to.ITEM_REFERENCE,
-                        description=description % {
-                            "percentage": floatformat(float(self.related_to.percentage * 100), -2),
-                            "reference": self.related_to.related_to.reference
-                        },
-                        quantity=1,
-                        unit_price=(self.amount / (Decimal('1.00') + self.related_to.tax_applied.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP),
-                        tax=self.related_to.tax_applied
-                    )
-                )
-
     def get_search_kwargs(self):
         kwargs = super(CreditNote, self).get_search_kwargs()
         if self.current_revision.credit_note_emission_date:
@@ -183,13 +158,3 @@ class CreditNote(InvoiceBase, SearchDocumentMixin):
             kwargs.update(current_revision__issue_date__lt=end_date)
         queryset = CreditNote.objects.filter(**kwargs)
         return queryset, get_path, get_doc
-
-    def manage_amounts(self):
-        """
-        Set total and amount of the :class:`~invoicing.models.CreditNote`.
-        """
-        if self.related_to.is_down_payment_invoice():
-            self.total = self.related_to.amount
-            self.amount = self.related_to.amount
-        else:
-            super(CreditNote, self).manage_amounts()

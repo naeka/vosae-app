@@ -34,6 +34,11 @@ class InvoiceItemResource(VosaeResource):
         attribute='optional',
         help_text=HELP_TEXT['invoice_item']['optional']
     )
+    is_translatable = base_fields.BooleanField(
+        attribute='is_translatable',
+        readonly=True,
+        help_text=HELP_TEXT['invoice_item']['is_translatable']
+    )
 
     tax = fields.ReferenceField(
         to='invoicing.api.resources.TaxResource',
