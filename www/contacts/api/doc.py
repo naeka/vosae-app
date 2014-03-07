@@ -3,7 +3,6 @@
 HELP_TEXT = {
     'entity': {
         'id': 'Vosae identifier',
-        'private': 'If the contact/organization is private, it is only viewable by its creator.\nPrivate contacts/organizations can\'t be used with shared documents (such as quotations or invoices).\nThe default is "true"',
         'photo_source': 'Source of the photo. If not provided, a default photo will be used',
         'photo': 'If photo_source is LOCAL, use this file as photo.\nPhoto URI should always be used for display',
         'gravatar_mail': 'Contact\'s email used for displaying gravatar pictures',

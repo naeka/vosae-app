@@ -6,7 +6,7 @@ from mongoengine import fields
 from vosae_utils import SearchDocumentMixin
 from pyes import mappings as search_mappings
 
-from core.fields import DateField, NotPrivateReferenceField
+from core.fields import DateField
 from contacts.models.entity import Entity
 
 
@@ -31,7 +31,7 @@ class Contact(Entity, SearchDocumentMixin):
     civility = fields.StringField(choices=CIVILITIES)
     birthday = DateField()
     role = fields.StringField(max_length=32)
-    organization = NotPrivateReferenceField("Organization")
+    organization = fields.ReferenceField("Organization")
 
     meta = {
         "indexes": ["name", "organization"]

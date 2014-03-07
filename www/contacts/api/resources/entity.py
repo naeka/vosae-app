@@ -20,11 +20,6 @@ __all__ = (
 class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, NotificationAwareResourceMixin, TenantResource):
     TO_REMOVE_ON_REPLACE = ['photo']
 
-    private = base_fields.BooleanField(
-        attribute='private',
-        blank=True,
-        help_text=HELP_TEXT['entity']['private']
-    )
     photo_source = base_fields.CharField(
         attribute='photo_source',
         null=True,
@@ -104,17 +99,6 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
         # Add timeline and notification entries
         entity_saved_task.delay(bundle.obj, created=created, issuer=bundle.request.vosae_user)
 
-    def get_object_list(self, request):
-        """
-        Filters the queryset from private results.  
-        Done here since we can extract caller user from the request
-        """
-        from mongoengine import Q
-        object_list = super(EntityResource, self).get_object_list(request)
-        if request and getattr(request, 'vosae_user', None):
-            return object_list.filter(Q(private=False) | Q(creator=request.vosae_user))
-        return object_list
-
     def hydrate(self, bundle):
         """On POST requests, sets the entity creator"""
         bundle = super(EntityResource, self).hydrate(bundle)
@@ -122,16 +106,10 @@ class EntityResource(ZombieMixinResource, RemoveFilesOnReplaceMixinResource, Not
             bundle.obj.creator = bundle.request.vosae_user
         return bundle
 
-    def hydrate_private(self, bundle):
-        """Ensures that the private flag can only be updated by the creator"""
-        if bundle.request.method.lower() == 'put' and bundle.request.vosae_user != bundle.obj.creator:
-            bundle.data['private'] = bundle.obj.private
-        return bundle
-
     def dehydrate_photo_uri(self, bundle):
         """
         Ensures that photo URI is absolute.  
-        From gravatar: nothing to do, already a secure URL
+        From gravatar: nothing to do, already a secure URL  
         From API: relative, prepend app endpoint to path
         """
         if bundle.data['photo_uri'] and not bundle.data['photo_uri'].startswith('http'):

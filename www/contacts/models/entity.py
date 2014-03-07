@@ -23,7 +23,6 @@ class Entity(ZombieMixin, Document, AsyncTTLUploadsMixin, NotificationAwareDocum
     tenant = fields.ReferenceField("Tenant", required=True)
     creator = fields.ReferenceField("VosaeUser", required=True)
     status = fields.StringField(choices=STATUSES, required=True, default=ZombieMixin.DEFAULT_STATUS)
-    private = fields.BooleanField(required=True, default=False)
     photo_source = fields.StringField(choices=["LOCAL", "GRAVATAR"])
     photo = fields.ReferenceField("VosaeFile")
     gravatar_mail = fields.EmailField(max_length=128)

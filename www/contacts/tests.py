@@ -242,7 +242,7 @@ class ContactResourceTest(VosaeApiTest):
         from contacts.models import Organization
         super(ContactResourceTest, cls).setUpClass()
         # Create first an organization which will be referenced
-        organization = Organization(tenant=settings.TENANT, creator=settings.VOSAE_USER, corporate_name=u"My Company", private=False)
+        organization = Organization(tenant=settings.TENANT, creator=settings.VOSAE_USER, corporate_name=u"My Company")
         organization.save()
         contact_data.update(organization=cls.resourceDetailURI('organization', unicode(organization.id)))
         cls.created_documents = [organization]
