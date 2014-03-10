@@ -21,7 +21,6 @@ HELP_TEXT = {
     },
     'invoicing_settings': {
         'fy_start_month': '...',
-        'inv_taxes_application': '...',
         'quotation_validity': '...',
         'payment_conditions': '...',
         'custom_payment_conditions': '...',

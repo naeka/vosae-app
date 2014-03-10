@@ -53,8 +53,7 @@ invoice_base_data = {
             "postal_code": u"38000",
             "street_address": u"1 Rue de Grenoble",
             "type": u"BILLING"
-        },
-        "taxes_application": u"EXCLUSIVE"
+        }
     },
     "notes": [],
     "payments": []

@@ -363,12 +363,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             for line_item in current_revision.line_items:
                 if line_item.optional:
                     continue
-                if current_revision.taxes_application == "EXCLUSIVE":
-                    self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price) * (Decimal('1.00') + line_item.tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
-                elif current_revision.taxes_application == "NOT_APPLICABLE":
-                    self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price)).quantize(Decimal('1.00'), ROUND_HALF_UP)
-                else:
-                    continue
+                self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price) * (Decimal('1.00') + line_item.tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
         self.amount = self.total
 
     def set_state(self, new_state, issuer=None):

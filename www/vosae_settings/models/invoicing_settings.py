@@ -5,7 +5,6 @@ from decimal import Decimal
 
 from mongoengine import fields, EmbeddedDocument
 from invoicing import (
-    TAXES_APPLICATION,
     PAYMENT_TYPES,
     PAYMENT_CONDITIONS
 )
@@ -82,14 +81,12 @@ class InvoicingNumberingSettings(EmbeddedDocument):
 class InvoicingSettings(EmbeddedDocument):
 
     """A wrapper to Invoicing's module settings."""
-    TAXES_APPLICATION = TAXES_APPLICATION
     PAYMENT_TYPES = PAYMENT_TYPES
     PAYMENT_CONDITIONS = PAYMENT_CONDITIONS
 
     supported_currencies = fields.ListField(fields.ReferenceField("Currency"))
     default_currency = fields.ReferenceField("Currency", required=True)
     fy_start_month = fields.IntField(required=True, default=0, min_value=0, max_value=11)
-    inv_taxes_application = fields.StringField(required=True, choices=TAXES_APPLICATION, default="EXCLUSIVE")
     quotation_validity = fields.IntField(required=True, default=30)
     payment_conditions = fields.StringField(required=True, choices=PAYMENT_CONDITIONS, default="CASH")
     custom_payment_conditions = fields.StringField()

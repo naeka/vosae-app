@@ -6,7 +6,6 @@ import copy
 import uuid
 
 from core.fields import DateField, LocalizedMapField, NotPrivateReferenceField
-from invoicing import TAXES_APPLICATION
 
 
 __all__ = (
@@ -21,7 +20,6 @@ class BaseRevision(EmbeddedDocument):
 
     """Base class for revisions"""
 
-    TAXES_APPLICATION = TAXES_APPLICATION
     NOT_DUPLICABLE_FIELDS = ('revision', 'issuer', 'issue_date', 'pdf')
 
     revision = fields.UUIDField(required=True, binary=True)
@@ -37,7 +35,6 @@ class BaseRevision(EmbeddedDocument):
     custom_payment_conditions = fields.StringField(max_length=256)
     customer_reference = fields.StringField(max_length=128)
     currency = fields.EmbeddedDocumentField("SnapshotCurrency", required=True)
-    taxes_application = fields.StringField(required=True, choices=TAXES_APPLICATION, default="EXCLUSIVE")
     line_items = fields.ListField(fields.EmbeddedDocumentField("InvoiceItem"))
     pdf = LocalizedMapField(fields.ReferenceField("VosaeFile"))
 

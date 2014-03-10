@@ -95,11 +95,6 @@ CURRENCY_DISPLAY_SYMBOLS = {
     'USD': u'$',
 }
 
-TAXES_APPLICATION = (
-    ("EXCLUSIVE", pgettext_lazy("invoice taxes application", "Exclusive")),
-    ("NOT_APPLICABLE", pgettext_lazy("invoice taxes application", "Not applicable"))
-)
-
 ACCOUNT_TYPES = (
     ("PAYABLE", pgettext_lazy("invoice type", "Payable invoice")),  # Supplier (money goes out)
     ("RECEIVABLE", pgettext_lazy("invoice type", "Receivable invoice"))  # Customer (money goes in)

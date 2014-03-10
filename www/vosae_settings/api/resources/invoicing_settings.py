@@ -41,10 +41,6 @@ class InvoicingSettingsResource(VosaeResource):
         blank=True,
         help_text=HELP_TEXT['invoicing_settings']['fy_start_month']
     )
-    inv_taxes_application = base_fields.CharField(
-        attribute='inv_taxes_application',
-        help_text=HELP_TEXT['invoicing_settings']['inv_taxes_application']
-    )
     quotation_validity = base_fields.CharField(
         attribute='quotation_validity',
         help_text=HELP_TEXT['invoicing_settings']['quotation_validity']

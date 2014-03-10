@@ -60,10 +60,6 @@ class BaseRevisionResource(VosaeResource):
         blank=True,
         help_text=HELP_TEXT['base_revision']['customer_reference']
     )
-    taxes_application = base_fields.CharField(
-        attribute='taxes_application',
-        help_text=HELP_TEXT['base_revision']['taxes_application']
-    )
 
     issuer = fields.ReferenceField(
         to='core.api.resources.VosaeUserResource',
