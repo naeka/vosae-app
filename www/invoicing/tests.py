@@ -66,6 +66,7 @@ quotation_data['current_revision'].update(
 )
 purchase_order_data = copy.deepcopy(invoice_base_data)
 purchase_order_data['current_revision'].update(
+    discount=decimal.Decimal("0.2"),
     purchase_order_date=datetime.date.today().isoformat()
 )
 invoice_data = copy.deepcopy(invoice_base_data)
@@ -1340,7 +1341,7 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['current_revision']['line_items'][0]['reference'], u'ITEM1')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'19.90')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['quantity'], u'2.00')
-        self.assertEqual(deserialized['amount'], u'47.60')
+        self.assertEqual(deserialized['amount'], u'38.08')  # 47.60 - 20% discount
         self.save_test_result(infos, response)
 
         # XML
@@ -1388,7 +1389,7 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['current_revision']['line_items'][0]['reference'], u'ITEM1')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'18.90')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['quantity'], u'4.00')
-        self.assertEqual(deserialized['amount'], u'90.42')
+        self.assertEqual(deserialized['amount'], u'72.33')  # 90.42 - 20% discount
 
         response = self.api_client.get(deserialized['revisions'][0], format='json')
         self.assertValidJSONResponse(response)
@@ -1517,9 +1518,9 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['current_revision']['delivery_address']['city'], u'Grenoble')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['reference'], u'DOWN-PAYMENT')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['description'], u'20%% down-payment on purchase order %s' % expected_first_reference)
-        self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'15.12')
+        self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'12.10')  # 15.12 - 20% discount
         self.assertEqual(deserialized['current_revision']['line_items'][0]['quantity'], u'1.00')
-        self.assertEqual(deserialized['amount'], u'18.08')
+        self.assertEqual(deserialized['amount'], u'14.47')  # 18.08 - 20% discount
 
         # Check down_payment presence
         response = self.api_client.get(cached_data.get('json_uri'), format='json')
@@ -1570,7 +1571,7 @@ class PurchaseOrderResourceTest(InvoiceBaseResourceTest):
         self.assertEqual(deserialized['current_revision']['line_items'][0]['description'], u'Item 1')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['unit_price'], u'18.90')
         self.assertEqual(deserialized['current_revision']['line_items'][0]['quantity'], u'4.00')
-        self.assertEqual(deserialized['amount'], u'72.34')
+        self.assertEqual(deserialized['amount'], u'57.86')  # 72.34 - 20% discount
 
         # Check that references are present
         response = self.api_client.get(deserialized.get('group'), format='json')

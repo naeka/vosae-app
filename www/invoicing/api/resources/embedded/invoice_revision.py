@@ -9,6 +9,7 @@ from core.api.utils import (
     ReferencedDictField
 )
 from invoicing.models import (
+    BaseRevision,
     QuotationRevision,
     PurchaseOrderRevision,
     InvoiceRevision,
@@ -59,6 +60,12 @@ class BaseRevisionResource(VosaeResource):
         null=True,
         blank=True,
         help_text=HELP_TEXT['base_revision']['customer_reference']
+    )
+    discount = base_fields.DecimalField(
+        attribute='discount',
+        null=True,
+        blank=True,
+        help_text=HELP_TEXT['base_revision']['discount']
     )
 
     issuer = fields.ReferenceField(
@@ -119,7 +126,7 @@ class BaseRevisionResource(VosaeResource):
     )
 
     class Meta(VosaeResource.Meta):
-        object_class = InvoiceRevision
+        object_class = BaseRevision
 
     def hydrate(self, bundle):
         """Set issue data and issuer on POST, extracted from request"""

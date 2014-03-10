@@ -95,6 +95,7 @@ HELP_TEXT = {
         'delivery_address': 'The delivery address',
         'currency': 'The currency used.\nThis is an embedded snapshot on which are based items conversions (if needed)',
         'line_items': 'The items present in the revision',
+        'discount': 'The global discount percentage',
         'pdf': 'A language-based dictionnary of previously generated PDFs of the document revision',
     },
     'quotation_revision': {

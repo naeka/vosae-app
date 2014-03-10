@@ -10,6 +10,7 @@ from core.fields import DateField, LocalizedMapField, NotPrivateReferenceField
 
 
 __all__ = (
+    'BaseRevision',
     'QuotationRevision',
     'PurchaseOrderRevision',
     'InvoiceRevision',
