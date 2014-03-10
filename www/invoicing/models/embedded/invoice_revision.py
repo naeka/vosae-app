@@ -2,6 +2,7 @@
 
 from mongoengine import EmbeddedDocument, fields, ValidationError
 from django.utils.timezone import now as datetime_now
+from decimal import Decimal
 import copy
 import uuid
 
@@ -36,6 +37,7 @@ class BaseRevision(EmbeddedDocument):
     customer_reference = fields.StringField(max_length=128)
     currency = fields.EmbeddedDocumentField("SnapshotCurrency", required=True)
     line_items = fields.ListField(fields.EmbeddedDocumentField("InvoiceItem"))
+    discount = fields.DecimalField(precision=4, min_value=Decimal("0.0001"), max_value=Decimal("1"))
     pdf = LocalizedMapField(fields.ReferenceField("VosaeFile"))
 
     meta = {
@@ -97,6 +99,13 @@ class BaseRevision(EmbeddedDocument):
         if self.contact and self.contact.get_full_name():
             return self.contact.get_full_name()
         return None
+
+    @property
+    def discount_factor(self):
+        discount_factor = Decimal('1.0000')
+        if self.discount:
+            discount_factor -= self.discount
+        return discount_factor
 
 
 class NoOptionalLineItemsMixin(object):

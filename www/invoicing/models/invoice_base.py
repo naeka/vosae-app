@@ -120,7 +120,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
             # Manage total / amount
             document.manage_amounts()
-        
+
         # If newly created saves the related group before
         if not document.group.id or not document.group.tenant:
             document.group.tenant = document.tenant
@@ -202,18 +202,6 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             revision=self.current_revision.revision
         ))
 
-    def reload(self, *args, **kwargs):
-        """
-        Reload the :class:`~invoicing.models.Invoice` from the database.
-
-        Delete the existing cached attributes.
-        """
-        super(InvoiceBase, self).reload()
-        if hasattr(self, "_sub_total"):
-            del self._sub_total
-        if hasattr(self, "_taxes_amounts"):
-            del self._taxes_amounts
-
     def is_created(self):
         """
         True if the :class:`~invoicing.models.Invoice` is already saved
@@ -278,15 +266,23 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
         This does not contains taxes.
         """
-        if not hasattr(self, "_sub_total"):
-            self._sub_total = 0
-            current_revision = self.current_revision
-            if current_revision:
-                for line_item in current_revision.line_items:
-                    if line_item.optional:
-                        continue
-                    self._sub_total += (line_item.quantity * line_item.unit_price).quantize(Decimal('1.00'), ROUND_HALF_UP)
-        return self._sub_total
+        sub_total = Decimal('0.00')
+        if self.current_revision:
+            for line_item in self.current_revision.line_items:
+                if line_item.optional:
+                    continue
+                sub_total += (line_item.quantity * line_item.unit_price).quantize(Decimal('1.00'), ROUND_HALF_UP)
+        return sub_total
+
+    @property
+    def discount_amount(self):
+        if self.current_revision.discount:
+            return (self.sub_total * self.current_revision.discount).quantize(Decimal('1.00'), ROUND_HALF_UP)
+        return Decimal('0.00')
+
+    @property
+    def total_minus_taxes(self):
+        return self.sub_total - self.discount_amount
 
     @property
     def taxes_amounts(self):
@@ -295,23 +291,21 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
 
         This does not contains :class:`~invoicing.models.InvoiceItem` unit prices.
         """
-        if not hasattr(self, "_taxes_amounts"):
-            taxes_amounts = {}
-            current_revision = self.current_revision
-            if current_revision:
-                for item in current_revision.line_items:
-                    if item.optional:
-                        continue
-                    if taxes_amounts.get(str(item.tax.id)):
-                        taxes_amounts[str(item.tax.id)]["amount"] += (item.quantity * item.unit_price * item.tax.rate).quantize(Decimal('1.00'), ROUND_HALF_UP)
-                    else:
-                        taxes_amounts[str(item.tax.id)] = {
-                            "name": item.tax.name,
-                            "rate": item.tax.rate,
-                            "amount": (item.quantity * item.unit_price * item.tax.rate).quantize(Decimal('1.00'), ROUND_HALF_UP)
-                        }
-            self._taxes_amounts = taxes_amounts.values()
-        return self._taxes_amounts
+        taxes_amounts = {}
+        current_revision = self.current_revision
+        if current_revision:
+            for item in current_revision.line_items:
+                if item.optional:
+                    continue
+                if taxes_amounts.get(str(item.tax.id)):
+                    taxes_amounts[str(item.tax.id)]["amount"] += (item.quantity * item.unit_price * current_revision.discount_factor * item.tax.rate).quantize(Decimal('1.00'), ROUND_HALF_UP)
+                else:
+                    taxes_amounts[str(item.tax.id)] = {
+                        "name": item.tax.name,
+                        "rate": item.tax.rate,
+                        "amount": (item.quantity * item.unit_price * current_revision.discount_factor * item.tax.rate).quantize(Decimal('1.00'), ROUND_HALF_UP)
+                    }
+        return taxes_amounts.values()
 
     @property
     def keywords(self):
@@ -363,7 +357,7 @@ class InvoiceBase(Document, AsyncTTLUploadsMixin, NotificationAwareDocumentMixin
             for line_item in current_revision.line_items:
                 if line_item.optional:
                     continue
-                self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price) * (Decimal('1.00') + line_item.tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
+                self.total += Decimal(Decimal(line_item.quantity) * Decimal(line_item.unit_price) * current_revision.discount_factor * (Decimal('1.00') + line_item.tax.rate)).quantize(Decimal('1.00'), ROUND_HALF_UP)
         self.amount = self.total
 
     def set_state(self, new_state, issuer=None):

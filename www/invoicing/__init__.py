@@ -3,6 +3,7 @@
 from django.utils.translation import pgettext_lazy
 from django.utils.formats import get_format, number_format
 from dateutil.relativedelta import *
+from decimal import Decimal, ROUND_HALF_UP
 import datetime
 import re
 
@@ -190,6 +191,12 @@ def currency_format(value, symbol=None, iso4217=False, financial=False):
     except:
         pass
     return s.replace('<', '').replace('>', '')
+
+
+def percentage_format(value, decimal_places=-2):
+    places = Decimal('10') ** -abs(decimal_places)
+    percentage = number_format((Decimal(value) * 100).quantize(places, ROUND_HALF_UP), abs(decimal_places))
+    return u'{0}%'.format(percentage.rstrip('0').rstrip(get_format('DECIMAL_SEPARATOR')) if decimal_places < 0 else percentage)
 
 
 """

@@ -19,7 +19,7 @@ from core.pdf.report import (
 from core.pdf.utils import Paragraph
 from core.pdf.conf import colors
 from core.pdf.conf.fonts import get_font
-from invoicing import currency_format
+from invoicing import currency_format, percentage_format
 
 try:
     from cStringIO import StringIO
@@ -341,7 +341,7 @@ class InvoiceBaseReport(Report):
                     [Paragraph(line_item.description, style=self.style['Normal']), Paragraph(pgettext('line item', 'Optional').upper(), style=self.style['LineItemOptionalLabel'])],
                     Paragraph(floatformat(line_item.quantity, -2), style=self.style['LineItemOptionalRight']),
                     Paragraph(currency_format(line_item.unit_price), style=self.style['LineItemOptionalRight']),
-                    Paragraph('{0:.2%}'.format(line_item.tax.rate), style=self.style['LineItemOptionalRight']),
+                    Paragraph(percentage_format(line_item.tax.rate), style=self.style['LineItemOptionalRight']),
                     [Paragraph(currency_format(line_item.total_price, self.invoice_base.current_revision.currency.symbol), style=self.style['LineItemOptionalRight']), Paragraph(pgettext('line item', 'Optional'), style=self.style['LineItemOptionalRightLabel'])]
                 ])
             else:
@@ -349,7 +349,7 @@ class InvoiceBaseReport(Report):
                     Paragraph(line_item.description, style=self.style['Normal']),
                     Paragraph(floatformat(line_item.quantity, -2), style=self.style['LineItemRight']),
                     Paragraph(currency_format(line_item.unit_price), style=self.style['LineItemRight']),
-                    Paragraph('{0:.2%}'.format(line_item.tax.rate), style=self.style['LineItemRight']),
+                    Paragraph(percentage_format(line_item.tax.rate), style=self.style['LineItemRight']),
                     Paragraph(currency_format(line_item.total_price, self.invoice_base.current_revision.currency.symbol), style=self.style['LineItemRight'])
                 ])
 
@@ -362,15 +362,27 @@ class InvoiceBaseReport(Report):
         Should start with a spacer
         """
         self.spacer()
-        rows = [[
+        rows = []
+        if self.invoice_base.current_revision.discount:
+            rows.extend([
+                [
+                    _('Sub-total'),
+                    currency_format(self.invoice_base.sub_total, self.invoice_base.current_revision.currency.symbol)
+                ],
+                [
+                    _('%(percentage)s discount') % {'percentage': percentage_format(self.invoice_base.current_revision.discount)},
+                    currency_format(self.invoice_base.discount_amount, self.invoice_base.current_revision.currency.symbol)
+                ]
+            ])
+        rows.append([
             _('TOTAL (excl. tax)'),
-            currency_format(self.invoice_base.sub_total, self.invoice_base.current_revision.currency.symbol)
-        ]]
+            currency_format(self.invoice_base.total_minus_taxes, self.invoice_base.current_revision.currency.symbol)
+        ])
         for tax in self.invoice_base.taxes_amounts:
             rows.append([
                 '%(tax_name)s (%(tax_rate)s)' % {
                     'tax_name': tax.get('name'),
-                    'tax_rate': '{0:.2%}'.format(tax.get('rate'))
+                    'tax_rate': percentage_format(tax.get('rate'))
                 },
                 currency_format(tax.get('amount'), self.invoice_base.current_revision.currency.symbol)
             ])
