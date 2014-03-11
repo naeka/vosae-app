@@ -356,31 +356,44 @@ class InvoiceBaseReport(Report):
         col_widths = self.settings.page_size.scaled_width((85*mm, 20*mm, 20*mm, 20*mm, 25*mm))
         self.table(rows, col_widths, repeatRows=1, style=self.style['InvoiceBaseItemsTable'])
 
+    def get_line_items_summary_rows(self):
+        """
+        Returns the line items summary table rows
+        """
+        rows = []
+        if not sum(tax.get('amount') for tax in self.invoice_base.taxes_amounts):
+            rows.append([
+                _('TOTAL'),
+                currency_format(self.invoice_base.total, self.invoice_base.current_revision.currency.symbol)
+            ])
+        else:
+            rows.append([
+                _('TOTAL (excl. tax)'),
+                currency_format(self.invoice_base.sub_total, self.invoice_base.current_revision.currency.symbol)
+            ])
+            for tax in self.invoice_base.taxes_amounts:
+                rows.append([
+                    '%(tax_name)s (%(tax_rate)s)' % {
+                        'tax_name': tax.get('name'),
+                        'tax_rate': '{0:.2%}'.format(tax.get('rate'))
+                    },
+                    currency_format(tax.get('amount'), self.invoice_base.current_revision.currency.symbol)
+                ])
+            rows.append([
+                _('TOTAL (incl. tax)'),
+                currency_format(self.invoice_base.total, self.invoice_base.current_revision.currency.symbol)
+            ])
+        return rows
+
     def fill_line_items_summary(self):
         """
         Fills line items summary table  
         Should start with a spacer
         """
         self.spacer()
-        rows = [[
-            _('TOTAL (excl. tax)'),
-            currency_format(self.invoice_base.sub_total, self.invoice_base.current_revision.currency.symbol)
-        ]]
-        for tax in self.invoice_base.taxes_amounts:
-            rows.append([
-                '%(tax_name)s (%(tax_rate)s)' % {
-                    'tax_name': tax.get('name'),
-                    'tax_rate': '{0:.2%}'.format(tax.get('rate'))
-                },
-                currency_format(tax.get('amount'), self.invoice_base.current_revision.currency.symbol)
-            ])
-        rows.append([
-            _('TOTAL (incl. tax)'),
-            currency_format(self.invoice_base.amount, self.invoice_base.current_revision.currency.symbol)
-        ])
-        col_widths = (None, self.settings.page_size.scaled_width(25*mm))
         self.start_keeptogether()
-        self.table(rows, col_widths, hAlign='RIGHT', style=self.style['InvoiceBaseSummaryTable'])
+        col_widths = (None, self.settings.page_size.scaled_width(25*mm))
+        self.table(self.get_line_items_summary_rows(), col_widths, hAlign='RIGHT', style=self.style['InvoiceBaseSummaryTable'])
         self.end_keeptogether()
 
     def fill_legal_notice(self):
@@ -388,7 +401,12 @@ class InvoiceBaseReport(Report):
         Fills the legal notice part  
         Should start with a spacer
         """
-        pass
+        if self.invoice_base.tenant.registration_info.get_legal_paragraphs():
+            self.spacer()
+            self.start_keeptogether()
+            for row in self.invoice_base.tenant.registration_info.get_legal_paragraphs():
+                self.p(row)
+            self.end_keeptogether()
 
     def fill_registration_information(self):
         """Fills the registration information part"""

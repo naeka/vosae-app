@@ -49,7 +49,7 @@ def fill_tenant_initial_data(tenant, language_code):
         initial_vosae_user = VosaeUser.objects.get(tenant=tenant)
 
         # Creates default taxes, based on registration country
-        for tax_percent, tax_name in tenant.registration_info.DEFAULT_TAXES:
+        for tax_percent, tax_name in tenant.registration_info.get_default_taxes():
             Tax(tenant=tenant, name=tax_name, rate=tax_percent).save()
 
         # Creates a shared organization

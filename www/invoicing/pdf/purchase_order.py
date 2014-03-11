@@ -42,3 +42,4 @@ class PurchaseOrderReport(InvoiceBaseReport):
                 'quotation_reference': self.invoice_base.group.quotation.reference
             })
             self.end_keeptogether()
+        super(PurchaseOrderReport, self).fill_legal_notice()

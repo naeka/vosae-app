@@ -59,3 +59,4 @@ class InvoiceReport(InvoiceBaseReport):
         else:
             self.p(_("Late fee at the legal rate"))
         self.end_keeptogether()
+        super(InvoiceReport, self).fill_legal_notice()

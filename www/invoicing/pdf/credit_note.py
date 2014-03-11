@@ -39,3 +39,4 @@ class CreditNoteReport(InvoiceBaseReport):
         self.p(_("Refers to invoice %(invoice_reference)s") % {
             'invoice_reference': self.invoice_base.related_to.reference
         })
+        super(CreditNoteReport, self).fill_legal_notice()

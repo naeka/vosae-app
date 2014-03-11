@@ -44,3 +44,4 @@ class QuotationReport(InvoiceBaseReport):
             self.spacer()
             self.p(_('Signature and stamp preceded by "Valid for agreement"'), self.style['Bold'])
             self.end_keeptogether()
+        super(QuotationReport, self).fill_legal_notice()

@@ -24,6 +24,8 @@ class RegistrationInfo(EmbeddedDocument):
     - Business entity (Inc., Ltd., GmBh, SA, etc.)
     - Share capital
     """
+    DEFAULT_TAXES = ()
+
     business_entity = fields.StringField()
     share_capital = fields.StringField(required=True)
 
@@ -33,6 +35,9 @@ class RegistrationInfo(EmbeddedDocument):
 
     class Meta:
         report_mandatory_fields = ()
+
+    def get_default_taxes(self):
+        return self.DEFAULT_TAXES
 
     def get_list(self):
         infos = []
@@ -56,6 +61,9 @@ class RegistrationInfo(EmbeddedDocument):
                     'field_value': getattr(self, field_key)
                 })
         return infos
+
+    def get_legal_paragraphs(self):
+        return []
 
 
 """
@@ -83,9 +91,9 @@ class BERegistrationInfo(EURegistrationInfoMixin, RegistrationInfo):
     """Belgium registration infos"""
     COUNTRY_CODE = 'BE'
     DEFAULT_TAXES = (
-        (Decimal('0.21'), 'TVA'),
-        (Decimal('0.12'), 'TVA'),
-        (Decimal('0.06'), 'TVA')
+        (Decimal('0.21'), u'TVA'),
+        (Decimal('0.12'), u'TVA'),
+        (Decimal('0.06'), u'TVA')
     )
 
     class Meta(RegistrationInfo.Meta):
@@ -106,9 +114,9 @@ class CHRegistrationInfo(RegistrationInfo):
     """
     COUNTRY_CODE = 'CH'
     DEFAULT_TAXES = (
-        (Decimal('0.08'), 'TVA'),
-        (Decimal('0.038'), 'TVA'),
-        (Decimal('0.025'), 'TVA')
+        (Decimal('0.08'), u'TVA'),
+        (Decimal('0.038'), u'TVA'),
+        (Decimal('0.025'), u'uTVA')
     )
 
     vat_number = fields.StringField(required=True, verbose_name=_('VAT number'))
@@ -130,17 +138,19 @@ class FRRegistrationInfo(EURegistrationInfoMixin, RegistrationInfo):
 
     - SIRET number
     - RCS number
+    - French "Auto entrepreneur" status flag
     """
     COUNTRY_CODE = 'FR'
     DEFAULT_TAXES = (
-        (Decimal('0.20'), 'TVA'),
-        (Decimal('0.10'), 'TVA'),
-        (Decimal('0.055'), 'TVA'),
-        (Decimal('0.021'), 'TVA')
+        (Decimal('0.20'), u'TVA'),
+        (Decimal('0.10'), u'TVA'),
+        (Decimal('0.055'), u'TVA'),
+        (Decimal('0.021'), u'TVA')
     )
 
     siret = fields.StringField(required=True, verbose_name=_('SIRET'))
     rcs_number = fields.StringField(required=True, verbose_name=_('RCS number'))
+    is_auto_entrepreneur = fields.BooleanField(required=True, default=False)
 
     class Meta(RegistrationInfo.Meta):
         report_mandatory_fields = RegistrationInfo.Meta.report_mandatory_fields + (
@@ -151,14 +161,28 @@ class FRRegistrationInfo(EURegistrationInfoMixin, RegistrationInfo):
             'rcs_number',
         )
 
+    def get_default_taxes(self):
+        if self.is_auto_entrepreneur:
+            # "Auto entrepreneurs" are not eligible for VAT
+            return (
+                (Decimal('0.00'), u'Non applicable'),
+            )
+        return self.DEFAULT_TAXES
+
+    def get_legal_paragraphs(self):
+        paragraphs = super(FRRegistrationInfo, self).get_legal_paragraphs()
+        if self.is_auto_entrepreneur:
+            paragraphs.append(u'TVA non applicable - article 293 B du CGI')
+        return paragraphs
+
 
 class GBRegistrationInfo(EURegistrationInfoMixin, RegistrationInfo):
 
     """Great Britain registration infos"""
     COUNTRY_CODE = 'GB'
     DEFAULT_TAXES = (
-        (Decimal('0.2'), 'VAT'),
-        (Decimal('0.05'), 'VAT')
+        (Decimal('0.2'), u'VAT'),
+        (Decimal('0.05'), u'VAT')
     )
 
     class Meta(RegistrationInfo.Meta):
@@ -174,10 +198,10 @@ class LURegistrationInfo(EURegistrationInfoMixin, RegistrationInfo):
     """Luxembourg registration infos"""
     COUNTRY_CODE = 'LU'
     DEFAULT_TAXES = (
-        (Decimal('0.15'), 'TVA'),
-        (Decimal('0.12'), 'TVA'),
-        (Decimal('0.06'), 'TVA'),
-        (Decimal('0.03'), 'TVA')
+        (Decimal('0.15'), u'TVA'),
+        (Decimal('0.12'), u'TVA'),
+        (Decimal('0.06'), u'TVA'),
+        (Decimal('0.03'), u'TVA')
     )
 
     class Meta(RegistrationInfo.Meta):
@@ -193,8 +217,8 @@ class USRegistrationInfo(RegistrationInfo):
     """United States registration infos"""
     COUNTRY_CODE = 'US'
     DEFAULT_TAXES = (
-        (Decimal('0.1'), 'Sales tax'),
-        (Decimal('0.05'), 'Sales tax')
+        (Decimal('0.1'), u'Sales tax'),
+        (Decimal('0.05'), u'Sales tax')
     )
 
     class Meta(RegistrationInfo.Meta):
