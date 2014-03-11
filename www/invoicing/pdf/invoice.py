@@ -2,10 +2,13 @@
 
 from django.template.defaultfilters import date as format_date
 from django.utils.translation import ugettext as _, pgettext
-from reportlab.lib.units import cm
+from reportlab.lib.units import cm,  mm
+
+from core.pdf.report import BaseTableStyle
+from core.pdf.conf.fonts import get_font
 
 from invoicing.pdf.invoice_base import InvoiceBaseReport
-from invoicing import PAYMENT_TYPES
+from invoicing import PAYMENT_TYPES, currency_format
 
 
 __all__ = ('InvoiceReport',)
@@ -34,6 +37,47 @@ class InvoiceReport(InvoiceBaseReport):
             ' '.join([unicode(self.invoice_base.RECORD_NAME).upper(), reference]),
             format_date(self.invoice_base.current_revision.invoicing_date, 'DATE_FORMAT')
         ]], self.settings.page_size.scaled_width((12*cm, 5*cm)), style=self.style['InvoiceBaseReferencesTable'])
+
+    def fill_line_items_summary(self):
+        """
+        Fills line items summary table  
+        Should start with a spacer
+        """
+        rows = self.get_line_items_summary_rows()
+        # Position of the total row
+        total_pos = len(rows) - 1
+        custom_style = None
+
+        # Add specific rows if there are linked down-payment invoices
+        if self.invoice_base.is_invoice() and self.invoice_base.group.down_payment_invoices:
+            for down_payment_invoice in self.invoice_base.group.down_payment_invoices:
+                rows.append([
+                    _('Down-payment invoice %(down_payment_invoice_reference)s') % {
+                        'down_payment_invoice_reference': down_payment_invoice.reference
+                    },
+                    currency_format(down_payment_invoice.amount, down_payment_invoice.current_revision.currency.symbol)
+                ])
+            rows.append([
+                _('NET PAYABLE'),
+                currency_format(self.invoice_base.amount, self.invoice_base.current_revision.currency.symbol)
+            ])
+            custom_style = BaseTableStyle(
+                name='InvoiceBaseSummaryTableWithDownPayments',
+                parent=self.style['InvoiceBaseSummaryTable'],
+                cmds=[
+                    ('FONTNAME', (0, total_pos), (-1, total_pos), get_font(self.settings.font_name).bold),
+                    ('FONTSIZE', (0, total_pos), (-1, total_pos), 1.2 * self.settings.font_size),
+                    ('LEADING', (0, total_pos), (-1, total_pos), 1.5 * self.settings.font_size),
+                    ('TEXTCOLOR', (0, total_pos), (-1, total_pos), self.settings.hex_font_base_color),
+                    ('BACKGROUND', (0, total_pos), (-1, total_pos), self.settings.hex_base_color)
+                ]
+            )
+
+        self.spacer()
+        self.start_keeptogether()
+        col_widths = (None, self.settings.page_size.scaled_width(25*mm))
+        self.table(rows, col_widths, hAlign='RIGHT', style=custom_style or self.style['InvoiceBaseSummaryTable'])
+        self.end_keeptogether()
 
     def fill_legal_notice(self):
         # Legal notices
