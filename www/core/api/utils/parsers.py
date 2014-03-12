@@ -5,9 +5,12 @@ from htmlentitydefs import name2codepoint
 
 
 __all__ = (
+    'BASIC_TAGS',
     'TagsStripper',
 )
 
+
+BASIC_TAGS = ['br', 'b', 'i', 'u']
 
 SELF_CLOSING_TAGS = ['br', 'hr']
 BASIC_ENTITIES = ['nbsp', 'amp', 'lt', 'gt']

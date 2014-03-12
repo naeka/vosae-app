@@ -273,6 +273,9 @@ class InvoiceBaseReport(Report):
         # Legal notice
         self.fill_legal_notice()
 
+        # Additional informations
+        self.fill_additional_informations()
+
         # Last report part
         self.fill_last_report_part()
 
@@ -410,6 +413,12 @@ class InvoiceBaseReport(Report):
             for row in self.invoice_base.tenant.registration_info.get_legal_paragraphs():
                 self.p(row)
             self.end_keeptogether()
+
+    def fill_additional_informations(self):
+        """Fills sender's additional informations"""
+        if self.invoice_base.current_revision.additional_informations:
+            self.spacer()
+            self.p(self.invoice_base.current_revision.additional_informations)
 
     def fill_last_report_part(self):
         """

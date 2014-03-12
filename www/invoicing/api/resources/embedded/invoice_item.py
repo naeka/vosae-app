@@ -3,7 +3,7 @@
 from tastypie import fields as base_fields
 from tastypie_mongoengine import fields
 
-from core.api.utils import VosaeResource, TagsStripper
+from core.api.utils import VosaeResource, TagsStripper, BASIC_TAGS
 from invoicing.models import InvoiceItem
 from invoicing.api.doc import HELP_TEXT
 
@@ -51,7 +51,7 @@ class InvoiceItemResource(VosaeResource):
         object_class = InvoiceItem
 
     def hydrate_description(self, bundle):
-        parser = TagsStripper(allowed_tags=['br', 'b', 'i', 'u'])
+        parser = TagsStripper(allowed_tags=BASIC_TAGS)
         parser.feed(bundle.data['description'])
         bundle.data['description'] = parser.get_data()
         return bundle

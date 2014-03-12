@@ -6,8 +6,11 @@ from tastypie_mongoengine import fields
 
 from core.api.utils import (
     VosaeResource,
-    ReferencedDictField
+    ReferencedDictField,
+    TagsStripper,
+    BASIC_TAGS
 )
+
 from invoicing.models import (
     QuotationRevision,
     PurchaseOrderRevision,
@@ -63,6 +66,10 @@ class BaseRevisionResource(VosaeResource):
     taxes_application = base_fields.CharField(
         attribute='taxes_application',
         help_text=HELP_TEXT['base_revision']['taxes_application']
+    )
+    additional_informations = base_fields.CharField(
+        attribute='additional_informations',
+        help_text=HELP_TEXT['base_revision']['additional_informations']
     )
 
     issuer = fields.ReferenceField(
@@ -130,6 +137,12 @@ class BaseRevisionResource(VosaeResource):
         bundle = super(BaseRevisionResource, self).hydrate(bundle)
         bundle.obj.issuer = bundle.request.vosae_user
         bundle.obj.issue_date = datetime_now()
+        return bundle
+
+    def hydrate_additional_informations(self, bundle):
+        parser = TagsStripper(allowed_tags=BASIC_TAGS)
+        parser.feed(bundle.data['additional_informations'])
+        bundle.data['additional_informations'] = parser.get_data()
         return bundle
 
 

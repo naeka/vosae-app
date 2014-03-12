@@ -39,6 +39,7 @@ class BaseRevision(EmbeddedDocument):
     currency = fields.EmbeddedDocumentField("SnapshotCurrency", required=True)
     taxes_application = fields.StringField(required=True, choices=TAXES_APPLICATION, default="EXCLUSIVE")
     line_items = fields.ListField(fields.EmbeddedDocumentField("InvoiceItem"))
+    additional_informations = fields.StringField(max_length=1024)
     pdf = LocalizedMapField(fields.ReferenceField("VosaeFile"))
 
     meta = {

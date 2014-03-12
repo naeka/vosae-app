@@ -88,6 +88,7 @@ HELP_TEXT = {
         'custom_payment_conditions': 'Custom payment conditions.\nIn some businesses custom payment conditions may be applied depending on the work or the delivery process.\nIn such cases, <code>due_date</code> acts as an expected due date used for budget projections',
         'customer_reference': 'Some customers may request to figure a reference on the generated documents, linked to their tools.\nThis <code>customer_reference</code> is displayed between the document reference and the line items',
         'taxes_application': 'Taxes application.\nOne of: <ul><li class="text-info">EXCLUSIVE</li> <li class="text-info">NOT_APPLICABLE</li></ul>',
+        'additional_informations': 'Additional informations provided by the sender',
         'issuer': 'The Vosae user which has created this revision',
         'sender_address': 'Address of the sender',
         'contact': 'The contact linked to this revision',
