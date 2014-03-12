@@ -273,6 +273,9 @@ class InvoiceBaseReport(Report):
         # Legal notice
         self.fill_legal_notice()
 
+        # Last report part
+        self.fill_last_report_part()
+
     def fill_sender(self):
         """Fills sender identity"""
         from reportlab.platypus.flowables import Image
@@ -407,6 +410,13 @@ class InvoiceBaseReport(Report):
             for row in self.invoice_base.tenant.registration_info.get_legal_paragraphs():
                 self.p(row)
             self.end_keeptogether()
+
+    def fill_last_report_part(self):
+        """
+        Fills the last report part  
+        Usually for signatures mentions
+        """
+        pass
 
     def fill_registration_information(self):
         """Fills the registration information part"""

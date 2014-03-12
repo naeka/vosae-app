@@ -2,7 +2,7 @@
 
 from django.template.defaultfilters import date as format_date
 from django.utils.translation import ugettext as _, pgettext
-from reportlab.lib.units import cm,  mm
+from reportlab.lib.units import mm
 
 from core.pdf.report import BaseTableStyle
 from core.pdf.conf.fonts import get_font
@@ -36,7 +36,7 @@ class InvoiceReport(InvoiceBaseReport):
         self.table([[
             ' '.join([unicode(self.invoice_base.RECORD_NAME).upper(), reference]),
             format_date(self.invoice_base.current_revision.invoicing_date, 'DATE_FORMAT')
-        ]], self.settings.page_size.scaled_width((12*cm, 5*cm)), style=self.style['InvoiceBaseReferencesTable'])
+        ]], self.settings.page_size.scaled_width((120*mm, 50*mm)), style=self.style['InvoiceBaseReferencesTable'])
 
     def fill_line_items_summary(self):
         """

@@ -2,7 +2,7 @@
 
 from django.template.defaultfilters import date as format_date
 from django.utils.translation import ugettext as _
-from reportlab.lib.units import cm
+from reportlab.lib.units import mm
 
 from invoicing.pdf.invoice_base import InvoiceBaseReport
 
@@ -31,7 +31,7 @@ class CreditNoteReport(InvoiceBaseReport):
         self.table([[
             ' '.join([unicode(self.invoice_base.RECORD_NAME).upper(), self.invoice_base.reference]),
             format_date(self.invoice_base.current_revision.credit_note_emission_date, 'DATE_FORMAT')
-        ]], self.settings.page_size.scaled_width((12*cm, 5*cm)), style=self.style['InvoiceBaseReferencesTable'])
+        ]], self.settings.page_size.scaled_width((120*mm, 50*mm)), style=self.style['InvoiceBaseReferencesTable'])
 
     def fill_legal_notice(self):
         # Legal notices

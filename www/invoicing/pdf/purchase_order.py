@@ -2,7 +2,7 @@
 
 from django.template.defaultfilters import date as format_date
 from django.utils.translation import ugettext as _
-from reportlab.lib.units import cm
+from reportlab.lib.units import mm
 
 from invoicing.pdf.invoice_base import InvoiceBaseReport
 
@@ -31,7 +31,7 @@ class PurchaseOrderReport(InvoiceBaseReport):
         self.table([[
             ' '.join([unicode(self.invoice_base.RECORD_NAME).upper(), self.invoice_base.reference]),
             format_date(self.invoice_base.current_revision.purchase_order_date, 'DATE_FORMAT')
-        ]], self.settings.page_size.scaled_width((12*cm, 5*cm)), style=self.style['InvoiceBaseReferencesTable'])
+        ]], self.settings.page_size.scaled_width((120*mm, 50*mm)), style=self.style['InvoiceBaseReferencesTable'])
 
     def fill_legal_notice(self):
         # Legal notices
@@ -43,3 +43,11 @@ class PurchaseOrderReport(InvoiceBaseReport):
             })
             self.end_keeptogether()
         super(PurchaseOrderReport, self).fill_legal_notice()
+
+    def fill_last_report_part(self):
+        self.spacer()
+        # Signature / stamp must have space available below
+        self.start_keeptogether()
+        self.p(_('Signature and stamp of the customer"'), self.style['Bold'])
+        self.spacer(15*mm)
+        self.end_keeptogether()
